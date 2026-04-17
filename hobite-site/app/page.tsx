@@ -91,10 +91,13 @@ function HeroSection() {
           Research-driven insights on growth equities, macro cycles, portfolio
           construction, and asymmetric opportunities.
         </p>
-        <div className="mt-10 flex gap-4">
+        <div className="mt-10 flex flex-wrap gap-4">
           <PillButton href="#research">Research</PillButton>
           <PillButton href="#newsletter" variant="secondary">
             Newsletter
+          </PillButton>
+          <PillButton href="/operation-log" variant="secondary">
+            我的操作记录
           </PillButton>
         </div>
       </div>
