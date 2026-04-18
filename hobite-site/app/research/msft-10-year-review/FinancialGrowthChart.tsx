@@ -4,11 +4,10 @@ type LabelCopy = {
   revenue: string;
   ebita: string;
   cashFlow: string;
+  indexNote?: string;
 };
 
-function createPolyline(values: number[], width: number, height: number, padding: number) {
-  const maxValue = Math.max(...values);
-  const minValue = Math.min(...values);
+function createPolyline(values: number[], width: number, height: number, padding: number, minValue: number, maxValue: number) {
   const usableWidth = width - padding * 2;
   const usableHeight = height - padding * 2;
 
@@ -52,7 +51,7 @@ export default function FinancialGrowthChart({
   return (
     <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
       <h2 className="text-2xl font-semibold">{title}</h2>
-      <p className="mt-2 text-sm text-zinc-600">{labels.indexNote}</p>
+      <p className="mt-2 text-sm text-zinc-600">{labels.indexNote ?? "Indexed growth (FY2016 = 100)"}</p>
 
       <div className="mt-6 overflow-x-auto">
         <svg viewBox={`0 0 ${width} ${height}`} className="min-w-[760px] w-full" role="img" aria-label={title}>
