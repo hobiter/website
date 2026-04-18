@@ -1,8 +1,30 @@
 const POSTS = [
-  "AI Capital Rotation: Where Money Flows Next",
-  "Growth vs Value in the New Rate Cycle",
-  "Risk Management During Volatility",
-  "Building a Concentrated Portfolio",
+  {
+    title: "Microsoft (MSFT): 10 Years of Reinvention",
+    href: "/research/msft-10-year-review",
+    description:
+      "A long-form review of Microsoft’s transformation from software incumbent to cloud and AI platform leader.",
+  },
+  {
+    title: "AI Capital Rotation: Where Money Flows Next",
+    href: "#",
+    description: "Concise market intelligence with long-term perspective.",
+  },
+  {
+    title: "Growth vs Value in the New Rate Cycle",
+    href: "#",
+    description: "Concise market intelligence with long-term perspective.",
+  },
+  {
+    title: "Risk Management During Volatility",
+    href: "#",
+    description: "Concise market intelligence with long-term perspective.",
+  },
+  {
+    title: "Building a Concentrated Portfolio",
+    href: "#",
+    description: "Concise market intelligence with long-term perspective.",
+  },
 ];
 
 const SERVICES = [
@@ -66,13 +88,22 @@ function InfoCard({ title, description, className = "" }: InfoCardProps) {
   );
 }
 
-function ResearchCard({ title }: { title: string }) {
+function ResearchCard({
+  title,
+  href,
+  description,
+}: {
+  title: string;
+  href: string;
+  description: string;
+}) {
   return (
     <article className="p-6 rounded-3xl bg-white border border-zinc-200">
       <h3 className="text-xl font-medium">{title}</h3>
-      <p className="mt-3 text-zinc-600">
-        Concise market intelligence with long-term perspective.
-      </p>
+      <p className="mt-3 text-zinc-600">{description}</p>
+      <a href={href} className="mt-4 inline-block text-sm font-medium text-zinc-900">
+        Read report →
+      </a>
     </article>
   );
 }
@@ -99,15 +130,25 @@ function HeroSection() {
           <PillButton href="/operation-log" variant="secondary">
             我的操作记录
           </PillButton>
+          <PillButton href="/research/msft-10-year-review" variant="secondary">
+            MSFT 10Y Report
+          </PillButton>
         </div>
       </div>
 
       <div className="p-8 rounded-[2rem] bg-white shadow-sm border border-zinc-200">
-        <p className="text-sm text-zinc-500">Model Portfolio</p>
-        <p className="text-5xl font-semibold mt-3">+18.4%</p>
+        <p className="text-sm text-zinc-500">Featured Research</p>
+        <p className="text-3xl font-semibold mt-3">Microsoft (MSFT)</p>
         <p className="mt-2 text-zinc-600">
-          Illustrative dashboard placeholder for future live metrics.
+          A long-form review of Microsoft’s cloud transition, operating leverage,
+          and AI platform positioning over the last decade.
         </p>
+        <a
+          href="/research/msft-10-year-review"
+          className="mt-5 inline-block rounded-2xl bg-zinc-900 px-5 py-3 text-white"
+        >
+          Open report
+        </a>
       </div>
     </Section>
   );
@@ -132,14 +173,19 @@ function ResearchSection() {
     <Section id="research" className="py-16">
       <div className="flex items-end justify-between gap-4">
         <h2 className="text-3xl font-semibold">Latest Research</h2>
-        <a href="#" className="text-sm text-zinc-500">
-          View All
+        <a href="/research/msft-10-year-review" className="text-sm text-zinc-500">
+          Featured report
         </a>
       </div>
 
       <div className="mt-8 grid md:grid-cols-2 gap-6">
         {POSTS.map((post) => (
-          <ResearchCard key={post} title={post} />
+          <ResearchCard
+            key={post.title}
+            title={post.title}
+            href={post.href}
+            description={post.description}
+          />
         ))}
       </div>
     </Section>
