@@ -1,13 +1,9 @@
 const POSTS = [
   {
-    title: "MSFT 10-Year Review",
+    title: "Microsoft (MSFT): 10 Years of Reinvention",
     href: "/research/msft-10-year-review",
-    description: "Revenue, EBITA, and operating cash flow growth visualization.",
-  },
-  {
-    title: "MSFT 十年复盘（中文）",
-    href: "/zh/research/msft-10-year-review",
-    description: "微软十年收入、EBITA、经营现金流图表。",
+    description:
+      "A long-form review of Microsoft’s transformation from software incumbent to cloud and AI platform leader.",
   },
   {
     title: "AI Capital Rotation: Where Money Flows Next",
@@ -16,6 +12,16 @@ const POSTS = [
   },
   {
     title: "Growth vs Value in the New Rate Cycle",
+    href: "#",
+    description: "Concise market intelligence with long-term perspective.",
+  },
+  {
+    title: "Risk Management During Volatility",
+    href: "#",
+    description: "Concise market intelligence with long-term perspective.",
+  },
+  {
+    title: "Building a Concentrated Portfolio",
     href: "#",
     description: "Concise market intelligence with long-term perspective.",
   },
@@ -95,8 +101,8 @@ function ResearchCard({
     <article className="p-6 rounded-3xl bg-white border border-zinc-200">
       <h3 className="text-xl font-medium">{title}</h3>
       <p className="mt-3 text-zinc-600">{description}</p>
-      <a href={href} className="mt-4 inline-block text-sm text-zinc-600 underline">
-        Open report
+      <a href={href} className="mt-4 inline-block text-sm font-medium text-zinc-900">
+        Read report →
       </a>
     </article>
   );
@@ -124,15 +130,25 @@ function HeroSection() {
           <PillButton href="/operation-log" variant="secondary">
             我的操作记录
           </PillButton>
+          <PillButton href="/research/msft-10-year-review" variant="secondary">
+            MSFT 10Y Report
+          </PillButton>
         </div>
       </div>
 
       <div className="p-8 rounded-[2rem] bg-white shadow-sm border border-zinc-200">
-        <p className="text-sm text-zinc-500">Model Portfolio</p>
-        <p className="text-5xl font-semibold mt-3">+18.4%</p>
+        <p className="text-sm text-zinc-500">Featured Research</p>
+        <p className="text-3xl font-semibold mt-3">Microsoft (MSFT)</p>
         <p className="mt-2 text-zinc-600">
-          Illustrative dashboard placeholder for future live metrics.
+          A long-form review of Microsoft’s cloud transition, operating leverage,
+          and AI platform positioning over the last decade.
         </p>
+        <a
+          href="/research/msft-10-year-review"
+          className="mt-5 inline-block rounded-2xl bg-zinc-900 px-5 py-3 text-white"
+        >
+          Open report
+        </a>
       </div>
     </Section>
   );
@@ -157,8 +173,8 @@ function ResearchSection() {
     <Section id="research" className="py-16">
       <div className="flex items-end justify-between gap-4">
         <h2 className="text-3xl font-semibold">Latest Research</h2>
-        <a href="/research/msft-10-year-review" className="text-sm text-zinc-500 underline">
-          View MSFT Review
+        <a href="/research/msft-10-year-review" className="text-sm text-zinc-500">
+          Featured report
         </a>
       </div>
 
