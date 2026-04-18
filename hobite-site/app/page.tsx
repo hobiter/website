@@ -1,5 +1,10 @@
 const POSTS = [
   {
+    title: "Google 10-Year Annual Report Study",
+    href: "/research/google-10-year-report",
+    description: "Long-form analysis based on the last 10 years of Google annual financial reporting.",
+  },
+  {
     title: "MSFT 10-Year Review",
     href: "/research/msft-10-year-review",
     description: "Revenue, EBITA, and operating cash flow growth visualization.",
