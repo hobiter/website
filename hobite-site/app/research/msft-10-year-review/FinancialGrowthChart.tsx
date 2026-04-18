@@ -4,10 +4,11 @@ type LabelCopy = {
   revenue: string;
   ebita: string;
   cashFlow: string;
-  indexNote: string;
 };
 
-function createPolyline(values: number[], width: number, height: number, padding: number, minValue: number, maxValue: number) {
+function createPolyline(values: number[], width: number, height: number, padding: number) {
+  const maxValue = Math.max(...values);
+  const minValue = Math.min(...values);
   const usableWidth = width - padding * 2;
   const usableHeight = height - padding * 2;
 
