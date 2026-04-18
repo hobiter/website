@@ -1,9 +1,13 @@
 const POSTS = [
   {
-    title: "Microsoft (MSFT): 10 Years of Reinvention",
+    title: "MSFT 10-Year Review",
     href: "/research/msft-10-year-review",
-    description:
-      "A long-form review of Microsoft’s transformation from software incumbent to cloud and AI platform leader.",
+    description: "Revenue, EBITA, and operating cash flow growth visualization.",
+  },
+  {
+    title: "MSFT 十年复盘（中文）",
+    href: "/zh/research/msft-10-year-review",
+    description: "微软十年收入、EBITA、经营现金流图表。",
   },
   {
     title: "AI Capital Rotation: Where Money Flows Next",
@@ -12,16 +16,6 @@ const POSTS = [
   },
   {
     title: "Growth vs Value in the New Rate Cycle",
-    href: "#",
-    description: "Concise market intelligence with long-term perspective.",
-  },
-  {
-    title: "Risk Management During Volatility",
-    href: "#",
-    description: "Concise market intelligence with long-term perspective.",
-  },
-  {
-    title: "Building a Concentrated Portfolio",
     href: "#",
     description: "Concise market intelligence with long-term perspective.",
   },
@@ -101,8 +95,8 @@ function ResearchCard({
     <article className="p-6 rounded-3xl bg-white border border-zinc-200">
       <h3 className="text-xl font-medium">{title}</h3>
       <p className="mt-3 text-zinc-600">{description}</p>
-      <a href={href} className="mt-4 inline-block text-sm font-medium text-zinc-900">
-        Read report →
+      <a href={href} className="mt-4 inline-block text-sm text-zinc-600 underline">
+        Open report
       </a>
     </article>
   );
@@ -123,7 +117,7 @@ function HeroSection() {
           construction, and asymmetric opportunities.
         </p>
         <div className="mt-10 flex flex-wrap gap-4">
-          <PillButton href="#research">Research</PillButton>
+          <PillButton href="/research">Research</PillButton>
           <PillButton href="#newsletter" variant="secondary">
             Newsletter
           </PillButton>
@@ -173,8 +167,8 @@ function ResearchSection() {
     <Section id="research" className="py-16">
       <div className="flex items-end justify-between gap-4">
         <h2 className="text-3xl font-semibold">Latest Research</h2>
-        <a href="/research/msft-10-year-review" className="text-sm text-zinc-500">
-          Featured report
+        <a href="/research/msft-10-year-review" className="text-sm text-zinc-500 underline">
+          View MSFT Review
         </a>
       </div>
 
