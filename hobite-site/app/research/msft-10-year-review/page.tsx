@@ -22,12 +22,26 @@ export default function MsftTenYearReviewPage() {
           </a>
         </header>
 
+        <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
+          <h2 className="text-2xl font-semibold">Text summary</h2>
+          <p className="mt-3 text-zinc-700">
+            Microsoft shows durable top-line expansion across the decade, with EBITA and operating cash flow generally
+            compounding faster than revenue. This spread suggests operating leverage from software mix, cloud scale, and
+            recurring enterprise demand.
+          </p>
+          <p className="mt-3 text-zinc-700">
+            The chart below uses an indexed base of 100 in FY2016. A value of 200 means the metric doubled vs the base
+            year, making cross-metric trend comparison easier than absolute-dollar lines.
+          </p>
+        </section>
+
         <FinancialGrowthChart
           title="Revenue vs EBITA vs Operating Cash Flow"
           labels={{
             revenue: "Revenue",
             ebita: "EBITA",
             cashFlow: "Operating Cash Flow",
+            indexNote: "Indexed growth (FY2016 = 100) with Y-axis index values",
           }}
         />
 

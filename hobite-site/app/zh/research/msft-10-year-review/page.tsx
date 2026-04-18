@@ -22,12 +22,25 @@ export default function MsftTenYearReviewZhPage() {
           </a>
         </header>
 
+        <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
+          <h2 className="text-2xl font-semibold">文字解读</h2>
+          <p className="mt-3 text-zinc-700">
+            过去十年，微软收入持续增长，同时 EBITA 与经营现金流整体增速通常快于收入，体现出较强的经营杠杆与
+            业务质量提升。
+          </p>
+          <p className="mt-3 text-zinc-700">
+            下图采用 FY2016 = 100 的指数化方式。若某条线到达 200，表示该指标相较基期翻倍，便于横向比较三项
+            指标的增长轨迹。
+          </p>
+        </section>
+
         <FinancialGrowthChart
           title="收入 vs EBITA vs 经营现金流"
           labels={{
             revenue: "收入",
             ebita: "EBITA",
             cashFlow: "经营现金流",
+            indexNote: "指数化增长（FY2016 = 100），含 Y 轴刻度",
           }}
         />
 
