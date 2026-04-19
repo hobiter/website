@@ -186,8 +186,15 @@ function HeroSection() {
         <p className="text-sm text-zinc-500">Model Portfolio</p>
         <p className="text-5xl font-semibold mt-3">+18.4%</p>
         <p className="mt-2 text-zinc-600">
-          Illustrative dashboard placeholder for future live metrics.
+          A long-form review of Microsoft’s cloud transition, operating leverage,
+          and AI platform positioning over the last decade.
         </p>
+        <a
+          href="/research/msft-10-year-review"
+          className="mt-5 inline-block rounded-2xl bg-zinc-900 px-5 py-3 text-white"
+        >
+          Open report
+        </a>
       </div>
     </Section>
   );
