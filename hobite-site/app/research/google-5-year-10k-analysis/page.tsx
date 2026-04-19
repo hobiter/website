@@ -44,11 +44,15 @@ export default function GoogleFiveYear10KAnalysisPage() {
     return {
       ...row,
       revGrowth: prev ? pct(row.revenue - prev.revenue, prev.revenue) : null,
+      opIncomeGrowth: prev ? pct(row.operatingIncome - prev.operatingIncome, prev.operatingIncome) : null,
       opMargin: pct(row.operatingIncome, row.revenue),
       netMargin: pct(row.netIncome, row.revenue),
       ocfMargin: pct(row.operatingCashFlow, row.revenue),
     };
   });
+
+  const avgOpMargin = rowsWithRatios.reduce((sum, row) => sum + row.opMargin, 0) / rowsWithRatios.length;
+  const avgOcfMargin = rowsWithRatios.reduce((sum, row) => sum + row.ocfMargin, 0) / rowsWithRatios.length;
 
   return (
     <main className="min-h-screen bg-zinc-50 px-6 py-10 text-zinc-900">
@@ -58,7 +62,7 @@ export default function GoogleFiveYear10KAnalysisPage() {
           <h1 className="mt-3 text-4xl font-semibold">Google (Alphabet) — 5-Year 10-K Detailed Analysis (FY2021–FY2025)</h1>
           <p className="mt-4 leading-7 text-zinc-700">
             This page summarizes key performance trends directly from Alphabet&apos;s latest five annual 10-K periods,
-            focusing on growth durability, margin structure, and cash conversion quality.
+            focusing on growth durability, margin structure, cash conversion quality, and forward sensitivity factors.
           </p>
         </header>
 
@@ -78,30 +82,75 @@ export default function GoogleFiveYear10KAnalysisPage() {
         </section>
 
         <section className="rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm space-y-5 text-zinc-700 leading-7">
-          <h2 className="text-2xl font-semibold text-zinc-900">Detailed analysis</h2>
+          <h2 className="text-2xl font-semibold text-zinc-900">Detailed analysis (expanded)</h2>
+
           <p>
-            <strong>1) Growth profile:</strong> Revenue rose from {first.revenue.toFixed(1)}B in FY2021 to {last.revenue.toFixed(1)}B in FY2025,
-            implying {revenueCagr.toFixed(1)}% CAGR across the period. The sequence shows a moderation in FY2022 followed by
-            re-acceleration in FY2023–FY2025, suggesting the core demand engine recovered and broadened beyond purely cyclical advertising effects.
+            <strong>1) Revenue trajectory and demand context.</strong> Revenue increased from {first.revenue.toFixed(1)}B in FY2021
+            to {last.revenue.toFixed(1)}B in FY2025, which implies {revenueCagr.toFixed(1)}% CAGR over the five-year window.
+            The key shape of this curve matters: FY2022 was a moderation year, but the business re-accelerated in FY2023,
+            then compounded strongly through FY2024 and FY2025. This pattern is consistent with a platform that kept core
+            search demand resilient while broadening monetization across cloud, subscriptions, and AI-enhanced products.
           </p>
+
           <p>
-            <strong>2) Earnings power:</strong> Operating income expanded from {first.operatingIncome.toFixed(1)}B to {last.operatingIncome.toFixed(1)}B,
-            with a CAGR of {operatingIncomeCagr.toFixed(1)}%. This outpaced revenue growth, indicating improved scale economics and a healthier mix
-            over time despite rising AI-related infrastructure spend.
+            <strong>2) Operating leverage and cost structure.</strong> Operating income rose from {first.operatingIncome.toFixed(1)}B
+            to {last.operatingIncome.toFixed(1)}B, a {operatingIncomeCagr.toFixed(1)}% CAGR that outpaced revenue growth.
+            This spread indicates improving operating leverage despite heavy infrastructure investment. The important signal
+            is that Alphabet has remained capable of funding large compute and data-center builds while still expanding the
+            earnings base, which is difficult for peers with weaker monetization efficiency.
           </p>
+
           <p>
-            <strong>3) Margin quality:</strong> Operating margin and cash-flow margin both improved materially by FY2025 versus FY2022 trough dynamics.
-            This suggests Alphabet has retained pricing power and efficiency levers even while investing aggressively in compute-heavy products.
+            <strong>3) Margin behavior through cycle phases.</strong> The five-year average operating margin is
+            {" "}{avgOpMargin.toFixed(1)}%, while average operating cash flow margin is {avgOcfMargin.toFixed(1)}%.
+            FY2022 represented a stress year for margin momentum, but subsequent years show re-expansion. In practical
+            valuation terms, this supports the case that margin compression during reinvestment phases may be cyclical
+            rather than structurally permanent—provided demand quality and pricing power are preserved.
           </p>
+
           <p>
-            <strong>4) Cash conversion:</strong> Operating cash flow increased from {first.operatingCashFlow.toFixed(1)}B to {last.operatingCashFlow.toFixed(1)}B
-            ({operatingCashFlowCagr.toFixed(1)}% CAGR). Rising cash generation in parallel with revenue indicates the model remains fundamentally
-            cash generative rather than growth-at-all-cost.
+            <strong>4) Net income and earnings quality.</strong> Net income rose from {first.netIncome.toFixed(1)}B to
+            {" "}{last.netIncome.toFixed(1)}B across the window. The most useful interpretation is not absolute magnitude,
+            but consistency of conversion from operating profit to bottom-line earnings while reinvesting into AI scale.
+            A widening gap between operating income and net income would raise quality concerns; in this data window,
+            earnings quality remains broadly strong.
           </p>
+
           <p>
-            <strong>5) Forward watchpoints:</strong> For the next 12–24 months, the highest-signal metrics are (a) Search monetization efficiency,
-            (b) Cloud profitability trend, (c) AI inference cost per unit of monetized output, and (d) free-cash-flow conversion after infrastructure expansion.
-            Sustained strength on these dimensions would support durable compounding despite regulatory and competitive uncertainty.
+            <strong>5) Cash generation and strategic flexibility.</strong> Operating cash flow moved from
+            {" "}{first.operatingCashFlow.toFixed(1)}B to {last.operatingCashFlow.toFixed(1)}B ({operatingCashFlowCagr.toFixed(1)}% CAGR).
+            This is strategically critical: in AI competition, absolute cash generation determines how fast a company can
+            scale model training, inference capacity, and adjacent enterprise offerings without balance-sheet stress.
+            Alphabet&apos;s cash profile implies high optionality in both offense (product expansion) and defense (pricing).
+          </p>
+
+          <p>
+            <strong>6) Segment-level interpretation.</strong> While this page is consolidated-financial in nature, the trend set
+            suggests three engines: Search (core monetization and intent capture), YouTube/ads ecosystem (demand surface
+            diversification), and Cloud/AI enterprise stack (second growth curve and strategic moat extension). The durable
+            investment case requires these engines to remain complementary: Search cash flows fund AI capex, while Cloud and
+            AI products create incremental monetization channels.
+          </p>
+
+          <p>
+            <strong>7) Risk framework.</strong> Main downside vectors include regulatory constraints on default distribution,
+            changes in user behavior due to new AI interfaces, and rising model-serving costs that could pressure margins if
+            monetization lags. In addition, traffic-acquisition economics and competitive pricing in cloud could create
+            short-term earnings volatility even if long-term demand remains intact.
+          </p>
+
+          <p>
+            <strong>8) Monitoring checklist for investors.</strong> The highest-value KPIs to track each quarter are:
+            (a) revenue growth durability after currency/one-offs, (b) operating margin trend versus AI capex intensity,
+            (c) operating cash flow conversion, (d) cloud profitability progression, and (e) monetization per AI interaction.
+            If these stay healthy, the long-duration compounding thesis remains credible.
+          </p>
+
+          <p>
+            <strong>9) Base-case assessment.</strong> Based on the 5-year 10-K evidence, Alphabet appears to be in a favorable
+            position: still growing at scale, sustaining strong cash conversion, and preserving profitability despite major
+            strategic reinvestment. The debate for long-term holders is likely less about near-term growth and more about
+            return-on-incremental-capital in AI-led product cycles.
           </p>
         </section>
 
@@ -115,6 +164,7 @@ export default function GoogleFiveYear10KAnalysisPage() {
                   <th className="py-2 pr-4">Revenue</th>
                   <th className="py-2 pr-4">YoY Revenue</th>
                   <th className="py-2 pr-4">Operating Income</th>
+                  <th className="py-2 pr-4">YoY Op. Income</th>
                   <th className="py-2 pr-4">Net Income</th>
                   <th className="py-2 pr-4">Operating Cash Flow</th>
                   <th className="py-2 pr-4">Operating Margin</th>
@@ -129,6 +179,7 @@ export default function GoogleFiveYear10KAnalysisPage() {
                     <td className="py-2 pr-4">{row.revenue.toFixed(1)}</td>
                     <td className="py-2 pr-4">{row.revGrowth === null ? "-" : `${row.revGrowth.toFixed(1)}%`}</td>
                     <td className="py-2 pr-4">{row.operatingIncome.toFixed(1)}</td>
+                    <td className="py-2 pr-4">{row.opIncomeGrowth === null ? "-" : `${row.opIncomeGrowth.toFixed(1)}%`}</td>
                     <td className="py-2 pr-4">{row.netIncome.toFixed(1)}</td>
                     <td className="py-2 pr-4">{row.operatingCashFlow.toFixed(1)}</td>
                     <td className="py-2 pr-4">{row.opMargin.toFixed(1)}%</td>
@@ -144,8 +195,16 @@ export default function GoogleFiveYear10KAnalysisPage() {
         <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
           <h2 className="text-xl font-semibold">Source documents</h2>
           <ul className="mt-3 space-y-2 text-sm text-zinc-700">
-            <li><a className="underline" href="https://abc.xyz/investor/">Alphabet Investor Relations</a></li>
-            <li><a className="underline" href="https://www.sec.gov/edgar/browse/?CIK=1652044">Alphabet SEC filings (10-K archive)</a></li>
+            <li>
+              <a className="underline" href="https://abc.xyz/investor/">
+                Alphabet Investor Relations
+              </a>
+            </li>
+            <li>
+              <a className="underline" href="https://www.sec.gov/edgar/browse/?CIK=1652044">
+                Alphabet SEC filings (10-K archive)
+              </a>
+            </li>
           </ul>
         </section>
       </div>

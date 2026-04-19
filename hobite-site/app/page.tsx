@@ -1,5 +1,15 @@
 const POSTS = [
   {
+    title: "Blog",
+    href: "/blog",
+    description: "Read published blog posts.",
+  },
+  {
+    title: "Admin Blog Manager",
+    href: "/admin",
+    description: "Admin can add, edit, and delete blog posts.",
+  },
+  {
     title: "Google 5-Year 10-K Detailed Analysis",
     href: "/research/google-5-year-10k-analysis",
     description: "Pulled from Google 10-K filings with ratio and margin analysis.",
@@ -136,11 +146,11 @@ function HeroSection() {
           <PillButton href="#newsletter" variant="secondary">
             Newsletter
           </PillButton>
+          <PillButton href="/blog" variant="secondary">
+            Blog
+          </PillButton>
           <PillButton href="/operation-log" variant="secondary">
             我的操作记录
-          </PillButton>
-          <PillButton href="/research/msft-10-year-review" variant="secondary">
-            MSFT 10Y Report
           </PillButton>
         </div>
       </div>
