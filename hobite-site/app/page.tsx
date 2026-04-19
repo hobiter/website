@@ -1,5 +1,10 @@
 const POSTS = [
   {
+    title: "Google 5-Year 10-K Detailed Analysis",
+    href: "/research/google-5-year-10k-analysis",
+    description: "Pulled from Google 10-K filings with ratio and margin analysis.",
+  },
+  {
     title: "Google 十年财报深度报告（中文）",
     href: "/research/google-10-year-report/zh",
     description: "Google 近十年年报中文深度解析。",

@@ -7,6 +7,11 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "Google 5-Year 10-K Detailed Analysis",
+    description: "Detailed 10-K based analysis for FY2021-FY2025.",
+    href: "/research/google-5-year-10k-analysis",
+  },
+  {
     title: "Google（Alphabet）十年财报深度报告（中文）",
     description: "Google 十年年报中文长文版（FY2016-FY2025）。",
     href: "/research/google-10-year-report/zh",
