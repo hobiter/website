@@ -1,3 +1,4 @@
+import Link from "next/link";
 const POSTS = [
   {
     title: "Blog",
@@ -51,6 +52,15 @@ const SERVICES = [
   "Macro Strategy",
   "Portfolio Design",
   "Private Advisory",
+];
+
+const HEADLINE_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "Research", href: "/research" },
+  { label: "Platform", href: "#features" },
+  { label: "Newsletter", href: "#newsletter" },
+  { label: "Track Record", href: "#track-record" },
+  { label: "Blog", href: "/blog" },
 ];
 
 type SectionProps = {
@@ -127,6 +137,23 @@ function ResearchCard({
   );
 }
 
+function TopNav() {
+  return (
+    <Section className="py-6">
+      <nav className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-zinc-200 bg-white px-5 py-3">
+        <Link href="/" className="font-semibold">Hobite Capital</Link>
+        <div className="flex flex-wrap items-center gap-5 text-sm text-zinc-600">
+          {HEADLINE_LINKS.map((item) => (
+            <Link key={item.label} href={item.href} className="hover:text-zinc-900">
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      </nav>
+    </Section>
+  );
+}
+
 function HeroSection() {
   return (
     <Section className="py-24 grid md:grid-cols-2 gap-10 items-center">
@@ -155,9 +182,9 @@ function HeroSection() {
         </div>
       </div>
 
-      <div className="p-8 rounded-[2rem] bg-white shadow-sm border border-zinc-200">
-        <p className="text-sm text-zinc-500">Featured Research</p>
-        <p className="text-3xl font-semibold mt-3">Microsoft (MSFT)</p>
+      <div id="track-record" className="p-8 rounded-[2rem] bg-white shadow-sm border border-zinc-200">
+        <p className="text-sm text-zinc-500">Model Portfolio</p>
+        <p className="text-5xl font-semibold mt-3">+18.4%</p>
         <p className="mt-2 text-zinc-600">
           A long-form review of Microsoft’s cloud transition, operating leverage,
           and AI platform positioning over the last decade.
@@ -236,7 +263,7 @@ function NewsletterSection() {
 
 function FeaturesSection() {
   return (
-    <Section className="py-16 grid md:grid-cols-2 gap-6">
+    <Section id="features" className="py-16 grid md:grid-cols-2 gap-6">
       <InfoCard
         title="Members Area"
         description="Premium research, watchlists, earnings notes, and private dashboards."
@@ -268,6 +295,7 @@ function AdvisorySection() {
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-zinc-50 text-zinc-900">
+      <TopNav />
       <HeroSection />
       <ServicesSection />
       <ResearchSection />

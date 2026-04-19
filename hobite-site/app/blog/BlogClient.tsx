@@ -30,6 +30,9 @@ export default function BlogClient() {
         <aside className="md:col-span-1 rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
           <h1 className="text-2xl font-semibold">Blog</h1>
           <p className="mt-2 text-sm text-zinc-600">Posts are managed in <code>/admin</code>.</p>
+          <a href="/admin" className="mt-3 inline-block rounded-lg border border-zinc-300 px-3 py-1.5 text-xs">
+            Blog Manage (/admin)
+          </a>
           <button
             type="button"
             onClick={() => {
