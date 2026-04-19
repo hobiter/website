@@ -27,6 +27,9 @@ export default function GoogleTenYearReportPage() {
             focusing on scale growth, profitability conversion, cash-generation power, reinvestment posture, and strategic
             risks tied to AI compute intensity, regulation, and platform behavior shifts.
           </p>
+          <a href="/research/google-10-year-report/zh" className="mt-4 inline-block text-sm text-zinc-600 underline">
+            中文版
+          </a>
           <div className="mt-5 grid gap-3 sm:grid-cols-3">
             <div className="rounded-xl bg-zinc-100 p-4">
               <p className="text-xs uppercase text-zinc-500">Revenue CAGR</p>

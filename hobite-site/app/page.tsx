@@ -1,5 +1,10 @@
 const POSTS = [
   {
+    title: "Google 十年财报深度报告（中文）",
+    href: "/research/google-10-year-report/zh",
+    description: "Google 近十年年报中文深度解析。",
+  },
+  {
     title: "Google 10-Year Annual Report Study",
     href: "/research/google-10-year-report",
     description: "Long-form analysis based on the last 10 years of Google annual financial reporting.",
