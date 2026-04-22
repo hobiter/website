@@ -129,6 +129,23 @@ function ResearchCard({
   );
 }
 
+function TopNav() {
+  return (
+    <Section className="py-6">
+      <nav className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-zinc-200 bg-white px-5 py-3">
+        <Link href="/" className="font-semibold">Hobite Capital</Link>
+        <div className="flex flex-wrap items-center gap-5 text-sm text-zinc-600">
+          {HEADLINE_LINKS.map((item) => (
+            <Link key={item.label} href={item.href} className="hover:text-zinc-900">
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      </nav>
+    </Section>
+  );
+}
+
 function HeroSection() {
   return (
     <Section className="py-24 grid md:grid-cols-2 gap-10 items-center">
@@ -161,8 +178,15 @@ function HeroSection() {
         <p className="text-sm text-zinc-500">Model Portfolio</p>
         <p className="text-5xl font-semibold mt-3">+18.4%</p>
         <p className="mt-2 text-zinc-600">
-          Illustrative dashboard placeholder for future live metrics.
+          A long-form review of Microsoft’s cloud transition, operating leverage,
+          and AI platform positioning over the last decade.
         </p>
+        <a
+          href="/research/msft-10-year-review"
+          className="mt-5 inline-block rounded-2xl bg-zinc-900 px-5 py-3 text-white"
+        >
+          Open report
+        </a>
       </div>
     </Section>
   );
