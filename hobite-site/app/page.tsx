@@ -54,14 +54,6 @@ const SERVICES = [
   "Private Advisory",
 ];
 
-const HEADLINE_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "Research", href: "/research" },
-  { label: "Platform", href: "#features" },
-  { label: "Newsletter", href: "#newsletter" },
-  { label: "Track Record", href: "#track-record" },
-  { label: "Blog", href: "/blog" },
-];
 
 type SectionProps = {
   children: React.ReactNode;
@@ -295,7 +287,9 @@ function AdvisorySection() {
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-zinc-50 text-zinc-900">
-      <TopNav />
+      <Section className="pt-6 pb-2 text-sm text-zinc-600">
+        <a href="/blog" className="underline">Blog</a>
+      </Section>
       <HeroSection />
       <ServicesSection />
       <ResearchSection />
