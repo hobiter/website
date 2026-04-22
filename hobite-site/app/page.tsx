@@ -1,8 +1,49 @@
 const POSTS = [
-  "AI Capital Rotation: Where Money Flows Next",
-  "Growth vs Value in the New Rate Cycle",
-  "Risk Management During Volatility",
-  "Building a Concentrated Portfolio",
+  {
+    title: "Blog",
+    href: "/blog",
+    description: "Read published blog posts.",
+  },
+  {
+    title: "Admin Blog Manager",
+    href: "/admin",
+    description: "Admin can add, edit, and delete blog posts.",
+  },
+  {
+    title: "Google 5-Year 10-K Detailed Analysis",
+    href: "/research/google-5-year-10k-analysis",
+    description: "Pulled from Google 10-K filings with ratio and margin analysis.",
+  },
+  {
+    title: "Google 十年财报深度报告（中文）",
+    href: "/research/google-10-year-report/zh",
+    description: "Google 近十年年报中文深度解析。",
+  },
+  {
+    title: "Google 10-Year Annual Report Study",
+    href: "/research/google-10-year-report",
+    description: "Long-form analysis based on the last 10 years of Google annual financial reporting.",
+  },
+  {
+    title: "MSFT 10-Year Review",
+    href: "/research/msft-10-year-review",
+    description: "Revenue, EBITA, and operating cash flow growth visualization.",
+  },
+  {
+    title: "MSFT 十年复盘（中文）",
+    href: "/zh/research/msft-10-year-review",
+    description: "微软十年收入、EBITA、经营现金流图表。",
+  },
+  {
+    title: "AI Capital Rotation: Where Money Flows Next",
+    href: "#",
+    description: "Concise market intelligence with long-term perspective.",
+  },
+  {
+    title: "Growth vs Value in the New Rate Cycle",
+    href: "#",
+    description: "Concise market intelligence with long-term perspective.",
+  },
 ];
 
 const SERVICES = [
@@ -11,6 +52,7 @@ const SERVICES = [
   "Portfolio Design",
   "Private Advisory",
 ];
+
 
 type SectionProps = {
   children: React.ReactNode;
@@ -66,13 +108,22 @@ function InfoCard({ title, description, className = "" }: InfoCardProps) {
   );
 }
 
-function ResearchCard({ title }: { title: string }) {
+function ResearchCard({
+  title,
+  href,
+  description,
+}: {
+  title: string;
+  href: string;
+  description: string;
+}) {
   return (
     <article className="p-6 rounded-3xl bg-white border border-zinc-200">
       <h3 className="text-xl font-medium">{title}</h3>
-      <p className="mt-3 text-zinc-600">
-        Concise market intelligence with long-term perspective.
-      </p>
+      <p className="mt-3 text-zinc-600">{description}</p>
+      <a href={href} className="mt-4 inline-block text-sm text-zinc-600 underline">
+        Open report
+      </a>
     </article>
   );
 }
@@ -91,15 +142,21 @@ function HeroSection() {
           Research-driven insights on growth equities, macro cycles, portfolio
           construction, and asymmetric opportunities.
         </p>
-        <div className="mt-10 flex gap-4">
-          <PillButton href="#research">Research</PillButton>
+        <div className="mt-10 flex flex-wrap gap-4">
+          <PillButton href="/research">Research</PillButton>
           <PillButton href="#newsletter" variant="secondary">
             Newsletter
+          </PillButton>
+          <PillButton href="/blog" variant="secondary">
+            Blog
+          </PillButton>
+          <PillButton href="/operation-log" variant="secondary">
+            我的操作记录
           </PillButton>
         </div>
       </div>
 
-      <div className="p-8 rounded-[2rem] bg-white shadow-sm border border-zinc-200">
+      <div id="track-record" className="p-8 rounded-[2rem] bg-white shadow-sm border border-zinc-200">
         <p className="text-sm text-zinc-500">Model Portfolio</p>
         <p className="text-5xl font-semibold mt-3">+18.4%</p>
         <p className="mt-2 text-zinc-600">
@@ -129,14 +186,19 @@ function ResearchSection() {
     <Section id="research" className="py-16">
       <div className="flex items-end justify-between gap-4">
         <h2 className="text-3xl font-semibold">Latest Research</h2>
-        <a href="#" className="text-sm text-zinc-500">
-          View All
+        <a href="/research/msft-10-year-review" className="text-sm text-zinc-500 underline">
+          View MSFT Review
         </a>
       </div>
 
       <div className="mt-8 grid md:grid-cols-2 gap-6">
         {POSTS.map((post) => (
-          <ResearchCard key={post} title={post} />
+          <ResearchCard
+            key={post.title}
+            title={post.title}
+            href={post.href}
+            description={post.description}
+          />
         ))}
       </div>
     </Section>
@@ -168,7 +230,7 @@ function NewsletterSection() {
 
 function FeaturesSection() {
   return (
-    <Section className="py-16 grid md:grid-cols-2 gap-6">
+    <Section id="features" className="py-16 grid md:grid-cols-2 gap-6">
       <InfoCard
         title="Members Area"
         description="Premium research, watchlists, earnings notes, and private dashboards."
@@ -200,6 +262,9 @@ function AdvisorySection() {
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-zinc-50 text-zinc-900">
+      <Section className="pt-6 pb-2 text-sm text-zinc-600">
+        <a href="/blog" className="underline">Blog</a>
+      </Section>
       <HeroSection />
       <ServicesSection />
       <ResearchSection />
