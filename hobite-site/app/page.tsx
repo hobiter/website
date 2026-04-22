@@ -1,15 +1,4 @@
-import Link from "next/link";
 const POSTS = [
-  {
-    title: "Blog",
-    href: "/blog",
-    description: "Read published blog posts.",
-  },
-  {
-    title: "Admin Blog Manager",
-    href: "/admin",
-    description: "Admin can add, edit, and delete blog posts.",
-  },
   {
     title: "Google 5-Year 10-K Detailed Analysis",
     href: "/research/google-5-year-10k-analysis",
@@ -52,15 +41,6 @@ const SERVICES = [
   "Macro Strategy",
   "Portfolio Design",
   "Private Advisory",
-];
-
-const HEADLINE_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "Research", href: "/research" },
-  { label: "Platform", href: "#features" },
-  { label: "Newsletter", href: "#newsletter" },
-  { label: "Track Record", href: "#track-record" },
-  { label: "Blog", href: "/blog" },
 ];
 
 type SectionProps = {
@@ -137,23 +117,6 @@ function ResearchCard({
   );
 }
 
-function TopNav() {
-  return (
-    <Section className="py-6">
-      <nav className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-zinc-200 bg-white px-5 py-3">
-        <Link href="/" className="font-semibold">Hobite Capital</Link>
-        <div className="flex flex-wrap items-center gap-5 text-sm text-zinc-600">
-          {HEADLINE_LINKS.map((item) => (
-            <Link key={item.label} href={item.href} className="hover:text-zinc-900">
-              {item.label}
-            </Link>
-          ))}
-        </div>
-      </nav>
-    </Section>
-  );
-}
-
 function HeroSection() {
   return (
     <Section className="py-24 grid md:grid-cols-2 gap-10 items-center">
@@ -172,9 +135,6 @@ function HeroSection() {
           <PillButton href="/research">Research</PillButton>
           <PillButton href="#newsletter" variant="secondary">
             Newsletter
-          </PillButton>
-          <PillButton href="/blog" variant="secondary">
-            Blog
           </PillButton>
           <PillButton href="/operation-log" variant="secondary">
             我的操作记录
@@ -295,7 +255,6 @@ function AdvisorySection() {
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-zinc-50 text-zinc-900">
-      <TopNav />
       <HeroSection />
       <ServicesSection />
       <ResearchSection />
