@@ -1,4 +1,4 @@
-import Link from "next/link";
+// Top navigation removed intentionally to avoid stale HEADLINE_LINKS references.
 const POSTS = [
   {
     title: "Blog",
