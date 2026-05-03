@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import "./globals.css";
 
 const NAV_ITEMS = [
@@ -22,7 +23,7 @@ function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-zinc-200/80 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-zinc-900 text-sm font-semibold text-white">
             HC
           </span>
@@ -30,7 +31,7 @@ function SiteHeader() {
             <p className="text-sm font-semibold text-zinc-900">Hobite Capital</p>
             <p className="text-xs text-zinc-500">Research-first investing platform</p>
           </div>
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
           {NAV_ITEMS.map((item) => (
