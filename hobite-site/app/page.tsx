@@ -1,3 +1,4 @@
+// Top navigation removed intentionally to avoid stale HEADLINE_LINKS references.
 const POSTS = [
   {
     title: "Google 5-Year 10-K Detailed Analysis",
