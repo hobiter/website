@@ -1,6 +1,11 @@
 // Top navigation removed intentionally to avoid stale HEADLINE_LINKS references.
 const POSTS = [
   {
+    title: "Pinterest (PINS) 7-Year Fundamental Analysis",
+    href: "/research/pins-7-year-fundamental-analysis",
+    description: "Quarterly revenue, adjusted EBITDA, margin charts, AI thesis, and 5-year outlook.",
+  },
+  {
     title: "Google 5-Year 10-K Detailed Analysis",
     href: "/research/google-5-year-10k-analysis",
     description: "Pulled from Google 10-K filings with ratio and margin analysis.",
@@ -144,14 +149,13 @@ function HeroSection() {
       </div>
 
       <div id="track-record" className="p-8 rounded-[2rem] bg-white shadow-sm border border-zinc-200">
-        <p className="text-sm text-zinc-500">Model Portfolio</p>
-        <p className="text-5xl font-semibold mt-3">+18.4%</p>
+        <p className="text-sm text-zinc-500">Featured Research</p>
+        <p className="text-4xl font-semibold mt-3">Pinterest (PINS)</p>
         <p className="mt-2 text-zinc-600">
-          A long-form review of Microsoft’s cloud transition, operating leverage,
-          and AI platform positioning over the last decade.
+          Seven-year fundamental review covering quarterly revenue, adjusted EBITDA, AI monetization, and a five-year outlook.
         </p>
         <a
-          href="/research/msft-10-year-review"
+          href="/research/pins-7-year-fundamental-analysis"
           className="mt-5 inline-block rounded-2xl bg-zinc-900 px-5 py-3 text-white"
         >
           Open report
@@ -180,8 +184,8 @@ function ResearchSection() {
     <Section id="research" className="py-16">
       <div className="flex items-end justify-between gap-4">
         <h2 className="text-3xl font-semibold">Latest Research</h2>
-        <a href="/research/msft-10-year-review" className="text-sm text-zinc-500 underline">
-          View MSFT Review
+        <a href="/research/pins-7-year-fundamental-analysis" className="text-sm text-zinc-500 underline">
+          View PINS Analysis
         </a>
       </div>
 
