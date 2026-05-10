@@ -1,6 +1,16 @@
 // Top navigation removed intentionally to avoid stale HEADLINE_LINKS references.
 const POSTS = [
   {
+    title: "Oracle (ORCL) 15-Year Fundamental Analysis",
+    href: "/research/oracle-15-year-fundamental-analysis",
+    description: "OCI growth, AI infrastructure thesis, balance sheet analysis, and 10-year outlook.",
+  },
+  {
+    title: "ServiceNow (NOW) 15-Year Fundamental Analysis",
+    href: "/research/now-15-year-fundamental-analysis",
+    description: "AI workflow operating system thesis, EBITDA expansion, and enterprise moat analysis.",
+  },
+  {
     title: "Pinterest (PINS) 7-Year Fundamental Analysis",
     href: "/research/pins-7-year-fundamental-analysis",
     description: "Quarterly revenue, adjusted EBITDA, margin charts, AI thesis, and 5-year outlook.",
@@ -29,16 +39,6 @@ const POSTS = [
     title: "MSFT 十年复盘（中文）",
     href: "/zh/research/msft-10-year-review",
     description: "微软十年收入、EBITA、经营现金流图表。",
-  },
-  {
-    title: "AI Capital Rotation: Where Money Flows Next",
-    href: "#",
-    description: "Concise market intelligence with long-term perspective.",
-  },
-  {
-    title: "Growth vs Value in the New Rate Cycle",
-    href: "#",
-    description: "Concise market intelligence with long-term perspective.",
   },
 ];
 
@@ -150,12 +150,12 @@ function HeroSection() {
 
       <div id="track-record" className="p-8 rounded-[2rem] bg-white shadow-sm border border-zinc-200">
         <p className="text-sm text-zinc-500">Featured Research</p>
-        <p className="text-4xl font-semibold mt-3">Pinterest (PINS)</p>
+        <p className="text-4xl font-semibold mt-3">Oracle (ORCL)</p>
         <p className="mt-2 text-zinc-600">
-          Seven-year fundamental review covering quarterly revenue, adjusted EBITDA, AI monetization, and a five-year outlook.
+          AI infrastructure, OCI hyper-growth, balance sheet leverage, and 10-year cloud platform outlook.
         </p>
         <a
-          href="/research/pins-7-year-fundamental-analysis"
+          href="/research/oracle-15-year-fundamental-analysis"
           className="mt-5 inline-block rounded-2xl bg-zinc-900 px-5 py-3 text-white"
         >
           Open report
@@ -184,8 +184,8 @@ function ResearchSection() {
     <Section id="research" className="py-16">
       <div className="flex items-end justify-between gap-4">
         <h2 className="text-3xl font-semibold">Latest Research</h2>
-        <a href="/research/pins-7-year-fundamental-analysis" className="text-sm text-zinc-500 underline">
-          View PINS Analysis
+        <a href="/research/oracle-15-year-fundamental-analysis" className="text-sm text-zinc-500 underline">
+          View Oracle Analysis
         </a>
       </div>
 
