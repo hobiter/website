@@ -1,6 +1,16 @@
 // Top navigation removed intentionally to avoid stale HEADLINE_LINKS references.
 const POSTS = [
   {
+    title: "AI Era Long-Term Investing Framework",
+    href: "/research/ai-era-investing-framework",
+    description: "Workflow, data, infrastructure, distribution, and long-term AI investing framework.",
+  },
+  {
+    title: "AI时代长期投资框架",
+    href: "/zh/research/ai-era-investing-framework",
+    description: "AI时代 workflow、数据、基础设施、distribution 与长期资产配置框架。",
+  },
+  {
     title: "Oracle (ORCL) 15-Year Fundamental Analysis",
     href: "/research/oracle-15-year-fundamental-analysis",
     description: "OCI growth, AI infrastructure thesis, balance sheet analysis, and 10-year outlook.",
@@ -11,19 +21,14 @@ const POSTS = [
     description: "AI workflow operating system thesis, EBITDA expansion, and enterprise moat analysis.",
   },
   {
+    title: "Salesforce (CRM) 15-Year Fundamental Analysis",
+    href: "/research/crm-15-year-fundamental-analysis",
+    description: "Agentforce AI thesis, Data Cloud, profitability transformation, and 10-year outlook.",
+  },
+  {
     title: "Pinterest (PINS) 7-Year Fundamental Analysis",
     href: "/research/pins-7-year-fundamental-analysis",
     description: "Quarterly revenue, adjusted EBITDA, margin charts, AI thesis, and 5-year outlook.",
-  },
-  {
-    title: "Google 5-Year 10-K Detailed Analysis",
-    href: "/research/google-5-year-10k-analysis",
-    description: "Pulled from Google 10-K filings with ratio and margin analysis.",
-  },
-  {
-    title: "Google 十年财报深度报告（中文）",
-    href: "/research/google-10-year-report/zh",
-    description: "Google 近十年年报中文深度解析。",
   },
   {
     title: "Google 10-Year Annual Report Study",
@@ -34,11 +39,6 @@ const POSTS = [
     title: "MSFT 10-Year Review",
     href: "/research/msft-10-year-review",
     description: "Revenue, EBITA, and operating cash flow growth visualization.",
-  },
-  {
-    title: "MSFT 十年复盘（中文）",
-    href: "/zh/research/msft-10-year-review",
-    description: "微软十年收入、EBITA、经营现金流图表。",
   },
 ];
 
@@ -75,15 +75,8 @@ function Section({ children, className = "", id }: SectionProps) {
   );
 }
 
-function PillButton({
-  href,
-  children,
-  variant = "primary",
-}: PillButtonProps) {
-  const styles =
-    variant === "primary"
-      ? "bg-zinc-900 text-white"
-      : "border border-zinc-300 text-zinc-900";
+function PillButton({ href, children, variant = "primary" }: PillButtonProps) {
+  const styles = variant === "primary" ? "bg-zinc-900 text-white" : "border border-zinc-300 text-zinc-900";
 
   return (
     <a href={href} className={`px-6 py-3 rounded-2xl ${styles}`}>
@@ -94,24 +87,14 @@ function PillButton({
 
 function InfoCard({ title, description, className = "" }: InfoCardProps) {
   return (
-    <div
-      className={`p-6 rounded-3xl bg-white border border-zinc-200 ${className}`.trim()}
-    >
+    <div className={`p-6 rounded-3xl bg-white border border-zinc-200 ${className}`.trim()}>
       <h3 className="font-semibold">{title}</h3>
       <p className="mt-2 text-sm text-zinc-600">{description}</p>
     </div>
   );
 }
 
-function ResearchCard({
-  title,
-  href,
-  description,
-}: {
-  title: string;
-  href: string;
-  description: string;
-}) {
+function ResearchCard({ title, href, description }: { title: string; href: string; description: string }) {
   return (
     <article className="p-6 rounded-3xl bg-white border border-zinc-200">
       <h3 className="text-xl font-medium">{title}</h3>
@@ -123,149 +106,48 @@ function ResearchCard({
   );
 }
 
-function HeroSection() {
-  return (
-    <Section className="py-24 grid md:grid-cols-2 gap-10 items-center">
-      <div>
-        <p className="text-sm uppercase tracking-[0.35em] text-zinc-500">
-          Hobite Capital
-        </p>
-        <h1 className="text-5xl md:text-7xl font-semibold mt-4 leading-tight">
-          Investing intelligence for the next decade.
-        </h1>
-        <p className="mt-6 text-xl text-zinc-600 max-w-xl">
-          Research-driven insights on growth equities, macro cycles, portfolio
-          construction, and asymmetric opportunities.
-        </p>
-        <div className="mt-10 flex flex-wrap gap-4">
-          <PillButton href="/research">Research</PillButton>
-          <PillButton href="#newsletter" variant="secondary">
-            Newsletter
-          </PillButton>
-          <PillButton href="/operation-log" variant="secondary">
-            我的操作记录
-          </PillButton>
-        </div>
-      </div>
-
-      <div id="track-record" className="p-8 rounded-[2rem] bg-white shadow-sm border border-zinc-200">
-        <p className="text-sm text-zinc-500">Featured Research</p>
-        <p className="text-4xl font-semibold mt-3">Oracle (ORCL)</p>
-        <p className="mt-2 text-zinc-600">
-          AI infrastructure, OCI hyper-growth, balance sheet leverage, and 10-year cloud platform outlook.
-        </p>
-        <a
-          href="/research/oracle-15-year-fundamental-analysis"
-          className="mt-5 inline-block rounded-2xl bg-zinc-900 px-5 py-3 text-white"
-        >
-          Open report
-        </a>
-      </div>
-    </Section>
-  );
-}
-
-function ServicesSection() {
-  return (
-    <Section className="py-12 grid md:grid-cols-4 gap-5">
-      {SERVICES.map((service) => (
-        <InfoCard
-          key={service}
-          title={service}
-          description="Premium frameworks and actionable insights."
-        />
-      ))}
-    </Section>
-  );
-}
-
-function ResearchSection() {
-  return (
-    <Section id="research" className="py-16">
-      <div className="flex items-end justify-between gap-4">
-        <h2 className="text-3xl font-semibold">Latest Research</h2>
-        <a href="/research/oracle-15-year-fundamental-analysis" className="text-sm text-zinc-500 underline">
-          View Oracle Analysis
-        </a>
-      </div>
-
-      <div className="mt-8 grid md:grid-cols-2 gap-6">
-        {POSTS.map((post) => (
-          <ResearchCard
-            key={post.title}
-            title={post.title}
-            href={post.href}
-            description={post.description}
-          />
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-function NewsletterSection() {
-  return (
-    <Section id="newsletter" className="py-16">
-      <div className="rounded-[2rem] bg-zinc-900 text-white p-10">
-        <h2 className="text-3xl font-semibold">Weekly Investor Letter</h2>
-        <p className="mt-3 text-zinc-300 max-w-2xl">
-          High-signal market commentary, curated opportunities, and portfolio
-          thinking.
-        </p>
-        <div className="mt-6 flex gap-3">
-          <input
-            placeholder="Enter your email"
-            className="px-4 py-3 rounded-2xl text-zinc-900 w-full max-w-md"
-          />
-          <button className="px-6 py-3 rounded-2xl bg-white text-zinc-900">
-            Subscribe
-          </button>
-        </div>
-      </div>
-    </Section>
-  );
-}
-
-function FeaturesSection() {
-  return (
-    <Section id="features" className="py-16 grid md:grid-cols-2 gap-6">
-      <InfoCard
-        title="Members Area"
-        description="Premium research, watchlists, earnings notes, and private dashboards."
-        className="p-8"
-      />
-      <InfoCard
-        title="AI Investing Assistant"
-        description="Future upgrade: ask questions about markets, valuation, and portfolio ideas."
-        className="p-8"
-      />
-    </Section>
-  );
-}
-
-function AdvisorySection() {
-  return (
-    <Section className="py-20">
-      <div className="p-8 rounded-[2rem] bg-zinc-100">
-        <h2 className="text-3xl font-semibold">Private Advisory</h2>
-        <p className="mt-3 text-zinc-600">
-          For serious investors seeking strategic guidance.
-        </p>
-        <p className="mt-6">hello@yourdomain.com</p>
-      </div>
-    </Section>
-  );
-}
-
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-zinc-50 text-zinc-900">
-      <HeroSection />
-      <ServicesSection />
-      <ResearchSection />
-      <NewsletterSection />
-      <FeaturesSection />
-      <AdvisorySection />
+      <Section className="py-24 grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <p className="text-sm uppercase tracking-[0.35em] text-zinc-500">Hobite Capital</p>
+          <h1 className="text-5xl md:text-7xl font-semibold mt-4 leading-tight">
+            Investing intelligence for the next decade.
+          </h1>
+          <p className="mt-6 text-xl text-zinc-600 max-w-xl">
+            Research-driven insights on AI infrastructure, enterprise software, cloud platforms, and long-duration compounders.
+          </p>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <PillButton href="/research">Research</PillButton>
+            <PillButton href="/operation-log" variant="secondary">我的操作记录</PillButton>
+          </div>
+        </div>
+
+        <div className="p-8 rounded-[2rem] bg-white shadow-sm border border-zinc-200">
+          <p className="text-sm text-zinc-500">Featured Research</p>
+          <p className="text-4xl font-semibold mt-3">AI Era Investing Framework</p>
+          <p className="mt-2 text-zinc-600">
+            Workflow, infrastructure, enterprise AI operating systems, and long-term AI portfolio allocation.
+          </p>
+          <a href="/research/ai-era-investing-framework" className="mt-5 inline-block rounded-2xl bg-zinc-900 px-5 py-3 text-white">
+            Open report
+          </a>
+        </div>
+      </Section>
+
+      <Section className="py-16">
+        <div className="flex items-end justify-between gap-4">
+          <h2 className="text-3xl font-semibold">Latest Research</h2>
+          <a href="/research" className="text-sm text-zinc-500 underline">View research library</a>
+        </div>
+
+        <div className="mt-8 grid md:grid-cols-2 gap-6">
+          {POSTS.map((post) => (
+            <ResearchCard key={post.title} title={post.title} href={post.href} description={post.description} />
+          ))}
+        </div>
+      </Section>
     </main>
   );
 }
