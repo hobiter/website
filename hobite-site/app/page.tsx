@@ -1,4 +1,3 @@
-// Top navigation removed intentionally to avoid stale HEADLINE_LINKS references.
 const POSTS = [
   {
     title: "Salesforce (CRM) 15-Year Fundamental Analysis",
@@ -20,29 +19,57 @@ const POSTS = [
     href: "/research/pins-7-year-fundamental-analysis",
     description: "Quarterly revenue, adjusted EBITDA, margin charts, AI thesis, and 5-year outlook.",
   },
-  {
-    title: "Google 5-Year 10-K Detailed Analysis",
-    href: "/research/google-5-year-10k-analysis",
-    description: "Pulled from Google 10-K filings with ratio and margin analysis.",
-  },
-  {
-    title: "Google 十年财报深度报告（中文）",
-    href: "/research/google-10-year-report/zh",
-    description: "Google 近十年年报中文深度解析。",
-  },
-  {
-    title: "Google 10-Year Annual Report Study",
-    href: "/research/google-10-year-report",
-    description: "Long-form analysis based on the last 10 years of Google annual financial reporting.",
-  },
-  {
-    title: "MSFT 10-Year Review",
-    href: "/research/msft-10-year-review",
-    description: "Revenue, EBITA, and operating cash flow growth visualization.",
-  },
-  {
-    title: "MSFT 十年复盘（中文）",
-    href: "/zh/research/msft-10-year-review",
-    description: "微软十年收入、EBITA、经营现金流图表。",
-  },
 ];
+
+function ResearchCard({
+  title,
+  href,
+  description,
+}: {
+  title: string;
+  href: string;
+  description: string;
+}) {
+  return (
+    <article className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
+      <h3 className="text-xl font-medium">{title}</h3>
+      <p className="mt-3 text-zinc-600">{description}</p>
+      <a href={href} className="mt-4 inline-block text-sm text-zinc-600 underline">
+        Open report
+      </a>
+    </article>
+  );
+}
+
+export default function Home() {
+  return (
+    <main className="min-h-screen bg-gradient-to-b from-white to-zinc-50 px-6 py-12 text-zinc-900">
+      <div className="mx-auto max-w-7xl space-y-10">
+        <section className="rounded-[2rem] border border-zinc-200 bg-white p-10 shadow-sm">
+          <p className="text-sm uppercase tracking-[0.3em] text-zinc-500">
+            Hobite Capital
+          </p>
+
+          <h1 className="mt-5 text-5xl font-semibold leading-tight md:text-7xl">
+            Investing intelligence for the next decade.
+          </h1>
+
+          <p className="mt-6 max-w-4xl text-xl text-zinc-600">
+            Deep fundamental research focused on AI infrastructure, enterprise software, cloud platforms, and long-duration compounders.
+          </p>
+        </section>
+
+        <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {POSTS.map((post) => (
+            <ResearchCard
+              key={post.title}
+              title={post.title}
+              href={post.href}
+              description={post.description}
+            />
+          ))}
+        </section>
+      </div>
+    </main>
+  );
+}
