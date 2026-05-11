@@ -7,6 +7,16 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "Reddit (RDDT) Deep Fundamental Analysis",
+    description: "AI search, quarterly revenue, EBITDA expansion, and long-term valuation framework.",
+    href: "/research/rddt-deep-fundamental-analysis",
+  },
+  {
+    title: "Reddit（RDDT）深度基本面分析",
+    description: "AI搜索、社区经济学、Revenue增长与未来十年展望。",
+    href: "/zh/research/rddt-deep-fundamental-analysis",
+  },
+  {
     title: "AI Era Long-Term Investing Framework",
     description: "Workflow, data, infrastructure, and AI platform investing framework.",
     href: "/research/ai-era-investing-framework",
@@ -51,16 +61,18 @@ const REPORTS = [
 export default function ResearchIndexPage() {
   return (
     <main className="min-h-screen bg-zinc-50 px-6 py-10 text-zinc-900">
-      <div className="mx-auto max-w-6xl">
-        <h1 className="text-4xl font-semibold">Research Library</h1>
-        <p className="mt-3 text-zinc-600">Browse currently published research pages.</p>
+      <div className="mx-auto max-w-7xl">
+        <h1 className="text-5xl font-semibold">Research Library</h1>
+        <p className="mt-4 text-lg text-zinc-600">
+          Long-form institutional-style research covering AI infrastructure, software, internet platforms, cloud, and long-duration compounders.
+        </p>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {REPORTS.map((report) => (
-            <article key={report.title} className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <h2 className="text-xl font-medium">{report.title}</h2>
-              <p className="mt-2 text-zinc-600">{report.description}</p>
-              <a href={report.href} className="mt-4 inline-block text-sm text-zinc-600 underline">
+            <article key={report.title} className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+              <h2 className="text-2xl font-medium">{report.title}</h2>
+              <p className="mt-3 text-zinc-600">{report.description}</p>
+              <a href={report.href} className="mt-5 inline-block text-sm font-medium text-zinc-700 underline">
                 Open report
               </a>
             </article>
