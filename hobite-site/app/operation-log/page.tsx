@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { readdir, readFile } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 export const metadata: Metadata = {
@@ -7,43 +7,32 @@ export const metadata: Metadata = {
   description: "Full archived operation records transferred from 操作记录 TXT files.",
 };
 
-const RECORD_FILE_KEYWORD = "我的操作记录";
+const OPERATION_LOG_PATH = path.join(
+  /* turbopackIgnore: true */ process.cwd(),
+  "data",
+  "operation-log.txt",
+);
 
 async function getOperationLogText() {
-  const repoRoot = path.join(process.cwd(), "..");
-  const entries = await readdir(repoRoot, { withFileTypes: true });
-
-  const recordFiles = entries
-    .filter(
-      (entry) =>
-        entry.isFile() &&
-        entry.name.endsWith(".txt") &&
-        entry.name.includes(RECORD_FILE_KEYWORD),
-    )
-    .map((entry) => path.join(repoRoot, entry.name))
-    .sort((a, b) => a.localeCompare(b, "zh-Hans"));
-
-  if (recordFiles.length === 0) {
-    return "No 操作记录 TXT file was found in the repository root.";
+  try {
+    return await readFile(OPERATION_LOG_PATH, "utf8");
+  } catch {
+    return "operation-log.txt not found under /data.";
   }
-
-  const contents = await Promise.all(recordFiles.map((filePath) => readFile(filePath, "utf8")));
-
-  return contents.join("\n\n\n==============================\n\n\n");
 }
 
 export default async function OperationLogPage() {
   const content = await getOperationLogText();
 
   return (
-    <main className="min-h-screen bg-zinc-50 text-zinc-900 px-6 py-10">
-      <div className="max-w-5xl mx-auto">
+    <main className="min-h-screen bg-zinc-50 px-6 py-10 text-zinc-900">
+      <div className="mx-auto max-w-5xl">
         <h1 className="text-4xl font-semibold">我的操作记录（完整转移）</h1>
         <p className="mt-3 text-zinc-600">
-          This page renders all matching <code>我的操作记录*.txt</code> files from the repository root.
+          This page renders the archived operation log from <code>/data/operation-log.txt</code>.
         </p>
 
-        <pre className="mt-8 whitespace-pre-wrap break-words rounded-2xl border border-zinc-200 bg-white p-6 text-sm leading-7 overflow-x-auto">
+        <pre className="mt-8 overflow-x-auto whitespace-pre-wrap break-words rounded-2xl border border-zinc-200 bg-white p-6 text-sm leading-7">
           {content}
         </pre>
       </div>
