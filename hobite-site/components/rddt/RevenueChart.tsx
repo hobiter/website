@@ -1,4 +1,4 @@
-const DATA = [
+const DATA: [string, number][] = [
   ["2024Q1",243],
   ["2024Q2",281],
   ["2024Q3",348],
@@ -27,7 +27,7 @@ export default function RevenueChart() {
               <span>{quarter}</span>
               <span>${revenue}M</span>
             </div>
-            <Bar value={revenue as number} max={max} />
+            <Bar value={revenue} max={max} />
           </div>
         ))}
       </div>
