@@ -1,8 +1,18 @@
 const POSTS = [
   {
-    title: "Reddit (RDDT) Deep Fundamental Analysis",
-    href: "/research/rddt-deep-fundamental-analysis",
-    description: "AI search, community economics, revenue growth, EBITDA expansion, and 10-year outlook.",
+    title: "AI Era Long-Term Investing Framework",
+    href: "/research/ai-era-investing-framework",
+    description: "Workflow, data, infrastructure, distribution, and long-term AI investing framework.",
+  },
+  {
+    title: "AI时代长期投资框架",
+    href: "/zh/research/ai-era-investing-framework",
+    description: "AI时代 workflow、数据、基础设施、distribution 与长期资产配置框架。",
+  },
+  {
+    title: "Salesforce (CRM) 15-Year Fundamental Analysis",
+    href: "/research/crm-15-year-fundamental-analysis",
+    description: "Agentforce AI thesis, Data Cloud, profitability transformation, and 10-year outlook.",
   },
   {
     title: "Reddit（RDDT）深度基本面分析",
@@ -13,6 +23,16 @@ const POSTS = [
     title: "AI Era Long-Term Investing Framework",
     href: "/research/ai-era-investing-framework",
     description: "Workflow, data, infrastructure, distribution, and long-term AI investing framework.",
+  },
+  {
+    title: "Google (Alphabet) 10-Year Annual Report Study",
+    href: "/research/google-10-year-report",
+    description: "Long-form review of Google annual financial reports over FY2016-FY2025.",
+  },
+  {
+    title: "MSFT 10-Year Review",
+    href: "/research/msft-10-year-review",
+    description: "Revenue, EBITA, and operating cash flow growth visualization.",
   },
 ];
 
