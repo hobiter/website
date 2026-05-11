@@ -15,19 +15,14 @@ const POSTS = [
     description: "Agentforce AI thesis, Data Cloud, profitability transformation, and 10-year outlook.",
   },
   {
-    title: "Oracle (ORCL) 15-Year Fundamental Analysis",
-    href: "/research/oracle-15-year-fundamental-analysis",
-    description: "OCI growth, AI infrastructure thesis, balance sheet analysis, and 10-year outlook.",
+    title: "Reddit（RDDT）深度基本面分析",
+    href: "/zh/research/rddt-deep-fundamental-analysis",
+    description: "AI搜索、社区经济学、Revenue增长与未来十年展望。",
   },
   {
-    title: "ServiceNow (NOW) 15-Year Fundamental Analysis",
-    href: "/research/now-15-year-fundamental-analysis",
-    description: "AI workflow operating system thesis, EBITDA expansion, and enterprise moat analysis.",
-  },
-  {
-    title: "Pinterest (PINS) 7-Year Fundamental Analysis",
-    href: "/research/pins-7-year-fundamental-analysis",
-    description: "Quarterly revenue, adjusted EBITDA, margin charts, AI thesis, and 5-year outlook.",
+    title: "AI Era Long-Term Investing Framework",
+    href: "/research/ai-era-investing-framework",
+    description: "Workflow, data, infrastructure, distribution, and long-term AI investing framework.",
   },
   {
     title: "Google (Alphabet) 10-Year Annual Report Study",
@@ -79,7 +74,7 @@ export default function Home() {
           </p>
         </section>
 
-        <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {POSTS.map((post) => (
             <ResearchCard
               key={post.title}
