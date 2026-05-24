@@ -7,9 +7,39 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
-    title: "Reddit (RDDT) Deep Fundamental Analysis",
-    description: "AI search, quarterly revenue, EBITDA expansion, and long-term valuation framework.",
-    href: "/research/rddt-deep-fundamental-analysis",
+    title: "AI Era Long-Term Investing Framework",
+    description: "Workflow, data, infrastructure, and AI platform investing framework.",
+    href: "/research/ai-era-investing-framework",
+  },
+  {
+    title: "AI时代长期投资框架",
+    description: "AI时代 workflow、数据、基础设施与长期资产配置框架。",
+    href: "/zh/research/ai-era-investing-framework",
+  },
+  {
+    title: "Salesforce (CRM) 15-Year Fundamental Analysis",
+    description: "Agentforce AI thesis, Data Cloud, and margin expansion analysis.",
+    href: "/research/crm-15-year-fundamental-analysis",
+  },
+  {
+    title: "Oracle (ORCL) 15-Year Fundamental Analysis",
+    description: "OCI growth, AI infrastructure thesis, balance sheet analysis, and 10-year outlook.",
+    href: "/research/oracle-15-year-fundamental-analysis",
+  },
+  {
+    title: "ServiceNow (NOW) 15-Year Fundamental Analysis",
+    description: "AI workflow operating system thesis, EBITDA expansion, and enterprise moat analysis.",
+    href: "/research/now-15-year-fundamental-analysis",
+  },
+  {
+    title: "Pinterest (PINS) 7-Year Fundamental Analysis",
+    description: "Quarterly revenue, adjusted EBITDA, margin charts, AI thesis, and 5-year outlook.",
+    href: "/research/pins-7-year-fundamental-analysis",
+  },
+  {
+    title: "Google 5-Year 10-K Detailed Analysis",
+    description: "Detailed 10-K based analysis for FY2021-FY2025.",
+    href: "/research/google-5-year-10k-analysis",
   },
   {
     title: "Reddit（RDDT）深度基本面分析",

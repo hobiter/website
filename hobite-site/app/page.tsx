@@ -35,6 +35,11 @@ const POSTS = [
     description: "AI workflow operating system thesis and enterprise moat analysis.",
   },
   {
+    title: "Salesforce (CRM) 15-Year Fundamental Analysis",
+    href: "/research/crm-15-year-fundamental-analysis",
+    description: "Agentforce AI thesis, Data Cloud, profitability transformation, and 10-year outlook.",
+  },
+  {
     title: "Pinterest (PINS) 7-Year Fundamental Analysis",
     href: "/research/pins-7-year-fundamental-analysis",
     description: "Quarterly revenue, EBITDA, AI thesis, and 5-year outlook.",
