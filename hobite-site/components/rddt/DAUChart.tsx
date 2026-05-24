@@ -1,0 +1,3 @@
+const DATA: [string, number][] = [["2024Q1",82.7],["2024Q2",91.2],["2024Q3",97.2],["2024Q4",101.7],["2025Q1",108.1],["2025Q2",110.4],["2025Q3",116],["2025Q4",121.4],["2026Q1",126.8]];
+
+export default function DAUChart(){const max=Math.max(...DATA.map(d=>d[1]));return (<section className='rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm'><h2 className='text-3xl font-semibold'>DAUq Growth</h2><div className='mt-6 space-y-4'>{DATA.map(([q,v])=><div key={q}><div className='mb-1 flex justify-between text-sm'><span>{q}</span><span>{v}M</span></div><div className='h-3 rounded-full bg-blue-500' style={{width:`${(v/max)*100}%`}} /></div>)}</div></section>)}
