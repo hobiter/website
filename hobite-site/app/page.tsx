@@ -1,5 +1,10 @@
 const POSTS = [
   {
+    title: "2026 Smart Money 13F Report",
+    href: "/research/13f-smart-money-report-2026",
+    description: "Top hedge fund consensus buys, AI platform valuation comparison, and institutional positioning analysis.",
+  },
+  {
     title: "Reddit (RDDT) Deep Fundamental Analysis",
     href: "/research/rddt-deep-fundamental-analysis",
     description: "AI search, community economics, EBITDA expansion, and long-term valuation framework.",
