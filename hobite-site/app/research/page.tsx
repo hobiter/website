@@ -7,6 +7,11 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "2026 Smart Money 13F Report",
+    description: "Top hedge fund consensus buys, AI platform valuation comparison, and detailed institutional positioning analysis.",
+    href: "/research/13f-smart-money-report-2026",
+  },
+  {
     title: "Reddit (RDDT) Deep Fundamental Analysis",
     description: "AI search, quarterly revenue, EBITDA expansion, and long-term valuation framework.",
     href: "/research/rddt-deep-fundamental-analysis",
