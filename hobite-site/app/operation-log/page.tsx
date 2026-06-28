@@ -26,14 +26,14 @@ export default async function OperationLogPage() {
   const content = await getOperationLogText();
 
   return (
-    <main className="min-h-screen bg-zinc-50 text-zinc-900 px-6 py-10">
-      <div className="max-w-5xl mx-auto">
+    <main className="min-h-screen bg-zinc-50 px-6 py-10 text-zinc-900">
+      <div className="mx-auto max-w-5xl">
         <h1 className="text-4xl font-semibold">我的操作记录（完整转移）</h1>
         <p className="mt-3 text-zinc-600">
           This page renders the archived operation log from <code>content/operation-log.txt</code>.
         </p>
 
-        <pre className="mt-8 whitespace-pre-wrap break-words rounded-2xl border border-zinc-200 bg-white p-6 text-sm leading-7 overflow-x-auto">
+        <pre className="mt-8 overflow-x-auto whitespace-pre-wrap break-words rounded-2xl border border-zinc-200 bg-white p-6 text-sm leading-7">
           {content}
         </pre>
       </div>
