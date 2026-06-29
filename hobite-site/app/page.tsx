@@ -94,6 +94,69 @@ export default function Home() {
           </p>
         </section>
 
+        <section className="overflow-hidden rounded-[2rem] bg-zinc-950 text-white shadow-sm">
+          <div className="relative p-8 md:p-10">
+            <div className="absolute right-0 top-0 h-20 w-1/2 bg-emerald-500" />
+            <div className="absolute bottom-0 left-0 h-16 w-1/2 bg-lime-300" />
+            <div className="absolute left-0 top-0 h-full w-3 bg-blue-600" />
+            <div className="absolute right-0 top-16 h-1/2 w-3 bg-red-500" />
+            <div className="relative max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-zinc-400">
+                Interactive Tool
+              </p>
+              <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-5xl">
+                World Cup 2026
+              </h2>
+              <p className="mt-4 max-w-2xl text-lg leading-8 text-zinc-300">
+                Fill the knockout bracket, predict every eliminating stage, and generate a shareable poster for your final pick.
+              </p>
+              <a
+                className="mt-6 inline-flex rounded-md bg-white px-5 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-zinc-200"
+                href="/platform/elimination-prediction"
+              >
+                Open prediction page
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section className="rounded-[2rem] border border-zinc-200 bg-white p-8 shadow-sm md:p-10">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-zinc-500">
+                Follow
+              </p>
+              <h2 className="mt-3 text-3xl font-semibold">Hobite on social</h2>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <a
+                className="rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-500"
+                href="https://xhslink.com/m/A5bzWZUH5W"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Rednote
+              </a>
+              <a
+                className="rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-500"
+                href="https://x.com/Hobiterr"
+                rel="noreferrer"
+                target="_blank"
+              >
+                X.com
+              </a>
+              <a
+                className="rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-500"
+                href="https://www.youtube.com/@hobite6341"
+                rel="noreferrer"
+                target="_blank"
+              >
+                YouTube
+              </a>
+            </div>
+          </div>
+        </section>
+
         <section>
           <div className="flex items-end justify-between gap-4">
             <div>
