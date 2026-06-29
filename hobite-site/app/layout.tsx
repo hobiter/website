@@ -10,6 +10,82 @@ const NAV_ITEMS = [
   { href: "/operation-log", label: "Track Record" },
 ];
 
+function RednoteIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="h-4 w-4"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <rect fill="#ef4444" height="18" rx="4" width="16" x="4" y="3" />
+      <path
+        d="M8 8h8M8 12h6M8 16h4"
+        stroke="white"
+        strokeLinecap="round"
+        strokeWidth="2"
+      />
+    </svg>
+  );
+}
+
+function XIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="h-4 w-4"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M5 5l14 14M19 5L5 19"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="2.4"
+      />
+    </svg>
+  );
+}
+
+function YouTubeIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="h-4 w-4"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <rect fill="#ef4444" height="14" rx="4" width="20" x="2" y="5" />
+      <path d="M10 9v6l5-3-5-3z" fill="white" />
+    </svg>
+  );
+}
+
+function TrophyIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="h-4 w-4"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M8 4h8v3a4 4 0 0 1-8 0V4Z"
+        fill="#facc15"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+      <path
+        d="M8 6H5v1a3 3 0 0 0 3 3M16 6h3v1a3 3 0 0 1-3 3M12 11v5M9 20h6M10 16h4v4h-4z"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.5"
+      />
+    </svg>
+  );
+}
+
 export const metadata: Metadata = {
   title: {
     default: "Hobite Capital",
@@ -22,7 +98,7 @@ export const metadata: Metadata = {
 function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-zinc-200/80 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
         <Link href="/" className="flex items-center gap-3">
           <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-zinc-900 text-sm font-semibold text-white">
             HC
@@ -33,7 +109,7 @@ function SiteHeader() {
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-6 lg:flex">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.href}
@@ -45,12 +121,45 @@ function SiteHeader() {
           ))}
         </nav>
 
-        <a
-          href="/newsletter"
-          className="rounded-2xl bg-zinc-900 px-4 py-2 text-sm font-medium text-white"
-        >
-          Join newsletter
-        </a>
+        <div className="flex flex-wrap items-center justify-end gap-2">
+          <a
+            aria-label="Rednote"
+            className="inline-flex h-9 items-center gap-2 rounded-md border border-zinc-300 bg-white px-3 text-sm font-semibold text-zinc-800 transition hover:border-zinc-500"
+            href="https://xhslink.com/m/A5bzWZUH5W"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <RednoteIcon />
+            <span className="hidden xl:inline">Rednote</span>
+          </a>
+          <a
+            aria-label="X.com"
+            className="inline-flex h-9 items-center gap-2 rounded-md border border-zinc-300 bg-white px-3 text-sm font-semibold text-zinc-800 transition hover:border-zinc-500"
+            href="https://x.com/Hobiterr"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <XIcon />
+            <span className="hidden xl:inline">X.com</span>
+          </a>
+          <a
+            aria-label="YouTube"
+            className="inline-flex h-9 items-center gap-2 rounded-md border border-zinc-300 bg-white px-3 text-sm font-semibold text-zinc-800 transition hover:border-zinc-500"
+            href="https://www.youtube.com/@hobite6341"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <YouTubeIcon />
+            <span className="hidden xl:inline">YouTube</span>
+          </a>
+          <Link
+            className="inline-flex h-9 items-center gap-2 rounded-md bg-zinc-900 px-3 text-sm font-semibold text-white transition hover:bg-zinc-800"
+            href="/platform/elimination-prediction"
+          >
+            <TrophyIcon />
+            <span className="hidden sm:inline">World Cup 2026</span>
+          </Link>
+        </div>
       </div>
     </header>
   );
