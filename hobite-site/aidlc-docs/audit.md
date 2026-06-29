@@ -277,3 +277,161 @@ Move forward
 **Status**: Units Generation complete. Awaiting approval before CONSTRUCTION PHASE.
 
 ---
+
+## Functional Design Planning Start - Bracket Domain And Data
+
+**Timestamp**: 2026-06-28T00:00:00-07:00
+
+**User Input**:
+
+```txt
+Approved, move forward
+```
+
+**Decision**:
+
+- Treated as approval of Units Generation.
+- Started CONSTRUCTION phase.
+- Started Functional Design planning for Unit 1: Bracket Domain And Data.
+- Unit 1 is first because it is the dependency root for interactive UI, poster generation, and sharing.
+
+**Artifacts Created**:
+
+- `aidlc-docs/construction/plans/bracket-domain-and-data-functional-design-plan.md`
+
+**Status**: Waiting for functional design plan answers and approval.
+
+---
+
+## Functional Design Completion - Bracket Domain And Data
+
+**Timestamp**: 2026-06-28T00:00:00-07:00
+
+**User Input**:
+
+```txt
+filled, move forward
+```
+
+**Validation Result**:
+
+- Functional design answers are complete.
+- Custom bracket answer clarified v1 as 32-team knockout progression: 32 to 16 to 8 to 4 to 2 to 1.
+- Winner validation is strict.
+- Downstream clearing affects only dependent branches.
+- Participants use local `flagSrc` references.
+- Invalid normal user operations return unchanged state.
+- No contradictions detected.
+
+**Artifacts Created**:
+
+- `aidlc-docs/construction/bracket-domain-and-data/functional-design/business-logic-model.md`
+- `aidlc-docs/construction/bracket-domain-and-data/functional-design/business-rules.md`
+- `aidlc-docs/construction/bracket-domain-and-data/functional-design/domain-entities.md`
+- `aidlc-docs/construction/bracket-domain-and-data/functional-design/frontend-components.md`
+
+**Status**: Functional Design complete for Bracket Domain And Data. Awaiting approval before NFR Requirements.
+
+---
+
+## NFR Requirements Planning Start - Bracket Domain And Data
+
+**Timestamp**: 2026-06-28T00:00:00-07:00
+
+**User Input**:
+
+```txt
+Move forward
+```
+
+**Decision**:
+
+- Treated as approval of Unit 1 Functional Design.
+- Started NFR Requirements planning for Unit 1.
+
+**Artifacts Created**:
+
+- `aidlc-docs/construction/plans/bracket-domain-and-data-nfr-requirements-plan.md`
+
+**Status**: Waiting for NFR requirements plan answers and approval.
+
+---
+
+## NFR Requirements Completion - Bracket Domain And Data
+
+**Timestamp**: 2026-06-28T00:00:00-07:00
+
+**User Input**:
+
+```txt
+filled move forward
+```
+
+**Validation Result**:
+
+- NFR requirements answers are complete.
+- Testing depth: focused unit tests.
+- Performance target: synchronous within-frame transition for 32-team bracket.
+- Dependency constraint: no React, DOM, browser, Next.js, Supabase, or network dependencies.
+- Asset reliability: local public asset paths with UI/poster fallbacks.
+- No contradictions detected.
+
+**Artifacts Created**:
+
+- `aidlc-docs/construction/bracket-domain-and-data/nfr-requirements/nfr-requirements.md`
+- `aidlc-docs/construction/bracket-domain-and-data/nfr-requirements/tech-stack-decisions.md`
+
+**Status**: NFR Requirements complete for Bracket Domain And Data. Awaiting approval before NFR Design.
+
+---
+
+## NFR Design Planning Start - Bracket Domain And Data
+
+**Timestamp**: 2026-06-28T00:00:00-07:00
+
+**User Input**:
+
+```txt
+LGTM
+```
+
+**Decision**:
+
+- Treated as approval of Unit 1 NFR Requirements.
+- Started NFR Design planning for Unit 1.
+
+**Artifacts Created**:
+
+- `aidlc-docs/construction/plans/bracket-domain-and-data-nfr-design-plan.md`
+
+**Status**: Waiting for NFR design plan answers and approval.
+
+---
+
+## NFR Design Completion - Bracket Domain And Data
+
+**Timestamp**: 2026-06-28T00:00:00-07:00
+
+**User Input**:
+
+```txt
+Filled, move forward
+```
+
+**Validation Result**:
+
+- NFR Design answers are complete.
+- Immutable updates: shallow clone prediction and changed matchups.
+- Validation: small helper functions.
+- Downstream clearing: traverse dependency chain by `nextMatchupId` and `nextSlot`.
+- Tests: route-local pure function tests near domain module.
+- No contradictions detected.
+
+**Artifacts Created**:
+
+- `aidlc-docs/construction/bracket-domain-and-data/nfr-design/nfr-design-patterns.md`
+- `aidlc-docs/construction/bracket-domain-and-data/nfr-design/logical-components.md`
+
+**Status**: NFR Design complete for Bracket Domain And Data. Awaiting approval before Code Generation planning.
+
+---
