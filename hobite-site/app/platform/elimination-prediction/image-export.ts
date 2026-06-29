@@ -56,7 +56,16 @@ function getSideMatchups(
     : matchups.slice(splitIndex);
 }
 
-function flagBandsSvg(
+function isHorizontalFlag(participant: Participant | undefined) {
+  return Boolean(
+    participant &&
+      ["ger", "ned", "esp", "aut", "arg", "egy", "col", "gha"].includes(
+        participant.id,
+      ),
+  );
+}
+
+export function buildFlagSvg(
   participant: Participant | undefined,
   x: number,
   y: number,
@@ -65,15 +74,65 @@ function flagBandsSvg(
   radius: number,
 ) {
   const colors = participant?.flagColors ?? ["#e5e7eb", "#f8fafc", "#d1d5db"];
-  const bandWidth = width / colors.length;
-  const bands = colors
-    .map(
-      (color, index) =>
-        `<rect x="${x + index * bandWidth}" y="${y}" width="${bandWidth + 0.5}" height="${height}" fill="${color}" />`,
+  const clipId = `flag-rect-${participant?.id ?? "tbd"}-${Math.round(x)}-${Math.round(y)}`;
+  const hBand = (color: string, index: number, count: number) =>
+    `<rect x="${x}" y="${y + (height * index) / count}" width="${width}" height="${height / count + 0.5}" fill="${color}" />`;
+  const vBand = (color: string, index: number, count: number) =>
+    `<rect x="${x + (width * index) / count}" y="${y}" width="${width / count + 0.5}" height="${height}" fill="${color}" />`;
+  const hBands = (values: string[]) =>
+    values.map((color, index) => hBand(color, index, values.length)).join("");
+  const vBands = (values: string[]) =>
+    values.map((color, index) => vBand(color, index, values.length)).join("");
+  const cross = (color: string, verticalWidth: number, horizontalWidth: number) =>
+    `<rect x="${x + width / 2 - verticalWidth / 2}" y="${y}" width="${verticalWidth}" height="${height}" fill="${color}" /><rect x="${x}" y="${y + height / 2 - horizontalWidth / 2}" width="${width}" height="${horizontalWidth}" fill="${color}" />`;
+  const defaultBands = colors
+    .map((color, index) =>
+      isHorizontalFlag(participant)
+        ? hBand(color, index, colors.length)
+        : vBand(color, index, colors.length),
     )
     .join("");
 
-  return `<g><rect x="${x}" y="${y}" width="${width}" height="${height}" rx="${radius}" fill="#fff" />${bands}<rect x="${x}" y="${y}" width="${width}" height="${height}" rx="${radius}" fill="none" stroke="#ffffff" stroke-width="3" /></g>`;
+  const artwork: Record<string, string> = {
+    ger: hBands(["#111827", "#ef4444", "#facc15"]),
+    par: hBands(["#dc2626", "#ffffff", "#2563eb"]),
+    fra: vBands(["#1d4ed8", "#ffffff", "#ef4444"]),
+    swe: `<rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#2563eb" />${cross("#facc15", width * 0.16, height * 0.18).replace(`x="${x + width / 2 - (width * 0.16) / 2}"`, `x="${x + width * 0.34}"`)}`,
+    rsa: `<rect x="${x}" y="${y}" width="${width}" height="${height / 2}" fill="#ef4444" /><rect x="${x}" y="${y + height / 2}" width="${width}" height="${height / 2}" fill="#2563eb" /><path d="M${x} ${y} L${x + width * 0.55} ${y + height / 2} L${x} ${y + height} Z" fill="#16a34a" /><path d="M${x} ${y + height * 0.12} L${x + width * 0.38} ${y + height / 2} L${x} ${y + height * 0.88} Z" fill="#facc15" /><path d="M${x} ${y + height * 0.22} L${x + width * 0.28} ${y + height / 2} L${x} ${y + height * 0.78} Z" fill="#111827" />`,
+    can: `${vBand("#dc2626", 0, 4)}<rect x="${x + width * 0.25}" y="${y}" width="${width * 0.5}" height="${height}" fill="#ffffff" />${vBand("#dc2626", 3, 4)}<circle cx="${x + width / 2}" cy="${y + height / 2}" r="${height * 0.18}" fill="#dc2626" />`,
+    ned: hBands(["#dc2626", "#ffffff", "#2563eb"]),
+    mar: `<rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#e11d48" /><text x="${x + width / 2}" y="${y + height * 0.66}" text-anchor="middle" font-size="${height * 0.52}" fill="#16a34a" font-weight="900">★</text>`,
+    por: `<rect x="${x}" y="${y}" width="${width * 0.42}" height="${height}" fill="#16a34a" /><rect x="${x + width * 0.42}" y="${y}" width="${width * 0.58}" height="${height}" fill="#dc2626" /><circle cx="${x + width * 0.43}" cy="${y + height / 2}" r="${height * 0.16}" fill="#facc15" />`,
+    cro: hBands(["#dc2626", "#ffffff", "#2563eb"]) + `<rect x="${x + width * 0.43}" y="${y + height * 0.36}" width="${width * 0.14}" height="${height * 0.28}" fill="#dc2626" />`,
+    esp: `<rect x="${x}" y="${y}" width="${width}" height="${height * 0.25}" fill="#dc2626" /><rect x="${x}" y="${y + height * 0.25}" width="${width}" height="${height * 0.5}" fill="#facc15" /><rect x="${x}" y="${y + height * 0.75}" width="${width}" height="${height * 0.25}" fill="#dc2626" />`,
+    aut: hBands(["#dc2626", "#ffffff", "#dc2626"]),
+    usa: Array.from({ length: 7 }, (_, index) => `<rect x="${x}" y="${y + (height * index) / 7}" width="${width}" height="${height / 7 + 0.5}" fill="${index % 2 === 0 ? "#dc2626" : "#ffffff"}" />`).join("") + `<rect x="${x}" y="${y}" width="${width * 0.45}" height="${height * 0.54}" fill="#1d4ed8" />`,
+    bih: `<rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#2563eb" /><path d="M${x + width * 0.55} ${y} L${x + width} ${y + height} L${x + width * 0.55} ${y + height} Z" fill="#facc15" /><circle cx="${x + width * 0.43}" cy="${y + height * 0.22}" r="${height * 0.05}" fill="#ffffff" /><circle cx="${x + width * 0.5}" cy="${y + height * 0.42}" r="${height * 0.05}" fill="#ffffff" /><circle cx="${x + width * 0.58}" cy="${y + height * 0.62}" r="${height * 0.05}" fill="#ffffff" />`,
+    bel: vBands(["#111827", "#facc15", "#ef4444"]),
+    sen: vBands(["#16a34a", "#facc15", "#ef4444"]) + `<text x="${x + width / 2}" y="${y + height * 0.66}" text-anchor="middle" font-size="${height * 0.34}" fill="#16a34a" font-weight="900">★</text>`,
+    bra: `<rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#16a34a" /><path d="M${x + width / 2} ${y + height * 0.08} L${x + width * 0.92} ${y + height / 2} L${x + width / 2} ${y + height * 0.92} L${x + width * 0.08} ${y + height / 2} Z" fill="#facc15" /><circle cx="${x + width / 2}" cy="${y + height / 2}" r="${height * 0.24}" fill="#2563eb" />`,
+    jpn: `<rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#ffffff" /><circle cx="${x + width / 2}" cy="${y + height / 2}" r="${height * 0.25}" fill="#dc2626" />`,
+    civ: vBands(["#f97316", "#ffffff", "#16a34a"]),
+    nor: `<rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#dc2626" />${cross("#ffffff", width * 0.22, height * 0.24).replace(`x="${x + width / 2 - (width * 0.22) / 2}"`, `x="${x + width * 0.31}"`)}${cross("#1d4ed8", width * 0.12, height * 0.14).replace(`x="${x + width / 2 - (width * 0.12) / 2}"`, `x="${x + width * 0.36}"`)}`,
+    mex: vBands(["#16a34a", "#ffffff", "#dc2626"]) + `<circle cx="${x + width / 2}" cy="${y + height / 2}" r="${height * 0.12}" fill="#a16207" />`,
+    ecu: `<rect x="${x}" y="${y}" width="${width}" height="${height * 0.5}" fill="#facc15" /><rect x="${x}" y="${y + height * 0.5}" width="${width}" height="${height * 0.25}" fill="#2563eb" /><rect x="${x}" y="${y + height * 0.75}" width="${width}" height="${height * 0.25}" fill="#dc2626" />`,
+    eng: `<rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#ffffff" />${cross("#dc2626", width * 0.14, height * 0.18)}`,
+    cod: `<rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#38bdf8" /><path d="M${x - width * 0.1} ${y + height} L${x + width * 0.12} ${y + height} L${x + width * 1.1} ${y} L${x + width * 0.88} ${y} Z" fill="#facc15" /><path d="M${x + width * 0.03} ${y + height} L${x + width * 0.16} ${y + height} L${x + width * 1.03} ${y} L${x + width * 0.9} ${y} Z" fill="#dc2626" />`,
+    arg: hBands(["#60a5fa", "#ffffff", "#60a5fa"]) + `<circle cx="${x + width / 2}" cy="${y + height / 2}" r="${height * 0.1}" fill="#facc15" />`,
+    cpv: `<rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#2563eb" /><rect x="${x}" y="${y + height * 0.52}" width="${width}" height="${height * 0.1}" fill="#ffffff" /><rect x="${x}" y="${y + height * 0.62}" width="${width}" height="${height * 0.08}" fill="#dc2626" /><rect x="${x}" y="${y + height * 0.7}" width="${width}" height="${height * 0.1}" fill="#ffffff" />`,
+    aus: `<rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#1e40af" /><rect x="${x}" y="${y}" width="${width * 0.45}" height="${height * 0.5}" fill="#1f2937" /><path d="M${x} ${y} L${x + width * 0.45} ${y + height * 0.5} M${x + width * 0.45} ${y} L${x} ${y + height * 0.5}" stroke="#ffffff" stroke-width="${height * 0.08}" /><circle cx="${x + width * 0.72}" cy="${y + height * 0.58}" r="${height * 0.08}" fill="#ffffff" />`,
+    egy: hBands(["#dc2626", "#ffffff", "#111827"]) + `<circle cx="${x + width / 2}" cy="${y + height / 2}" r="${height * 0.08}" fill="#b45309" />`,
+    sui: `<rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#dc2626" />${cross("#ffffff", width * 0.18, height * 0.18)}`,
+    alg: `<rect x="${x}" y="${y}" width="${width / 2}" height="${height}" fill="#16a34a" /><rect x="${x + width / 2}" y="${y}" width="${width / 2}" height="${height}" fill="#ffffff" /><circle cx="${x + width * 0.55}" cy="${y + height / 2}" r="${height * 0.18}" fill="#dc2626" /><circle cx="${x + width * 0.61}" cy="${y + height / 2}" r="${height * 0.16}" fill="#ffffff" />`,
+    col: `<rect x="${x}" y="${y}" width="${width}" height="${height * 0.5}" fill="#facc15" /><rect x="${x}" y="${y + height * 0.5}" width="${width}" height="${height * 0.25}" fill="#2563eb" /><rect x="${x}" y="${y + height * 0.75}" width="${width}" height="${height * 0.25}" fill="#dc2626" />`,
+    gha: hBands(["#dc2626", "#facc15", "#16a34a"]) + `<text x="${x + width / 2}" y="${y + height * 0.64}" text-anchor="middle" font-size="${height * 0.32}" fill="#111827" font-weight="900">★</text>`,
+  };
+
+  return `<g>
+    <clipPath id="${clipId}"><rect x="${x}" y="${y}" width="${width}" height="${height}" rx="${radius}" /></clipPath>
+    <g clip-path="url(#${clipId})">${participant ? artwork[participant.id] ?? defaultBands : defaultBands}</g>
+    <rect x="${x}" y="${y}" width="${width}" height="${height}" rx="${radius}" fill="none" stroke="#ffffff" stroke-width="3" />
+  </g>`;
 }
 
 function circleFlagSvg(
@@ -116,14 +175,23 @@ function nodeSvg({
 }) {
   const winner = getParticipant(prediction, matchup.winnerId);
   const label = winner ? getParticipantName(winner, language) : "";
-  const labelSize = Math.max(12, Math.round(radius * 0.45));
+  const flagWidth = radius * 2.8;
+  const flagHeight = radius * 1.75;
+  const labelSize = Math.max(12, Math.round(radius * 0.5));
 
   return `
     <g>
-      ${circleFlagSvg(winner, cx, cy, radius)}
+      ${buildFlagSvg(
+        winner,
+        cx - flagWidth / 2,
+        cy - flagHeight / 2,
+        flagWidth,
+        flagHeight,
+        6,
+      )}
       ${
         label
-          ? `<text x="${cx}" y="${cy + radius + labelSize + 5}" text-anchor="middle" font-size="${labelSize}" fill="#ffffff" font-weight="900">${escapeXml(label)}</text>`
+          ? `<text x="${cx}" y="${cy + flagHeight / 2 + labelSize + 5}" text-anchor="middle" font-size="${labelSize}" fill="#ffffff" font-weight="900">${escapeXml(label)}</text>`
           : ""
       }
     </g>
@@ -158,8 +226,8 @@ function groupBoxSvg({
 
       return `<g>
         <rect x="${x + 10}" y="${rowY}" width="${width - 20}" height="${rowHeight - 4}" rx="4" fill="#ffffff" />
-        ${circleFlagSvg(participant, x + 28, rowY + rowHeight / 2 - 2, Math.min(14, rowHeight * 0.28))}
-        <text x="${x + 48}" y="${rowY + rowHeight / 2 + fontSize * 0.36}" font-size="${fontSize}" fill="#9f1748" font-weight="900">${escapeXml(name)}</text>
+        ${buildFlagSvg(participant, x + 16, rowY + 4, 34, rowHeight - 12, 3)}
+        <text x="${x + 58}" y="${rowY + rowHeight / 2 + fontSize * 0.36}" font-size="${fontSize}" fill="#111827" font-weight="900">${escapeXml(name)}</text>
       </g>`;
     })
     .join("");
@@ -201,6 +269,44 @@ function connectorSvg(
   }
 
   return segments.join("");
+}
+
+function matchupPairSvg({
+  prediction,
+  matchup,
+  language,
+  x,
+  y,
+  side,
+  compact,
+}: {
+  prediction: BracketPrediction;
+  matchup: Matchup;
+  language: LanguageCode;
+  x: number;
+  y: number;
+  side: "left" | "right";
+  compact: boolean;
+}) {
+  const left = getParticipant(prediction, matchup.leftId);
+  const right = getParticipant(prediction, matchup.rightId);
+  const flagWidth = compact ? 92 : 116;
+  const flagHeight = compact ? 50 : 62;
+  const gap = compact ? 36 : 42;
+  const fontSize = compact ? 19 : 24;
+  const leftX = side === "left" ? x : x + flagWidth + gap;
+  const rightX = side === "left" ? x + flagWidth + gap : x;
+  const leftNameX = leftX + flagWidth / 2;
+  const rightNameX = rightX + flagWidth / 2;
+  const winnerId = matchup.winnerId;
+
+  return `<g>
+    ${buildFlagSvg(left, leftX, y, flagWidth, flagHeight, 6)}
+    ${buildFlagSvg(right, rightX, y, flagWidth, flagHeight, 6)}
+    <text x="${x + flagWidth + gap / 2}" y="${y + flagHeight * 0.58}" text-anchor="middle" font-size="${compact ? 18 : 22}" fill="#ffffff" font-weight="900">vs</text>
+    <text x="${leftNameX}" y="${y + flagHeight + fontSize + 7}" text-anchor="middle" font-size="${fontSize}" fill="${winnerId === left?.id ? "#facc15" : "#ffffff"}" font-weight="900">${escapeXml(teamName(prediction, matchup.leftId, language))}</text>
+    <text x="${rightNameX}" y="${y + flagHeight + fontSize + 7}" text-anchor="middle" font-size="${fontSize}" fill="${winnerId === right?.id ? "#facc15" : "#ffffff"}" font-weight="900">${escapeXml(teamName(prediction, matchup.rightId, language))}</text>
+  </g>`;
 }
 
 function sideBracketSvg({
@@ -307,11 +413,16 @@ function centerPosterSvg({
   const boxWidth = compact ? 170 : 230;
   const boxHeight = compact ? 72 : 96;
   const fontScale = compact ? 0.78 : 1;
+  const trophyScale = compact ? 0.58 : 0.72;
+  const trophyTop = centerY - boxHeight * 2.5;
 
   return `
     <g>
+      <ellipse cx="${centerX}" cy="${trophyTop + 126 * trophyScale}" rx="${44 * trophyScale}" ry="${13 * trophyScale}" fill="#14532d" />
+      <path d="M ${centerX - 26 * trophyScale} ${trophyTop + 14 * trophyScale} C ${centerX - 62 * trophyScale} ${trophyTop + 54 * trophyScale}, ${centerX - 38 * trophyScale} ${trophyTop + 94 * trophyScale}, ${centerX - 12 * trophyScale} ${trophyTop + 112 * trophyScale} L ${centerX - 38 * trophyScale} ${trophyTop + 142 * trophyScale} L ${centerX + 38 * trophyScale} ${trophyTop + 142 * trophyScale} L ${centerX + 12 * trophyScale} ${trophyTop + 112 * trophyScale} C ${centerX + 38 * trophyScale} ${trophyTop + 94 * trophyScale}, ${centerX + 62 * trophyScale} ${trophyTop + 54 * trophyScale}, ${centerX + 26 * trophyScale} ${trophyTop + 14 * trophyScale} Z" fill="#d6a536" />
+      <circle cx="${centerX}" cy="${trophyTop + 55 * trophyScale}" r="${38 * trophyScale}" fill="#f4d675" opacity="0.68" />
       <text x="${centerX}" y="${centerY - boxHeight * 0.92}" text-anchor="middle" font-size="${32 * fontScale}" fill="#ffffff" font-weight="900">${escapeXml(getRoundLabel(5, language))}</text>
-      <rect x="${centerX - boxWidth / 2}" y="${centerY - boxHeight / 2}" width="${boxWidth}" height="${boxHeight}" rx="4" fill="#a1134e" stroke="#ffffff" stroke-width="4" />
+      <rect x="${centerX - boxWidth / 2}" y="${centerY - boxHeight / 2}" width="${boxWidth}" height="${boxHeight}" rx="4" fill="#050505" stroke="#ffffff" stroke-width="4" />
       ${
         finalMatchup
           ? nodeSvg({
@@ -324,10 +435,10 @@ function centerPosterSvg({
             })
           : ""
       }
-      <text x="${centerX}" y="${centerY + boxHeight * 0.92}" text-anchor="middle" font-size="${24 * fontScale}" fill="#ffffff" font-weight="900">${escapeXml(copy.champion)}</text>
-      <text x="${centerX}" y="${centerY + boxHeight * 1.32}" text-anchor="middle" font-size="${34 * fontScale}" fill="#facc15" font-weight="900">${escapeXml(championName)}</text>
-      <text x="${centerX}" y="${centerY + boxHeight * 1.78}" text-anchor="middle" font-size="${22 * fontScale}" fill="#ffffff" font-weight="800">${escapeXml(prediction.eventDetails.finalDate || copy.dateTbd)} · ${escapeXml(prediction.eventDetails.finalTime || copy.timeTbd)}</text>
-      <text x="${centerX}" y="${centerY + boxHeight * 2.1}" text-anchor="middle" font-size="${19 * fontScale}" fill="#f8fafc" font-weight="800">${escapeXml(prediction.eventDetails.stadium || copy.stadiumTbd)}</text>
+      <text x="${centerX}" y="${centerY + boxHeight * 1.04}" text-anchor="middle" font-size="${22 * fontScale}" fill="#ffffff" font-weight="900">${escapeXml(copy.champion)}</text>
+      <text x="${centerX}" y="${centerY + boxHeight * 1.48}" text-anchor="middle" font-size="${30 * fontScale}" fill="#facc15" font-weight="900">${escapeXml(championName)}</text>
+      <text x="${centerX}" y="${centerY + boxHeight * 1.94}" text-anchor="middle" font-size="${20 * fontScale}" fill="#ffffff" font-weight="800">${escapeXml(prediction.eventDetails.finalDate || copy.dateTbd)} · ${escapeXml(prediction.eventDetails.finalTime || copy.timeTbd)}</text>
+      <text x="${centerX}" y="${centerY + boxHeight * 2.26}" text-anchor="middle" font-size="${17 * fontScale}" fill="#f8fafc" font-weight="800">${escapeXml(prediction.eventDetails.stadium || copy.stadiumTbd)}</text>
     </g>
   `;
 }
@@ -347,53 +458,67 @@ export function buildPosterSvg(
   const tall = dimensions.height > 1300;
   const rawTitle = prediction.eventDetails.title || copy.title;
   const titleSize = Math.min(
-    compact ? 44 : tall ? 66 : 58,
+    compact ? 58 : tall ? 76 : 68,
     Math.max(28, Math.floor((dimensions.width * 1.45) / rawTitle.length)),
   );
-  const margin = compact ? 46 : 64;
-  const groupWidth = compact ? 178 : tall ? 250 : 220;
-  const top = compact ? 126 : tall ? 250 : 170;
-  const bottom = dimensions.height - (compact ? 66 : tall ? 180 : 88);
-  const groupGap = compact ? 24 : tall ? 50 : 32;
-  const groupHeight = (bottom - top - groupGap * 3) / 4;
+  const firstRound = prediction.matchups.filter(
+    (matchup) => matchup.round === 1,
+  );
+  const leftMatchups = firstRound.slice(0, 8);
+  const rightMatchups = firstRound.slice(8);
+  const titleY = compact ? 82 : tall ? 126 : 112;
+  const top = compact ? 142 : tall ? 278 : 190;
+  const bottom = dimensions.height - (compact ? 74 : tall ? 210 : 82);
+  const rowGap = (bottom - top) / 7;
+  const pairY = (index: number) => top + index * rowGap - (compact ? 25 : 31);
   const firstRoundYs = Array.from({ length: 8 }, (_, index) => {
-    const groupIndex = Math.floor(index / 2);
-    const rowIndex = index % 2;
-    return (
-      top +
-      groupIndex * (groupHeight + groupGap) +
-      groupHeight * (rowIndex === 0 ? 0.34 : 0.72)
-    );
+    return top + index * rowGap;
   });
   const centerX = dimensions.width / 2;
   const centerY = (top + bottom) / 2;
-  const nodeRadius = compact ? 24 : tall ? 38 : 30;
-  const leftGroupX = margin;
-  const rightGroupX = dimensions.width - margin - groupWidth;
+  const nodeRadius = compact ? 19 : tall ? 30 : 24;
+  const pairWidth = compact ? 220 : tall ? 300 : 274;
+  const leftPairX = compact ? 68 : tall ? 78 : 70;
+  const rightPairX = dimensions.width - leftPairX - pairWidth;
   const leftXs = [
-    leftGroupX + groupWidth + (compact ? 54 : 66),
-    leftGroupX + groupWidth + (compact ? 142 : 178),
-    centerX - (compact ? 185 : 230),
-    centerX - (compact ? 104 : 132),
+    leftPairX + pairWidth + (compact ? 34 : 42),
+    leftPairX + pairWidth + (compact ? 86 : 110),
+    centerX - (compact ? 166 : 206),
+    centerX - (compact ? 96 : 126),
   ];
   const rightXs = [
-    rightGroupX - (compact ? 54 : 66),
-    rightGroupX - (compact ? 142 : 178),
-    centerX + (compact ? 185 : 230),
-    centerX + (compact ? 104 : 132),
+    rightPairX - (compact ? 34 : 42),
+    rightPairX - (compact ? 86 : 110),
+    centerX + (compact ? 166 : 206),
+    centerX + (compact ? 96 : 126),
   ];
   const finalBoxWidth = compact ? 170 : 230;
-  const groups = Array.from({ length: 8 }, (_, index) =>
-    groupBoxSvg({
-      prediction,
-      groupIndex: index,
-      x: index % 2 === 0 ? leftGroupX : rightGroupX,
-      y: top + Math.floor(index / 2) * (groupHeight + groupGap),
-      width: groupWidth,
-      height: groupHeight,
-      language,
-    }),
-  ).join("");
+  const leftPairs = leftMatchups
+    .map((matchup, index) =>
+      matchupPairSvg({
+        prediction,
+        matchup,
+        language,
+        x: leftPairX,
+        y: pairY(index),
+        side: "left",
+        compact,
+      }),
+    )
+    .join("");
+  const rightPairs = rightMatchups
+    .map((matchup, index) =>
+      matchupPairSvg({
+        prediction,
+        matchup,
+        language,
+        x: rightPairX,
+        y: pairY(index),
+        side: "right",
+        compact,
+      }),
+    )
+    .join("");
   const leftBracket = sideBracketSvg({
     prediction,
     language,
@@ -417,13 +542,14 @@ export function buildPosterSvg(
 
   return `<?xml version="1.0" encoding="UTF-8"?>
   <svg xmlns="http://www.w3.org/2000/svg" width="${dimensions.width}" height="${dimensions.height}" viewBox="0 0 ${dimensions.width} ${dimensions.height}">
-    <rect width="100%" height="100%" fill="#9f1748" />
-    <rect x="16" y="16" width="${dimensions.width - 32}" height="${dimensions.height - 32}" rx="18" fill="#a1134e" stroke="#ffffff" stroke-width="0" />
-    <text x="${dimensions.width / 2}" y="${compact ? 76 : tall ? 118 : 98}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="${titleSize}" fill="#ffffff" font-weight="900">${escapeXml(rawTitle)}</text>
-    <line x1="${centerX - 220}" y1="${compact ? 104 : tall ? 154 : 130}" x2="${centerX - 42}" y2="${compact ? 104 : tall ? 154 : 130}" stroke="#ffffff" stroke-width="3" opacity="0.7" />
-    <rect x="${centerX - 12}" y="${(compact ? 104 : tall ? 154 : 130) - 12}" width="24" height="24" transform="rotate(45 ${centerX} ${compact ? 104 : tall ? 154 : 130})" fill="#ffffff" />
-    <line x1="${centerX + 42}" y1="${compact ? 104 : tall ? 154 : 130}" x2="${centerX + 220}" y2="${compact ? 104 : tall ? 154 : 130}" stroke="#ffffff" stroke-width="3" opacity="0.7" />
-    ${groups}
+    <rect width="100%" height="100%" fill="#3157ff" />
+    <path d="M${dimensions.width * 0.45} 0 H${dimensions.width} V${dimensions.height * 0.16} H${dimensions.width * 0.52} Z" fill="#22c55e" />
+    <path d="M${dimensions.width} ${dimensions.height * 0.16} H${dimensions.width} V${dimensions.height * 0.53} H${dimensions.width - 18} V${dimensions.height * 0.16} Z" fill="#ff3b1f" />
+    <path d="M0 ${dimensions.height * 0.66} H${18} V${dimensions.height} H${dimensions.width * 0.5} L${dimensions.width * 0.45} ${dimensions.height * 0.93} H0 Z" fill="#e9ff25" />
+    <rect x="20" y="18" width="${dimensions.width - 40}" height="${dimensions.height - 36}" rx="${compact ? 24 : 32}" fill="#050505" />
+    <text x="${dimensions.width / 2}" y="${titleY}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="${titleSize}" fill="#ffffff" font-weight="900">${escapeXml(rawTitle)}</text>
+    ${leftPairs}
+    ${rightPairs}
     ${leftBracket}
     ${rightBracket}
     ${centerPosterSvg({
@@ -434,7 +560,7 @@ export function buildPosterSvg(
       centerY,
       compact,
     })}
-    <text x="${dimensions.width / 2}" y="${dimensions.height - (compact ? 26 : 44)}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="${compact ? 16 : 21}" fill="#ffffff" font-weight="800" opacity="0.82">Hobite Capital · ${escapeXml(copy.posterFooter)}</text>
+    <text x="${dimensions.width / 2}" y="${dimensions.height - (compact ? 26 : 44)}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="${compact ? 15 : 20}" fill="#ffffff" font-weight="800" opacity="0.82">Hobite Capital · ${escapeXml(copy.posterFooter)}</text>
   </svg>`;
 }
 
