@@ -56,57 +56,6 @@ const POSTS = [
   },
 ];
 
-function RednoteIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      className="h-4 w-4"
-      fill="none"
-      viewBox="0 0 24 24"
-    >
-      <rect fill="#ef4444" height="18" rx="4" width="16" x="4" y="3" />
-      <path
-        d="M8 8h8M8 12h6M8 16h4"
-        stroke="white"
-        strokeLinecap="round"
-        strokeWidth="2"
-      />
-    </svg>
-  );
-}
-
-function XIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      className="h-4 w-4"
-      fill="none"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M5 5l14 14M19 5L5 19"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeWidth="2.4"
-      />
-    </svg>
-  );
-}
-
-function YouTubeIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      className="h-4 w-4"
-      fill="none"
-      viewBox="0 0 24 24"
-    >
-      <rect fill="#ef4444" height="14" rx="4" width="20" x="2" y="5" />
-      <path d="M10 9v6l5-3-5-3z" fill="white" />
-    </svg>
-  );
-}
-
 function ResearchCard({
   title,
   href,
@@ -143,72 +92,6 @@ export default function Home() {
           <p className="mt-6 max-w-4xl text-xl text-zinc-600">
             Deep fundamental research focused on AI infrastructure, enterprise software, cloud platforms, internet platforms, and long-duration compounders.
           </p>
-        </section>
-
-        <section className="overflow-hidden rounded-[2rem] bg-zinc-950 text-white shadow-sm">
-          <div className="relative p-8 md:p-10">
-            <div className="absolute right-0 top-0 h-20 w-1/2 bg-emerald-500" />
-            <div className="absolute bottom-0 left-0 h-16 w-1/2 bg-lime-300" />
-            <div className="absolute left-0 top-0 h-full w-3 bg-blue-600" />
-            <div className="absolute right-0 top-16 h-1/2 w-3 bg-red-500" />
-            <div className="relative max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-zinc-400">
-                Interactive Tool
-              </p>
-              <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-5xl">
-                World Cup 2026
-              </h2>
-              <p className="mt-4 max-w-2xl text-lg leading-8 text-zinc-300">
-                Fill the knockout bracket, predict every eliminating stage, and generate a shareable poster for your final pick.
-              </p>
-              <a
-                className="mt-6 inline-flex rounded-md bg-white px-5 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-zinc-200"
-                href="/platform/elimination-prediction"
-              >
-                Open prediction page
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section className="rounded-[2rem] border border-zinc-200 bg-white p-8 shadow-sm md:p-10">
-          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-zinc-500">
-                Follow
-              </p>
-              <h2 className="mt-3 text-3xl font-semibold">Hobite on social</h2>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <a
-                className="inline-flex items-center gap-2 rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-500"
-                href="https://xhslink.com/m/A5bzWZUH5W"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <RednoteIcon />
-                Rednote
-              </a>
-              <a
-                className="inline-flex items-center gap-2 rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-500"
-                href="https://x.com/Hobiterr"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <XIcon />
-                X.com
-              </a>
-              <a
-                className="inline-flex items-center gap-2 rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-500"
-                href="https://www.youtube.com/@hobite6341"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <YouTubeIcon />
-                YouTube
-              </a>
-            </div>
-          </div>
         </section>
 
         <section>
