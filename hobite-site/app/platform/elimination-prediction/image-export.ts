@@ -19,9 +19,7 @@ export type PosterDimensions = {
 };
 
 const POSTER_DIMENSIONS: Record<PosterFormat, PosterDimensions> = {
-  square: { width: 1080, height: 1080 },
-  story: { width: 1080, height: 1920 },
-  landscape: { width: 1200, height: 630 },
+  landscape: { width: 2400, height: 1260 },
 };
 
 function escapeXml(value: string) {
