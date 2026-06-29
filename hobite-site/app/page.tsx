@@ -56,6 +56,57 @@ const POSTS = [
   },
 ];
 
+function RednoteIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="h-4 w-4"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <rect fill="#ef4444" height="18" rx="4" width="16" x="4" y="3" />
+      <path
+        d="M8 8h8M8 12h6M8 16h4"
+        stroke="white"
+        strokeLinecap="round"
+        strokeWidth="2"
+      />
+    </svg>
+  );
+}
+
+function XIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="h-4 w-4"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M5 5l14 14M19 5L5 19"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="2.4"
+      />
+    </svg>
+  );
+}
+
+function YouTubeIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="h-4 w-4"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <rect fill="#ef4444" height="14" rx="4" width="20" x="2" y="5" />
+      <path d="M10 9v6l5-3-5-3z" fill="white" />
+    </svg>
+  );
+}
+
 function ResearchCard({
   title,
   href,
@@ -130,27 +181,30 @@ export default function Home() {
             </div>
             <div className="flex flex-wrap gap-3">
               <a
-                className="rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-500"
+                className="inline-flex items-center gap-2 rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-500"
                 href="https://xhslink.com/m/A5bzWZUH5W"
                 rel="noreferrer"
                 target="_blank"
               >
+                <RednoteIcon />
                 Rednote
               </a>
               <a
-                className="rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-500"
+                className="inline-flex items-center gap-2 rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-500"
                 href="https://x.com/Hobiterr"
                 rel="noreferrer"
                 target="_blank"
               >
+                <XIcon />
                 X.com
               </a>
               <a
-                className="rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-500"
+                className="inline-flex items-center gap-2 rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-500"
                 href="https://www.youtube.com/@hobite6341"
                 rel="noreferrer"
                 target="_blank"
               >
+                <YouTubeIcon />
                 YouTube
               </a>
             </div>

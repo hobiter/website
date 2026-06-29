@@ -1,7 +1,7 @@
 import type { PredictionCopy } from "./i18n";
 import type { PosterFormat } from "./types";
 
-const FORMATS: PosterFormat[] = ["square", "story", "landscape"];
+const FORMATS: PosterFormat[] = ["landscape"];
 
 type PosterFormatSelectorProps = {
   value: PosterFormat;
@@ -15,15 +15,13 @@ export function PosterFormatSelector({
   onChange,
 }: PosterFormatSelectorProps) {
   const labels: Record<PosterFormat, string> = {
-    square: copy.square,
-    story: copy.story,
     landscape: copy.landscape,
   };
 
   return (
     <div>
       <p className="text-sm font-semibold text-zinc-900">{copy.format}</p>
-      <div className="mt-2 grid grid-cols-3 gap-2">
+      <div className="mt-2 grid gap-2">
         {FORMATS.map((format) => (
           <button
             aria-pressed={value === format}
@@ -43,4 +41,3 @@ export function PosterFormatSelector({
     </div>
   );
 }
-

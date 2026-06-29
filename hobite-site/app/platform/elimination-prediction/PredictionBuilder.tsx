@@ -48,7 +48,7 @@ function buildShareText(
 export default function PredictionBuilder() {
   const [language, setLanguage] = useState<LanguageCode>("en");
   const copy = COPY[language];
-  const [posterFormat, setPosterFormat] = useState<PosterFormat>("square");
+  const [posterFormat, setPosterFormat] = useState<PosterFormat>("landscape");
   const [prediction, setPrediction] = useState(() =>
     createBracket(FIFA_TEAMS, DEFAULT_EVENT_DETAILS),
   );

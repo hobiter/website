@@ -1,6 +1,6 @@
 export type LanguageCode = "en" | "zh";
 
-export type PosterFormat = "square" | "story" | "landscape";
+export type PosterFormat = "landscape";
 
 export type EventDetails = {
   title: string;
@@ -45,4 +45,3 @@ export type SharePayload = {
   imageBlob?: Blob;
   fileName: string;
 };
-
