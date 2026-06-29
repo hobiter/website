@@ -598,7 +598,7 @@ export function buildPosterSvg(
       <text x="${boardWidth / 2}" y="76" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="${titleSize}" fill="#ffffff" font-weight="900">${escapeXml(rawTitle)}</text>
       <line x1="${boardWidth / 2 - 220}" y1="104" x2="${boardWidth / 2 + 220}" y2="104" stroke="#ffffff" stroke-width="3" opacity="0.55" />
       ${boardContent}
-      <text x="${boardWidth / 2}" y="${boardHeight - 34}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#ffffff" font-weight="800" opacity="0.82">Hobite Capital · ${escapeXml(copy.posterFooter)}</text>
+      <text x="${boardWidth / 2}" y="${boardHeight - 34}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#ffffff" font-weight="800" opacity="0.82">hobite.vecel.app</text>
     </g>
   </svg>`;
 }
