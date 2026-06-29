@@ -41,10 +41,30 @@ function teamName(
   return participant ? getParticipantName(participant, language) : "";
 }
 
-function flagSvg(participant: Participant | undefined, x: number, y: number) {
+function getSideMatchups(
+  prediction: BracketPrediction,
+  round: number,
+  side: "left" | "right",
+) {
+  const matchups = prediction.matchups.filter(
+    (matchup) => matchup.round === round,
+  );
+  const splitIndex = Math.ceil(matchups.length / 2);
+
+  return side === "left"
+    ? matchups.slice(0, splitIndex)
+    : matchups.slice(splitIndex);
+}
+
+function flagBandsSvg(
+  participant: Participant | undefined,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  radius: number,
+) {
   const colors = participant?.flagColors ?? ["#e5e7eb", "#f8fafc", "#d1d5db"];
-  const width = 86;
-  const height = 54;
   const bandWidth = width / colors.length;
   const bands = colors
     .map(
@@ -53,71 +73,261 @@ function flagSvg(participant: Participant | undefined, x: number, y: number) {
     )
     .join("");
 
-  return `<g><rect x="${x}" y="${y}" width="${width}" height="${height}" rx="7" fill="#fff" stroke="#ffffff" stroke-width="4" />${bands}<rect x="${x}" y="${y}" width="${width}" height="${height}" rx="7" fill="none" stroke="#e5e7eb" stroke-width="3" /></g>`;
+  return `<g><rect x="${x}" y="${y}" width="${width}" height="${height}" rx="${radius}" fill="#fff" />${bands}<rect x="${x}" y="${y}" width="${width}" height="${height}" rx="${radius}" fill="none" stroke="#ffffff" stroke-width="3" /></g>`;
 }
 
-function matchupSvg({
+function circleFlagSvg(
+  participant: Participant | undefined,
+  cx: number,
+  cy: number,
+  radius: number,
+) {
+  const colors = participant?.flagColors ?? ["#f4f4f5", "#d4d4d8", "#a1a1aa"];
+  const clipId = `flag-${participant?.id ?? "tbd"}-${Math.round(cx)}-${Math.round(cy)}`;
+  const bandWidth = (radius * 2) / colors.length;
+  const bands = colors
+    .map(
+      (color, index) =>
+        `<rect x="${cx - radius + index * bandWidth}" y="${cy - radius}" width="${bandWidth + 0.5}" height="${radius * 2}" fill="${color}" />`,
+    )
+    .join("");
+
+  return `<g>
+    <clipPath id="${clipId}"><circle cx="${cx}" cy="${cy}" r="${radius}" /></clipPath>
+    <g clip-path="url(#${clipId})">${bands}</g>
+    <circle cx="${cx}" cy="${cy}" r="${radius}" fill="none" stroke="#ffffff" stroke-width="${Math.max(3, radius * 0.11)}" />
+  </g>`;
+}
+
+function nodeSvg({
   prediction,
   matchup,
   language,
-  x,
-  y,
-  align,
+  cx,
+  cy,
+  radius,
 }: {
   prediction: BracketPrediction;
   matchup: Matchup;
   language: LanguageCode;
-  x: number;
-  y: number;
-  align: "left" | "right";
+  cx: number;
+  cy: number;
+  radius: number;
 }) {
-  const left = getParticipant(prediction, matchup.leftId);
-  const right = getParticipant(prediction, matchup.rightId);
-  const winner = matchup.winnerId;
-  const firstX = align === "left" ? x : x + 110;
-  const secondX = align === "left" ? x + 130 : x - 20;
-  const labelAnchor = align === "left" ? "start" : "end";
-  const labelX = align === "left" ? x : x + 196;
-  const nameY = y + 84;
+  const winner = getParticipant(prediction, matchup.winnerId);
+  const label = winner ? getParticipantName(winner, language) : "";
+  const labelSize = Math.max(12, Math.round(radius * 0.45));
 
   return `
     <g>
-      ${flagSvg(left, firstX, y)}
-      ${flagSvg(right, secondX, y)}
-      <text x="${align === "left" ? x + 100 : x + 88}" y="${y + 35}" text-anchor="middle" font-size="22" fill="#f8fafc" font-weight="700">vs</text>
-      <text x="${labelX}" y="${nameY}" text-anchor="${labelAnchor}" font-size="25" fill="${winner === left?.id ? "#facc15" : "#ffffff"}" font-weight="800">${escapeXml(teamName(prediction, matchup.leftId, language))}</text>
-      <text x="${align === "left" ? labelX + 196 : labelX - 196}" y="${nameY}" text-anchor="${align === "left" ? "end" : "start"}" font-size="25" fill="${winner === right?.id ? "#facc15" : "#ffffff"}" font-weight="800">${escapeXml(teamName(prediction, matchup.rightId, language))}</text>
+      ${circleFlagSvg(winner, cx, cy, radius)}
+      ${
+        label
+          ? `<text x="${cx}" y="${cy + radius + labelSize + 5}" text-anchor="middle" font-size="${labelSize}" fill="#ffffff" font-weight="900">${escapeXml(label)}</text>`
+          : ""
+      }
     </g>
   `;
 }
 
-function centerSvg(
-  prediction: BracketPrediction,
-  language: LanguageCode,
-  copy: PredictionCopy,
-  dimensions: PosterDimensions,
+function groupBoxSvg({
+  prediction,
+  groupIndex,
+  x,
+  y,
+  width,
+  height,
+  language,
+}: {
+  prediction: BracketPrediction;
+  groupIndex: number;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  language: LanguageCode;
+}) {
+  const participants = prediction.participants.slice(groupIndex * 4, groupIndex * 4 + 4);
+  const rowHeight = (height - 30) / 4;
+  const fontSize = Math.max(13, Math.min(24, Math.floor(rowHeight * 0.48)));
+  const title = `GROUP ${String.fromCharCode(65 + groupIndex)}`;
+  const rows = participants
+    .map((participant, index) => {
+      const rowY = y + 25 + index * rowHeight;
+      const name = getParticipantName(participant, language);
+
+      return `<g>
+        <rect x="${x + 10}" y="${rowY}" width="${width - 20}" height="${rowHeight - 4}" rx="4" fill="#ffffff" />
+        ${circleFlagSvg(participant, x + 28, rowY + rowHeight / 2 - 2, Math.min(14, rowHeight * 0.28))}
+        <text x="${x + 48}" y="${rowY + rowHeight / 2 + fontSize * 0.36}" font-size="${fontSize}" fill="#9f1748" font-weight="900">${escapeXml(name)}</text>
+      </g>`;
+    })
+    .join("");
+
+  return `<g>
+    <rect x="${x}" y="${y}" width="${width}" height="${height}" rx="8" fill="none" stroke="#ffffff" stroke-width="3" />
+    <rect x="${x + width * 0.23}" y="${y - 13}" width="${width * 0.54}" height="24" rx="4" fill="#ffffff" />
+    <text x="${x + width / 2}" y="${y + 5}" text-anchor="middle" font-size="${Math.max(14, fontSize)}" fill="#9f1748" font-weight="900" font-style="italic">${escapeXml(title)}</text>
+    ${rows}
+  </g>`;
+}
+
+function getNodeY(firstRoundYs: number[], round: number, index: number) {
+  const span = 2 ** (round - 1);
+  const start = index * span;
+  const values = firstRoundYs.slice(start, start + span);
+  return values.reduce((total, value) => total + value, 0) / values.length;
+}
+
+function connectorSvg(
+  fromX: number,
+  fromYs: number[],
+  toX: number,
+  toYs: number[],
+  side: "left" | "right",
 ) {
+  const stroke = "#ffffff";
+  const midX = side === "left" ? (fromX + toX) / 2 : (fromX + toX) / 2;
+  const segments: string[] = [];
+
+  for (let index = 0; index < toYs.length; index += 1) {
+    const y1 = fromYs[index * 2];
+    const y2 = fromYs[index * 2 + 1];
+    const yMid = toYs[index];
+
+    segments.push(
+      `<path d="M${fromX} ${y1} H${midX} V${y2} H${fromX} M${midX} ${yMid} H${toX}" fill="none" stroke="${stroke}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.82" />`,
+    );
+  }
+
+  return segments.join("");
+}
+
+function sideBracketSvg({
+  prediction,
+  language,
+  side,
+  firstRoundYs,
+  xPositions,
+  nodeRadius,
+  finalEdgeX,
+  centerY,
+}: {
+  prediction: BracketPrediction;
+  language: LanguageCode;
+  side: "left" | "right";
+  firstRoundYs: number[];
+  xPositions: number[];
+  nodeRadius: number;
+  finalEdgeX: number;
+  centerY: number;
+}) {
+  const roundOne = getSideMatchups(prediction, 1, side);
+  const roundTwo = getSideMatchups(prediction, 2, side);
+  const roundThree = getSideMatchups(prediction, 3, side);
+  const roundFour = getSideMatchups(prediction, 4, side);
+  const ysByRound = [
+    firstRoundYs,
+    roundTwo.map((_, index) => getNodeY(firstRoundYs, 2, index)),
+    roundThree.map((_, index) => getNodeY(firstRoundYs, 3, index)),
+    roundFour.map((_, index) => getNodeY(firstRoundYs, 4, index)),
+  ];
+  const nodes = [
+    roundOne.map((matchup, index) =>
+      nodeSvg({
+        prediction,
+        matchup,
+        language,
+        cx: xPositions[0],
+        cy: ysByRound[0][index],
+        radius: nodeRadius,
+      }),
+    ),
+    roundTwo.map((matchup, index) =>
+      nodeSvg({
+        prediction,
+        matchup,
+        language,
+        cx: xPositions[1],
+        cy: ysByRound[1][index],
+        radius: nodeRadius,
+      }),
+    ),
+    roundThree.map((matchup, index) =>
+      nodeSvg({
+        prediction,
+        matchup,
+        language,
+        cx: xPositions[2],
+        cy: ysByRound[2][index],
+        radius: nodeRadius,
+      }),
+    ),
+    roundFour.map((matchup, index) =>
+      nodeSvg({
+        prediction,
+        matchup,
+        language,
+        cx: xPositions[3],
+        cy: ysByRound[3][index],
+        radius: nodeRadius,
+      }),
+    ),
+  ].flat();
+
+  return `<g>
+    ${connectorSvg(xPositions[0], ysByRound[0], xPositions[1], ysByRound[1], side)}
+    ${connectorSvg(xPositions[1], ysByRound[1], xPositions[2], ysByRound[2], side)}
+    ${connectorSvg(xPositions[2], ysByRound[2], xPositions[3], ysByRound[3], side)}
+    <path d="M${xPositions[3]} ${ysByRound[3][0]} H${finalEdgeX} V${centerY}" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.82" />
+    ${nodes.join("")}
+  </g>`;
+}
+
+function centerPosterSvg({
+  prediction,
+  language,
+  copy,
+  centerX,
+  centerY,
+  compact,
+}: {
+  prediction: BracketPrediction;
+  language: LanguageCode;
+  copy: PredictionCopy;
+  centerX: number;
+  centerY: number;
+  compact: boolean;
+}) {
   const champion = getChampion(prediction);
+  const finalMatchup = prediction.matchups.find((matchup) => matchup.round === 5);
   const championName = champion
     ? getParticipantName(champion, language)
     : copy.championTbd;
-  const centerX = dimensions.width / 2;
-  const centerY = dimensions.height / 2;
-  const scale = dimensions.height > 1300 ? 1.22 : dimensions.height < 800 ? 0.78 : 1;
-  const trophyHeight = 190 * scale;
-  const trophyTop = centerY - trophyHeight - 38 * scale;
+  const boxWidth = compact ? 170 : 230;
+  const boxHeight = compact ? 72 : 96;
+  const fontScale = compact ? 0.78 : 1;
 
   return `
     <g>
-      <ellipse cx="${centerX}" cy="${trophyTop + trophyHeight + 14 * scale}" rx="${54 * scale}" ry="${15 * scale}" fill="#064e3b" />
-      <path d="M ${centerX - 30 * scale} ${trophyTop + 22 * scale} C ${centerX - 72 * scale} ${trophyTop + 78 * scale}, ${centerX - 42 * scale} ${trophyTop + 132 * scale}, ${centerX - 16 * scale} ${trophyTop + 158 * scale} L ${centerX - 48 * scale} ${trophyTop + trophyHeight} L ${centerX + 48 * scale} ${trophyTop + trophyHeight} L ${centerX + 16 * scale} ${trophyTop + 158 * scale} C ${centerX + 42 * scale} ${trophyTop + 132 * scale}, ${centerX + 72 * scale} ${trophyTop + 78 * scale}, ${centerX + 30 * scale} ${trophyTop + 22 * scale} Z" fill="#d6a536" />
-      <circle cx="${centerX}" cy="${trophyTop + 68 * scale}" r="${48 * scale}" fill="#f4d675" opacity="0.75" />
-      <rect x="${centerX - 58 * scale}" y="${trophyTop + trophyHeight - 22 * scale}" width="${116 * scale}" height="${32 * scale}" rx="${10 * scale}" fill="#14532d" />
-      <text x="${centerX}" y="${centerY + 76 * scale}" text-anchor="middle" font-size="${34 * scale}" fill="#f8fafc" font-weight="900">${escapeXml(copy.champion)}</text>
-      <text x="${centerX}" y="${centerY + 126 * scale}" text-anchor="middle" font-size="${44 * scale}" fill="#facc15" font-weight="900">${escapeXml(championName)}</text>
-      <text x="${centerX}" y="${centerY + 184 * scale}" text-anchor="middle" font-size="${30 * scale}" fill="#ffffff" font-weight="800">${escapeXml(prediction.eventDetails.finalDate || copy.dateTbd)}</text>
-      <text x="${centerX}" y="${centerY + 226 * scale}" text-anchor="middle" font-size="${30 * scale}" fill="#ffffff" font-weight="800">${escapeXml(prediction.eventDetails.finalTime || copy.timeTbd)}</text>
-      <text x="${centerX}" y="${centerY + 270 * scale}" text-anchor="middle" font-size="${25 * scale}" fill="#d4d4d8" font-weight="700">${escapeXml(prediction.eventDetails.stadium || copy.stadiumTbd)}</text>
+      <text x="${centerX}" y="${centerY - boxHeight * 0.92}" text-anchor="middle" font-size="${32 * fontScale}" fill="#ffffff" font-weight="900">${escapeXml(getRoundLabel(5, language))}</text>
+      <rect x="${centerX - boxWidth / 2}" y="${centerY - boxHeight / 2}" width="${boxWidth}" height="${boxHeight}" rx="4" fill="#a1134e" stroke="#ffffff" stroke-width="4" />
+      ${
+        finalMatchup
+          ? nodeSvg({
+              prediction,
+              matchup: finalMatchup,
+              language,
+              cx: centerX,
+              cy: centerY,
+              radius: compact ? 27 : 36,
+            })
+          : ""
+      }
+      <text x="${centerX}" y="${centerY + boxHeight * 0.92}" text-anchor="middle" font-size="${24 * fontScale}" fill="#ffffff" font-weight="900">${escapeXml(copy.champion)}</text>
+      <text x="${centerX}" y="${centerY + boxHeight * 1.32}" text-anchor="middle" font-size="${34 * fontScale}" fill="#facc15" font-weight="900">${escapeXml(championName)}</text>
+      <text x="${centerX}" y="${centerY + boxHeight * 1.78}" text-anchor="middle" font-size="${22 * fontScale}" fill="#ffffff" font-weight="800">${escapeXml(prediction.eventDetails.finalDate || copy.dateTbd)} · ${escapeXml(prediction.eventDetails.finalTime || copy.timeTbd)}</text>
+      <text x="${centerX}" y="${centerY + boxHeight * 2.1}" text-anchor="middle" font-size="${19 * fontScale}" fill="#f8fafc" font-weight="800">${escapeXml(prediction.eventDetails.stadium || copy.stadiumTbd)}</text>
     </g>
   `;
 }
@@ -133,59 +343,98 @@ export function buildPosterSvg(
   copy: PredictionCopy,
 ) {
   const dimensions = getPosterDimensions(format);
-  const firstRound = prediction.matchups.filter((matchup) => matchup.round === 1);
-  const leftMatchups = firstRound.slice(0, 8);
-  const rightMatchups = firstRound.slice(8);
   const compact = dimensions.height < 800;
+  const tall = dimensions.height > 1300;
   const rawTitle = prediction.eventDetails.title || copy.title;
   const titleSize = Math.min(
-    compact ? 38 : dimensions.height > 1300 ? 56 : 46,
+    compact ? 44 : tall ? 66 : 58,
     Math.max(28, Math.floor((dimensions.width * 1.45) / rawTitle.length)),
   );
-  const rowGap = compact ? 58 : dimensions.height > 1300 ? 128 : 99;
-  const top = compact ? 112 : dimensions.height > 1300 ? 240 : 178;
-  const leftX = compact ? 42 : 64;
-  const rightX = dimensions.width - (compact ? 260 : 324);
-
-  const left = leftMatchups
-    .map((matchup, index) =>
-      matchupSvg({
-        prediction,
-        matchup,
-        language,
-        x: leftX,
-        y: top + index * rowGap,
-        align: "left",
-      }),
-    )
-    .join("");
-  const right = rightMatchups
-    .map((matchup, index) =>
-      matchupSvg({
-        prediction,
-        matchup,
-        language,
-        x: rightX,
-        y: top + index * rowGap,
-        align: "right",
-      }),
-    )
-    .join("");
+  const margin = compact ? 46 : 64;
+  const groupWidth = compact ? 178 : tall ? 250 : 220;
+  const top = compact ? 126 : tall ? 250 : 170;
+  const bottom = dimensions.height - (compact ? 66 : tall ? 180 : 88);
+  const groupGap = compact ? 24 : tall ? 50 : 32;
+  const groupHeight = (bottom - top - groupGap * 3) / 4;
+  const firstRoundYs = Array.from({ length: 8 }, (_, index) => {
+    const groupIndex = Math.floor(index / 2);
+    const rowIndex = index % 2;
+    return (
+      top +
+      groupIndex * (groupHeight + groupGap) +
+      groupHeight * (rowIndex === 0 ? 0.34 : 0.72)
+    );
+  });
+  const centerX = dimensions.width / 2;
+  const centerY = (top + bottom) / 2;
+  const nodeRadius = compact ? 24 : tall ? 38 : 30;
+  const leftGroupX = margin;
+  const rightGroupX = dimensions.width - margin - groupWidth;
+  const leftXs = [
+    leftGroupX + groupWidth + (compact ? 54 : 66),
+    leftGroupX + groupWidth + (compact ? 142 : 178),
+    centerX - (compact ? 185 : 230),
+    centerX - (compact ? 104 : 132),
+  ];
+  const rightXs = [
+    rightGroupX - (compact ? 54 : 66),
+    rightGroupX - (compact ? 142 : 178),
+    centerX + (compact ? 185 : 230),
+    centerX + (compact ? 104 : 132),
+  ];
+  const finalBoxWidth = compact ? 170 : 230;
+  const groups = Array.from({ length: 8 }, (_, index) =>
+    groupBoxSvg({
+      prediction,
+      groupIndex: index,
+      x: index % 2 === 0 ? leftGroupX : rightGroupX,
+      y: top + Math.floor(index / 2) * (groupHeight + groupGap),
+      width: groupWidth,
+      height: groupHeight,
+      language,
+    }),
+  ).join("");
+  const leftBracket = sideBracketSvg({
+    prediction,
+    language,
+    side: "left",
+    firstRoundYs,
+    xPositions: leftXs,
+    nodeRadius,
+    finalEdgeX: centerX - finalBoxWidth / 2,
+    centerY,
+  });
+  const rightBracket = sideBracketSvg({
+    prediction,
+    language,
+    side: "right",
+    firstRoundYs,
+    xPositions: rightXs,
+    nodeRadius,
+    finalEdgeX: centerX + finalBoxWidth / 2,
+    centerY,
+  });
 
   return `<?xml version="1.0" encoding="UTF-8"?>
   <svg xmlns="http://www.w3.org/2000/svg" width="${dimensions.width}" height="${dimensions.height}" viewBox="0 0 ${dimensions.width} ${dimensions.height}">
-    <rect width="100%" height="100%" fill="#030712" />
-    <rect x="16" y="16" width="${dimensions.width - 32}" height="${dimensions.height - 32}" rx="28" fill="#050505" stroke="#22c55e" stroke-width="10" />
-    <path d="M0 0 L${dimensions.width * 0.45} 0 L${dimensions.width * 0.52} 80 L0 80Z" fill="#3157ff" />
-    <path d="M${dimensions.width} ${dimensions.height} L${dimensions.width * 0.52} ${dimensions.height} L${dimensions.width * 0.46} ${dimensions.height - 80} L${dimensions.width} ${dimensions.height - 80}Z" fill="#d9ff24" />
-    <text x="${dimensions.width / 2}" y="${compact ? 78 : 110}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="${titleSize}" fill="#ffffff" font-weight="900">${escapeXml(rawTitle)}</text>
-    <text x="${dimensions.width / 2}" y="${compact ? 118 : 150}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="${compact ? 18 : 25}" fill="#d4d4d8" font-weight="700">${escapeXml(getRoundLabel(1, language))} · ${escapeXml(copy.posterFooter)}</text>
-    ${left}
-    ${right}
-    <path d="M${dimensions.width / 2 - 170} ${top + rowGap * 1.5} H${dimensions.width / 2 - 96} V${top + rowGap * 5.8} H${dimensions.width / 2 - 170}" fill="none" stroke="#f8fafc" stroke-width="5" opacity="0.7" />
-    <path d="M${dimensions.width / 2 + 170} ${top + rowGap * 1.5} H${dimensions.width / 2 + 96} V${top + rowGap * 5.8} H${dimensions.width / 2 + 170}" fill="none" stroke="#f8fafc" stroke-width="5" opacity="0.7" />
-    ${centerSvg(prediction, language, copy, dimensions)}
-    <text x="${dimensions.width / 2}" y="${dimensions.height - 48}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="${compact ? 18 : 23}" fill="#a1a1aa" font-weight="700">Hobite Capital · ${escapeXml(copy.posterFooter)}</text>
+    <rect width="100%" height="100%" fill="#9f1748" />
+    <rect x="16" y="16" width="${dimensions.width - 32}" height="${dimensions.height - 32}" rx="18" fill="#a1134e" stroke="#ffffff" stroke-width="0" />
+    <text x="${dimensions.width / 2}" y="${compact ? 76 : tall ? 118 : 98}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="${titleSize}" fill="#ffffff" font-weight="900">${escapeXml(rawTitle)}</text>
+    <line x1="${centerX - 220}" y1="${compact ? 104 : tall ? 154 : 130}" x2="${centerX - 42}" y2="${compact ? 104 : tall ? 154 : 130}" stroke="#ffffff" stroke-width="3" opacity="0.7" />
+    <rect x="${centerX - 12}" y="${(compact ? 104 : tall ? 154 : 130) - 12}" width="24" height="24" transform="rotate(45 ${centerX} ${compact ? 104 : tall ? 154 : 130})" fill="#ffffff" />
+    <line x1="${centerX + 42}" y1="${compact ? 104 : tall ? 154 : 130}" x2="${centerX + 220}" y2="${compact ? 104 : tall ? 154 : 130}" stroke="#ffffff" stroke-width="3" opacity="0.7" />
+    ${groups}
+    ${leftBracket}
+    ${rightBracket}
+    ${centerPosterSvg({
+      prediction,
+      language,
+      copy,
+      centerX,
+      centerY,
+      compact,
+    })}
+    <text x="${dimensions.width / 2}" y="${dimensions.height - (compact ? 26 : 44)}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="${compact ? 16 : 21}" fill="#ffffff" font-weight="800" opacity="0.82">Hobite Capital · ${escapeXml(copy.posterFooter)}</text>
   </svg>`;
 }
 
