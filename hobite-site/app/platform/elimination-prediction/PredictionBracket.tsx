@@ -4,6 +4,7 @@ import {
   getParticipantName,
   getRoundLabel,
 } from "./bracket";
+import { buildFlagSvg } from "./image-export";
 import type { PredictionCopy } from "./i18n";
 import type {
   BracketPrediction,
@@ -50,21 +51,15 @@ function getSideMatchups(
 }
 
 function FlagChip({ participant }: { participant: Participant | undefined }) {
-  const colors = participant?.flagColors ?? ["#e5e7eb", "#f8fafc", "#d1d5db"];
-
   return (
-    <span
+    <svg
       aria-hidden="true"
-      className="grid h-7 w-10 shrink-0 overflow-hidden rounded-full border-2 border-white shadow-sm"
-      style={{ gridTemplateColumns: `repeat(${colors.length}, 1fr)` }}
-    >
-      {colors.map((color, index) => (
-        <span
-          key={`${participant?.id ?? "empty"}-${color}-${index}`}
-          style={{ backgroundColor: color }}
-        />
-      ))}
-    </span>
+      className="h-7 w-12 shrink-0 drop-shadow-sm"
+      dangerouslySetInnerHTML={{
+        __html: buildFlagSvg(participant, 2, 2, 44, 24, 4),
+      }}
+      viewBox="0 0 48 28"
+    />
   );
 }
 
@@ -90,9 +85,9 @@ function TeamButton({
       aria-label={`${copy.selectWinner}: ${name}`}
       className={`flex min-h-11 w-full items-center gap-2 rounded-md border px-2 py-2 text-left text-sm font-semibold transition ${
         selected
-          ? "border-amber-300 bg-amber-50 text-rose-950 shadow-sm"
-          : "border-white/20 bg-white text-rose-950 hover:border-amber-200"
-      } disabled:cursor-not-allowed disabled:bg-white/65 disabled:text-zinc-400`}
+          ? "border-amber-300 bg-amber-50 text-zinc-950 shadow-sm"
+          : "border-white/20 bg-white text-zinc-950 hover:border-amber-200"
+      } disabled:cursor-not-allowed disabled:bg-zinc-200 disabled:text-zinc-500`}
       disabled={disabled}
       onClick={() => {
         if (participant) {
@@ -125,7 +120,7 @@ function MatchupCard({
   const right = getParticipant(prediction, matchup.rightId);
 
   return (
-    <div className="rounded-lg border border-white/20 bg-white/10 p-2 shadow-sm backdrop-blur">
+    <div className="rounded-lg border border-white/20 bg-zinc-950 p-2 shadow-sm">
       <div className="space-y-2">
         <TeamButton
           copy={copy}
@@ -225,7 +220,7 @@ function FinalColumn({
           />
         </div>
       ) : null}
-      <div className="mt-5 w-full rounded-lg border border-amber-300/60 bg-black/25 p-4 text-center text-white shadow-sm">
+      <div className="mt-5 w-full rounded-lg border border-white/25 bg-zinc-950 p-4 text-center text-white shadow-sm">
         <p className="text-xs font-bold uppercase tracking-wide text-white/70">
           {copy.champion}
         </p>
@@ -254,7 +249,12 @@ export function PredictionBracket({
 }: PredictionBracketProps) {
   return (
     <div className="overflow-x-auto pb-3">
-      <div className="min-w-[1500px] rounded-lg bg-[#a1134e] p-4 shadow-sm">
+      <div className="relative min-w-[1500px] overflow-hidden rounded-[18px] bg-black p-5 shadow-sm">
+        <div className="absolute left-0 top-0 h-24 w-[46%] bg-[#3157ff]" />
+        <div className="absolute right-0 top-0 h-24 w-[54%] bg-[#22c55e]" />
+        <div className="absolute bottom-0 left-0 h-24 w-[48%] bg-[#e9ff25]" />
+        <div className="absolute bottom-0 right-0 h-[46%] w-16 bg-[#ff3b1f]" />
+        <div className="relative rounded-[18px] bg-black p-4">
         <div className="mb-5 text-center">
           <h2 className="text-3xl font-black text-white">
             {prediction.eventDetails.title || copy.title}
@@ -290,6 +290,7 @@ export function PredictionBracket({
               side="right"
             />
           ))}
+        </div>
         </div>
       </div>
     </div>
