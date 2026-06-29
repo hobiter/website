@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef } from "react";
 import {
   getChampion,
   getParticipant,
@@ -247,9 +250,82 @@ export function PredictionBracket({
   copy,
   onSelectWinner,
 }: PredictionBracketProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollToPosition = (position: "left" | "center" | "right") => {
+    const container = scrollRef.current;
+
+    if (!container) {
+      return;
+    }
+
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    const target =
+      position === "left" ? 0 : position === "center" ? maxScroll / 2 : maxScroll;
+
+    container.scrollTo({ left: target, behavior: "smooth" });
+  };
+
+  const scrollByPage = (direction: -1 | 1) => {
+    const container = scrollRef.current;
+
+    if (!container) {
+      return;
+    }
+
+    container.scrollBy({
+      left: direction * Math.max(320, container.clientWidth * 0.72),
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <div className="overflow-x-auto pb-3">
-      <div className="relative min-w-[1500px] overflow-hidden rounded-[18px] bg-black p-5 shadow-sm">
+    <div>
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-zinc-200 bg-zinc-50 p-2">
+        <div className="flex items-center gap-2">
+          <button
+            aria-label="Scroll bracket left"
+            className="h-9 min-w-9 rounded-md border border-zinc-300 bg-white px-3 text-sm font-black text-zinc-900 hover:border-zinc-500"
+            onClick={() => scrollByPage(-1)}
+            type="button"
+          >
+            {"<"}
+          </button>
+          <button
+            aria-label="Scroll bracket right"
+            className="h-9 min-w-9 rounded-md border border-zinc-300 bg-white px-3 text-sm font-black text-zinc-900 hover:border-zinc-500"
+            onClick={() => scrollByPage(1)}
+            type="button"
+          >
+            {">"}
+          </button>
+        </div>
+        <div className="grid grid-cols-3 gap-2">
+          <button
+            className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-xs font-bold text-zinc-800 hover:border-zinc-500"
+            onClick={() => scrollToPosition("left")}
+            type="button"
+          >
+            Left
+          </button>
+          <button
+            className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-xs font-bold text-zinc-800 hover:border-zinc-500"
+            onClick={() => scrollToPosition("center")}
+            type="button"
+          >
+            Final
+          </button>
+          <button
+            className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-xs font-bold text-zinc-800 hover:border-zinc-500"
+            onClick={() => scrollToPosition("right")}
+            type="button"
+          >
+            Right
+          </button>
+        </div>
+      </div>
+    <div className="overflow-x-auto pb-3" ref={scrollRef}>
+      <div className="relative min-w-[2050px] overflow-hidden rounded-[18px] bg-black p-5 shadow-sm">
         <div className="absolute left-0 top-0 h-24 w-[46%] bg-[#3157ff]" />
         <div className="absolute right-0 top-0 h-24 w-[54%] bg-[#22c55e]" />
         <div className="absolute bottom-0 left-0 h-24 w-[48%] bg-[#e9ff25]" />
@@ -293,6 +369,7 @@ export function PredictionBracket({
         </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

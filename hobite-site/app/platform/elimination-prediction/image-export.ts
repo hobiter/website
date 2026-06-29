@@ -454,91 +454,138 @@ export function buildPosterSvg(
   copy: PredictionCopy,
 ) {
   const dimensions = getPosterDimensions(format);
-  const compact = dimensions.height < 800;
-  const tall = dimensions.height > 1300;
   const rawTitle = prediction.eventDetails.title || copy.title;
+  const boardWidth = 2050;
+  const boardHeight = 1030;
+  const scale = Math.min(
+    (dimensions.width - 36) / boardWidth,
+    (dimensions.height - 32) / boardHeight,
+  );
+  const offsetX = (dimensions.width - boardWidth * scale) / 2;
+  const offsetY = (dimensions.height - boardHeight * scale) / 2;
+  const columnWidths = [250, 215, 185, 160, 230, 160, 185, 215, 250];
+  const columnGap = 12;
+  const columnXs = columnWidths.reduce<number[]>((positions, width, index) => {
+    if (index === 0) {
+      return [0];
+    }
+
+    return [
+      ...positions,
+      positions[index - 1] + columnWidths[index - 1] + columnGap,
+    ];
+  }, []);
+  const gridWidth =
+    columnWidths.reduce((total, width) => total + width, 0) +
+    columnGap * (columnWidths.length - 1);
+  const gridX = (boardWidth - gridWidth) / 2;
+  const gridY = 120;
   const titleSize = Math.min(
-    compact ? 58 : tall ? 76 : 68,
-    Math.max(28, Math.floor((dimensions.width * 1.45) / rawTitle.length)),
+    54,
+    Math.max(28, Math.floor((boardWidth * 1.25) / rawTitle.length)),
   );
-  const firstRound = prediction.matchups.filter(
-    (matchup) => matchup.round === 1,
-  );
-  const leftMatchups = firstRound.slice(0, 8);
-  const rightMatchups = firstRound.slice(8);
-  const titleY = compact ? 82 : tall ? 126 : 112;
-  const top = compact ? 142 : tall ? 278 : 190;
-  const bottom = dimensions.height - (compact ? 74 : tall ? 210 : 82);
-  const rowGap = (bottom - top) / 7;
-  const pairY = (index: number) => top + index * rowGap - (compact ? 25 : 31);
-  const firstRoundYs = Array.from({ length: 8 }, (_, index) => {
-    return top + index * rowGap;
-  });
-  const centerX = dimensions.width / 2;
-  const centerY = (top + bottom) / 2;
-  const nodeRadius = compact ? 19 : tall ? 30 : 24;
-  const pairWidth = compact ? 220 : tall ? 300 : 274;
-  const leftPairX = compact ? 68 : tall ? 78 : 70;
-  const rightPairX = dimensions.width - leftPairX - pairWidth;
-  const leftXs = [
-    leftPairX + pairWidth + (compact ? 34 : 42),
-    leftPairX + pairWidth + (compact ? 86 : 110),
-    centerX - (compact ? 166 : 206),
-    centerX - (compact ? 96 : 126),
-  ];
-  const rightXs = [
-    rightPairX - (compact ? 34 : 42),
-    rightPairX - (compact ? 86 : 110),
-    centerX + (compact ? 166 : 206),
-    centerX + (compact ? 96 : 126),
-  ];
-  const finalBoxWidth = compact ? 170 : 230;
-  const leftPairs = leftMatchups
-    .map((matchup, index) =>
-      matchupPairSvg({
-        prediction,
-        matchup,
-        language,
-        x: leftPairX,
-        y: pairY(index),
-        side: "left",
-        compact,
-      }),
-    )
-    .join("");
-  const rightPairs = rightMatchups
-    .map((matchup, index) =>
-      matchupPairSvg({
-        prediction,
-        matchup,
-        language,
-        x: rightPairX,
-        y: pairY(index),
-        side: "right",
-        compact,
-      }),
-    )
-    .join("");
-  const leftBracket = sideBracketSvg({
-    prediction,
-    language,
-    side: "left",
-    firstRoundYs,
-    xPositions: leftXs,
-    nodeRadius,
-    finalEdgeX: centerX - finalBoxWidth / 2,
-    centerY,
-  });
-  const rightBracket = sideBracketSvg({
-    prediction,
-    language,
-    side: "right",
-    firstRoundYs,
-    xPositions: rightXs,
-    nodeRadius,
-    finalEdgeX: centerX + finalBoxWidth / 2,
-    centerY,
-  });
+  const cardHeight = 94;
+  const rowHeight = 36;
+  const roundLayout: Record<number, { gap: number; paddingTop: number }> = {
+    1: { gap: 10, paddingTop: 0 },
+    2: { gap: 54, paddingTop: 44 },
+    3: { gap: 142, paddingTop: 130 },
+    4: { gap: 0, paddingTop: 304 },
+  };
+
+  const posterTeamRow = (
+    participantId: string | undefined,
+    selected: boolean,
+    x: number,
+    y: number,
+    width: number,
+  ) => {
+    const participant = getParticipant(prediction, participantId);
+    const name = participant ? getParticipantName(participant, language) : "TBD";
+
+    return `<g>
+      <rect x="${x}" y="${y}" width="${width}" height="${rowHeight}" rx="7" fill="${selected ? "#fef3c7" : participant ? "#ffffff" : "#e5e7eb"}" stroke="${selected ? "#facc15" : "#ffffff"}" stroke-width="2" />
+      ${buildFlagSvg(participant, x + 8, y + 6, 42, 24, 4)}
+      <text x="${x + 58}" y="${y + 23}" font-size="18" fill="#111827" font-weight="900">${escapeXml(name)}</text>
+      ${selected ? `<text x="${x + width - 14}" y="${y + 23}" text-anchor="end" font-size="13" fill="#92400e" font-weight="900">WIN</text>` : ""}
+    </g>`;
+  };
+
+  const posterMatchupCard = (
+    matchup: Matchup,
+    x: number,
+    y: number,
+    width: number,
+  ) => {
+    const leftSelected = matchup.winnerId === matchup.leftId;
+    const rightSelected = matchup.winnerId === matchup.rightId;
+
+    return `<g>
+      <rect x="${x}" y="${y}" width="${width}" height="${cardHeight}" rx="10" fill="#050505" stroke="#ffffff" stroke-opacity="0.24" stroke-width="2" />
+      ${posterTeamRow(matchup.leftId, Boolean(leftSelected), x + 8, y + 8, width - 16)}
+      ${posterTeamRow(matchup.rightId, Boolean(rightSelected), x + 8, y + 50, width - 16)}
+    </g>`;
+  };
+
+  const roundColumn = (
+    round: number,
+    side: "left" | "right",
+    columnIndex: number,
+  ) => {
+    const matchups = getSideMatchups(prediction, round, side);
+    const layout = roundLayout[round];
+    const x = gridX + columnXs[columnIndex];
+    const width = columnWidths[columnIndex];
+    const heading = getRoundLabel(round, language);
+    const cards = matchups
+      .map((matchup, index) =>
+        posterMatchupCard(
+          matchup,
+          x,
+          gridY + 34 + layout.paddingTop + index * (cardHeight + layout.gap),
+          width,
+        ),
+      )
+      .join("");
+
+    return `<g>
+      <text x="${x + width / 2}" y="${gridY + 18}" text-anchor="middle" font-size="16" fill="#ffffff" opacity="0.82" font-weight="900">${escapeXml(heading)}</text>
+      ${cards}
+    </g>`;
+  };
+
+  const finalMatchup = prediction.matchups.find((matchup) => matchup.round === 5);
+  const champion = getChampion(prediction);
+  const championName = champion
+    ? getParticipantName(champion, language)
+    : copy.championTbd;
+  const finalX = gridX + columnXs[4];
+  const finalWidth = columnWidths[4];
+  const finalY = gridY + 238;
+  const finalCard = finalMatchup
+    ? posterMatchupCard(finalMatchup, finalX, finalY, finalWidth)
+    : "";
+  const finalColumn = `<g>
+    <text x="${finalX + finalWidth / 2}" y="${gridY + 248}" text-anchor="middle" font-size="28" fill="#ffffff" font-weight="900">${escapeXml(getRoundLabel(5, language))}</text>
+    ${finalCard}
+    <rect x="${finalX}" y="${finalY + cardHeight + 26}" width="${finalWidth}" height="154" rx="10" fill="#050505" stroke="#ffffff" stroke-opacity="0.28" stroke-width="2" />
+    <text x="${finalX + finalWidth / 2}" y="${finalY + cardHeight + 61}" text-anchor="middle" font-size="17" fill="#ffffff" opacity="0.76" font-weight="900">${escapeXml(copy.champion)}</text>
+    <text x="${finalX + finalWidth / 2}" y="${finalY + cardHeight + 101}" text-anchor="middle" font-size="30" fill="#facc15" font-weight="900">${escapeXml(championName)}</text>
+    <text x="${finalX + finalWidth / 2}" y="${finalY + cardHeight + 130}" text-anchor="middle" font-size="17" fill="#ffffff" font-weight="800">${escapeXml(prediction.eventDetails.finalDate || copy.dateTbd)} · ${escapeXml(prediction.eventDetails.finalTime || copy.timeTbd)}</text>
+    <text x="${finalX + finalWidth / 2}" y="${finalY + cardHeight + 154}" text-anchor="middle" font-size="15" fill="#ffffff" opacity="0.84" font-weight="800">${escapeXml(prediction.eventDetails.stadium || copy.stadiumTbd)}</text>
+  </g>`;
+
+  const boardContent = [
+    roundColumn(1, "left", 0),
+    roundColumn(2, "left", 1),
+    roundColumn(3, "left", 2),
+    roundColumn(4, "left", 3),
+    finalColumn,
+    roundColumn(4, "right", 5),
+    roundColumn(3, "right", 6),
+    roundColumn(2, "right", 7),
+    roundColumn(1, "right", 8),
+  ].join("");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
   <svg xmlns="http://www.w3.org/2000/svg" width="${dimensions.width}" height="${dimensions.height}" viewBox="0 0 ${dimensions.width} ${dimensions.height}">
@@ -546,21 +593,13 @@ export function buildPosterSvg(
     <path d="M${dimensions.width * 0.45} 0 H${dimensions.width} V${dimensions.height * 0.16} H${dimensions.width * 0.52} Z" fill="#22c55e" />
     <path d="M${dimensions.width} ${dimensions.height * 0.16} H${dimensions.width} V${dimensions.height * 0.53} H${dimensions.width - 18} V${dimensions.height * 0.16} Z" fill="#ff3b1f" />
     <path d="M0 ${dimensions.height * 0.66} H${18} V${dimensions.height} H${dimensions.width * 0.5} L${dimensions.width * 0.45} ${dimensions.height * 0.93} H0 Z" fill="#e9ff25" />
-    <rect x="20" y="18" width="${dimensions.width - 40}" height="${dimensions.height - 36}" rx="${compact ? 24 : 32}" fill="#050505" />
-    <text x="${dimensions.width / 2}" y="${titleY}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="${titleSize}" fill="#ffffff" font-weight="900">${escapeXml(rawTitle)}</text>
-    ${leftPairs}
-    ${rightPairs}
-    ${leftBracket}
-    ${rightBracket}
-    ${centerPosterSvg({
-      prediction,
-      language,
-      copy,
-      centerX,
-      centerY,
-      compact,
-    })}
-    <text x="${dimensions.width / 2}" y="${dimensions.height - (compact ? 26 : 44)}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="${compact ? 15 : 20}" fill="#ffffff" font-weight="800" opacity="0.82">Hobite Capital · ${escapeXml(copy.posterFooter)}</text>
+    <g transform="translate(${offsetX} ${offsetY}) scale(${scale})">
+      <rect x="0" y="0" width="${boardWidth}" height="${boardHeight}" rx="28" fill="#050505" />
+      <text x="${boardWidth / 2}" y="76" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="${titleSize}" fill="#ffffff" font-weight="900">${escapeXml(rawTitle)}</text>
+      <line x1="${boardWidth / 2 - 220}" y1="104" x2="${boardWidth / 2 + 220}" y2="104" stroke="#ffffff" stroke-width="3" opacity="0.55" />
+      ${boardContent}
+      <text x="${boardWidth / 2}" y="${boardHeight - 34}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#ffffff" font-weight="800" opacity="0.82">Hobite Capital · ${escapeXml(copy.posterFooter)}</text>
+    </g>
   </svg>`;
 }
 
