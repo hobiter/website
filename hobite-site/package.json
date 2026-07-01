@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "research:nflx:data": "node scripts/update-netflix-sec-data.mjs",
     "lint": "eslint"
   },
   "dependencies": {

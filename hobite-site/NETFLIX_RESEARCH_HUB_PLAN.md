@@ -209,6 +209,16 @@ Target: 110 charts minimum.
 
 ## Current Status
 
-- Phase 1 started.
+- Phase 1 complete.
+- Phase 2 started.
+- Phase 3 started.
 - Route shell and typed manifest have been created.
-- The next session should begin with the SEC filing inventory and annual financial database extraction.
+- SEC filing inventory has been generated from Netflix CIK `0001065280`.
+- Current core filing inventory: 7 registration statement filings, 26 annual filings, and 74 quarterly filings.
+- Latest annual filing in the inventory: Form 10-K for fiscal year ended December 31, 2025, filed January 23, 2026.
+- Latest quarterly filing in the inventory: Form 10-Q for quarter ended March 31, 2026, filed April 17, 2026.
+- Draft annual financial database has been generated from SEC company facts.
+- XBRL-backed annual financial coverage is currently FY2009-FY2025.
+- FY2002-FY2008 require manual 10-K table extraction because full-year duration facts are incomplete in the SEC company facts endpoint.
+- Regeneration script added: `npm run research:nflx:data`.
+- The next implementation step is manual FY2002-FY2008 annual financial reconciliation and then quarterly financial database extraction.
