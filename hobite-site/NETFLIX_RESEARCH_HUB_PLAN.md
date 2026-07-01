@@ -218,7 +218,10 @@ Target: 110 charts minimum.
 - Latest annual filing in the inventory: Form 10-K for fiscal year ended December 31, 2025, filed January 23, 2026.
 - Latest quarterly filing in the inventory: Form 10-Q for quarter ended March 31, 2026, filed April 17, 2026.
 - Draft annual financial database has been generated from SEC company facts.
-- XBRL-backed annual financial coverage is currently FY2009-FY2025.
-- FY2002-FY2008 require manual 10-K table extraction because full-year duration facts are incomplete in the SEC company facts endpoint.
+- Annual financial database now covers FY2002-FY2025.
+- FY2002-FY2008 are manually extracted from audited 10-K statement tables because full-year duration facts are incomplete in the SEC company facts endpoint.
+- FY2009-FY2025 are generated from SEC XBRL company facts.
+- Quarterly financial database now covers 2009 Q1 through 2026 Q1, with 69 rows.
+- Q4 quarterly flow metrics are derived from annual full-year facts less Q1-Q3 quarterly frames; Q4 diluted EPS remains null until weighted-share reconciliation.
 - Regeneration script added: `npm run research:nflx:data`.
-- The next implementation step is manual FY2002-FY2008 annual financial reconciliation and then quarterly financial database extraction.
+- The next implementation step is subscriber and ARPU database extraction from Netflix shareholder letters and operating disclosures.

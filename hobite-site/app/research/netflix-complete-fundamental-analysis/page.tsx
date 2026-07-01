@@ -21,6 +21,13 @@ import {
   NFLX_RESEARCH_SECTIONS,
   NFLX_SOURCE_SYSTEMS,
 } from "./researchPlan";
+import {
+  NETFLIX_LATEST_QUARTERLY_FINANCIAL,
+  NETFLIX_QUARTERLY_FINANCIALS,
+  NETFLIX_QUARTERLY_FINANCIALS_COVERAGE,
+  NETFLIX_QUARTERLY_FINANCIALS_SOURCE_NOTE,
+  type NetflixQuarterlyFinancial,
+} from "./quarterlyFinancials";
 
 export const metadata: Metadata = {
   title: "Netflix (NFLX) Complete Fundamental Research Hub",
@@ -174,11 +181,57 @@ function AnnualFinancialTable({ rows }: { rows: NetflixAnnualFinancial[] }) {
   );
 }
 
+function QuarterlyFinancialTable({ rows }: { rows: NetflixQuarterlyFinancial[] }) {
+  return (
+    <div className="overflow-x-auto">
+      <table className="min-w-full text-sm">
+        <thead>
+          <tr className="border-b border-zinc-200 text-left text-zinc-500">
+            <th className="py-2 pr-4 font-medium">Period</th>
+            <th className="py-2 pr-4 font-medium">Revenue</th>
+            <th className="py-2 pr-4 font-medium">Op. Income</th>
+            <th className="py-2 pr-4 font-medium">Op. Margin</th>
+            <th className="py-2 pr-4 font-medium">Net Income</th>
+            <th className="py-2 pr-4 font-medium">Diluted EPS</th>
+            <th className="py-2 pr-4 font-medium">OCF</th>
+            <th className="py-2 pr-4 font-medium">FCF</th>
+            <th className="py-2 pr-4 font-medium">Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.period} className="border-b border-zinc-100">
+              <td className="py-2 pr-4 font-medium text-zinc-950">{row.period}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.revenue)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.operatingIncome)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatPercent(row.operatingMargin)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.netIncome)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatEps(row.dilutedEps)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.operatingCashFlow)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.freeCashFlow)}</td>
+              <td className="py-2 pr-4">
+                {row.filingUrl ? (
+                  <a href={row.filingUrl} className="text-zinc-800 underline" rel="noreferrer" target="_blank">
+                    {row.fiscalQuarter === 4 ? "10-K" : "10-Q"}
+                  </a>
+                ) : (
+                  <span className="text-zinc-500">{row.source}</span>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 export default function NetflixCompleteFundamentalAnalysisPage() {
   const chartTarget = NFLX_CHART_GROUPS.reduce((sum, group) => sum + group.targetCount, 0);
   const recentQuarterlyFilings = [...NETFLIX_QUARTERLY_FILINGS].slice(-12).reverse();
   const annualFinancialRowsWithRevenue = NETFLIX_ANNUAL_FINANCIALS.filter((row) => row.revenue != null);
   const latestAnnualFinancialRows = [...annualFinancialRowsWithRevenue].reverse();
+  const latestQuarterlyFinancialRows = [...NETFLIX_QUARTERLY_FINANCIALS].slice(-16).reverse();
 
   return (
     <main className="min-h-screen bg-zinc-50 px-6 py-10 text-zinc-900">
@@ -230,8 +283,8 @@ export default function NetflixCompleteFundamentalAnalysisPage() {
           />
           <MetricCard
             label="Quarterlies"
-            value={`${NETFLIX_QUARTERLY_FILINGS.length}`}
-            note={`Latest quarterly filing: ${NETFLIX_LATEST_QUARTERLY_FILING.reportDate}, filed ${NETFLIX_LATEST_QUARTERLY_FILING.filingDate}.`}
+            value={`${NETFLIX_QUARTERLY_FINANCIALS.length} rows`}
+            note={`Latest financial row: ${NETFLIX_LATEST_QUARTERLY_FINANCIAL.period}; latest filing: ${NETFLIX_LATEST_QUARTERLY_FILING.reportDate}.`}
           />
           <MetricCard
             label="2025 Revenue"
@@ -264,9 +317,9 @@ export default function NetflixCompleteFundamentalAnalysisPage() {
                 </p>
               </div>
               <div className="rounded-lg bg-zinc-100 p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Manual years</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Manual rows</p>
                 <p className="mt-2 text-xl font-semibold">
-                  {NETFLIX_ANNUAL_FINANCIALS_COVERAGE.manualReconciliationNeededFiscalYears.length}
+                  {NETFLIX_ANNUAL_FINANCIALS_COVERAGE.manualStatementExtractionFiscalYears.length}
                 </p>
               </div>
               <div className="rounded-lg bg-zinc-100 p-4">
@@ -279,6 +332,33 @@ export default function NetflixCompleteFundamentalAnalysisPage() {
               </div>
             </div>
             <AnnualFinancialTable rows={latestAnnualFinancialRows} />
+          </div>
+        </SectionCard>
+
+        <SectionCard title="Quarterly Financial Database">
+          <div className="space-y-5">
+            <p className="max-w-5xl leading-7 text-zinc-650">{NETFLIX_QUARTERLY_FINANCIALS_SOURCE_NOTE}</p>
+            <div className="grid gap-3 md:grid-cols-4">
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Coverage</p>
+                <p className="mt-2 text-xl font-semibold">
+                  {NETFLIX_QUARTERLY_FINANCIALS_COVERAGE.fromPeriod} - {NETFLIX_QUARTERLY_FINANCIALS_COVERAGE.throughPeriod}
+                </p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Rows</p>
+                <p className="mt-2 text-xl font-semibold">{NETFLIX_QUARTERLY_FINANCIALS.length}</p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Latest revenue</p>
+                <p className="mt-2 text-xl font-semibold">{formatUsdBillions(NETFLIX_LATEST_QUARTERLY_FINANCIAL.revenue)}</p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Latest FCF</p>
+                <p className="mt-2 text-xl font-semibold">{formatUsdBillions(NETFLIX_LATEST_QUARTERLY_FINANCIAL.freeCashFlow)}</p>
+              </div>
+            </div>
+            <QuarterlyFinancialTable rows={latestQuarterlyFinancialRows} />
           </div>
         </SectionCard>
 
