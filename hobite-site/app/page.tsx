@@ -1,5 +1,10 @@
 const POSTS = [
   {
+    title: "Netflix (NFLX) Complete Fundamental Research Hub",
+    href: "/research/netflix-complete-fundamental-analysis",
+    description: "SEC-backed financial history, subscriber analysis, content economics, valuation, forecast, and DCF project hub.",
+  },
+  {
     title: "Reddit (RDDT) Deep Fundamental Analysis",
     href: "/research/rddt-deep-fundamental-analysis",
     description: "AI search, community economics, EBITDA expansion, and long-term valuation framework.",
