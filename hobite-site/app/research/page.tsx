@@ -7,6 +7,11 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "Netflix (NFLX) Complete Fundamental Research Hub",
+    description: "SEC-backed financial history, subscriber analysis, content economics, valuation, forecast, and DCF project hub.",
+    href: "/research/netflix-complete-fundamental-analysis",
+  },
+  {
     title: "AI Era Long-Term Investing Framework",
     description: "Workflow, data, infrastructure, and AI platform investing framework.",
     href: "/research/ai-era-investing-framework",
