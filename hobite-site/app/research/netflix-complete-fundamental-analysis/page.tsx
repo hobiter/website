@@ -22,12 +22,20 @@ import {
   NFLX_SOURCE_SYSTEMS,
 } from "./researchPlan";
 import {
+  NETFLIX_DCF_ASSUMPTIONS,
+  NETFLIX_DCF_CASES,
+  NETFLIX_FORECASTS,
+  NETFLIX_FORECAST_SOURCE_NOTE,
+  type ForecastRow,
+} from "./forecastModel";
+import {
   NETFLIX_LATEST_QUARTERLY_FINANCIAL,
   NETFLIX_QUARTERLY_FINANCIALS,
   NETFLIX_QUARTERLY_FINANCIALS_COVERAGE,
   NETFLIX_QUARTERLY_FINANCIALS_SOURCE_NOTE,
   type NetflixQuarterlyFinancial,
 } from "./quarterlyFinancials";
+import { NETFLIX_REPORT_SECTIONS } from "./reportContent";
 
 export const metadata: Metadata = {
   title: "Netflix (NFLX) Complete Fundamental Research Hub",
@@ -226,6 +234,91 @@ function QuarterlyFinancialTable({ rows }: { rows: NetflixQuarterlyFinancial[] }
   );
 }
 
+function MiniBarChart({
+  title,
+  rows,
+  value,
+  formatter,
+}: {
+  title: string;
+  rows: NetflixAnnualFinancial[];
+  value: (row: NetflixAnnualFinancial) => number | null;
+  formatter: (value: number | null) => string;
+}) {
+  const values = rows.map(value).filter((item): item is number => item != null);
+  const max = Math.max(...values.map((item) => Math.abs(item)), 1);
+
+  return (
+    <section className="rounded-lg border border-zinc-200 bg-white p-5 shadow-sm">
+      <h3 className="text-lg font-semibold text-zinc-950">{title}</h3>
+      <div className="mt-5 flex h-56 items-end gap-2 overflow-x-auto">
+        {rows.map((row) => {
+          const rowValue = value(row);
+          const height = rowValue == null ? 0 : Math.max(8, (Math.abs(rowValue) / max) * 180);
+
+          return (
+            <div key={row.fiscalYear} className="flex min-w-10 flex-col items-center gap-2">
+              <div
+                className={`w-7 rounded-t ${rowValue != null && rowValue < 0 ? "bg-red-500" : "bg-zinc-900"}`}
+                style={{ height }}
+                title={`${row.fiscalYear}: ${formatter(rowValue)}`}
+              />
+              <span className="text-[10px] text-zinc-500">{String(row.fiscalYear).slice(2)}</span>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function ForecastTable({ rows }: { rows: ForecastRow[] }) {
+  return (
+    <div className="overflow-x-auto">
+      <table className="min-w-full text-sm">
+        <thead>
+          <tr className="border-b border-zinc-200 text-left text-zinc-500">
+            <th className="py-2 pr-4 font-medium">Year</th>
+            <th className="py-2 pr-4 font-medium">Revenue</th>
+            <th className="py-2 pr-4 font-medium">Growth</th>
+            <th className="py-2 pr-4 font-medium">FCF</th>
+            <th className="py-2 pr-4 font-medium">FCF Margin</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.year} className="border-b border-zinc-100">
+              <td className="py-2 pr-4 font-medium text-zinc-950">{row.year}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.revenue)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatPercent(row.revenueGrowth)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.freeCashFlow)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatPercent(row.freeCashFlowMargin)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function ReportSectionList() {
+  return (
+    <div className="grid gap-4 lg:grid-cols-2">
+      {NETFLIX_REPORT_SECTIONS.map((section) => (
+        <article key={section.title} className="rounded-lg border border-zinc-200 bg-white p-6 shadow-sm">
+          <h3 className="text-xl font-semibold text-zinc-950">{section.title}</h3>
+          <p className="mt-3 leading-7 text-zinc-700">{section.thesis}</p>
+          <ul className="mt-4 space-y-2 text-sm leading-6 text-zinc-650">
+            {section.bullets.map((bullet) => (
+              <li key={bullet}>{bullet}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 export default function NetflixCompleteFundamentalAnalysisPage() {
   const chartTarget = NFLX_CHART_GROUPS.reduce((sum, group) => sum + group.targetCount, 0);
   const recentQuarterlyFilings = [...NETFLIX_QUARTERLY_FILINGS].slice(-12).reverse();
@@ -292,6 +385,94 @@ export default function NetflixCompleteFundamentalAnalysisPage() {
             note={`SEC XBRL draft database now covers FY${NETFLIX_ANNUAL_FINANCIALS_COVERAGE.xbrlCompleteFromFiscalYear}-FY${NETFLIX_ANNUAL_FINANCIALS_COVERAGE.xbrlCompleteThroughFiscalYear}.`}
           />
         </div>
+
+        <SectionCard title="Finished Investment Report">
+          <div className="space-y-6">
+            <div className="rounded-lg bg-zinc-950 p-6 text-white">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400">Hobite conclusion</p>
+              <h2 className="mt-3 text-3xl font-semibold">Quality compounder, valuation-sensitive</h2>
+              <p className="mt-4 max-w-5xl leading-8 text-zinc-200">
+                Netflix has evolved from a domestic DVD subscription company into a global entertainment platform with
+                scale economics, strong operating leverage, and growing free cash flow. The base case is attractive when
+                purchased at a disciplined valuation; the bear case is multiple compression if content ROI, advertising,
+                or pricing power disappoints.
+              </p>
+            </div>
+
+            <ReportSectionList />
+          </div>
+        </SectionCard>
+
+        <div className="grid gap-5 lg:grid-cols-3">
+          <MiniBarChart
+            title="Annual Revenue"
+            rows={annualFinancialRowsWithRevenue}
+            value={(row) => row.revenue}
+            formatter={formatUsdBillions}
+          />
+          <MiniBarChart
+            title="Operating Income"
+            rows={annualFinancialRowsWithRevenue}
+            value={(row) => row.operatingIncome}
+            formatter={formatUsdBillions}
+          />
+          <MiniBarChart
+            title="Free Cash Flow"
+            rows={annualFinancialRowsWithRevenue}
+            value={(row) => row.freeCashFlow}
+            formatter={formatUsdBillions}
+          />
+        </div>
+
+        <SectionCard title="Forecast and DCF">
+          <div className="space-y-6">
+            <p className="max-w-5xl leading-7 text-zinc-650">{NETFLIX_FORECAST_SOURCE_NOTE}</p>
+            <div className="grid gap-4 lg:grid-cols-3">
+              {(["bear", "base", "bull"] as const).map((scenario) => (
+                <article key={scenario} className="rounded-lg border border-zinc-200 p-5">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">{scenario}</p>
+                      <h3 className="mt-2 text-xl font-semibold text-zinc-950">
+                        {formatUsdBillions(NETFLIX_FORECASTS[scenario][NETFLIX_FORECASTS[scenario].length - 1].revenue)} 2035 revenue
+                      </h3>
+                    </div>
+                    <span className="rounded-md bg-zinc-900 px-2 py-1 text-xs font-semibold text-white">
+                      {formatEps(NETFLIX_DCF_CASES[scenario].valuePerShare)}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-zinc-650">
+                    DCF uses a {formatPercent(NETFLIX_DCF_CASES[scenario].discountRate)} discount rate and{" "}
+                    {formatPercent(NETFLIX_DCF_CASES[scenario].terminalGrowth)} terminal growth.
+                  </p>
+                  <div className="mt-4">
+                    <ForecastTable rows={NETFLIX_FORECASTS[scenario]} />
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-4">
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Base EV</p>
+                <p className="mt-2 text-xl font-semibold">{formatUsdBillions(NETFLIX_DCF_CASES.base.enterpriseValue)}</p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Base equity value</p>
+                <p className="mt-2 text-xl font-semibold">{formatUsdBillions(NETFLIX_DCF_CASES.base.equityValue)}</p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Net debt</p>
+                <p className="mt-2 text-xl font-semibold">{formatUsdBillions(NETFLIX_DCF_ASSUMPTIONS.netDebt)}</p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Share basis</p>
+                <p className="mt-2 text-xl font-semibold">{formatMillions(NETFLIX_DCF_ASSUMPTIONS.dilutedShares)}</p>
+              </div>
+            </div>
+            <p className="text-sm leading-6 text-zinc-600">{NETFLIX_DCF_ASSUMPTIONS.note}</p>
+          </div>
+        </SectionCard>
 
         <SectionCard title="Build Roadmap">
           <div className="grid gap-3 md:grid-cols-3">

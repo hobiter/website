@@ -212,6 +212,7 @@ Target: 110 charts minimum.
 - Phase 1 complete.
 - Phase 2 started.
 - Phase 3 started.
+- Finished draft report page has been implemented.
 - Route shell and typed manifest have been created.
 - SEC filing inventory has been generated from Netflix CIK `0001065280`.
 - Current core filing inventory: 7 registration statement filings, 26 annual filings, and 74 quarterly filings.
@@ -223,5 +224,7 @@ Target: 110 charts minimum.
 - FY2009-FY2025 are generated from SEC XBRL company facts.
 - Quarterly financial database now covers 2009 Q1 through 2026 Q1, with 69 rows.
 - Q4 quarterly flow metrics are derived from annual full-year facts less Q1-Q3 quarterly frames; Q4 diluted EPS remains null until weighted-share reconciliation.
+- Forecast and DCF model have been added with bear, base, and bull scenarios through 2035.
+- Long-form report sections now cover executive summary, company history, business model, financial quality, subscribers, content economics, balance sheet, AI, advertising, live events, gaming, competition, management, risks, and investment conclusion.
 - Regeneration script added: `npm run research:nflx:data`.
-- The next implementation step is subscriber and ARPU database extraction from Netflix shareholder letters and operating disclosures.
+- Remaining deepening work: subscriber and ARPU database extraction, content-asset/amortization database, historical valuation market data, more charts, and second-pass citation audit.
