@@ -26,6 +26,36 @@ async function fetchJson(url) {
   return response.json();
 }
 
+async function fetchText(url) {
+  const response = await fetch(url, {
+    headers: {
+      Accept: "text/html,text/plain",
+      "User-Agent": USER_AGENT,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+  }
+
+  return response.text();
+}
+
+function htmlToText(html) {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;|&#160;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&#146;|&rsquo;/g, "'")
+    .replace(/&#147;|&#148;|&ldquo;|&rdquo;/g, "\"")
+    .replace(/&#8217;/g, "'")
+    .replace(/&#8220;|&#8221;/g, "\"")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function rowsFromSubmissionTable(table) {
   return table.accessionNumber.map((accessionNumber, index) => ({
     accessionNumber,
@@ -84,7 +114,54 @@ function percent(numerator, denominator) {
   return Number(((numerator / denominator) * 100).toFixed(1));
 }
 
-function buildAnnualFinancials(companyFacts, annualFilings) {
+function parseMillionsValue(value) {
+  const trimmed = String(value).trim();
+  const isNegative = trimmed.startsWith("-") || trimmed.startsWith("(");
+  const number = Number(trimmed.replace(/[(),-]/g, ""));
+  return Number.isFinite(number) ? number * 1_000_000 * (isNegative ? -1 : 1) : null;
+}
+
+async function freeCashFlowRowsFromFiling(filing) {
+  const text = htmlToText(await fetchText(filing.url));
+  const start = text.indexOf(
+    "The following table sets forth a reconciliation of net cash provided by operating activities to free cash flow",
+  );
+  if (start < 0) return [];
+
+  const tableText = text.slice(start, start + 1800);
+  const header = tableText.match(/Year ended March 31,\s*(\d{4})\s*(\d{4})\s*(\d{4})/);
+  const operatingCashFlow = tableText.match(
+    /Net cash provided by operating activities\s+(\(?-?[\d,]+\s*\)?)\s+(\(?-?[\d,]+\s*\)?)\s+(\(?-?[\d,]+\s*\)?)/,
+  );
+  const capitalExpenditures = tableText.match(
+    /Less: Purchase of property and equipment[^)]*\)\s+(\(?-?[\d,]+\s*\)?)\s+(\(?-?[\d,]+\s*\)?)\s+(\(?-?[\d,]+\s*\)?)/,
+  );
+  const freeCashFlow = tableText.match(/Free cash flow\s+(\(?-?[\d,]+\s*\)?)\s+(\(?-?[\d,]+\s*\)?)\s+(\(?-?[\d,]+\s*\)?)/);
+
+  if (!header || !operatingCashFlow || !freeCashFlow) return [];
+
+  return [0, 1, 2].map((index) => ({
+    fiscalYear: Number(header[index + 1]),
+    operatingCashFlow: parseMillionsValue(operatingCashFlow[index + 1]),
+    capitalExpenditures: capitalExpenditures ? Math.abs(parseMillionsValue(capitalExpenditures[index + 1]) ?? 0) : null,
+    freeCashFlow: parseMillionsValue(freeCashFlow[index + 1]),
+    sourceFilingYear: Number(filing.reportDate.slice(0, 4)),
+  }));
+}
+
+async function buildFreeCashFlowMap(annualFilings) {
+  const fcfMap = new Map();
+
+  for (const filing of annualFilings.filter((item) => item.form === "20-F").slice(-6)) {
+    for (const row of await freeCashFlowRowsFromFiling(filing)) {
+      fcfMap.set(row.fiscalYear, row);
+    }
+  }
+
+  return fcfMap;
+}
+
+function buildAnnualFinancials(companyFacts, annualFilings, freeCashFlowMap) {
   const rows = [];
 
   for (let fiscalYear = 2015; fiscalYear <= 2026; fiscalYear += 1) {
@@ -97,9 +174,12 @@ function buildAnnualFinancials(companyFacts, annualFilings) {
     const operatingCashFlow =
       annualFact(companyFacts, "NetCashProvidedByUsedInOperatingActivities", fiscalYear) ??
       annualFact(companyFacts, "NetCashProvidedByUsedInOperatingActivitiesContinuingOperations", fiscalYear);
-    const capitalExpenditures = annualFact(companyFacts, "PaymentsToAcquireOtherPropertyPlantAndEquipment", fiscalYear);
+    const disclosedFreeCashFlow = freeCashFlowMap.get(fiscalYear);
+    const capitalExpenditures =
+      disclosedFreeCashFlow?.capitalExpenditures ?? annualFact(companyFacts, "PaymentsToAcquireOtherPropertyPlantAndEquipment", fiscalYear);
     const freeCashFlow =
-      operatingCashFlow != null && capitalExpenditures != null ? operatingCashFlow - Math.abs(capitalExpenditures) : null;
+      disclosedFreeCashFlow?.freeCashFlow ??
+      (operatingCashFlow != null && capitalExpenditures != null ? operatingCashFlow - Math.abs(capitalExpenditures) : null);
     const cashAndEquivalents = instantFact(companyFacts, "CashAndCashEquivalentsAtCarryingValue", fiscalYear);
     const totalDebt =
       (instantFact(companyFacts, "LongTermDebtNoncurrent", fiscalYear) ?? 0) +
@@ -120,7 +200,7 @@ function buildAnnualFinancials(companyFacts, annualFilings) {
       operatingIncome,
       netIncome,
       dilutedEps: annualFact(companyFacts, "EarningsPerShareDiluted", fiscalYear, "CNY/shares"),
-      operatingCashFlow,
+      operatingCashFlow: disclosedFreeCashFlow?.operatingCashFlow ?? operatingCashFlow,
       capitalExpenditures: capitalExpenditures == null ? null : Math.abs(capitalExpenditures),
       freeCashFlow,
       cashAndEquivalents,
@@ -136,7 +216,9 @@ function buildAnnualFinancials(companyFacts, annualFilings) {
       netMargin: percent(netIncome, revenue),
       freeCashFlowMargin: percent(freeCashFlow, revenue),
       roe: percent(netIncome, shareholderEquity),
-      source: "SEC XBRL company facts and Alibaba Form 20-F",
+      source: disclosedFreeCashFlow
+        ? "SEC XBRL company facts and Alibaba Form 20-F; free cash flow from Alibaba non-GAAP reconciliation"
+        : "SEC XBRL company facts and Alibaba Form 20-F",
     });
   }
 
@@ -206,7 +288,7 @@ function annualFinancialsSource(rows) {
 };
 
 export const ALIBABA_ANNUAL_FINANCIALS_SOURCE_NOTE =
-  "FY2015-FY2026 are generated from SEC XBRL company facts for Alibaba Group Holding Limited, CIK ${CIK}, in RMB. Foreign-private-issuer disclosures differ from domestic 10-K/10-Q issuers; free cash flow fields are populated where capex facts are available and may differ from Alibaba's non-GAAP FCF reconciliation.";
+  "FY2015-FY2026 are generated from SEC XBRL company facts for Alibaba Group Holding Limited, CIK ${CIK}, in RMB. Foreign-private-issuer disclosures differ from domestic 10-K/10-Q issuers. FY2021-FY2026 free cash flow is extracted from Alibaba's Form 20-F non-GAAP free cash flow reconciliation where available; earlier years use XBRL capex facts when consistently tagged.";
 
 export const ALIBABA_ANNUAL_FINANCIALS_COVERAGE = {
   currency: "RMB",
@@ -241,7 +323,8 @@ async function main() {
     .map(cleanedFiling);
   const sixKFilings = targetRows.filter((row) => row.form === "6-K").map(cleanedFiling);
   const companyFacts = await fetchJson(`https://data.sec.gov/api/xbrl/companyfacts/CIK${CIK}.json`);
-  const annualFinancials = buildAnnualFinancials(companyFacts, annualFilings);
+  const freeCashFlowMap = await buildFreeCashFlowMap(annualFilings);
+  const annualFinancials = buildAnnualFinancials(companyFacts, annualFilings, freeCashFlowMap);
 
   await mkdir(outputDir, { recursive: true });
   await writeFile(path.join(outputDir, "filings.ts"), filingsSource(registrationFilings, annualFilings, sixKFilings));

@@ -23,6 +23,12 @@ import {
   type ForecastRow,
 } from "./forecastModel";
 import {
+  ALIBABA_INTERIM_RESULTS,
+  ALIBABA_INTERIM_RESULTS_SOURCE_NOTE,
+  ALIBABA_RECENT_SIX_K_UPDATES,
+  type AlibabaInterimResult,
+} from "./interimResults";
+import {
   ALIBABA_PUBLICATION_QA_ITEMS,
   ALIBABA_PUBLICATION_QA_NOTE,
   type PublicationQaItem,
@@ -56,6 +62,11 @@ export const metadata: Metadata = {
 function formatRmbBillions(value: number | null) {
   if (value == null) return "n/a";
   return `RMB${(value / 1_000_000_000).toFixed(1)}B`;
+}
+
+function formatRmbMillionsAsBillions(value: number | null) {
+  if (value == null) return "n/a";
+  return `RMB${(value / 1_000).toFixed(1)}B`;
 }
 
 function formatUsdBillions(value: number | null) {
@@ -248,6 +259,56 @@ function AnnualFinancialTable({ rows }: { rows: AlibabaAnnualFinancial[] }) {
               <td className="py-2 pr-4">
                 <a href={row.filingUrl} className="text-zinc-800 underline" rel="noreferrer" target="_blank">
                   20-F
+                </a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function InterimResultTable({ rows }: { rows: AlibabaInterimResult[] }) {
+  return (
+    <div className="overflow-x-auto">
+      <table className="min-w-full text-sm">
+        <thead>
+          <tr className="border-b border-zinc-200 text-left text-zinc-500">
+            <th className="py-2 pr-4 font-medium">Period</th>
+            <th className="py-2 pr-4 font-medium">Filed</th>
+            <th className="py-2 pr-4 font-medium">Revenue</th>
+            <th className="py-2 pr-4 font-medium">Growth</th>
+            <th className="py-2 pr-4 font-medium">Op. Income</th>
+            <th className="py-2 pr-4 font-medium">Adj. EBITA</th>
+            <th className="py-2 pr-4 font-medium">Net Income</th>
+            <th className="py-2 pr-4 font-medium">Non-GAAP NI</th>
+            <th className="py-2 pr-4 font-medium">OCF</th>
+            <th className="py-2 pr-4 font-medium">FCF</th>
+            <th className="py-2 pr-4 font-medium">Cloud Growth</th>
+            <th className="py-2 pr-4 font-medium">Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.accessionNumber} className="border-b border-zinc-100 align-top">
+              <td className="py-2 pr-4">
+                <p className="font-medium text-zinc-950">{row.periodLabel}</p>
+                <p className="text-xs text-zinc-500">{row.periodEnded}</p>
+              </td>
+              <td className="py-2 pr-4 text-zinc-700">{row.filingDate}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatRmbMillionsAsBillions(row.revenueRmbMillions)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatPercent(row.revenueGrowth)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatRmbMillionsAsBillions(row.operatingIncomeRmbMillions)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatRmbMillionsAsBillions(row.adjustedEbitaRmbMillions)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatRmbMillionsAsBillions(row.netIncomeRmbMillions)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatRmbMillionsAsBillions(row.nonGaapNetIncomeRmbMillions)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatRmbMillionsAsBillions(row.operatingCashFlowRmbMillions)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatRmbMillionsAsBillions(row.freeCashFlowRmbMillions)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatPercent(row.cloudRevenueGrowth)}</td>
+              <td className="py-2 pr-4">
+                <a href={row.exhibitUrl} className="text-zinc-800 underline" rel="noreferrer" target="_blank">
+                  Exhibit
                 </a>
               </td>
             </tr>
@@ -488,6 +549,49 @@ export default function AlibabaCompleteFundamentalAnalysisPage() {
               {ALIBABA_ANNUAL_FINANCIALS_COVERAGE.throughFiscalYear}
             </p>
             <AnnualFinancialTable rows={latestAnnualRows} />
+          </div>
+        </SectionCard>
+
+        <SectionCard title="Interim Results and 6-K Updates">
+          <div className="space-y-6">
+            <p className="max-w-5xl leading-7 text-zinc-650">{ALIBABA_INTERIM_RESULTS_SOURCE_NOTE}</p>
+            <div className="grid gap-3 md:grid-cols-4">
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Latest result</p>
+                <p className="mt-2 text-xl font-semibold">{ALIBABA_INTERIM_RESULTS[0].periodLabel}</p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Revenue</p>
+                <p className="mt-2 text-xl font-semibold">
+                  {formatRmbMillionsAsBillions(ALIBABA_INTERIM_RESULTS[0].revenueRmbMillions)}
+                </p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Cloud growth</p>
+                <p className="mt-2 text-xl font-semibold">{formatPercent(ALIBABA_INTERIM_RESULTS[0].cloudRevenueGrowth)}</p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Tracked 6-Ks</p>
+                <p className="mt-2 text-xl font-semibold">{ALIBABA_RECENT_SIX_K_UPDATES.length}</p>
+              </div>
+            </div>
+            <InterimResultTable rows={ALIBABA_INTERIM_RESULTS} />
+            <div className="grid gap-3 md:grid-cols-3">
+              {ALIBABA_RECENT_SIX_K_UPDATES.map((update) => (
+                <article key={update.accessionNumber} className="rounded-lg border border-zinc-200 p-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <p className="text-sm font-semibold text-zinc-950">{update.filingDate}</p>
+                    <span className="rounded-md bg-zinc-900 px-2 py-1 text-xs font-semibold text-white">
+                      {update.classification}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-zinc-650">{update.summary}</p>
+                  <a href={update.filingUrl} className="mt-3 inline-block text-sm text-zinc-800 underline" rel="noreferrer" target="_blank">
+                    SEC filing
+                  </a>
+                </article>
+              ))}
+            </div>
           </div>
         </SectionCard>
 

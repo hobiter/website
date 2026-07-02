@@ -25,13 +25,18 @@ export const ALIBABA_PUBLICATION_QA_ITEMS: PublicationQaItem[] = [
     "evidence": "Yahoo Finance chart API returned historical BABA ADS adjusted close prices."
   },
   {
-    "check": "Quarterly financial database",
-    "status": "warning",
-    "evidence": "Alibaba is a foreign private issuer and does not file domestic 10-Qs; this pass includes 6-K inventory and annual financials instead of a standardized quarterly table."
+    "check": "Interim result-release tracker",
+    "status": "pass",
+    "evidence": "Alibaba is a foreign private issuer and does not file domestic 10-Qs; the route now includes recent Form 6-K result-release exhibits and a separate 6-K update tracker."
   },
   {
     "check": "npm build command",
     "status": "blocked",
     "evidence": "Local PowerShell may exit with the known Windows CET runtime error; TypeScript is verified through Node REPL."
+  },
+  {
+    "check": "Live browser route review",
+    "status": "blocked",
+    "evidence": "The local dev server could not be started because PowerShell exits with the Windows CET runtime error and sandboxed process spawning is blocked. Static route checks and TypeScript diagnostics pass."
   }
 ];
