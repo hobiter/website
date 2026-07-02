@@ -32,6 +32,7 @@ Build a BABA research hub following `COMPANY_RESEARCH_STANDARD_WORKFLOW.md`: SEC
 - Regeneration script registered as `npm run research:baba:data`.
 - Regeneration script was executed through the Node runtime and now preserves Alibaba's Form 20-F non-GAAP free cash flow reconciliation, including FY2026 negative free cash flow.
 - TypeScript diagnostics pass with 0 errors.
-- Static QA found all route-local imports resolved, 379 embedded source URLs, no malformed URL strings, and representative SEC/Yahoo endpoints returning HTTP 200.
+- Static QA found 11 route-local modules, 13 rendered report sections, all route-local imports resolved, 364 unique embedded source URLs, no missing local imports, and representative SEC/Yahoo endpoints returning HTTP 200.
+- Completion checklist added at `BABA_RESEARCH_COMPLETION_CHECKLIST.md`.
 - Live browser visual review is blocked locally because the dev server cannot be started through PowerShell due the Windows CET runtime error and sandboxed process spawning is blocked.
 - Remaining implementation work: none for this implementation pass.
