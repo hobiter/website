@@ -231,5 +231,8 @@ Target: 110 charts minimum.
 - FY2025 regional membership and ARM fields are intentionally null because Netflix no longer discloses those metrics in the same regional table.
 - Content economics database has been added for FY2020-FY2025, covering content assets, licensed and produced content amortization, content liabilities, contractual obligations, unrecognized obligations, and disclosed production tax incentive amortization benefits.
 - The SEC regeneration script now refreshes the content economics dataset from audited 10-K HTML tables and contractual obligation notes.
+- Historical valuation database has been added for FY2020-FY2025, combining split-adjusted Yahoo Finance year-end prices with SEC annual financials for market cap, enterprise value, P/S, EV/Sales, P/E, and FCF yield.
+- Chart dashboard has been expanded to 29 rendered chart panels covering annual financials, margins, cash flow, capital allocation, subscribers, regional revenue, content economics, and valuation history.
+- Source audit table has been added, mapping filing inventory, financial databases, subscriber/regional data, content economics, forecast/DCF, valuation history, and investor communication links to primary sources and audit status.
 - Regeneration script added: `npm run research:nflx:data`.
-- Remaining deepening work: historical valuation market data, more charts, and second-pass citation audit.
+- Remaining deepening work: final publication QA.
