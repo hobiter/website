@@ -7,9 +7,19 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "阿里巴巴（BABA）完整基本面研究中心",
+    description: "中文研究页：20-F 财务、6-K 更新、分部经济、ADS 估值、预测、DCF、来源审计与 QA。",
+    href: "/research/alibaba-complete-fundamental-analysis/zh",
+  },
+  {
     title: "Alibaba (BABA) Complete Fundamental Research Hub",
     description: "SEC-backed Form 20-F financial history, segment economics, ADS valuation, forecast, DCF, source audit, and QA.",
     href: "/research/alibaba-complete-fundamental-analysis",
+  },
+  {
+    title: "Netflix（NFLX）完整基本面研究中心",
+    description: "中文研究页：SEC 财务、订阅用户、内容经济、估值历史、预测、DCF、来源审计与 QA。",
+    href: "/research/netflix-complete-fundamental-analysis/zh",
   },
   {
     title: "Netflix (NFLX) Complete Fundamental Research Hub",
