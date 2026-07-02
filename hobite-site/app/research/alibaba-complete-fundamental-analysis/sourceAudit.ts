@@ -1,7 +1,7 @@
 export type SourceAuditStatus = "complete" | "partial" | "needs-review";
 export type AlibabaSourceAuditItem = { area: string; coverage: string; primarySource: string; sourceUrl: string; status: SourceAuditStatus; note: string };
 
-export const ALIBABA_SOURCE_AUDIT_NOTE = "Source audit map for the Alibaba research hub. SEC filings and company facts are authoritative for historical financials; Yahoo Finance chart data is used only for historical market-price context.";
+export const ALIBABA_SOURCE_AUDIT_NOTE = "Source audit map for the Alibaba research hub. SEC filings and company facts are authoritative for historical financials; Form 6-K exhibits are used for interim operating updates; Yahoo Finance chart data is used only for historical market-price context.";
 
 export const ALIBABA_SOURCE_AUDIT_ITEMS: AlibabaSourceAuditItem[] = [
   {
@@ -19,6 +19,14 @@ export const ALIBABA_SOURCE_AUDIT_ITEMS: AlibabaSourceAuditItem[] = [
     "sourceUrl": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001577552.json",
     "status": "partial",
     "note": "Core income statement and balance sheet rows are XBRL-backed. Free cash flow is filled where Alibaba discloses a non-GAAP reconciliation."
+  },
+  {
+    "area": "Interim Form 6-K result releases",
+    "coverage": "June quarter FY2026 through March quarter FY2026 plus recent 6-K update classifications",
+    "primarySource": "SEC Form 6-K exhibits",
+    "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1577552/000110465926060224/tm2614494d1_ex99-1.htm",
+    "status": "complete",
+    "note": "Alibaba does not file domestic 10-Qs; the hub now tracks official 6-K result-release exhibits as interim context."
   },
   {
     "area": "Segment economics",

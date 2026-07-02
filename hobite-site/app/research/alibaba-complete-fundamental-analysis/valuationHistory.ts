@@ -127,7 +127,7 @@ export const ALIBABA_VALUATION_HISTORY: AlibabaValuationHistory[] = [
     "priceToSales": 2.08,
     "enterpriseValueToSales": 2,
     "priceToEarnings": 20.5,
-    "freeCashFlowYield": 2.2,
+    "freeCashFlowYield": -2.2,
     "source": "Yahoo Finance BABA adjusted close, SEC 20-F diluted ordinary share count, and 1 ADS = 8 ordinary shares ratio"
   }
 ];

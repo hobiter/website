@@ -29,7 +29,7 @@ export type AlibabaAnnualFinancial = {
 };
 
 export const ALIBABA_ANNUAL_FINANCIALS_SOURCE_NOTE =
-  "FY2015-FY2026 are generated from SEC XBRL company facts for Alibaba Group Holding Limited, CIK 0001577552, in RMB. Free cash flow is filled where Alibaba discloses a non-GAAP reconciliation in Form 20-F; fields remain null where facts are not consistently tagged or directly reconciled.";
+  "FY2015-FY2026 are generated from SEC XBRL company facts for Alibaba Group Holding Limited, CIK 0001577552, in RMB. Foreign-private-issuer disclosures differ from domestic 10-K/10-Q issuers. FY2021-FY2026 free cash flow is extracted from Alibaba's Form 20-F non-GAAP free cash flow reconciliation where available; earlier years use XBRL capex facts when consistently tagged.";
 
 export const ALIBABA_ANNUAL_FINANCIALS_COVERAGE = {
   currency: "RMB",
@@ -371,7 +371,7 @@ export const ALIBABA_ANNUAL_FINANCIALS: AlibabaAnnualFinancial[] = [
     "dilutedEps": 5.5,
     "operatingCashFlow": 76213000000,
     "capitalExpenditures": 122021000000,
-    "freeCashFlow": 46609000000,
+    "freeCashFlow": -46609000000,
     "cashAndEquivalents": 131530000000,
     "currentAssets": 610769000000,
     "totalAssets": 1909570000000,
@@ -383,7 +383,7 @@ export const ALIBABA_ANNUAL_FINANCIALS: AlibabaAnnualFinancial[] = [
     "grossMargin": 39.8,
     "operatingMargin": 4.9,
     "netMargin": 10.1,
-    "freeCashFlowMargin": 4.6,
+    "freeCashFlowMargin": -4.6,
     "roe": 9.8,
     "source": "SEC XBRL company facts and Alibaba Form 20-F; free cash flow from Alibaba non-GAAP reconciliation"
   }
