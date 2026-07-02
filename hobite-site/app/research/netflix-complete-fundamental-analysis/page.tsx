@@ -29,6 +29,13 @@ import {
   type ForecastRow,
 } from "./forecastModel";
 import {
+  NETFLIX_CONTENT_ECONOMICS,
+  NETFLIX_CONTENT_ECONOMICS_COVERAGE,
+  NETFLIX_CONTENT_ECONOMICS_SOURCE_NOTE,
+  NETFLIX_LATEST_CONTENT_ECONOMICS,
+  type NetflixContentEconomics,
+} from "./contentEconomics";
+import {
   NETFLIX_LATEST_QUARTERLY_FINANCIAL,
   NETFLIX_QUARTERLY_FINANCIALS,
   NETFLIX_QUARTERLY_FINANCIALS_COVERAGE,
@@ -36,6 +43,11 @@ import {
   type NetflixQuarterlyFinancial,
 } from "./quarterlyFinancials";
 import { NETFLIX_REPORT_SECTIONS } from "./reportContent";
+import {
+  NETFLIX_GLOBAL_MEMBERSHIP_TOTALS,
+  NETFLIX_REGIONAL_METRICS,
+  NETFLIX_SUBSCRIBER_METRICS_SOURCE_NOTE,
+} from "./subscriberMetrics";
 
 export const metadata: Metadata = {
   title: "Netflix (NFLX) Complete Fundamental Research Hub",
@@ -125,6 +137,11 @@ function formatUsdBillions(value: number | null) {
 
 function formatMillions(value: number | null) {
   if (value == null) return "n/a";
+  return `${(value / 1_000_000).toFixed(1)}M`;
+}
+
+function formatMemberCount(value: number | null) {
+  if (value == null) return "not disclosed";
   return `${(value / 1_000_000).toFixed(1)}M`;
 }
 
@@ -272,6 +289,45 @@ function MiniBarChart({
   );
 }
 
+function ContentMiniBarChart({
+  title,
+  rows,
+  value,
+  formatter,
+}: {
+  title: string;
+  rows: NetflixContentEconomics[];
+  value: (row: NetflixContentEconomics) => number | null;
+  formatter: (value: number | null) => string;
+}) {
+  const displayRows = [...rows].reverse();
+  const values = displayRows.map(value).filter((item): item is number => item != null);
+  const max = Math.max(...values.map((item) => Math.abs(item)), 1);
+
+  return (
+    <section className="rounded-lg border border-zinc-200 bg-white p-5 shadow-sm">
+      <h3 className="text-lg font-semibold text-zinc-950">{title}</h3>
+      <div className="mt-5 flex h-56 items-end gap-3 overflow-x-auto">
+        {displayRows.map((row) => {
+          const rowValue = value(row);
+          const height = rowValue == null ? 0 : Math.max(8, (Math.abs(rowValue) / max) * 180);
+
+          return (
+            <div key={row.fiscalYear} className="flex min-w-12 flex-col items-center gap-2">
+              <div
+                className="w-8 rounded-t bg-red-600"
+                style={{ height }}
+                title={`${row.fiscalYear}: ${formatter(rowValue)}`}
+              />
+              <span className="text-[10px] text-zinc-500">{row.fiscalYear}</span>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 function ForecastTable({ rows }: { rows: ForecastRow[] }) {
   return (
     <div className="overflow-x-auto">
@@ -319,12 +375,97 @@ function ReportSectionList() {
   );
 }
 
+function RegionalMetricsTable() {
+  const rows = [...NETFLIX_REGIONAL_METRICS].sort((a, b) =>
+    a.fiscalYear === b.fiscalYear ? a.region.localeCompare(b.region) : b.fiscalYear - a.fiscalYear,
+  );
+
+  return (
+    <div className="overflow-x-auto">
+      <table className="min-w-full text-sm">
+        <thead>
+          <tr className="border-b border-zinc-200 text-left text-zinc-500">
+            <th className="py-2 pr-4 font-medium">Year</th>
+            <th className="py-2 pr-4 font-medium">Region</th>
+            <th className="py-2 pr-4 font-medium">Streaming Revenue</th>
+            <th className="py-2 pr-4 font-medium">Ending Paid Members</th>
+            <th className="py-2 pr-4 font-medium">Average Members</th>
+            <th className="py-2 pr-4 font-medium">ARM</th>
+            <th className="py-2 pr-4 font-medium">Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={`${row.fiscalYear}-${row.region}`} className="border-b border-zinc-100">
+              <td className="py-2 pr-4 font-medium text-zinc-950">{row.fiscalYear}</td>
+              <td className="py-2 pr-4 text-zinc-700">{row.region}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.streamingRevenue)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatMemberCount(row.paidMembershipsEndOfPeriod)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatMemberCount(row.averagePayingMemberships)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatEps(row.averageMonthlyRevenuePerPayingMembership)}</td>
+              <td className="py-2 pr-4 text-zinc-600">{row.sourceFilingYear} 10-K</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function ContentEconomicsTable({ rows }: { rows: NetflixContentEconomics[] }) {
+  return (
+    <div className="overflow-x-auto">
+      <table className="min-w-full text-sm">
+        <thead>
+          <tr className="border-b border-zinc-200 text-left text-zinc-500">
+            <th className="py-2 pr-4 font-medium">FY</th>
+            <th className="py-2 pr-4 font-medium">Content Assets</th>
+            <th className="py-2 pr-4 font-medium">Licensed Net</th>
+            <th className="py-2 pr-4 font-medium">Produced Net</th>
+            <th className="py-2 pr-4 font-medium">Amortization</th>
+            <th className="py-2 pr-4 font-medium">YoY Amort. Change</th>
+            <th className="py-2 pr-4 font-medium">Content Liabilities</th>
+            <th className="py-2 pr-4 font-medium">Obligations</th>
+            <th className="py-2 pr-4 font-medium">Unrecognized</th>
+            <th className="py-2 pr-4 font-medium">Tax Incentive Benefit</th>
+            <th className="py-2 pr-4 font-medium">Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.fiscalYear} className="border-b border-zinc-100">
+              <td className="py-2 pr-4 font-medium text-zinc-950">{row.fiscalYear}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.contentAssetsNet)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.licensedContentNet)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.producedContentNet)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.totalContentAmortization)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.contentAmortizationYoYChange)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.totalContentLiabilities)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.contentObligationsTotal)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.unrecognizedContentObligations)}</td>
+              <td className="py-2 pr-4 text-zinc-700">
+                {formatUsdBillions(row.productionTaxIncentiveAmortizationBenefit)}
+              </td>
+              <td className="py-2 pr-4">
+                <a href={row.filingUrl} className="text-zinc-800 underline" rel="noreferrer" target="_blank">
+                  10-K
+                </a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 export default function NetflixCompleteFundamentalAnalysisPage() {
   const chartTarget = NFLX_CHART_GROUPS.reduce((sum, group) => sum + group.targetCount, 0);
   const recentQuarterlyFilings = [...NETFLIX_QUARTERLY_FILINGS].slice(-12).reverse();
   const annualFinancialRowsWithRevenue = NETFLIX_ANNUAL_FINANCIALS.filter((row) => row.revenue != null);
   const latestAnnualFinancialRows = [...annualFinancialRowsWithRevenue].reverse();
   const latestQuarterlyFinancialRows = [...NETFLIX_QUARTERLY_FINANCIALS].slice(-16).reverse();
+  const latestGlobalMembershipRow = NETFLIX_GLOBAL_MEMBERSHIP_TOTALS[NETFLIX_GLOBAL_MEMBERSHIP_TOTALS.length - 2];
 
   return (
     <main className="min-h-screen bg-zinc-50 px-6 py-10 text-zinc-900">
@@ -471,6 +612,92 @@ export default function NetflixCompleteFundamentalAnalysisPage() {
               </div>
             </div>
             <p className="text-sm leading-6 text-zinc-600">{NETFLIX_DCF_ASSUMPTIONS.note}</p>
+          </div>
+        </SectionCard>
+
+        <SectionCard title="Subscriber and Regional Economics">
+          <div className="space-y-5">
+            <p className="max-w-5xl leading-7 text-zinc-650">{NETFLIX_SUBSCRIBER_METRICS_SOURCE_NOTE}</p>
+            <div className="grid gap-3 md:grid-cols-4">
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Latest disclosed members</p>
+                <p className="mt-2 text-xl font-semibold">
+                  {formatMemberCount(latestGlobalMembershipRow.paidMembershipsEndOfPeriod)}
+                </p>
+                <p className="mt-2 text-xs text-zinc-500">FY{latestGlobalMembershipRow.fiscalYear}</p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">2025 streaming revenue</p>
+                <p className="mt-2 text-xl font-semibold">
+                  {formatUsdBillions(NETFLIX_GLOBAL_MEMBERSHIP_TOTALS[NETFLIX_GLOBAL_MEMBERSHIP_TOTALS.length - 1].streamingRevenue)}
+                </p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Regions tracked</p>
+                <p className="mt-2 text-xl font-semibold">4</p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Disclosure change</p>
+                <p className="mt-2 text-xl font-semibold">FY2025</p>
+              </div>
+            </div>
+            <RegionalMetricsTable />
+          </div>
+        </SectionCard>
+
+        <SectionCard title="Content Economics Database">
+          <div className="space-y-5">
+            <p className="max-w-5xl leading-7 text-zinc-650">{NETFLIX_CONTENT_ECONOMICS_SOURCE_NOTE}</p>
+            <div className="grid gap-3 md:grid-cols-4">
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Coverage</p>
+                <p className="mt-2 text-xl font-semibold">
+                  FY{NETFLIX_CONTENT_ECONOMICS_COVERAGE.fromFiscalYear}-FY
+                  {NETFLIX_CONTENT_ECONOMICS_COVERAGE.throughFiscalYear}
+                </p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">2025 content assets</p>
+                <p className="mt-2 text-xl font-semibold">
+                  {formatUsdBillions(NETFLIX_LATEST_CONTENT_ECONOMICS.contentAssetsNet)}
+                </p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">2025 amortization</p>
+                <p className="mt-2 text-xl font-semibold">
+                  {formatUsdBillions(NETFLIX_LATEST_CONTENT_ECONOMICS.totalContentAmortization)}
+                </p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">2025 obligations</p>
+                <p className="mt-2 text-xl font-semibold">
+                  {formatUsdBillions(NETFLIX_LATEST_CONTENT_ECONOMICS.contentObligationsTotal)}
+                </p>
+              </div>
+            </div>
+            <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-sm leading-6 text-zinc-650">
+              Netflix's FY2025 contractual obligations disclosure also identifies{" "}
+              {formatUsdBillions(NETFLIX_LATEST_CONTENT_ECONOMICS.unrecognizedContentObligations)} of content
+              obligations not yet reflected on the balance sheet, plus an estimated{" "}
+              {formatUsdBillions(NETFLIX_LATEST_CONTENT_ECONOMICS.unknownObligationsLow)} to{" "}
+              {formatUsdBillions(NETFLIX_LATEST_CONTENT_ECONOMICS.unknownObligationsHigh)} of unknown future title
+              obligations over the next three years.
+            </div>
+            <div className="grid gap-4 lg:grid-cols-2">
+              <ContentMiniBarChart
+                title="Content Assets, Net"
+                rows={NETFLIX_CONTENT_ECONOMICS}
+                value={(row) => row.contentAssetsNet}
+                formatter={formatUsdBillions}
+              />
+              <ContentMiniBarChart
+                title="Content Amortization"
+                rows={NETFLIX_CONTENT_ECONOMICS}
+                value={(row) => row.totalContentAmortization}
+                formatter={formatUsdBillions}
+              />
+            </div>
+            <ContentEconomicsTable rows={NETFLIX_CONTENT_ECONOMICS} />
           </div>
         </SectionCard>
 
