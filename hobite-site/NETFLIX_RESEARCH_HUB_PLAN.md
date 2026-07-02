@@ -226,5 +226,10 @@ Target: 110 charts minimum.
 - Q4 quarterly flow metrics are derived from annual full-year facts less Q1-Q3 quarterly frames; Q4 diluted EPS remains null until weighted-share reconciliation.
 - Forecast and DCF model have been added with bear, base, and bull scenarios through 2035.
 - Long-form report sections now cover executive summary, company history, business model, financial quality, subscribers, content economics, balance sheet, AI, advertising, live events, gaming, competition, management, risks, and investment conclusion.
+- Subscriber and regional economics dataset has been added.
+- Regional data now covers FY2019-FY2025 streaming revenue and FY2019-FY2024 disclosed regional paid memberships, average paying memberships, and ARM.
+- FY2025 regional membership and ARM fields are intentionally null because Netflix no longer discloses those metrics in the same regional table.
+- Content economics database has been added for FY2020-FY2025, covering content assets, licensed and produced content amortization, content liabilities, contractual obligations, unrecognized obligations, and disclosed production tax incentive amortization benefits.
+- The SEC regeneration script now refreshes the content economics dataset from audited 10-K HTML tables and contractual obligation notes.
 - Regeneration script added: `npm run research:nflx:data`.
-- Remaining deepening work: subscriber and ARPU database extraction, content-asset/amortization database, historical valuation market data, more charts, and second-pass citation audit.
+- Remaining deepening work: historical valuation market data, more charts, and second-pass citation audit.

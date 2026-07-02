@@ -31,10 +31,10 @@ export const NETFLIX_ANNUAL_FINANCIALS_SOURCE_NOTE =
   "FY2002-FY2008 are manually extracted from audited 10-K statement tables because complete early-year duration facts are not available in the SEC company facts endpoint. FY2009-FY2025 are generated from SEC XBRL company facts for CIK 0001065280. FY2025 per-share and share counts are split-adjusted as reported by SEC XBRL.";
 
 export const NETFLIX_ANNUAL_FINANCIALS_COVERAGE = {
-  manualStatementExtractionFiscalYears: [2002, 2003, 2004, 2005, 2006, 2007, 2008],
-  secondPassAuditNeededFiscalYears: [2002, 2003, 2004, 2005, 2006, 2007, 2008],
   xbrlCompleteFromFiscalYear: 2009,
   xbrlCompleteThroughFiscalYear: 2025,
+  manualStatementExtractionFiscalYears: [2002, 2003, 2004, 2005, 2006, 2007, 2008],
+  secondPassAuditNeededFiscalYears: [2002, 2003, 2004, 2005, 2006, 2007, 2008],
 };
 
 export const NETFLIX_ANNUAL_FINANCIALS: NetflixAnnualFinancial[] = [

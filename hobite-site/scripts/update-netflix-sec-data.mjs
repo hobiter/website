@@ -147,6 +147,38 @@ async function fetchJson(url) {
   return response.json();
 }
 
+async function fetchText(url) {
+  const response = await fetch(url, {
+    headers: {
+      Accept: "text/html,text/plain",
+      "User-Agent": USER_AGENT,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+  }
+
+  return response.text();
+}
+
+function htmlToText(html) {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;|&#160;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&#146;|&rsquo;/g, "'")
+    .replace(/&#147;|&#148;|&ldquo;|&rdquo;/g, "\"")
+    .replace(/&#8217;/g, "'")
+    .replace(/&#8220;|&#8221;/g, "\"")
+    .replace(/&#151;|&mdash;/g, "-")
+    .replace(/&ndash;/g, "-")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function rowsFromSubmissionTable(table) {
   return table.accessionNumber.map((accessionNumber, index) => ({
     accessionNumber,
@@ -525,6 +557,199 @@ export const NETFLIX_LATEST_QUARTERLY_FINANCIAL = NETFLIX_QUARTERLY_FINANCIALS[N
 `;
 }
 
+function moneyPhraseToNumber(amount, unit) {
+  if (!amount) return null;
+
+  const value = Number(String(amount).replaceAll(",", ""));
+  if (!Number.isFinite(value)) return null;
+
+  if (unit?.toLowerCase().startsWith("billion")) return Math.round(value * 1_000_000_000);
+  if (unit?.toLowerCase().startsWith("million")) return Math.round(value * 1_000_000);
+
+  return value;
+}
+
+function tableMoneyToNumber(amount) {
+  if (!amount) return null;
+
+  const value = Number(String(amount).replaceAll(",", ""));
+  return Number.isFinite(value) ? value * 1000 : null;
+}
+
+function firstMatch(text, regex) {
+  return text.match(regex);
+}
+
+function contentAssetTablesForYear(fiscalYear, text) {
+  const tableStart = text.toLowerCase().indexOf("content assets consisted of the following");
+  const tableText = tableStart >= 0 ? text.slice(tableStart, tableStart + 2300) : "";
+  const header = tableText.match(/As of December 31,\s*(\d{4})\s*(\d{4})/i);
+
+  if (!header || Number(header[1]) !== fiscalYear) {
+    return {
+      licensedContentNet: null,
+      producedContentReleasedLessAmortization: null,
+      producedContentInProduction: null,
+      producedContentInDevelopmentAndPreProduction: null,
+      producedContentNet: null,
+      contentAssetsNet: null,
+      licensedContentAmortization: null,
+      producedContentAmortization: null,
+      totalContentAmortization: null,
+      productionTaxIncentiveAmortizationBenefit: null,
+    };
+  }
+
+  function twoYearRow(labelPattern) {
+    const match = tableText.match(new RegExp(`${labelPattern}\\s+\\$?\\s*([\\d,]+)\\s+\\$?\\s*([\\d,]+)`, "i"));
+    return match ? tableMoneyToNumber(match[1]) : null;
+  }
+
+  function threeYearRow(labelPattern) {
+    const match = tableText.match(
+      new RegExp(`${labelPattern}\\s+\\$?\\s*([\\d,]+)\\s+\\$?\\s*([\\d,]+)\\s+\\$?\\s*([\\d,]+)`, "i"),
+    );
+    return match ? tableMoneyToNumber(match[1]) : null;
+  }
+
+  const producedContentNet = (() => {
+    const match = tableText.match(
+      /In development and pre-production\s+[\d,]+\s+[\d,]+\s+([\d,]+)\s+[\d,]+\s+Content assets, net/i,
+    );
+    return match ? tableMoneyToNumber(match[1]) : null;
+  })();
+  const taxIncentiveMatch = tableText.match(
+    /tax incentives resulted in lower content amortization on produced content of approximately \$\s*([\d,]+)\s*million/i,
+  );
+  const producedContentAmortization = threeYearRow("Produced content \\\\(1\\\\)");
+  const totalContentAmortization = threeYearRow("Total");
+  const licensedContentAmortization = threeYearRow("Licensed content");
+
+  return {
+    licensedContentNet: twoYearRow("Licensed content, net"),
+    producedContentReleasedLessAmortization: twoYearRow("Released, less amortization"),
+    producedContentInProduction: twoYearRow("In production"),
+    producedContentInDevelopmentAndPreProduction: twoYearRow("In development and pre-production"),
+    producedContentNet,
+    contentAssetsNet: twoYearRow("Content assets, net"),
+    licensedContentAmortization,
+    producedContentAmortization:
+      producedContentAmortization ??
+      (totalContentAmortization != null && licensedContentAmortization != null
+        ? totalContentAmortization - licensedContentAmortization
+        : null),
+    totalContentAmortization,
+    productionTaxIncentiveAmortizationBenefit: taxIncentiveMatch
+      ? moneyPhraseToNumber(taxIncentiveMatch[1], "million")
+      : null,
+  };
+}
+
+function contentObligationFieldsForYear(fiscalYear, text) {
+  const contentLiabilities = firstMatch(
+    text,
+    /As of December 31,\s*\d{4},\s*we had approximately \$([\d.]+)\s*(billion|million) of total content liabilities/i,
+  );
+  const obligations = firstMatch(text, /Content obligations \(1\) \$\s*([\d,]+)\s*\$\s*([\d,]+)\s*\$\s*([\d,]+)/i);
+  const recognized = firstMatch(
+    text,
+    /content obligations were comprised of \$([\d.]+)\s*(billion|million) included in [^.]*?Current content liabilities[^$]*?\$([\d.]+)\s*(billion|million) of [^.]*?Non-current content liabilities[^$]*?\$([\d.]+)\s*(billion|million) of obligations that are not reflected/i,
+  );
+  const unknown = firstMatch(
+    text,
+    /unknown obligations are expected to be significant[^.]*?approximately \$([\d.]+)\s*(billion|million) to \$([\d.]+)\s*(billion|million) over the next three years/i,
+  );
+  const amortizationChange = firstMatch(
+    text,
+    /The (increase|decrease) in cost of revenues[^.]+?was (?:primarily )?due to a \$([\d,]+)\s*million (increase|decrease) in content amortization[^.]*\./i,
+  );
+
+  return {
+    totalContentLiabilities: contentLiabilities ? moneyPhraseToNumber(contentLiabilities[1], contentLiabilities[2]) : null,
+    currentContentLiabilities: recognized ? moneyPhraseToNumber(recognized[1], recognized[2]) : null,
+    nonCurrentContentLiabilities: recognized ? moneyPhraseToNumber(recognized[3], recognized[4]) : null,
+    contentObligationsTotal: obligations ? tableMoneyToNumber(obligations[1]) : null,
+    contentObligationsDueNext12Months: obligations ? tableMoneyToNumber(obligations[2]) : null,
+    contentObligationsDueBeyond12Months: obligations ? tableMoneyToNumber(obligations[3]) : null,
+    unrecognizedContentObligations: recognized ? moneyPhraseToNumber(recognized[5], recognized[6]) : null,
+    unknownObligationsLow: unknown ? moneyPhraseToNumber(unknown[1], unknown[2]) : null,
+    unknownObligationsHigh: unknown ? moneyPhraseToNumber(unknown[3], unknown[4]) : null,
+    contentAmortizationYoYChange: amortizationChange
+      ? moneyPhraseToNumber(amortizationChange[2], "million") *
+        (amortizationChange[3].toLowerCase() === "decrease" ? -1 : 1)
+      : null,
+    contentAmortizationYoYDescription: amortizationChange
+      ? `Cost of revenues ${amortizationChange[1].toLowerCase()}d year over year partly because content amortization ${amortizationChange[3].toLowerCase()}d by $${amortizationChange[2]} million.`
+      : null,
+    fiscalYear,
+  };
+}
+
+async function buildContentEconomics(annualFilings) {
+  const rows = [];
+
+  for (let fiscalYear = 2020; fiscalYear <= 2025; fiscalYear += 1) {
+    const filing = annualFilings.find((item) => item.reportDate === `${fiscalYear}-12-31` && item.form === "10-K");
+    if (!filing?.url) continue;
+
+    const text = htmlToText(await fetchText(filing.url));
+    rows.push({
+      fiscalYear,
+      accessionNumber: filing.accessionNumber,
+      filingUrl: filing.url,
+      ...contentAssetTablesForYear(fiscalYear, text),
+      ...contentObligationFieldsForYear(fiscalYear, text),
+      source: `Netflix Form 10-K, SEC EDGAR, fiscal year ${fiscalYear}`,
+    });
+  }
+
+  return rows.sort((a, b) => b.fiscalYear - a.fiscalYear);
+}
+
+function contentEconomicsSource(rows) {
+  return `export type NetflixContentEconomics = {
+  fiscalYear: number;
+  accessionNumber: string;
+  filingUrl: string;
+  licensedContentNet: number | null;
+  producedContentReleasedLessAmortization: number | null;
+  producedContentInProduction: number | null;
+  producedContentInDevelopmentAndPreProduction: number | null;
+  producedContentNet: number | null;
+  contentAssetsNet: number | null;
+  licensedContentAmortization: number | null;
+  producedContentAmortization: number | null;
+  totalContentAmortization: number | null;
+  productionTaxIncentiveAmortizationBenefit: number | null;
+  totalContentLiabilities: number | null;
+  currentContentLiabilities: number | null;
+  nonCurrentContentLiabilities: number | null;
+  contentObligationsTotal: number | null;
+  contentObligationsDueNext12Months: number | null;
+  contentObligationsDueBeyond12Months: number | null;
+  unrecognizedContentObligations: number | null;
+  unknownObligationsLow: number | null;
+  unknownObligationsHigh: number | null;
+  contentAmortizationYoYChange: number | null;
+  contentAmortizationYoYDescription: string | null;
+  source: string;
+};
+
+export const NETFLIX_CONTENT_ECONOMICS_SOURCE_NOTE =
+  "FY${rows.at(-1)?.fiscalYear}-FY${rows[0]?.fiscalYear} content economics are extracted from Netflix audited Form 10-K balance sheet component notes, MD&A cost of revenue commentary, and contractual obligations disclosures on SEC EDGAR. Amounts are reported in dollars; fields are null where the filing table did not provide the requested split directly.";
+
+export const NETFLIX_CONTENT_ECONOMICS_COVERAGE = {
+  fromFiscalYear: ${rows.at(-1)?.fiscalYear ?? "null"},
+  throughFiscalYear: ${rows[0]?.fiscalYear ?? "null"},
+  source: "Netflix Form 10-K filings on SEC EDGAR",
+};
+
+export const NETFLIX_CONTENT_ECONOMICS: NetflixContentEconomics[] = ${JSON.stringify(rows, null, 2)};
+
+export const NETFLIX_LATEST_CONTENT_ECONOMICS = NETFLIX_CONTENT_ECONOMICS[0];
+`;
+}
+
 async function main() {
   const submissions = await fetchJson(`https://data.sec.gov/submissions/CIK${CIK}.json`);
   const allRows = rowsFromSubmissionTable(submissions.filings.recent);
@@ -549,14 +774,16 @@ async function main() {
   const companyFacts = await fetchJson(`https://data.sec.gov/api/xbrl/companyfacts/CIK${CIK}.json`);
   const annualFinancials = buildAnnualFinancials(companyFacts, annualFilings);
   const quarterlyFinancials = buildQuarterlyFinancials(companyFacts, annualFilings, quarterlyFilings);
+  const contentEconomics = await buildContentEconomics(annualFilings);
 
   await mkdir(outputDir, { recursive: true });
   await writeFile(path.join(outputDir, "filings.ts"), filingsSource(registrationFilings, annualFilings, quarterlyFilings));
   await writeFile(path.join(outputDir, "annualFinancials.ts"), annualFinancialsSource(annualFinancials));
   await writeFile(path.join(outputDir, "quarterlyFinancials.ts"), quarterlyFinancialsSource(quarterlyFinancials));
+  await writeFile(path.join(outputDir, "contentEconomics.ts"), contentEconomicsSource(contentEconomics));
 
   console.log(
-    `Updated Netflix SEC data: ${registrationFilings.length} registration filings, ${annualFilings.length} annual filings, ${quarterlyFilings.length} quarterly filings, ${annualFinancials.length} annual financial rows, ${quarterlyFinancials.length} quarterly financial rows.`,
+    `Updated Netflix SEC data: ${registrationFilings.length} registration filings, ${annualFilings.length} annual filings, ${quarterlyFilings.length} quarterly filings, ${annualFinancials.length} annual financial rows, ${quarterlyFinancials.length} quarterly financial rows, ${contentEconomics.length} content economics rows.`,
   );
 }
 
