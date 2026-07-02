@@ -174,6 +174,48 @@ function SegmentBarChart({ title, rows }: { title: string; rows: AlibabaSegmentM
   );
 }
 
+function InterimMiniBarChart({
+  title,
+  rows,
+  value,
+  formatter,
+  color = "bg-red-600",
+}: {
+  title: string;
+  rows: AlibabaInterimResult[];
+  value: (row: AlibabaInterimResult) => number | null;
+  formatter: (value: number | null) => string;
+  color?: string;
+}) {
+  const values = rows.map(value).filter((item): item is number => item != null);
+  const max = Math.max(...values.map((item) => Math.abs(item)), 1);
+
+  return (
+    <section className="rounded-lg border border-zinc-200 bg-white p-5 shadow-sm">
+      <h3 className="text-lg font-semibold text-zinc-950">{title}</h3>
+      <div className="mt-5 flex h-56 items-end gap-3 overflow-x-auto">
+        {rows.map((row) => {
+          const rowValue = value(row);
+          const height = rowValue == null ? 0 : Math.max(8, (Math.abs(rowValue) / max) * 180);
+
+          return (
+            <div key={`${title}-${row.accessionNumber}`} className="flex min-w-20 flex-col items-center gap-2">
+              <div
+                className={`w-9 rounded-t ${rowValue != null && rowValue < 0 ? "bg-zinc-500" : color}`}
+                style={{ height }}
+                title={`${row.periodLabel}: ${formatter(rowValue)}`}
+              />
+              <span className="text-center text-[10px] leading-3 text-zinc-500">
+                {row.periodLabel.replace(" quarter FY2026", "")}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 function ValuationMiniBarChart({
   title,
   rows,
@@ -462,6 +504,19 @@ export default function AlibabaCompleteFundamentalAnalysisPage() {
             <MiniBarChart title="Operating Margin" rows={annualRows} value={(row) => row.operatingMargin} formatter={formatPercent} color="bg-zinc-900" />
             <MiniBarChart title="Free Cash Flow" rows={annualRows} value={(row) => row.freeCashFlow} formatter={formatRmbBillions} color="bg-zinc-900" />
             <SegmentBarChart title="FY2026 Segment Revenue" rows={latestSegments} />
+            <InterimMiniBarChart
+              title="FY2026 Interim Revenue"
+              rows={[...ALIBABA_INTERIM_RESULTS].reverse()}
+              value={(row) => row.revenueRmbMillions}
+              formatter={formatRmbMillionsAsBillions}
+            />
+            <InterimMiniBarChart
+              title="FY2026 Interim Free Cash Flow"
+              rows={[...ALIBABA_INTERIM_RESULTS].reverse()}
+              value={(row) => row.freeCashFlowRmbMillions}
+              formatter={formatRmbMillionsAsBillions}
+              color="bg-zinc-900"
+            />
             <ValuationMiniBarChart title="EV/Sales" rows={ALIBABA_VALUATION_HISTORY} value={(row) => row.enterpriseValueToSales} formatter={formatMultiple} />
             <ValuationMiniBarChart title="FCF Yield" rows={ALIBABA_VALUATION_HISTORY} value={(row) => row.freeCashFlowYield} formatter={formatPercent} />
           </div>
