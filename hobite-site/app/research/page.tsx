@@ -7,6 +7,11 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "Alibaba (BABA) Complete Fundamental Research Hub",
+    description: "SEC-backed Form 20-F financial history, segment economics, ADS valuation, forecast, DCF, source audit, and QA.",
+    href: "/research/alibaba-complete-fundamental-analysis",
+  },
+  {
     title: "Netflix (NFLX) Complete Fundamental Research Hub",
     description: "SEC-backed financial history, subscriber analysis, content economics, valuation, forecast, and DCF project hub.",
     href: "/research/netflix-complete-fundamental-analysis",

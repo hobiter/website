@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "research:nflx:data": "node scripts/update-netflix-sec-data.mjs",
+    "research:baba:data": "node scripts/update-alibaba-sec-data.mjs",
     "lint": "eslint"
   },
   "dependencies": {
