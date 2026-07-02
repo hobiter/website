@@ -22,12 +22,24 @@ import {
   NFLX_SOURCE_SYSTEMS,
 } from "./researchPlan";
 import {
+  NETFLIX_SOURCE_AUDIT_ITEMS,
+  NETFLIX_SOURCE_AUDIT_NOTE,
+  type NetflixSourceAuditItem,
+} from "./sourceAudit";
+import {
   NETFLIX_DCF_ASSUMPTIONS,
   NETFLIX_DCF_CASES,
   NETFLIX_FORECASTS,
   NETFLIX_FORECAST_SOURCE_NOTE,
   type ForecastRow,
 } from "./forecastModel";
+import {
+  NETFLIX_LATEST_VALUATION_HISTORY,
+  NETFLIX_VALUATION_HISTORY,
+  NETFLIX_VALUATION_HISTORY_COVERAGE,
+  NETFLIX_VALUATION_HISTORY_SOURCE_NOTE,
+  type NetflixValuationHistory,
+} from "./valuationHistory";
 import {
   NETFLIX_CONTENT_ECONOMICS,
   NETFLIX_CONTENT_ECONOMICS_COVERAGE,
@@ -47,6 +59,8 @@ import {
   NETFLIX_GLOBAL_MEMBERSHIP_TOTALS,
   NETFLIX_REGIONAL_METRICS,
   NETFLIX_SUBSCRIBER_METRICS_SOURCE_NOTE,
+  type NetflixRegion,
+  type NetflixRegionalMetric,
 } from "./subscriberMetrics";
 
 export const metadata: Metadata = {
@@ -148,6 +162,11 @@ function formatMemberCount(value: number | null) {
 function formatPercent(value: number | null) {
   if (value == null) return "n/a";
   return `${value.toFixed(1)}%`;
+}
+
+function formatMultiple(value: number | null) {
+  if (value == null) return "n/a";
+  return `${value.toFixed(1)}x`;
 }
 
 function formatEps(value: number | null) {
@@ -289,6 +308,81 @@ function MiniBarChart({
   );
 }
 
+function GlobalMembershipMiniBarChart({
+  title,
+  value,
+  formatter,
+}: {
+  title: string;
+  value: (row: (typeof NETFLIX_GLOBAL_MEMBERSHIP_TOTALS)[number]) => number | null;
+  formatter: (value: number | null) => string;
+}) {
+  const values = NETFLIX_GLOBAL_MEMBERSHIP_TOTALS.map(value).filter((item): item is number => item != null);
+  const max = Math.max(...values.map((item) => Math.abs(item)), 1);
+
+  return (
+    <section className="rounded-lg border border-zinc-200 bg-white p-5 shadow-sm">
+      <h3 className="text-lg font-semibold text-zinc-950">{title}</h3>
+      <div className="mt-5 flex h-56 items-end gap-3 overflow-x-auto">
+        {NETFLIX_GLOBAL_MEMBERSHIP_TOTALS.map((row) => {
+          const rowValue = value(row);
+          const height = rowValue == null ? 0 : Math.max(8, (Math.abs(rowValue) / max) * 180);
+
+          return (
+            <div key={row.fiscalYear} className="flex min-w-12 flex-col items-center gap-2">
+              <div
+                className="w-8 rounded-t bg-red-600"
+                style={{ height }}
+                title={`${row.fiscalYear}: ${formatter(rowValue)}`}
+              />
+              <span className="text-[10px] text-zinc-500">{row.fiscalYear}</span>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function RegionalMiniBarChart({
+  title,
+  region,
+  value,
+  formatter,
+}: {
+  title: string;
+  region: NetflixRegion;
+  value: (row: NetflixRegionalMetric) => number | null;
+  formatter: (value: number | null) => string;
+}) {
+  const rows = NETFLIX_REGIONAL_METRICS.filter((row) => row.region === region);
+  const values = rows.map(value).filter((item): item is number => item != null);
+  const max = Math.max(...values.map((item) => Math.abs(item)), 1);
+
+  return (
+    <section className="rounded-lg border border-zinc-200 bg-white p-5 shadow-sm">
+      <h3 className="text-lg font-semibold text-zinc-950">{title}</h3>
+      <div className="mt-5 flex h-56 items-end gap-3 overflow-x-auto">
+        {rows.map((row) => {
+          const rowValue = value(row);
+          const height = rowValue == null ? 0 : Math.max(8, (Math.abs(rowValue) / max) * 180);
+
+          return (
+            <div key={`${row.region}-${row.fiscalYear}`} className="flex min-w-12 flex-col items-center gap-2">
+              <div
+                className="w-8 rounded-t bg-zinc-900"
+                style={{ height }}
+                title={`${row.fiscalYear}: ${formatter(rowValue)}`}
+              />
+              <span className="text-[10px] text-zinc-500">{row.fiscalYear}</span>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 function ContentMiniBarChart({
   title,
   rows,
@@ -316,6 +410,44 @@ function ContentMiniBarChart({
             <div key={row.fiscalYear} className="flex min-w-12 flex-col items-center gap-2">
               <div
                 className="w-8 rounded-t bg-red-600"
+                style={{ height }}
+                title={`${row.fiscalYear}: ${formatter(rowValue)}`}
+              />
+              <span className="text-[10px] text-zinc-500">{row.fiscalYear}</span>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function ValuationMiniBarChart({
+  title,
+  rows,
+  value,
+  formatter,
+}: {
+  title: string;
+  rows: NetflixValuationHistory[];
+  value: (row: NetflixValuationHistory) => number | null;
+  formatter: (value: number | null) => string;
+}) {
+  const values = rows.map(value).filter((item): item is number => item != null);
+  const max = Math.max(...values.map((item) => Math.abs(item)), 1);
+
+  return (
+    <section className="rounded-lg border border-zinc-200 bg-white p-5 shadow-sm">
+      <h3 className="text-lg font-semibold text-zinc-950">{title}</h3>
+      <div className="mt-5 flex h-56 items-end gap-3 overflow-x-auto">
+        {rows.map((row) => {
+          const rowValue = value(row);
+          const height = rowValue == null ? 0 : Math.max(8, (Math.abs(rowValue) / max) * 180);
+
+          return (
+            <div key={row.fiscalYear} className="flex min-w-12 flex-col items-center gap-2">
+              <div
+                className="w-8 rounded-t bg-zinc-900"
                 style={{ height }}
                 title={`${row.fiscalYear}: ${formatter(rowValue)}`}
               />
@@ -459,6 +591,88 @@ function ContentEconomicsTable({ rows }: { rows: NetflixContentEconomics[] }) {
   );
 }
 
+function ValuationHistoryTable({ rows }: { rows: NetflixValuationHistory[] }) {
+  return (
+    <div className="overflow-x-auto">
+      <table className="min-w-full text-sm">
+        <thead>
+          <tr className="border-b border-zinc-200 text-left text-zinc-500">
+            <th className="py-2 pr-4 font-medium">FY</th>
+            <th className="py-2 pr-4 font-medium">Price Date</th>
+            <th className="py-2 pr-4 font-medium">Adj. Close</th>
+            <th className="py-2 pr-4 font-medium">Market Cap</th>
+            <th className="py-2 pr-4 font-medium">Enterprise Value</th>
+            <th className="py-2 pr-4 font-medium">P/S</th>
+            <th className="py-2 pr-4 font-medium">EV/Sales</th>
+            <th className="py-2 pr-4 font-medium">P/E</th>
+            <th className="py-2 pr-4 font-medium">FCF Yield</th>
+            <th className="py-2 pr-4 font-medium">Split-Adj. Shares</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.fiscalYear} className="border-b border-zinc-100">
+              <td className="py-2 pr-4 font-medium text-zinc-950">{row.fiscalYear}</td>
+              <td className="py-2 pr-4 text-zinc-700">{row.priceDate}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatEps(row.adjustedClose)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.marketCap)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatUsdBillions(row.enterpriseValue)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatMultiple(row.priceToSales)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatMultiple(row.enterpriseValueToSales)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatMultiple(row.priceToEarnings)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatPercent(row.freeCashFlowYield)}</td>
+              <td className="py-2 pr-4 text-zinc-700">{formatMillions(row.splitAdjustedDilutedShares)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function SourceAuditTable({ rows }: { rows: NetflixSourceAuditItem[] }) {
+  const badgeClassName: Record<NetflixSourceAuditItem["status"], string> = {
+    complete: "bg-emerald-100 text-emerald-800",
+    partial: "bg-amber-100 text-amber-800",
+    "needs-review": "bg-zinc-200 text-zinc-700",
+  };
+
+  return (
+    <div className="overflow-x-auto">
+      <table className="min-w-full text-sm">
+        <thead>
+          <tr className="border-b border-zinc-200 text-left text-zinc-500">
+            <th className="py-2 pr-4 font-medium">Area</th>
+            <th className="py-2 pr-4 font-medium">Coverage</th>
+            <th className="py-2 pr-4 font-medium">Primary Source</th>
+            <th className="py-2 pr-4 font-medium">Status</th>
+            <th className="py-2 pr-4 font-medium">Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.area} className="border-b border-zinc-100 align-top">
+              <td className="py-3 pr-4 font-medium text-zinc-950">{row.area}</td>
+              <td className="py-3 pr-4 text-zinc-700">{row.coverage}</td>
+              <td className="py-3 pr-4">
+                <a href={row.sourceUrl} className="text-zinc-800 underline" rel="noreferrer" target="_blank">
+                  {row.primarySource}
+                </a>
+              </td>
+              <td className="py-3 pr-4">
+                <span className={`rounded-md px-2 py-1 text-xs font-semibold ${badgeClassName[row.status]}`}>
+                  {row.status}
+                </span>
+              </td>
+              <td className="max-w-md py-3 pr-4 leading-6 text-zinc-650">{row.note}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 export default function NetflixCompleteFundamentalAnalysisPage() {
   const chartTarget = NFLX_CHART_GROUPS.reduce((sum, group) => sum + group.targetCount, 0);
   const recentQuarterlyFilings = [...NETFLIX_QUARTERLY_FILINGS].slice(-12).reverse();
@@ -544,26 +758,211 @@ export default function NetflixCompleteFundamentalAnalysisPage() {
           </div>
         </SectionCard>
 
-        <div className="grid gap-5 lg:grid-cols-3">
-          <MiniBarChart
-            title="Annual Revenue"
-            rows={annualFinancialRowsWithRevenue}
-            value={(row) => row.revenue}
-            formatter={formatUsdBillions}
-          />
-          <MiniBarChart
-            title="Operating Income"
-            rows={annualFinancialRowsWithRevenue}
-            value={(row) => row.operatingIncome}
-            formatter={formatUsdBillions}
-          />
-          <MiniBarChart
-            title="Free Cash Flow"
-            rows={annualFinancialRowsWithRevenue}
-            value={(row) => row.freeCashFlow}
-            formatter={formatUsdBillions}
-          />
-        </div>
+        <SectionCard title="Chart Dashboard">
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-lg font-semibold text-zinc-950">Annual Financials</h3>
+              <div className="mt-4 grid gap-5 lg:grid-cols-3">
+                <MiniBarChart
+                  title="Annual Revenue"
+                  rows={annualFinancialRowsWithRevenue}
+                  value={(row) => row.revenue}
+                  formatter={formatUsdBillions}
+                />
+                <MiniBarChart
+                  title="Gross Profit"
+                  rows={annualFinancialRowsWithRevenue}
+                  value={(row) => row.grossProfit}
+                  formatter={formatUsdBillions}
+                />
+                <MiniBarChart
+                  title="Operating Income"
+                  rows={annualFinancialRowsWithRevenue}
+                  value={(row) => row.operatingIncome}
+                  formatter={formatUsdBillions}
+                />
+                <MiniBarChart
+                  title="Net Income"
+                  rows={annualFinancialRowsWithRevenue}
+                  value={(row) => row.netIncome}
+                  formatter={formatUsdBillions}
+                />
+                <MiniBarChart
+                  title="Diluted EPS"
+                  rows={annualFinancialRowsWithRevenue}
+                  value={(row) => row.dilutedEps}
+                  formatter={formatEps}
+                />
+                <MiniBarChart
+                  title="Total Assets"
+                  rows={annualFinancialRowsWithRevenue}
+                  value={(row) => row.totalAssets}
+                  formatter={formatUsdBillions}
+                />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-zinc-950">Margins and Returns</h3>
+              <div className="mt-4 grid gap-5 lg:grid-cols-3">
+                <MiniBarChart
+                  title="Gross Margin"
+                  rows={annualFinancialRowsWithRevenue}
+                  value={(row) => row.grossMargin}
+                  formatter={formatPercent}
+                />
+                <MiniBarChart
+                  title="Operating Margin"
+                  rows={annualFinancialRowsWithRevenue}
+                  value={(row) => row.operatingMargin}
+                  formatter={formatPercent}
+                />
+                <MiniBarChart
+                  title="Net Margin"
+                  rows={annualFinancialRowsWithRevenue}
+                  value={(row) => row.netMargin}
+                  formatter={formatPercent}
+                />
+                <MiniBarChart
+                  title="Free Cash Flow Margin"
+                  rows={annualFinancialRowsWithRevenue}
+                  value={(row) => row.freeCashFlowMargin}
+                  formatter={formatPercent}
+                />
+                <MiniBarChart
+                  title="Return on Equity"
+                  rows={annualFinancialRowsWithRevenue}
+                  value={(row) => row.roe}
+                  formatter={formatPercent}
+                />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-zinc-950">Cash Flow and Capital Allocation</h3>
+              <div className="mt-4 grid gap-5 lg:grid-cols-3">
+                <MiniBarChart
+                  title="Operating Cash Flow"
+                  rows={annualFinancialRowsWithRevenue}
+                  value={(row) => row.operatingCashFlow}
+                  formatter={formatUsdBillions}
+                />
+                <MiniBarChart
+                  title="Capital Expenditures"
+                  rows={annualFinancialRowsWithRevenue}
+                  value={(row) => row.capitalExpenditures}
+                  formatter={formatUsdBillions}
+                />
+                <MiniBarChart
+                  title="Free Cash Flow"
+                  rows={annualFinancialRowsWithRevenue}
+                  value={(row) => row.freeCashFlow}
+                  formatter={formatUsdBillions}
+                />
+                <MiniBarChart
+                  title="Cash and Equivalents"
+                  rows={annualFinancialRowsWithRevenue}
+                  value={(row) => row.cashAndEquivalents}
+                  formatter={formatUsdBillions}
+                />
+                <MiniBarChart
+                  title="Long-Term Debt"
+                  rows={annualFinancialRowsWithRevenue}
+                  value={(row) => row.longTermDebt}
+                  formatter={formatUsdBillions}
+                />
+                <MiniBarChart
+                  title="Diluted Shares"
+                  rows={annualFinancialRowsWithRevenue}
+                  value={(row) => row.dilutedShares}
+                  formatter={formatMillions}
+                />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-zinc-950">Subscribers and Regions</h3>
+              <div className="mt-4 grid gap-5 lg:grid-cols-3">
+                <GlobalMembershipMiniBarChart
+                  title="Global Streaming Revenue"
+                  value={(row) => row.streamingRevenue}
+                  formatter={formatUsdBillions}
+                />
+                <GlobalMembershipMiniBarChart
+                  title="Global Paid Memberships"
+                  value={(row) => row.paidMembershipsEndOfPeriod}
+                  formatter={formatMemberCount}
+                />
+                <RegionalMiniBarChart
+                  title="UCAN Streaming Revenue"
+                  region="UCAN"
+                  value={(row) => row.streamingRevenue}
+                  formatter={formatUsdBillions}
+                />
+                <RegionalMiniBarChart
+                  title="EMEA Streaming Revenue"
+                  region="EMEA"
+                  value={(row) => row.streamingRevenue}
+                  formatter={formatUsdBillions}
+                />
+                <RegionalMiniBarChart
+                  title="LATAM Streaming Revenue"
+                  region="LATAM"
+                  value={(row) => row.streamingRevenue}
+                  formatter={formatUsdBillions}
+                />
+                <RegionalMiniBarChart
+                  title="APAC Streaming Revenue"
+                  region="APAC"
+                  value={(row) => row.streamingRevenue}
+                  formatter={formatUsdBillions}
+                />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-zinc-950">Content and Valuation</h3>
+              <div className="mt-4 grid gap-5 lg:grid-cols-3">
+                <ContentMiniBarChart
+                  title="Content Assets, Net"
+                  rows={NETFLIX_CONTENT_ECONOMICS}
+                  value={(row) => row.contentAssetsNet}
+                  formatter={formatUsdBillions}
+                />
+                <ContentMiniBarChart
+                  title="Content Amortization"
+                  rows={NETFLIX_CONTENT_ECONOMICS}
+                  value={(row) => row.totalContentAmortization}
+                  formatter={formatUsdBillions}
+                />
+                <ContentMiniBarChart
+                  title="Content Obligations"
+                  rows={NETFLIX_CONTENT_ECONOMICS}
+                  value={(row) => row.contentObligationsTotal}
+                  formatter={formatUsdBillions}
+                />
+                <ValuationMiniBarChart
+                  title="Enterprise Value to Sales"
+                  rows={NETFLIX_VALUATION_HISTORY}
+                  value={(row) => row.enterpriseValueToSales}
+                  formatter={formatMultiple}
+                />
+                <ValuationMiniBarChart
+                  title="Price to Earnings"
+                  rows={NETFLIX_VALUATION_HISTORY}
+                  value={(row) => row.priceToEarnings}
+                  formatter={formatMultiple}
+                />
+                <ValuationMiniBarChart
+                  title="Free Cash Flow Yield"
+                  rows={NETFLIX_VALUATION_HISTORY}
+                  value={(row) => row.freeCashFlowYield}
+                  formatter={formatPercent}
+                />
+              </div>
+            </div>
+          </div>
+        </SectionCard>
 
         <SectionCard title="Forecast and DCF">
           <div className="space-y-6">
@@ -612,6 +1011,54 @@ export default function NetflixCompleteFundamentalAnalysisPage() {
               </div>
             </div>
             <p className="text-sm leading-6 text-zinc-600">{NETFLIX_DCF_ASSUMPTIONS.note}</p>
+          </div>
+        </SectionCard>
+
+        <SectionCard title="Historical Valuation">
+          <div className="space-y-5">
+            <p className="max-w-5xl leading-7 text-zinc-650">{NETFLIX_VALUATION_HISTORY_SOURCE_NOTE}</p>
+            <div className="grid gap-3 md:grid-cols-4">
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Coverage</p>
+                <p className="mt-2 text-xl font-semibold">
+                  FY{NETFLIX_VALUATION_HISTORY_COVERAGE.fromFiscalYear}-FY
+                  {NETFLIX_VALUATION_HISTORY_COVERAGE.throughFiscalYear}
+                </p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Latest market cap</p>
+                <p className="mt-2 text-xl font-semibold">
+                  {formatUsdBillions(NETFLIX_LATEST_VALUATION_HISTORY.marketCap)}
+                </p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Latest EV/Sales</p>
+                <p className="mt-2 text-xl font-semibold">
+                  {formatMultiple(NETFLIX_LATEST_VALUATION_HISTORY.enterpriseValueToSales)}
+                </p>
+              </div>
+              <div className="rounded-lg bg-zinc-100 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Latest FCF yield</p>
+                <p className="mt-2 text-xl font-semibold">
+                  {formatPercent(NETFLIX_LATEST_VALUATION_HISTORY.freeCashFlowYield)}
+                </p>
+              </div>
+            </div>
+            <div className="grid gap-4 lg:grid-cols-2">
+              <ValuationMiniBarChart
+                title="Enterprise Value to Sales"
+                rows={NETFLIX_VALUATION_HISTORY}
+                value={(row) => row.enterpriseValueToSales}
+                formatter={formatMultiple}
+              />
+              <ValuationMiniBarChart
+                title="Free Cash Flow Yield"
+                rows={NETFLIX_VALUATION_HISTORY}
+                value={(row) => row.freeCashFlowYield}
+                formatter={formatPercent}
+              />
+            </div>
+            <ValuationHistoryTable rows={NETFLIX_VALUATION_HISTORY} />
           </div>
         </SectionCard>
 
@@ -813,6 +1260,13 @@ export default function NetflixCompleteFundamentalAnalysisPage() {
                 </div>
               </article>
             ))}
+          </div>
+        </SectionCard>
+
+        <SectionCard title="Source Audit">
+          <div className="space-y-5">
+            <p className="max-w-5xl leading-7 text-zinc-650">{NETFLIX_SOURCE_AUDIT_NOTE}</p>
+            <SourceAuditTable rows={NETFLIX_SOURCE_AUDIT_ITEMS} />
           </div>
         </SectionCard>
 
