@@ -22,6 +22,11 @@ import {
   NFLX_SOURCE_SYSTEMS,
 } from "./researchPlan";
 import {
+  NETFLIX_PUBLICATION_QA_ITEMS,
+  NETFLIX_PUBLICATION_QA_NOTE,
+  type PublicationQaItem,
+} from "./publicationQa";
+import {
   NETFLIX_SOURCE_AUDIT_ITEMS,
   NETFLIX_SOURCE_AUDIT_NOTE,
   type NetflixSourceAuditItem,
@@ -673,6 +678,41 @@ function SourceAuditTable({ rows }: { rows: NetflixSourceAuditItem[] }) {
   );
 }
 
+function PublicationQaTable({ rows }: { rows: PublicationQaItem[] }) {
+  const badgeClassName: Record<PublicationQaItem["status"], string> = {
+    pass: "bg-emerald-100 text-emerald-800",
+    warning: "bg-amber-100 text-amber-800",
+    blocked: "bg-red-100 text-red-800",
+  };
+
+  return (
+    <div className="overflow-x-auto">
+      <table className="min-w-full text-sm">
+        <thead>
+          <tr className="border-b border-zinc-200 text-left text-zinc-500">
+            <th className="py-2 pr-4 font-medium">Check</th>
+            <th className="py-2 pr-4 font-medium">Status</th>
+            <th className="py-2 pr-4 font-medium">Evidence</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.check} className="border-b border-zinc-100 align-top">
+              <td className="py-3 pr-4 font-medium text-zinc-950">{row.check}</td>
+              <td className="py-3 pr-4">
+                <span className={`rounded-md px-2 py-1 text-xs font-semibold ${badgeClassName[row.status]}`}>
+                  {row.status}
+                </span>
+              </td>
+              <td className="max-w-3xl py-3 pr-4 leading-6 text-zinc-650">{row.evidence}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 export default function NetflixCompleteFundamentalAnalysisPage() {
   const chartTarget = NFLX_CHART_GROUPS.reduce((sum, group) => sum + group.targetCount, 0);
   const recentQuarterlyFilings = [...NETFLIX_QUARTERLY_FILINGS].slice(-12).reverse();
@@ -1267,6 +1307,13 @@ export default function NetflixCompleteFundamentalAnalysisPage() {
           <div className="space-y-5">
             <p className="max-w-5xl leading-7 text-zinc-650">{NETFLIX_SOURCE_AUDIT_NOTE}</p>
             <SourceAuditTable rows={NETFLIX_SOURCE_AUDIT_ITEMS} />
+          </div>
+        </SectionCard>
+
+        <SectionCard title="Publication QA">
+          <div className="space-y-5">
+            <p className="max-w-5xl leading-7 text-zinc-650">{NETFLIX_PUBLICATION_QA_NOTE}</p>
+            <PublicationQaTable rows={NETFLIX_PUBLICATION_QA_ITEMS} />
           </div>
         </SectionCard>
 

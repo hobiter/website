@@ -234,5 +234,6 @@ Target: 110 charts minimum.
 - Historical valuation database has been added for FY2020-FY2025, combining split-adjusted Yahoo Finance year-end prices with SEC annual financials for market cap, enterprise value, P/S, EV/Sales, P/E, and FCF yield.
 - Chart dashboard has been expanded to 29 rendered chart panels covering annual financials, margins, cash flow, capital allocation, subscribers, regional revenue, content economics, and valuation history.
 - Source audit table has been added, mapping filing inventory, financial databases, subscriber/regional data, content economics, forecast/DCF, valuation history, and investor communication links to primary sources and audit status.
+- Publication QA section has been added, documenting TypeScript status, route/import/source checks, representative source endpoint checks, and environment caveats for blocked local npm build execution.
 - Regeneration script added: `npm run research:nflx:data`.
-- Remaining deepening work: final publication QA.
+- Remaining deepening work: none for this implementation pass; next optional step is live browser visual review once the local dev server is available.

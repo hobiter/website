@@ -62,10 +62,10 @@ export const NETFLIX_SOURCE_AUDIT_ITEMS: NetflixSourceAuditItem[] = [
   {
     area: "Historical valuation",
     coverage: "FY2020-FY2025 year-end multiples",
-    primarySource: "Yahoo Finance adjusted close and Netflix SEC annual financials",
-    sourceUrl: "https://finance.yahoo.com/quote/NFLX/history/",
+    primarySource: "Yahoo Finance chart API and Netflix SEC annual financials",
+    sourceUrl: "https://query1.finance.yahoo.com/v8/finance/chart/NFLX",
     status: "complete",
-    note: "FY2020-FY2022 diluted shares are normalized to the same split-adjusted basis as Yahoo adjusted historical prices.",
+    note: "FY2020-FY2022 diluted shares are normalized to the same split-adjusted basis as Yahoo adjusted historical prices. Yahoo's browser history page may block automated checks, so the chart API is the audit endpoint.",
   },
   {
     area: "Company commentary and investor communications",
