@@ -29,6 +29,15 @@ export const ALIBABA_REPORT_SECTIONS: ReportSection[] = [
     ]
   },
   {
+    "title": "Latest 6-K Read-Through",
+    "thesis": "FY2026 interim result releases show a sharp trade-off: cloud revenue acceleration is real, while quick commerce, Qwen user acquisition, and cloud infrastructure spending pressure near-term profit and free cash flow.",
+    "bullets": [
+      "The March quarter FY2026 release showed RMB243.4B of revenue, up 3% year over year, with cloud revenue growth accelerating to 40%.",
+      "Free cash flow was negative in both the September 2025 and March 2026 quarters tracked in Form 6-K exhibits.",
+      "The interim data supports a watchlist focused on cloud growth durability, adjusted EBITA recovery, and capex normalization."
+    ]
+  },
+  {
     "title": "Segment Economics",
     "thesis": "The FY2026 segment reset highlights three core engines: China e-commerce, international digital commerce, and cloud intelligence.",
     "bullets": [
