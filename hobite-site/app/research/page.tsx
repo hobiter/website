@@ -7,6 +7,11 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "AI Infrastructure Financing: Hidden Debt, Real Risk",
+    description: "Hyperscaler lease commitments, project finance, duration mismatch, stress transmission, and a risk-adjusted ranking of META, MSFT, AMZN, GOOG, and ORCL.",
+    href: "/research/ai-infrastructure-financing-risk",
+  },
+  {
     title: "阿里巴巴（BABA）完整基本面研究中心",
     description: "中文研究页：20-F 财务、6-K 更新、分部经济、ADS 估值、预测、DCF、来源审计与 QA。",
     href: "/research/alibaba-complete-fundamental-analysis/zh",
