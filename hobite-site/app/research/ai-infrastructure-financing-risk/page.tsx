@@ -175,6 +175,14 @@ export default function AiInfrastructureFinancingRiskPage() {
             <p>Published August 2026</p>
             <p>Companies: META, MSFT, AMZN, GOOG, ORCL</p>
             <p className="mt-3">For research and education only. Not investment advice.</p>
+            <div className="mt-4 flex gap-2">
+              <a className="bg-zinc-950 px-3 py-1.5 font-semibold text-white" href="/research/ai-infrastructure-financing-risk" aria-current="page">
+                English
+              </a>
+              <a className="border border-zinc-300 bg-white px-3 py-1.5 font-semibold text-zinc-900" href="/research/ai-infrastructure-financing-risk/zh">
+                中文
+              </a>
+            </div>
           </div>
         </header>
 
