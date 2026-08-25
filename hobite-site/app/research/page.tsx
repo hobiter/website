@@ -7,6 +7,11 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "Berkshire Hathaway (BRK.B) Complete Fundamental Research Hub",
+    description: "SEC-backed financial history, operating earnings, insurance float, capital allocation, valuation history and ten-year scenarios.",
+    href: "/research/berkshire-hathaway-complete-fundamental-analysis",
+  },
+  {
     title: "AI 基础设施融资：隐性债务与真实风险",
     description: "中文研究页：大型云厂商租赁承诺、项目融资、期限错配、压力传导，以及 META、MSFT、AMZN、GOOG 与 ORCL 的风险调整后排名。",
     href: "/research/ai-infrastructure-financing-risk/zh",

@@ -8,6 +8,7 @@
     "start": "next start",
     "research:nflx:data": "node scripts/update-netflix-sec-data.mjs",
     "research:baba:data": "node scripts/update-alibaba-sec-data.mjs",
+    "research:brk:data": "node scripts/update-berkshire-sec-data.mjs",
     "lint": "eslint"
   },
   "dependencies": {
