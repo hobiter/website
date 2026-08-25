@@ -483,3 +483,39 @@ Please automatic finish all the implementations.
 **Status**: Implementation complete.
 
 ---
+
+## BRK.B Research Hub - Automatic Standard Workflow Start
+
+**Timestamp**: 2026-08-24T00:00:00-07:00
+
+**User Input**:
+
+```txt
+follow this standard procedure to do the similar Financial Analysis work for BRK.B.
+```
+
+**Decision**:
+
+- Applied the approved `COMPANY_RESEARCH_STANDARD_WORKFLOW.md` to Berkshire Hathaway.
+- Reused the prior instruction to automatically finish implementations without additional AIDLC gates.
+- Classified the work as a new research unit inside the existing brownfield Next.js application.
+- Selected SEC filings and Berkshire investor materials as authoritative sources.
+- Selected insurance float, underwriting, operating earnings, cash/Treasury bills, equity securities, and decentralized operating subsidiaries as the company-specific economics.
+
+**Status**: Research source validation and implementation started.
+
+---
+
+## BRK.B Research Hub - Implementation Complete
+
+**Timestamp**: 2026-08-24T00:00:00-07:00
+
+- Route: `/research/berkshire-hathaway-complete-fundamental-analysis`.
+- Data: SEC filings and XBRL through FY2025 and Q2 2026; Berkshire operating earnings and insurance economics through H1/Q2 2026.
+- Model: FY2026-FY2035 bear/base/bull operating-earnings forecast with operating-earnings and price-to-book valuation cross-checks.
+- Verification: SEC regeneration passed; Next.js 16.2.4 production build and TypeScript passed; 37 static pages generated.
+- Visual QA: Passed at 1440x900 and 390x844 with no page-level overflow, clipped text, or console errors.
+
+**Status**: Implementation complete.
+
+---
