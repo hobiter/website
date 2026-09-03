@@ -484,6 +484,29 @@ Please automatic finish all the implementations.
 
 ---
 
+## AVGO Research Hub - Automatic Standard Workflow Start
+
+**Timestamp**: 2026-09-03T00:00:00-07:00
+
+**User Input**:
+
+```txt
+follow this standard procedure to do the similar Financial Analysis work for AVGO.
+```
+
+**Decision**:
+
+- Applied the approved `COMPANY_RESEARCH_STANDARD_WORKFLOW.md` to Broadcom Inc.
+- Reused the prior instruction to automatically finish implementations without additional AIDLC gates.
+- Classified the work as a new research unit inside the existing brownfield Next.js application.
+- Reused completed reverse-engineering artifacts and disabled extension configuration from `aidlc-state.md`.
+- Selected SEC filings and Broadcom investor materials as authoritative sources.
+- Selected semiconductor solutions, infrastructure software, AI semiconductor revenue, VMware integration, gross margin, free cash flow and acquisition debt as company-specific economics.
+
+**Status**: Workspace detection and research planning complete; implementation started.
+
+---
+
 ## BRK.B Research Hub - Automatic Standard Workflow Start
 
 **Timestamp**: 2026-08-24T00:00:00-07:00
@@ -515,6 +538,20 @@ follow this standard procedure to do the similar Financial Analysis work for BRK
 - Model: FY2026-FY2035 bear/base/bull operating-earnings forecast with operating-earnings and price-to-book valuation cross-checks.
 - Verification: SEC regeneration passed; Next.js 16.2.4 production build and TypeScript passed; 37 static pages generated.
 - Visual QA: Passed at 1440x900 and 390x844 with no page-level overflow, clipped text, or console errors.
+
+**Status**: Implementation complete.
+
+---
+
+## AVGO Research Hub - Implementation Complete
+
+**Timestamp**: 2026-09-03T00:00:00-07:00
+
+- Route: `/research/broadcom-complete-fundamental-analysis`.
+- Data: SEC filings and XBRL through FY2025 and Q2 FY2026; Broadcom Q3 FY2026 results and Q4 guidance released September 2, 2026.
+- Model: FY2026-FY2035 bear/base/bull forecast with discounted cash flow and valuation-multiple cross-checks.
+- Verification: SEC regeneration passed; Next.js 16.2.4 production build and TypeScript passed; 38 static pages generated.
+- Visual QA: Passed at desktop and 390 x 844 mobile viewports with complete report sections and readable responsive layout.
 
 **Status**: Implementation complete.
 

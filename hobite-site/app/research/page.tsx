@@ -7,6 +7,11 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "Broadcom (AVGO) Complete Fundamental Research Hub",
+    description: "SEC-backed financial history, AI semiconductor and VMware economics, capital allocation, valuation history and ten-year DCF scenarios.",
+    href: "/research/broadcom-complete-fundamental-analysis",
+  },
+  {
     title: "Berkshire Hathaway (BRK.B) Complete Fundamental Research Hub",
     description: "SEC-backed financial history, operating earnings, insurance float, capital allocation, valuation history and ten-year scenarios.",
     href: "/research/berkshire-hathaway-complete-fundamental-analysis",
