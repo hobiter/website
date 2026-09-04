@@ -44,7 +44,7 @@ export default function BroadcomResearchPage() {
   return <main className="min-h-screen bg-zinc-50 text-zinc-900">
     <header className="border-b border-zinc-800 bg-zinc-950 text-white">
       <div className="mx-auto max-w-7xl px-5 py-10 md:px-8">
-        <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-zinc-400"><a href="/research" className="font-medium text-cyan-400 hover:text-cyan-300">Hobite Research</a><span>Updated September 3, 2026 · AVGO · USD</span></div>
+        <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-zinc-400"><a href="/research" className="font-medium text-cyan-400 hover:text-cyan-300">Hobite Research</a><div className="flex items-center gap-4"><span>Updated September 3, 2026 · AVGO · USD</span><a href="/research/broadcom-complete-fundamental-analysis/zh" className="border border-zinc-700 px-3 py-1 text-white hover:border-zinc-500">中文</a></div></div>
         <p className="mt-8 text-xs font-semibold uppercase text-cyan-400">Complete Fundamental Research Hub</p>
         <h1 className="mt-3 max-w-5xl text-4xl font-semibold leading-tight md:text-6xl">Broadcom</h1>
         <p className="mt-4 max-w-4xl text-lg leading-8 text-zinc-300">A custom AI accelerator, Ethernet networking and infrastructure software powerhouse, evaluated against exceptional growth, concentrated customer risk and a valuation with little room for ordinary execution.</p>

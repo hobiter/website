@@ -556,3 +556,33 @@ follow this standard procedure to do the similar Financial Analysis work for BRK
 **Status**: Implementation complete.
 
 ---
+
+## AVGO Chinese Research Hub - Automatic Implementation
+
+**Timestamp**: 2026-09-03T00:00:00-07:00
+
+**User Input**:
+
+```txt
+Have a Chinese version
+```
+
+**Decision**:
+
+- Reused the verified AVGO financial, filing, segment, capital, forecast and valuation modules as the single numerical source of truth.
+- Added a complete Chinese presentation route rather than a shortened summary.
+- Added translated investment analysis, table labels, source audit, publication QA and investment disclaimer.
+- Added two-way English/Chinese navigation and a Chinese Research Library entry.
+
+**Route**: `/research/broadcom-complete-fundamental-analysis/zh`
+
+**Verification**:
+
+- Next.js 16.2.4 production build and TypeScript passed; 39 static pages generated.
+- Desktop and 390 x 844 mobile visual checks passed.
+- Full Chinese content and all lower-page analytical sections were present in the accessibility tree.
+- Browser console contained no warnings or errors.
+
+**Status**: Implementation and verification complete.
+
+---
