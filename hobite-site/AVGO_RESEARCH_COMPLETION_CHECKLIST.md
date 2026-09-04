@@ -12,6 +12,7 @@
 - [x] Add source audit and publication QA modules
 - [x] Compose and verify the public research route
 - [x] Add the Research Library entry
+- [x] Add the full Chinese research route and language navigation
 - [x] Run data regeneration, TypeScript checks and production build
 - [x] Complete responsive browser QA
 

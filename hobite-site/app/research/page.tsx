@@ -7,6 +7,11 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "博通（AVGO）完整基本面研究中心",
+    description: "中文研究页：SEC 财务、AI 半导体与 VMware 经济性、资本配置、估值历史、十年预测、DCF、来源审计与 QA。",
+    href: "/research/broadcom-complete-fundamental-analysis/zh",
+  },
+  {
     title: "Broadcom (AVGO) Complete Fundamental Research Hub",
     description: "SEC-backed financial history, AI semiconductor and VMware economics, capital allocation, valuation history and ten-year DCF scenarios.",
     href: "/research/broadcom-complete-fundamental-analysis",

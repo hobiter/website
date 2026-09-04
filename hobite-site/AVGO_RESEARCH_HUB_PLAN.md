@@ -41,6 +41,7 @@ Build an AVGO research hub following `COMPANY_RESEARCH_STANDARD_WORKFLOW.md`: SE
 - [x] Build research page and chart dashboard.
 - [x] Add source audit and publication QA.
 - [x] Add Research Library entry.
+- [x] Add a complete Chinese-language route and two-way language navigation.
 - [x] Add and execute regeneration script.
 - [x] Pass data, TypeScript, production-build and responsive-browser verification.
 - [x] Create completion checklist and mark implementation complete.
@@ -50,4 +51,4 @@ Build an AVGO research hub following `COMPANY_RESEARCH_STANDARD_WORKFLOW.md`: SE
 - Latest audited annual report: fiscal year ended November 2, 2025, filed December 18, 2025.
 - Latest SEC quarterly report: fiscal quarter ended May 3, 2026, filed June 9, 2026.
 - Latest official operating update: Q3 FY2026 results released September 2, 2026.
-- Implementation is complete. SEC regeneration, the Next.js production build, and desktop/mobile browser QA passed on September 3, 2026.
+- English and Chinese implementations are complete. SEC regeneration, the Next.js production build, and desktop/mobile browser QA passed on September 3, 2026.
