@@ -39,9 +39,9 @@ Apply `COMPANY_RESEARCH_STANDARD_WORKFLOW.md` to Tesla and publish matching Engl
 - [x] Build historical valuation and FY2026-FY2035 scenarios.
 - [x] Write complete English and Chinese reports.
 - [x] Build Hobite English and Chinese routes and library entries.
-- [ ] Build matching SVIM English and Chinese experience.
+- [x] Build matching SVIM English and Chinese experience.
 - [x] Add source audits and publication QA.
-- [ ] Pass data, TypeScript, production-build and responsive-browser verification in both projects.
+- [x] Pass data, TypeScript, production-build and responsive-browser verification in both projects.
 - [ ] Commit, push and create coordinated pull requests.
 
 ## Current Status

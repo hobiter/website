@@ -9,10 +9,10 @@
 - [x] Build FY2026-FY2035 bear/base/bull forecasts and valuation
 - [x] Draft complete English and Chinese investment reports
 - [x] Implement and index both Hobite routes
-- [ ] Implement matching bilingual SVIM research page
+- [x] Implement matching bilingual SVIM research page
 - [x] Complete source audit and publication QA
-- [ ] Run regeneration and both production builds
-- [ ] Complete desktop and mobile browser QA for both sites
+- [x] Run regeneration and both production builds
+- [x] Complete desktop and mobile browser QA for both sites
 - [ ] Create coordinated Hobite and SVIM pull requests
 
 The project is complete only when every item above is checked and both builds pass.
