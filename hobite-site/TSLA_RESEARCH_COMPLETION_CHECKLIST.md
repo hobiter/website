@@ -13,6 +13,6 @@
 - [x] Complete source audit and publication QA
 - [x] Run regeneration and both production builds
 - [x] Complete desktop and mobile browser QA for both sites
-- [ ] Create coordinated Hobite and SVIM pull requests
+- [x] Create coordinated Hobite and SVIM pull requests
 
 The project is complete only when every item above is checked and both builds pass.
