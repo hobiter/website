@@ -586,3 +586,32 @@ Have a Chinese version
 **Status**: Implementation and verification complete.
 
 ---
+
+## TSLA Two-Site Research Workflow - Automatic Start
+
+**Timestamp**: 2026-09-04T00:00:00-07:00
+
+**User Input**:
+
+```txt
+follow this standard procedure to do the similar Financial Analysis work for TSLA, Generate the same PR for both hobite website, and svim.io.
+```
+
+**Follow-up User Input**:
+
+```txt
+continue
+```
+
+**Decision**:
+
+- Applied `COMPANY_RESEARCH_STANDARD_WORKFLOW.md` to Tesla, Inc.
+- Reused the standing instruction to automatically finish company research implementations without intermediate approval gates.
+- Identified Hobite as the `website` repository and app.svim.io as the separate `svim-labs/project-seahawk` repository.
+- Selected coordinated English and Chinese experiences and separate pull requests for the two repositories.
+- Selected SEC filings and Tesla investor-relations materials as authoritative sources.
+- Selected vehicle deliveries, FSD subscriptions, energy storage deployments, segment margins, regulatory credits, AI capex and balance-sheet liquidity as company-specific economics.
+
+**Status**: Workspace detection, requirements analysis and workflow planning complete; implementation started.
+
+---
