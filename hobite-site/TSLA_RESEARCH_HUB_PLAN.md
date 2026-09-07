@@ -39,14 +39,14 @@ Apply `COMPANY_RESEARCH_STANDARD_WORKFLOW.md` to Tesla and publish matching Engl
 - [x] Build historical valuation and FY2026-FY2035 scenarios.
 - [x] Write complete English and Chinese reports.
 - [x] Build Hobite English and Chinese routes and library entries.
-- [ ] Build matching SVIM English and Chinese experience.
+- [x] Build matching SVIM English and Chinese experience.
 - [x] Add source audits and publication QA.
-- [ ] Pass data, TypeScript, production-build and responsive-browser verification in both projects.
-- [ ] Commit, push and create coordinated pull requests.
+- [x] Pass data, TypeScript, production-build and responsive-browser verification in both projects.
+- [x] Commit, push and create coordinated pull requests.
 
 ## Current Status
 
 - Latest audited annual report: year ended December 31, 2025, filed January 29, 2026.
 - Latest quarterly report: quarter ended June 30, 2026, filed July 23, 2026.
 - Latest official operating update: Q2 2026 results released July 22, 2026.
-- Implementation is in progress.
+- Implementation is complete. Hobite PR #69 and SVIM PR #468 contain the coordinated delivery and verification notes.
