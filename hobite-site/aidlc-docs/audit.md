@@ -615,3 +615,42 @@ continue
 **Status**: Workspace detection, requirements analysis and workflow planning complete; implementation started.
 
 ---
+
+## NVIDIA Delivery Completion
+
+**Timestamp**: 2026-09-07T00:00:00-07:00
+
+**Result**:
+
+- Generated 10 annual and 10 quarterly SEC-backed financial rows using NVIDIA's January fiscal year.
+- Implemented English and Chinese research experiences in Hobite and SVIM.
+- Added Data Center platform, supply-commitment, customer-concentration and capital-allocation analysis.
+- Completed Hobite and SVIM production builds and responsive browser review.
+- Prepared coordinated pull-request delivery for both repositories.
+
+**Status**: Complete.
+
+---
+
+## NVIDIA Complete Fundamental Research Hub
+
+**Timestamp**: 2026-09-04T22:00:00-07:00
+
+**User Input**:
+
+```txt
+follow this standard procedure to do the similar Financial Analysis work for NVDA.
+```
+
+**Decision**:
+
+- Applied `COMPANY_RESEARCH_STANDARD_WORKFLOW.md` to NVIDIA Corporation.
+- Reused the standing instruction to automatically finish company research implementations without intermediate approval gates.
+- Identified Hobite as the `website` repository and app.svim.io as the separate `svim-labs/project-seahawk` repository.
+- Selected coordinated English and Chinese experiences and separate pull requests for the two repositories.
+- Selected SEC filings and NVIDIA investor-relations materials as authoritative sources.
+- Selected Data Center and Edge Computing revenue, reportable segments, gross margin, inventory, supply commitments, customer concentration, R&D, capital allocation, Blackwell/Rubin execution and China restrictions as company-specific economics.
+
+**Status**: Workspace detection, requirements analysis and workflow planning complete; implementation started.
+
+---
