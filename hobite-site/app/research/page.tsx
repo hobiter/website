@@ -7,6 +7,16 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "英伟达（NVDA）完整基本面研究中心",
+    description: "中文研究页：SEC 财务、AI 平台经济、供应承诺、资本配置、估值历史及十年 DCF。",
+    href: "/research/nvidia-complete-fundamental-analysis/zh",
+  },
+  {
+    title: "NVIDIA (NVDA) Complete Fundamental Research Hub",
+    description: "SEC-backed financial history, AI platform and supply economics, capital allocation, valuation history and ten-year DCF scenarios.",
+    href: "/research/nvidia-complete-fundamental-analysis",
+  },
+  {
     title: "特斯拉（TSLA）完整基本面研究中心",
     description: "中文研究页：SEC 财务、汽车与储能经济性、FSD 与实体 AI 情景、资本配置、估值历史及十年 DCF。",
     href: "/research/tesla-complete-fundamental-analysis/zh",

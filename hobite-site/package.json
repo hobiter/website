@@ -11,6 +11,7 @@
     "research:brk:data": "node scripts/update-berkshire-sec-data.mjs",
     "research:avgo:data": "node scripts/update-broadcom-sec-data.mjs",
     "research:tsla:data": "node scripts/update-tesla-sec-data.mjs",
+    "research:nvda:data": "node scripts/update-nvidia-sec-data.mjs",
     "lint": "eslint"
   },
   "dependencies": {
