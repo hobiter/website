@@ -7,6 +7,16 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "百度（BIDU）完整基本面研究中心",
+    description: "中文研究页：SEC 财务、AI 云与搜索经济、自动驾驶可选性、ADS 估值历史及十年 DCF。",
+    href: "/research/baidu-complete-fundamental-analysis/zh",
+  },
+  {
+    title: "Baidu (BIDU) Complete Fundamental Research Hub",
+    description: "SEC-backed financial history, AI Cloud and search economics, autonomous mobility optionality, ADS valuation and ten-year DCF scenarios.",
+    href: "/research/baidu-complete-fundamental-analysis",
+  },
+  {
     title: "Meta Platforms（META）完整基本面研究中心",
     description: "中文研究页：SEC 财务、广告运营指标、AI 基础设施资本强度、资本配置、估值历史及十年 DCF。",
     href: "/research/meta-complete-fundamental-analysis/zh",
