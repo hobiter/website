@@ -7,6 +7,16 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "Meta Platforms（META）完整基本面研究中心",
+    description: "中文研究页：SEC 财务、广告运营指标、AI 基础设施资本强度、资本配置、估值历史及十年 DCF。",
+    href: "/research/meta-complete-fundamental-analysis/zh",
+  },
+  {
+    title: "Meta Platforms (META) Complete Fundamental Research Hub",
+    description: "SEC-backed financial history, advertising drivers, AI infrastructure economics, capital allocation, valuation history and ten-year DCF scenarios.",
+    href: "/research/meta-complete-fundamental-analysis",
+  },
+  {
     title: "英伟达（NVDA）完整基本面研究中心",
     description: "中文研究页：SEC 财务、AI 平台经济、供应承诺、资本配置、估值历史及十年 DCF。",
     href: "/research/nvidia-complete-fundamental-analysis/zh",
