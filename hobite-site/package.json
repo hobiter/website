@@ -13,6 +13,7 @@
     "research:tsla:data": "node scripts/update-tesla-sec-data.mjs",
     "research:nvda:data": "node scripts/update-nvidia-sec-data.mjs",
     "research:meta:data": "node scripts/update-meta-sec-data.mjs",
+    "research:bidu:data": "node scripts/update-baidu-sec-data.mjs",
     "lint": "eslint"
   },
   "dependencies": {
