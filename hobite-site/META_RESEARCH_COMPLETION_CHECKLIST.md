@@ -15,4 +15,4 @@
 - [x] SVIM production build
 - [x] Browser review
 - [x] Implementation commits
-- [ ] Pull requests
+- [x] Pull requests: Hobite #71 and SVIM #474

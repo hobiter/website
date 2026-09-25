@@ -9,4 +9,4 @@
 - [x] Run Hobite data generation and production build.
 - [x] Run SVIM production build and browser checks.
 - [x] Commit the Hobite and SVIM changes.
-- [ ] Push and create pull requests.
+- [x] Push and create pull requests.

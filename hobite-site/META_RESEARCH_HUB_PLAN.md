@@ -13,7 +13,7 @@
 - [x] Build SVIM in production mode.
 - [x] Review both routes in a browser.
 - [x] Commit both implementation branches.
-- [ ] Push and open both pull requests.
+- [x] Push branches and open both pull requests.
 
 ## Source Policy
 
