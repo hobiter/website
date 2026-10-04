@@ -19,9 +19,10 @@ Follow COMPANY_RESEARCH_STANDARD_WORKFLOW.md. Deliver matching English and Chine
 3. [x] Ten-year scenarios, computed valuation and assumption audit.
 4. [x] Company hub, compact chart dashboard and research discovery.
 5. [x] SVIM adaptation with identical numbers and sources.
-6. [ ] Financial assertions, builds, responsive browser checks and both PRs.
+6. [x] Financial assertions, builds, responsive browser checks and both PRs.
 
 ## Verification Record
+- Reviewable PRs: https://github.com/hobiter/website/pull/74 and https://github.com/svim-labs/project-albatross/pull/75. Neither merged nor deployed by this task.
 - Both production builds passed; focused financial/DCF/translation/mirror assertions passed.
 - Desktop and 390px mobile browser checks on both sites; fixed intrinsic table overflow and SVIM title contrast.
 - VST research routes registered in both libraries, with English/Chinese pairing.
