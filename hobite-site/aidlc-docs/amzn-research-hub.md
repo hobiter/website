@@ -27,7 +27,11 @@ Continue the established COMPANY_RESEARCH_STANDARD_WORKFLOW.md and standing auth
 3. [x] Ten-year segment forecasts, DCF and sensitivity; independent model tests pass.
 4. [x] English/Chinese pages, charts and both research registries.
 5. [x] Focused parity, production HTML, both builds, scoped lint and responsive browser QA.
-6. [ ] Push and create both PRs; record caveats.
+6. [x] Push and create both PRs; record caveats. Hobite #75 and SVIM #76 are open for review, not merged.
+
+## Pull Requests
+- Hobite: https://github.com/hobiter/website/pull/75
+- SVIM: https://github.com/svim-labs/project-albatross/pull/76
 
 ## Verification (2026-10-04)
 - PASS: `npm run research:amzn:test -- --built`: annual/quarterly anchors, original versus gross/net cash capex, split-adjusted EPS/shares, segment/channel reconciliation, financing bridge, independently recomputed FCFF/DCF, WACC/g sensitivity, 13-section translation and exact adapted SVIM source parity.
