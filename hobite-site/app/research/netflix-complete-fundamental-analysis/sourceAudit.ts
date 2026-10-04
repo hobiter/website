@@ -29,11 +29,11 @@ export const NETFLIX_SOURCE_AUDIT_ITEMS: NetflixSourceAuditItem[] = [
   },
   {
     area: "Quarterly financial database",
-    coverage: "2009 Q1 through 2026 Q1",
+    coverage: "2009 Q1 through 2026 Q2",
     primarySource: "SEC company facts quarterly frames and annual filings",
     sourceUrl: "https://data.sec.gov/api/xbrl/companyfacts/CIK0001065280.json",
     status: "partial",
-    note: "Q1-Q3 rows use quarterly frames. Q4 flow metrics are derived from full-year facts less Q1-Q3 frames; Q4 diluted EPS remains intentionally null.",
+    note: "Quarterly frames or YTD differences supply flows. Q2 2026 revenue, operating income, EPS, OCF, capex and FCF were reconciled to the shareholder letter. Q4 diluted EPS remains intentionally null.",
   },
   {
     area: "Subscriber and regional economics",
@@ -54,10 +54,10 @@ export const NETFLIX_SOURCE_AUDIT_ITEMS: NetflixSourceAuditItem[] = [
   {
     area: "Forecast and DCF",
     coverage: "FY2026-FY2035 scenarios",
-    primarySource: "Hobite model using FY2025 SEC financial base year",
-    sourceUrl: "https://www.sec.gov/Archives/edgar/data/1065280/000106528026000034/nflx-20251231.htm",
+    primarySource: "Q2 2026 SEC shareholder letter and Hobite assumptions",
+    sourceUrl: "https://www.sec.gov/Archives/edgar/data/1065280/000106528026000211/ex991_q226.htm",
     status: "complete",
-    note: "Forecasts are explicitly labeled as Hobite assumptions, not company guidance.",
+    note: "October 4 update uses a user-specified $67 price, Q2 split-adjusted diluted shares, and company guidance. $10.5B normalized FCF and the $2B after-tax one-time adjustment are analyst assumptions. Equity DCF excludes elapsed-year cash; debt is not subtracted twice. Historical prices remain unchanged.",
   },
   {
     area: "Historical valuation",

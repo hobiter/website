@@ -8,10 +8,10 @@ export const NETFLIX_REPORT_SECTIONS: ReportSection[] = [
   {
     title: "Executive Summary",
     thesis:
-      "Netflix has completed one of the rare consumer internet transitions from growth story to cash-generative global media platform.",
+      "Updated October 4, 2026: Netflix remains a cash-generative global platform. At the user-specified $67 reference price, the investment case is near base-case fair value rather than an obvious bargain; the latest published quarter is Q2 2026.",
     bullets: [
       "The core thesis is that Netflix's scale, recommendation system, global content distribution, and pricing power create a durable attention-and-entertainment compounder.",
-      "The base case assumes continued paid engagement growth, disciplined content spend, advertising monetization, and modest operating leverage.",
+      "Q2 revenue was $12.56B, operating margin 33.4%, EPS $0.80 and FCF $1.53B. FY2026 guidance is $51.0B-$51.4B revenue, 31.5% operating margin and approximately $12.5B reported FCF. The model normalizes base FCF to $10.5B using an explicitly assumed $2.0B after-tax termination benefit.",
       "The risk case is not insolvency or product irrelevance; it is valuation compression if growth slows before ads, games, and live programming become large enough to matter.",
     ],
   },
@@ -70,7 +70,7 @@ export const NETFLIX_REPORT_SECTIONS: ReportSection[] = [
     thesis:
       "Netflix now has a balance sheet that supports offense rather than survival.",
     bullets: [
-      "FY2025 cash and equivalents were $9.0B against $13.5B long-term debt in the current SEC dataset.",
+      "June 30, 2026 cash was $9.099B; short-term plus long-term carrying debt was $14.309B, for $5.210B net debt excluding short-term investments. Q2 buybacks were approximately $4.7B. Content obligations of $25.107B are an additional operating commitment, not included in financial net debt.",
       "The capital allocation hierarchy should be content ROI first, platform monetization second, then debt management and buybacks.",
       "Buybacks are attractive only when management can repurchase below conservative intrinsic value.",
     ],

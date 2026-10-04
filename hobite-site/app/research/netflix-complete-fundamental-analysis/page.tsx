@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import CurrentResults from "./CurrentResults";
 import {
   NETFLIX_ANNUAL_FINANCIALS,
   NETFLIX_ANNUAL_FINANCIALS_COVERAGE,
@@ -781,6 +782,8 @@ export default function NetflixCompleteFundamentalAnalysisPage() {
           />
         </div>
 
+        <CurrentResults />
+
         <SectionCard title="Finished Investment Report">
           <div className="space-y-6">
             <div className="rounded-lg bg-zinc-950 p-6 text-white">
@@ -1022,8 +1025,9 @@ export default function NetflixCompleteFundamentalAnalysisPage() {
                     </span>
                   </div>
                   <p className="mt-3 text-sm leading-6 text-zinc-650">
-                    DCF uses a {formatPercent(NETFLIX_DCF_CASES[scenario].discountRate)} discount rate and{" "}
+                    Equity DCF uses a {formatPercent(NETFLIX_DCF_CASES[scenario].discountRate)} cost of equity and{" "}
                     {formatPercent(NETFLIX_DCF_CASES[scenario].terminalGrowth)} terminal growth.
+                    {" "}{formatPercent(NETFLIX_DCF_CASES[scenario].upsidePercent)} upside / downside vs $67.
                   </p>
                   <div className="mt-4">
                     <ForecastTable rows={NETFLIX_FORECASTS[scenario]} />
@@ -1066,19 +1070,19 @@ export default function NetflixCompleteFundamentalAnalysisPage() {
                 </p>
               </div>
               <div className="rounded-lg bg-zinc-100 p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Latest market cap</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">2025 year-end market cap</p>
                 <p className="mt-2 text-xl font-semibold">
                   {formatUsdBillions(NETFLIX_LATEST_VALUATION_HISTORY.marketCap)}
                 </p>
               </div>
               <div className="rounded-lg bg-zinc-100 p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Latest EV/Sales</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">2025 year-end EV/Sales</p>
                 <p className="mt-2 text-xl font-semibold">
                   {formatMultiple(NETFLIX_LATEST_VALUATION_HISTORY.enterpriseValueToSales)}
                 </p>
               </div>
               <div className="rounded-lg bg-zinc-100 p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Latest FCF yield</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">2025 year-end FCF yield</p>
                 <p className="mt-2 text-xl font-semibold">
                   {formatPercent(NETFLIX_LATEST_VALUATION_HISTORY.freeCashFlowYield)}
                 </p>
