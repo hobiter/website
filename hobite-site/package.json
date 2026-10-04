@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "research:amzn:data": "node scripts/update-amazon-sec-data.mjs",
+    "research:amzn:test": "node scripts/test-amazon-research.mjs",
+    "research:amzn:mirror": "node scripts/mirror-amazon-research.mjs",
     "research:vst:data": "node scripts/update-vistra-sec-data.mjs",
     "research:vst:test": "node scripts/test-vistra-research.mjs",
     "dev": "next dev",
@@ -31,6 +34,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
+    "fast-xml-parser": "^5.11.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
