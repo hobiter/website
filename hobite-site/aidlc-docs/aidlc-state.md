@@ -4,7 +4,7 @@
 
 - **Project Type**: Brownfield
 - **Start Date**: 2026-06-28T00:00:00-07:00
-- **Current Stage**: CONSTRUCTION - META Research Hub Verification
+- **Current Stage**: CONSTRUCTION - AMZN Research Hub Complete
 
 ## Workspace State
 
@@ -59,6 +59,6 @@
 ## Current Status
 
 - **Lifecycle Phase**: CONSTRUCTION
-- **Current Stage**: META Research Hub Implementation Complete
+- **Current Stage**: AMZN Research Hub Implementation Complete
 - **Next Step**: Pull-request review and deployment
-- **Status**: English and Chinese META research hubs implemented, verified and submitted in Hobite and SVIM
+- **Status**: English and Chinese AMZN research hubs implemented, verified and submitted in Hobite PR #75 and SVIM PR #76. Both open for review, not merged. Earlier research history is preserved in the audit log.

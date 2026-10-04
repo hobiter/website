@@ -7,6 +7,16 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "亚马逊（AMZN）完整基本面研究中心",
+    description: "SEC 财务、AWS 与零售经济、AI 投入、战略投资、资本配置及十年企业 DCF 情景。",
+    href: "/research/amazon-complete-fundamental-analysis/zh",
+  },
+  {
+    title: "Amazon (AMZN) Complete Fundamental Research Hub",
+    description: "SEC financial history, AWS and retail economics, AI investment, strategic holdings and ten-year enterprise DCF scenarios.",
+    href: "/research/amazon-complete-fundamental-analysis",
+  },
+  {
     title: "Vistra（VST）完整基本面研究中心",
     description: "中文研究页：SEC 财务、发电与零售经济、核电合同、资本配置及十年普通股现金流估值。",
     href: "/research/vistra-complete-fundamental-analysis/zh",

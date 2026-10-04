@@ -614,6 +614,12 @@ continue
 
 **Status**: Workspace detection, requirements analysis and workflow planning complete; implementation started.
 
+## 2026-10-04 - AMZN Company Research
+
+**Raw user request**: "follow this standard procedure to do the similar Financial Analysis work for AMZN, Generate the same PR for both hobite website, and svim.io."
+
+**Decisions**: Continue the standing automatic company workflow. Matching English/Chinese research in website/hobite-site and svim-labs/project-albatross, separate PRs. Existing disabled Security/Resiliency/Property-Based extensions skipped. Existing research architecture reused; no infrastructure stage. Company-specific design centers on AWS/retail economics, capex/leases, investment marks, SBC and a claims-consistent enterprise DCF. Requirements, reader stories and construction/verification checklist recorded in amzn-research-hub.md.
+
 ---
 
 ## META Complete Fundamental Research Hub
