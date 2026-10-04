@@ -425,28 +425,23 @@ function quarterlyFrameFact(companyFacts, tag, year, quarter, unit = "USD") {
   return latestValue(rows);
 }
 
-function firstThreeQuarterSum(companyFacts, tag, year, unit = "USD") {
-  let total = 0;
-
-  for (const quarter of [1, 2, 3]) {
-    const value = quarterlyFrameFact(companyFacts, tag, year, quarter, unit);
-    if (value == null) return null;
-    total += value;
-  }
-
-  return total;
-}
-
 function quarterlyFlowFact(companyFacts, tag, year, quarter, unit = "USD") {
   if (quarter < 4) {
+    const direct = quarterlyFrameFact(companyFacts, tag, year, quarter, unit);
+    const cumulative = (q) => latestValue(unitRows(companyFacts, tag, unit).filter(
+      (row) => row.form === "10-Q" && row.start === `${year}-01-01` && row.end === quarterEnd(year, q),
+    ));
+    const current = cumulative(quarter);
+    const previous = quarter === 1 ? 0 : cumulative(quarter - 1);
     return {
-      value: quarterlyFrameFact(companyFacts, tag, year, quarter, unit),
-      source: "SEC XBRL quarterly frame",
+      value: direct ?? (current != null && previous != null ? current - previous : null),
+      source: direct != null ? "SEC XBRL quarterly frame" : "SEC XBRL cumulative YTD difference",
     };
   }
 
   const annual = durationFact(companyFacts, tag, year, unit);
-  const firstThree = firstThreeQuarterSum(companyFacts, tag, year, unit);
+  const quarters = [1, 2, 3].map((q) => quarterlyFlowFact(companyFacts, tag, year, q, unit).value);
+  const firstThree = quarters.every((value) => value != null) ? quarters.reduce((sum, value) => sum + value, 0) : null;
 
   return {
     value: annual != null && firstThree != null ? annual - firstThree : null,
@@ -457,15 +452,15 @@ function quarterlyFlowFact(companyFacts, tag, year, quarter, unit = "USD") {
 function buildQuarterlyFinancials(companyFacts, annualFilings, quarterlyFilings) {
   const rows = [];
 
-  for (let year = 2009; year <= 2026; year += 1) {
+  const latestYear = Math.max(...[...annualFilings, ...quarterlyFilings].map((filing) => Number(filing.reportDate.slice(0, 4))));
+  for (let year = 2009; year <= latestYear; year += 1) {
     for (let quarter = 1; quarter <= 4; quarter += 1) {
-      if (year === 2026 && quarter > 1) continue;
-
       const reportDate = quarterEnd(year, quarter);
       const filing =
         quarter === 4
           ? annualFilings.find((item) => item.reportDate === `${year}-12-31` && item.form === "10-K")
           : quarterlyFilings.find((item) => item.reportDate === reportDate && item.form === "10-Q");
+      if (!filing) continue;
       const revenue = quarterlyFlowFact(companyFacts, "Revenues", year, quarter);
       const operatingIncome = quarterlyFlowFact(companyFacts, "OperatingIncomeLoss", year, quarter);
       const netIncome = quarterlyFlowFact(companyFacts, "NetIncomeLoss", year, quarter);
@@ -507,7 +502,7 @@ function buildQuarterlyFinancials(companyFacts, annualFilings, quarterlyFilings)
         capitalExpenditures: capitalExpenditures.value,
         freeCashFlow,
         freeCashFlowMargin: percent(freeCashFlow, revenue.value),
-        source: quarter === 4 ? revenue.source : "SEC XBRL quarterly frame",
+        source: `${revenue.source}; cash flow: ${operatingCashFlow.source}`,
         epsSource:
           quarter < 4
             ? "SEC XBRL quarterly frame"
@@ -542,7 +537,7 @@ function quarterlyFinancialsSource(rows) {
 };
 
 export const NETFLIX_QUARTERLY_FINANCIALS_SOURCE_NOTE =
-  "Generated from SEC XBRL company facts for CIK ${CIK}. Q1-Q3 rows use SEC quarterly frames, including later comparative frames when available. Q4 flow metrics are derived from annual full-year facts less Q1-Q3 quarterly frames; Q4 diluted EPS is left null until weighted-share reconciliation.";
+  "Generated from SEC XBRL company facts for CIK ${CIK}. Q1-Q3 use quarterly frames, or cumulative YTD differences when no frame exists. Q4 flows are annual facts less Q1-Q3; Q4 diluted EPS is not derived. Later comparative frames may reflect stock splits.";
 
 export const NETFLIX_QUARTERLY_FINANCIALS_COVERAGE = {
   fromPeriod: "${rows[0]?.period}",

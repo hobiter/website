@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import CurrentResults from "../CurrentResults";
 import {
   NETFLIX_ANNUAL_FINANCIALS,
   NETFLIX_ANNUAL_FINANCIALS_COVERAGE,
@@ -167,6 +168,8 @@ export default function NetflixChineseResearchPage() {
           <MetricCard label="最新季度收入" value={formatUsdBillions(NETFLIX_LATEST_QUARTERLY_FINANCIAL.revenue)} note={`${NETFLIX_LATEST_QUARTERLY_FILING.reportDate} 季报。`} />
         </div>
 
+        <CurrentResults chinese />
+
         <SectionCard title="中文投资报告">
           <div className="grid gap-4 lg:grid-cols-2">
             {REPORT_SECTIONS.map((section) => (
@@ -301,7 +304,8 @@ export default function NetflixChineseResearchPage() {
             {(["bear", "base", "bull"] as const).map((scenario) => (
               <article key={scenario} className="rounded-lg border border-zinc-200 p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">{scenario}</p>
-                <h3 className="mt-2 text-2xl font-semibold">${NETFLIX_DCF_CASES[scenario].valuePerShare} / share</h3>
+                <h3 className="mt-2 text-2xl font-semibold">${NETFLIX_DCF_CASES[scenario].valuePerShare.toFixed(2)} / share</h3>
+                <p className="mt-2 text-sm text-zinc-600">相对 $67 涨跌空间：{formatPercent(NETFLIX_DCF_CASES[scenario].upsidePercent)}</p>
                 <p className="mt-3 text-sm text-zinc-600">
                   2035 收入：{formatUsdBillions(NETFLIX_FORECASTS[scenario].at(-1)!.revenue)}
                 </p>
@@ -324,7 +328,7 @@ export default function NetflixChineseResearchPage() {
             </table>
           </div>
           <p className="mt-4 text-sm text-zinc-600">
-            最新估值行：FY{NETFLIX_LATEST_VALUATION_HISTORY.fiscalYear}，EV/Sales {formatMultiple(NETFLIX_LATEST_VALUATION_HISTORY.enterpriseValueToSales)}。
+            最新历史年末估值行：FY{NETFLIX_LATEST_VALUATION_HISTORY.fiscalYear}，EV/Sales {formatMultiple(NETFLIX_LATEST_VALUATION_HISTORY.enterpriseValueToSales)}；非当前 $67 参考价估值。
           </p>
         </SectionCard>
 

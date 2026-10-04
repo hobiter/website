@@ -7,7 +7,7 @@ export type PublicationQaItem = {
 };
 
 export const NETFLIX_PUBLICATION_QA_NOTE =
-  "Publication QA record for the Netflix research hub. Automated TypeScript diagnostics and static source checks pass. Full npm build cannot be executed from the local PowerShell session because the shell exits with a Windows CET runtime error before npm starts.";
+  "October 4, 2026 update: production build, TypeScript, Q2 financial reconciliation, valuation calculation checks and English/Chinese rendered-route checks pass. Earlier historical-source audit warnings remain applicable.";
 
 export const NETFLIX_PUBLICATION_QA_ITEMS: PublicationQaItem[] = [
   {
@@ -51,8 +51,8 @@ export const NETFLIX_PUBLICATION_QA_ITEMS: PublicationQaItem[] = [
   },
   {
     check: "npm build command",
-    status: "blocked",
+    status: "pass",
     evidence:
-      "Local PowerShell exits immediately with: 'Your Windows does not fully support CET.' TypeScript was verified through Node REPL instead.",
+      "npm run build completed successfully, including TypeScript and both Netflix routes. node scripts/test-netflix-update.mjs validates Q2 values, normalization, share basis, DCF arithmetic and generated English/Chinese HTML.",
   },
 ];

@@ -20,11 +20,11 @@ export type NetflixQuarterlyFinancial = {
 };
 
 export const NETFLIX_QUARTERLY_FINANCIALS_SOURCE_NOTE =
-  "Generated from SEC XBRL company facts for CIK 0001065280. Q1-Q3 rows use SEC quarterly frames, including later comparative frames when available. Q4 flow metrics are derived from annual full-year facts less Q1-Q3 quarterly frames; Q4 diluted EPS is left null until weighted-share reconciliation.";
+  "Generated from SEC XBRL company facts for CIK 0001065280. Q1-Q3 use quarterly frames, or cumulative YTD differences when no frame exists. Q4 flows are annual facts less Q1-Q3; Q4 diluted EPS is not derived. Later comparative frames may reflect stock splits.";
 
 export const NETFLIX_QUARTERLY_FINANCIALS_COVERAGE = {
   fromPeriod: "2009 Q1",
-  throughPeriod: "2026 Q1",
+  throughPeriod: "2026 Q2",
   directQuarterlyFramesStartPeriod: "2009 Q1",
   q4Derivation: "Annual full-year facts less Q1-Q3 quarterly frames",
 };
@@ -47,7 +47,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 6572000,
     "freeCashFlow": 59061000,
     "freeCashFlowMargin": 14.99,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -67,7 +67,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 6933000,
     "freeCashFlow": 68369000,
     "freeCashFlowMargin": 16.74,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -87,7 +87,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 9994000,
     "freeCashFlow": 68317000,
     "freeCashFlowMargin": 16.15,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -107,7 +107,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 22433000,
     "freeCashFlow": 83384000,
     "freeCashFlowMargin": 18.76,
-    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
+    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames; cash flow: Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
     "epsSource": "Not derived; Q4 diluted EPS requires share-count reconciliation"
   },
   {
@@ -127,7 +127,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 6393000,
     "freeCashFlow": 70812000,
     "freeCashFlowMargin": 14.34,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -147,7 +147,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 5671000,
     "freeCashFlow": 54581000,
     "freeCashFlowMargin": 10.5,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -167,7 +167,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 7342000,
     "freeCashFlow": 34885000,
     "freeCashFlowMargin": 6.31,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -187,7 +187,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 14431000,
     "freeCashFlow": 82286000,
     "freeCashFlowMargin": 13.81,
-    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
+    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames; cash flow: Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
     "epsSource": "Not derived; Q4 diluted EPS requires share-count reconciliation"
   },
   {
@@ -207,7 +207,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 16320000,
     "freeCashFlow": 100003000,
     "freeCashFlowMargin": 13.92,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -227,7 +227,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 8626000,
     "freeCashFlow": 77766000,
     "freeCashFlowMargin": 9.86,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -247,7 +247,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 14080000,
     "freeCashFlow": 35451000,
     "freeCashFlowMargin": 4.31,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -267,7 +267,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 10656000,
     "freeCashFlow": 54810000,
     "freeCashFlowMargin": 6.26,
-    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
+    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames; cash flow: Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
     "epsSource": "Not derived; Q4 diluted EPS requires share-count reconciliation"
   },
   {
@@ -287,7 +287,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 4766000,
     "freeCashFlow": 14343000,
     "freeCashFlowMargin": 1.65,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -307,7 +307,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 3359000,
     "freeCashFlow": 16048000,
     "freeCashFlowMargin": 1.8,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -327,7 +327,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 10808000,
     "freeCashFlow": -13733000,
     "freeCashFlowMargin": -1.52,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -347,7 +347,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 21345000,
     "freeCashFlow": -35350000,
     "freeCashFlowMargin": -3.74,
-    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
+    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames; cash flow: Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
     "epsSource": "Not derived; Q4 diluted EPS requires share-count reconciliation"
   },
   {
@@ -367,7 +367,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 12118000,
     "freeCashFlow": -24368000,
     "freeCashFlowMargin": -2.38,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -387,7 +387,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 8088000,
     "freeCashFlow": 25855000,
     "freeCashFlowMargin": 2.42,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -407,7 +407,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 10828000,
     "freeCashFlow": 23865000,
     "freeCashFlowMargin": 2.16,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -427,7 +427,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 23109000,
     "freeCashFlow": 18336000,
     "freeCashFlowMargin": 1.56,
-    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
+    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames; cash flow: Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
     "epsSource": "Not derived; Q4 diluted EPS requires share-count reconciliation"
   },
   {
@@ -447,7 +447,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 13334000,
     "freeCashFlow": 23025000,
     "freeCashFlowMargin": 1.81,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -467,7 +467,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 19869000,
     "freeCashFlow": 36155000,
     "freeCashFlowMargin": 2.7,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -487,7 +487,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 21032000,
     "freeCashFlow": -58471000,
     "freeCashFlowMargin": -4.15,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -507,7 +507,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 15491000,
     "freeCashFlow": -53952000,
     "freeCashFlowMargin": -3.63,
-    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
+    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames; cash flow: Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
     "epsSource": "Not derived; Q4 diluted EPS requires share-count reconciliation"
   },
   {
@@ -527,7 +527,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 13036000,
     "freeCashFlow": -140418000,
     "freeCashFlowMargin": -8.93,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -547,7 +547,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 27538000,
     "freeCashFlow": -208881000,
     "freeCashFlowMargin": -12.7,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -567,7 +567,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 37820000,
     "freeCashFlow": -233789000,
     "freeCashFlowMargin": -13.45,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -587,7 +587,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 12854000,
     "freeCashFlow": -257599000,
     "freeCashFlowMargin": -14.13,
-    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
+    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames; cash flow: Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
     "epsSource": "Not derived; Q4 diluted EPS requires share-count reconciliation"
   },
   {
@@ -607,7 +607,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 8425000,
     "freeCashFlow": -237015000,
     "freeCashFlowMargin": -12.11,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -627,7 +627,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 10814000,
     "freeCashFlow": -237107000,
     "freeCashFlowMargin": -11.26,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -647,7 +647,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 27366000,
     "freeCashFlow": -489307000,
     "freeCashFlowMargin": -21.37,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -667,7 +667,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 61048000,
     "freeCashFlow": -618208000,
     "freeCashFlowMargin": -24.95,
-    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
+    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames; cash flow: Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
     "epsSource": "Not derived; Q4 diluted EPS requires share-count reconciliation"
   },
   {
@@ -687,7 +687,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 52523000,
     "freeCashFlow": -396379000,
     "freeCashFlowMargin": -15.03,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -707,7 +707,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 65231000,
     "freeCashFlow": -599759000,
     "freeCashFlowMargin": -21.53,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -727,7 +727,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 33963000,
     "freeCashFlow": -453570000,
     "freeCashFlowMargin": -15.2,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -747,7 +747,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 21585000,
     "freeCashFlow": -509542000,
     "freeCashFlowMargin": -15.51,
-    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
+    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames; cash flow: Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
     "epsSource": "Not derived; Q4 diluted EPS requires share-count reconciliation"
   },
   {
@@ -767,7 +767,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 37170000,
     "freeCashFlow": -273927000,
     "freeCashFlowMargin": -7.4,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -787,7 +787,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 27323000,
     "freeCashFlow": -545562000,
     "freeCashFlowMargin": -13.96,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -807,7 +807,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 39333000,
     "freeCashFlow": -729744000,
     "freeCashFlowMargin": -18.25,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -827,7 +827,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 70120000,
     "freeCashFlow": -1305192000,
     "freeCashFlowMargin": -31.17,
-    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
+    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames; cash flow: Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
     "epsSource": "Not derived; Q4 diluted EPS requires share-count reconciliation"
   },
   {
@@ -847,7 +847,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 60381000,
     "freeCashFlow": -440180000,
     "freeCashFlowMargin": -9.74,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -867,7 +867,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 39584000,
     "freeCashFlow": -583338000,
     "freeCashFlowMargin": -11.85,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -887,7 +887,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 45333000,
     "freeCashFlow": -547127000,
     "freeCashFlowMargin": -10.43,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -907,7 +907,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 107737000,
     "freeCashFlow": -1569712000,
     "freeCashFlowMargin": -28.71,
-    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
+    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames; cash flow: Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
     "epsSource": "Not derived; Q4 diluted EPS requires share-count reconciliation"
   },
   {
@@ -927,7 +927,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 98015000,
     "freeCashFlow": 161897000,
     "freeCashFlowMargin": 2.81,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -947,7 +947,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 141741000,
     "freeCashFlow": 899335000,
     "freeCashFlowMargin": 14.63,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -967,7 +967,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 109811000,
     "freeCashFlow": 1153950000,
     "freeCashFlowMargin": 17.93,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -987,7 +987,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 148356000,
     "freeCashFlow": -286028000,
     "freeCashFlowMargin": -4.3,
-    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
+    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames; cash flow: Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
     "epsSource": "Not derived; Q4 diluted EPS requires share-count reconciliation"
   },
   {
@@ -1007,7 +1007,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 81001000,
     "freeCashFlow": 696265000,
     "freeCashFlowMargin": 9.72,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -1027,7 +1027,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 110278000,
     "freeCashFlow": -174039000,
     "freeCashFlowMargin": -2.37,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -1047,7 +1047,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 167327000,
     "freeCashFlow": -84948000,
     "freeCashFlowMargin": -1.14,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -1067,7 +1067,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 165979000,
     "freeCashFlow": -569253000,
     "freeCashFlowMargin": -7.38,
-    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
+    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames; cash flow: Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
     "epsSource": "Not derived; Q4 diluted EPS requires share-count reconciliation"
   },
   {
@@ -1087,7 +1087,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 121158000,
     "freeCashFlow": 801681000,
     "freeCashFlowMargin": 10.19,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -1107,7 +1107,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 90018000,
     "freeCashFlow": 12732000,
     "freeCashFlowMargin": 0.16,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -1127,7 +1127,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 84960000,
     "freeCashFlow": 471850000,
     "freeCashFlowMargin": 5.95,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -1147,7 +1147,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 111593000,
     "freeCashFlow": 332265000,
     "freeCashFlowMargin": 4.23,
-    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
+    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames; cash flow: Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
     "epsSource": "Not derived; Q4 diluted EPS requires share-count reconciliation"
   },
   {
@@ -1167,7 +1167,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 62019000,
     "freeCashFlow": 2116721000,
     "freeCashFlowMargin": 25.94,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -1187,7 +1187,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 100972000,
     "freeCashFlow": 1339260000,
     "freeCashFlowMargin": 16.36,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -1207,7 +1207,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 103929000,
     "freeCashFlow": 1888386000,
     "freeCashFlowMargin": 22.11,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -1227,7 +1227,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 81632000,
     "freeCashFlow": 1581382000,
     "freeCashFlowMargin": 17.9,
-    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
+    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames; cash flow: Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
     "epsSource": "Not derived; Q4 diluted EPS requires share-count reconciliation"
   },
   {
@@ -1247,7 +1247,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 75714000,
     "freeCashFlow": 2136808000,
     "freeCashFlowMargin": 22.8,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -1267,7 +1267,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 78287000,
     "freeCashFlow": 1212560000,
     "freeCashFlowMargin": 12.68,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -1287,7 +1287,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 126863000,
     "freeCashFlow": 2194238000,
     "freeCashFlowMargin": 22.33,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -1307,7 +1307,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 158674000,
     "freeCashFlow": 1378220000,
     "freeCashFlowMargin": 13.45,
-    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
+    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames; cash flow: Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
     "epsSource": "Not derived; Q4 diluted EPS requires share-count reconciliation"
   },
   {
@@ -1327,7 +1327,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 128277000,
     "freeCashFlow": 2660922000,
     "freeCashFlowMargin": 25.24,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -1342,12 +1342,12 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "operatingIncome": 3774694000,
     "operatingMargin": 34.07,
     "netIncome": 3125413000,
-    "dilutedEps": 7.19,
+    "dilutedEps": 0.72,
     "operatingCashFlow": 2423258000,
     "capitalExpenditures": 155889000,
     "freeCashFlow": 2267369000,
     "freeCashFlowMargin": 20.47,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -1367,7 +1367,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 164719000,
     "freeCashFlow": 2660455000,
     "freeCashFlowMargin": 23.11,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   },
   {
@@ -1387,7 +1387,7 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 239335000,
     "freeCashFlow": 1872307000,
     "freeCashFlowMargin": 15.54,
-    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
+    "source": "Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames; cash flow: Derived from SEC XBRL annual fact less Q1-Q3 quarterly frames",
     "epsSource": "Not derived; Q4 diluted EPS requires share-count reconciliation"
   },
   {
@@ -1407,7 +1407,27 @@ export const NETFLIX_QUARTERLY_FINANCIALS: NetflixQuarterlyFinancial[] = [
     "capitalExpenditures": 196130000,
     "freeCashFlow": 5094075000,
     "freeCashFlowMargin": 41.59,
-    "source": "SEC XBRL quarterly frame",
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
+    "epsSource": "SEC XBRL quarterly frame"
+  },
+  {
+    "period": "2026 Q2",
+    "fiscalYear": 2026,
+    "fiscalQuarter": 2,
+    "reportDate": "2026-06-30",
+    "accessionNumber": "0001065280-26-000212",
+    "filingDate": "2026-07-17",
+    "filingUrl": "https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/nflx-20260630.htm",
+    "revenue": 12559938000,
+    "operatingIncome": 4192610000,
+    "operatingMargin": 33.38,
+    "netIncome": 3401414000,
+    "dilutedEps": 0.8,
+    "operatingCashFlow": 1743812000,
+    "capitalExpenditures": 218644000,
+    "freeCashFlow": 1525168000,
+    "freeCashFlowMargin": 12.14,
+    "source": "SEC XBRL quarterly frame; cash flow: SEC XBRL quarterly frame",
     "epsSource": "SEC XBRL quarterly frame"
   }
 ];
