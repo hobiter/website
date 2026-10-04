@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "research:vst:data": "node scripts/update-vistra-sec-data.mjs",
+    "research:vst:test": "node scripts/test-vistra-research.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

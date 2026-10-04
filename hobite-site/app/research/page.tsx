@@ -7,6 +7,16 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "Vistra（VST）完整基本面研究中心",
+    description: "中文研究页：SEC 财务、发电与零售经济、核电合同、资本配置及十年普通股现金流估值。",
+    href: "/research/vistra-complete-fundamental-analysis/zh",
+  },
+  {
+    title: "Vistra (VST) Complete Fundamental Research Hub",
+    description: "SEC-backed financial history, power and retail economics, nuclear contracts, capital allocation and ten-year common-equity DCF scenarios.",
+    href: "/research/vistra-complete-fundamental-analysis",
+  },
+  {
     title: "百度（BIDU）完整基本面研究中心",
     description: "中文研究页：SEC 财务、AI 云与搜索经济、自动驾驶可选性、ADS 估值历史及十年 DCF。",
     href: "/research/baidu-complete-fundamental-analysis/zh",
