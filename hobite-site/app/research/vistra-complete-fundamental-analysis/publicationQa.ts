@@ -1,0 +1,6 @@
+export const VST_QA = [
+  {check:"Source reconciliation / 数据核对", status:"pass", note:"Q2 revenue $4.017B, net income $305M, common income $258M and EPS $0.76; H1 OCF $2.222B, capex $1.572B, FCF proxy $650M.", noteZh:"Q2 收入 40.17 亿美元、净利润 3.05 亿、普通股利润 2.58 亿和 EPS 0.76 美元；上半年经营现金流 22.22 亿、资本支出 15.72 亿、FCF 代理 6.50 亿。"},
+  {check:"Historical completeness / 历史完整性", status:"warning", note:"2017 flow facts, some early EPS/share counts and gross profit absent; null is not zero. No predecessor-series splice or fabricated data.", noteZh:"2017 流量、部分早期 EPS/股数及毛利缺失。空值非零，不拼接前身数据，不虚构历史。"},
+  {check:"Model controls / 模型控制", status:"pass", note:"Automated assertions cover reported data, all common-cash deductions, partial-year timing, share basis, EV bridge, terminal value and sensitivity ordering.", noteZh:"自动断言通过：已披露数据、普通股现金扣除、部分年度时点、股数、EV 桥接、终值与敏感性顺序。"},
+  {check:"Both website builds / 双站构建", status:"pass", note:"Hobite and SVIM production builds pass. VST module parity passes. English/Chinese routes and desktop/390px mobile rendering checked; tables scroll within the report. Whole-library parity still reports pre-existing non-VST drift.", noteZh:"Hobite 与 SVIM 生产构建及 VST 模块一致性通过。已核查双语路由、桌面及 390px 手机显示，表格在报告内部滚动。全研究库仍存在此前非 VST 页面差异。"},
+];
