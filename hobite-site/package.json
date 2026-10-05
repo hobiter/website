@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "research:amd:data": "node scripts/update-amd-sec-data.mjs",
+    "research:amd:test": "node scripts/test-amd-research.mjs",
+    "research:amd:mirror": "node scripts/mirror-amd-research.mjs",
     "research:mu:data": "node scripts/update-micron-sec-data.mjs",
     "research:mu:test": "node scripts/test-micron-research.mjs",
     "research:mu:mirror": "node scripts/mirror-micron-research.mjs",

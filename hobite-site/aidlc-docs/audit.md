@@ -1,5 +1,11 @@
 # AI-DLC Audit Log
 
+## 2026-10-04 AMD Research Request
+
+**User Input**: "follow this standard procedure to do the similar Financial Analysis work for AMD, Generate the same PR for both hobite website, and svim.io."
+
+**AI Response**: Follow company research and AI-DLC workflow through bilingual implementation, source verification, financial tests, builds and linked unmerged PRs. Standing automatic-completion authorization retained. MU PRs merged; clean branches codex/amd-research-hub created from origin/main. Existing brownfield architecture reused; no infrastructure change. Extensions scanned, existing opt-outs retained and skipped. Requirements/stories/design/plan: aidlc-docs/amd-research-hub.md. AMD-specific accounting includes acquisition amortization, discontinued operations, supplier commitments and conditional customer warrants.
+
 ## 2026-10-04 MU Research Completion
 
 English and Chinese reports implemented and registered in both research libraries. Verified 16 fiscal annuals, 64 quarters, 527 filing entries, release anchors, provenance, fiscal cash-flow reconciliation, original balance contexts, lease-inclusive debt, gross/adjusted FCF, customer-deposit financing, terminal reinvestment and 14 mirrored files. Both final production builds passed. Desktop/mobile checks passed in both languages/sites with no console errors; bundle-size warnings documented. Linked Hobite PR #77 and SVIM PR #78 created and attached, open and unmerged. Local implementation complete; production deployment not claimed. Latest FY2026/Q4 release explicitly unaudited; historical coverage limitations and conservative valuation assumptions remain visible. Completion evidence: aidlc-docs/mu-research-hub.md.
