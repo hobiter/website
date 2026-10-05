@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "research:ai-size:test": "node scripts/test-ai-size-research.mjs",
+    "research:ai-size:mirror": "node scripts/mirror-ai-size-research.mjs",
     "research:ai-chain:data": "node scripts/update-ai-value-chain-data.mjs",
     "research:ai-chain:test": "node scripts/test-ai-value-chain-research.mjs",
     "research:ai-chain:mirror": "node scripts/mirror-ai-value-chain-research.mjs",

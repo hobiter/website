@@ -1,5 +1,16 @@
 # AI-DLC Audit Log
 
+## 2026-10-05 - AI Size Research
+
+**Timestamp**: 2026-10-05T00:00:00-07:00 (client date; exact request time unavailable)
+
+**User Input**: "Similarly find the top 10 mid cap, and top 10 small cap, in the AI field. Please put them in separate Research Articles in both hobite website and duplicate into svim io research page"
+
+**Decision**: Reused standing automatic implementation authorization and existing article conventions. Created separate English and Chinese size articles in both sites, with USD cap boundaries, dated primary evidence and explicit scenario/ranking limitations. Retained disabled extension settings. No deployment or merge authorized or performed.
+
+**Progress**: Complete. Twenty eligible companies researched; source content, four route wrappers, both site library registrations, reproducible mirror and model/parity tests implemented. Final production builds, dedicated tests, focused lint and diff checks pass. Desktop/mobile English/Chinese browser checks verify controls, validation, POET model exclusion and library navigation. Fixed and rechecked SVIM title contrast. Full SVIM parity retains unrelated legacy discrepancies. No new commit, PR, merge or production deployment performed. Existing disabled extensions remain skipped.
+
+
 ## 2026-10-04 - AI Value Chain Delivery
 
 - Completed the original 15-chapter English report and Chinese counterpart, 15-company provenance appendix and ten-company 10-/20-year scenario model.
