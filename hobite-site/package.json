@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "research:tsm:data": "node scripts/update-tsmc-sec-data.mjs",
+    "research:tsm:test": "node scripts/test-tsmc-research.mjs",
+    "research:tsm:mirror": "node scripts/mirror-tsmc-research.mjs",
     "research:amzn:data": "node scripts/update-amazon-sec-data.mjs",
     "research:amzn:test": "node scripts/test-amazon-research.mjs",
     "research:amzn:mirror": "node scripts/mirror-amazon-research.mjs",

@@ -59,6 +59,6 @@
 ## Current Status
 
 - **Lifecycle Phase**: CONSTRUCTION
-- **Current Stage**: AMZN Research Hub Implementation Complete
+- **Current Stage**: TSM Research Hub Implementation
 - **Next Step**: Pull-request review and deployment
 - **Status**: English and Chinese AMZN research hubs implemented, verified and submitted in Hobite PR #75 and SVIM PR #76. Both open for review, not merged. Earlier research history is preserved in the audit log.
