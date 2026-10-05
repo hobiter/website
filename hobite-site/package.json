@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "research:lly:data": "node scripts/update-lly-sec-data.mjs",
+    "research:lly:test": "node scripts/test-lly-research.mjs",
+    "research:lly:mirror": "node scripts/mirror-lly-research.mjs",
     "research:amd:data": "node scripts/update-amd-sec-data.mjs",
     "research:amd:test": "node scripts/test-amd-research.mjs",
     "research:amd:mirror": "node scripts/mirror-amd-research.mjs",
