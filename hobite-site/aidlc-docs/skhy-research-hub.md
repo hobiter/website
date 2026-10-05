@@ -33,7 +33,7 @@ Readers should be able to inspect long-cycle historical results, understand K-IF
 4. [x] Write original English and Chinese research, chart/table views, source audit and publication QA; register Hobite routes and library links.
 5. [x] Mirror the full bilingual report and library registration into SVIM.
 6. [x] Pass SKHY data/model/mirror checks and both production builds; verify English and Chinese routes on both sites and review the responsive page at a 390px viewport.
-7. [ ] Commit, push, create and attach cross-linked PRs; document completion without merging.
+7. [x] Commit, push, create and attach cross-linked PRs; leave both open and unmerged.
 
 ## Verification Plan
 
