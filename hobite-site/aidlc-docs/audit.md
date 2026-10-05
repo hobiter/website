@@ -1,5 +1,15 @@
 # AI-DLC Audit Log
 
+## 2026-10-04 TSM Research Completion
+
+English and Chinese reports implemented and registered on both sites. Verified 11 annual IFRS years, ten local-TIFRS quarters, latest operating disclosures, dated price, FCFF/ADS/FX conventions and 14 mirrored files. Financial/model tests and both production builds passed. Desktop and 390px mobile views passed in both languages on both sites. Source-access and coverage limitations remain explicit. Scoped branches pushed; Hobite PR #76 and SVIM PR #77 created, cross-linked and attached, open and unmerged. No production deployment or automatic merge claimed.
+
+## 2026-10-04 TSM Research Request
+
+Raw user input: "follow this standard procedure to do the similar Financial Analysis work for TSM, Generate the same PR for both hobite website, and svim.io."
+
+Existing Hobite Next.js and SVIM project-albatross Vite research hubs; clean checkouts branched codex/tsm-research-hub from origin/main. Reuse brownfield architecture and standing automatic-completion authorization. Plan: aidlc-docs/tsm-research-hub.md. TSM is an IFRS foreign issuer (20-F/6-K); TWD financials and five ordinary shares per ADS require normalization. Security, resiliency and property-based extension rules skipped under existing disabled configuration. No phase pause and no automatic merge.
+
 ## Workflow Start
 
 **Timestamp**: 2026-06-28T00:00:00-07:00

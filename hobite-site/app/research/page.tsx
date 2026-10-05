@@ -7,6 +7,16 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "台积电（TSM）完整基本面研究中心",
+    description: "IFRS 财务、先进制程、代工经济、资本投入、客户集中度及十年货币一致的 ADS 估值。",
+    href: "/research/tsmc-complete-fundamental-analysis/zh",
+  },
+  {
+    title: "TSMC (TSM) Complete Fundamental Research Hub",
+    description: "IFRS financial history, advanced nodes, foundry economics, capital investment, customer concentration and currency-aware ten-year ADS valuation.",
+    href: "/research/tsmc-complete-fundamental-analysis",
+  },
+  {
     title: "亚马逊（AMZN）完整基本面研究中心",
     description: "SEC 财务、AWS 与零售经济、AI 投入、战略投资、资本配置及十年企业 DCF 情景。",
     href: "/research/amazon-complete-fundamental-analysis/zh",
