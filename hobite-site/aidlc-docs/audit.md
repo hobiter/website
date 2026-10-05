@@ -1,5 +1,15 @@
 # AI-DLC Audit Log
 
+## 2026-10-04 LLY Research Completion
+
+Completed English and Chinese reports and library registration in Hobite and SVIM. Verified 15 annuals, 62 quarters, 374 SEC filings, latest release anchors, original-filing IPR&D regression, financial/model invariants, ten-year cash renewal and terminal reinvestment, and exact 14-module adapted mirror parity. Final production builds pass; existing SVIM large-chunk warning remains. Both languages/sites checked at desktop/mobile; tables contained, twelve chart groups nonblank, library/translation/eight anchor links and filing/provenance expansion verified with no captured console errors. Hobite PR #79 and SVIM PR #80 cross-linked and attached, open and unmerged. Historical accounting comparability and dated balance assumptions remain explicit. Local implementation complete; no live deployment claimed. Evidence: aidlc-docs/lly-research-hub.md.
+
+## 2026-10-04 LLY Research Request
+
+**User Input**: "follow this standard procedure to do the similar Financial Analysis work for LLY, Generate the same PR for both hobite website, and svim.io."
+
+**AI Response**: Follow established company research / AI-DLC workflow through verified bilingual hubs and linked unmerged PRs. Standing automatic-completion authorization retained. AMD PRs merged; clean branches codex/lly-research-hub created from origin/main. Reuse prior brownfield architecture with scoped research inspection. Extension opt-in files scanned; prior opt-outs retained and skipped. No new infrastructure. Requirements/stories/functional financial design and plan: aidlc-docs/lly-research-hub.md. Lilly-specific analysis covers product concentration, acquired IPR&D, pricing/rebates and manufacturing capex. Approval gates covered by standing automatic-completion request.
+
 ## 2026-10-04 AMD Research Completion
 
 Completed English and Chinese reports and research-library registration in Hobite and SVIM. Verified 15 annuals, 62 quarters, 595 filings, financial/model invariants, source provenance, GAAP/non-GAAP segment bridge, divestiture cash-flow presentation, finite amortization runoff, terminal reinvestment and conditional warrant dilution. All 14 mirror modules match. Both final production builds passed with existing bundle-size warnings. Four site/language combinations checked at desktop/mobile; mobile intrinsic-width overflow fixed and wide tables contained. Language/library links, section anchors and filing expansion verified; no captured console errors. Hobite PR #78 and SVIM PR #79 created, cross-linked and attached, open and unmerged. No production deployment claimed. Full evidence, assumptions and limitations: aidlc-docs/amd-research-hub.md.

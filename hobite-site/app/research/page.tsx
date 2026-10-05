@@ -7,6 +7,16 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "礼来（LLY）完整基本面研究中心",
+    description: "SEC 财务、替尔泊肽集中度、制药经济、研发与产能投入及十年估值。",
+    href: "/research/eli-lilly-complete-fundamental-analysis/zh",
+  },
+  {
+    title: "Eli Lilly (LLY) Complete Fundamental Research Hub",
+    description: "SEC financial history, tirzepatide concentration, pharmaceutical economics, research investment and ten-year valuation.",
+    href: "/research/eli-lilly-complete-fundamental-analysis",
+  },
+  {
     title: "AMD 完整基本面研究中心",
     description: "SEC 财年财务、EPYC 与 Instinct 经济、供应承诺、客户权证及十年企业估值。",
     href: "/research/amd-complete-fundamental-analysis/zh",
