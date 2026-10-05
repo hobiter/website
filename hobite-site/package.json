@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "research:ai-chain:data": "node scripts/update-ai-value-chain-data.mjs",
+    "research:ai-chain:test": "node scripts/test-ai-value-chain-research.mjs",
+    "research:ai-chain:mirror": "node scripts/mirror-ai-value-chain-research.mjs",
     "research:lly:data": "node scripts/update-lly-sec-data.mjs",
     "research:lly:test": "node scripts/test-lly-research.mjs",
     "research:lly:mirror": "node scripts/mirror-lly-research.mjs",

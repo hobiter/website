@@ -1,5 +1,23 @@
 # AI-DLC Audit Log
 
+## 2026-10-04 - AI Value Chain Delivery
+
+- Completed the original 15-chapter English report and Chinese counterpart, 15-company provenance appendix and ten-company 10-/20-year scenario model.
+- Passed both production builds, focused ESLint, formula/unit/sensitivity tests and dedicated source/mirror parity. Desktop/mobile previews reviewed in both sites; new article contrast fixed.
+- Full SVIM parity retains pre-existing unrelated discrepancies; these are recorded in the feature research record, not hidden or changed.
+- Opened and cross-linked Hobite PR #81 and SVIM PR #82; attached both to this chat. Neither PR was merged and no production deployment is claimed.
+
+
+## 2026-10-04 AI Value Chain Research Request
+
+**User Input**: "Evaluate the whole product Chain Of AI, create a research article in both hobite website and duplicate into svim io research page.
+1, Do the long research as much as possible.
+2, Find the filed of the industry, investment area that has the top ROI in the next 10 or 20 years.
+3, try to list the metrics, forecast financial data as detailed as possible.
+4, List the top 10 Stocks that we can invest based on the above evaluations. Ranking from 1st to 10th."
+
+**Action**: Apply the established research workflow to a sector-wide study. Complete English/Chinese pages and mirrors, comparative source history, reproducible 10-/20-year scenarios and ten ranked listed equities. Standing completion/PR authorization applies. New branches: `codex/ai-value-chain-research`, based on fetched origin/main. Existing opt-out extensions remain disabled. Do not merge automatically. Requirements and progress: `aidlc-docs/ai-value-chain-research.md`.
+
 ## 2026-10-04 SKHY Research Request
 
 **User Input**: "follow this standard procedure to do the similar Financial Analysis work for SKHY, Generate the same PR for both hobite website, and svim.io."
