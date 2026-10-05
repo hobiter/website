@@ -22,7 +22,7 @@ Forecast FCFF in bear/base/bull over ten years with margin/capex/working-capital
 4. [x] Write complete EN/ZH report, charts/tables/audits; register Hobite pages.
 5. [x] Mirror all modules and register both SVIM pages.
 6. [x] Pass financial/parity tests, both builds and desktop/mobile browser QA.
-7. [ ] Commit/push, create/attach cross-linked PRs; record completion without merging.
+7. [x] Commit/push, create/attach cross-linked PRs; record completion without merging.
 
 ## Verification Plan
 
@@ -37,3 +37,11 @@ Historical verification supplements companyfacts with original, non-dimensional 
 Browser checks: Hobite `/research/eli-lilly-complete-fundamental-analysis` and `/zh`; SVIM `/research/eli-lilly-complete-fundamental-analysis` and `/research/zh-eli-lilly-complete-fundamental-analysis` (also registered `/blog` aliases). English/Chinese render at 1280x900 and 390x844 without page-level horizontal overflow. Twelve chart groups contain nonzero bars. Wide tables scroll within their parents; all eight section anchors work. Research-library entries, language links, 374-filing inventory and latest-quarter field provenance are accessible and expandable. Next dev initially served a stale 404; restarting the local preview with webpack resolved it, with production builds already passing.
 
 Reproduction: `npm run research:lly:data`, format generated modules, `npm run research:lly:mirror`, `npm run research:lly:test`, then production builds in each app. Source data cutoff is October 4, 2026, last market close October 2; current balances are not fabricated beyond June 30. Independent renewal/patent scenarios are not clinical probabilities. Publication QA retains explicit historical comparability and forecast limitations. Local verification does not establish live deployment.
+
+## Completion
+
+Hobite: https://github.com/hobiter/website/pull/79
+
+SVIM: https://github.com/svim-labs/project-albatross/pull/80
+
+Both PRs cross-linked, attached to the task, open and unmerged. Implementations are complete in both languages and repositories. Final production builds and financial/parity tests pass. Browser checks captured no console errors. Saved local screenshot: `C:/Users/sunyo/AppData/Local/Temp/lly-report-verified.png`. Local previews run at ports 3000 and 5173; no live deployment asserted.
