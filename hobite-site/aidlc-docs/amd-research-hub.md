@@ -22,7 +22,7 @@ Customer warrants may add up to 320M shares; milestones are conditional, not iss
 4. [x] Write bilingual report, 12-chart dashboard, tables, source audit and QA; register Hobite pages.
 5. [x] Mirror all modules and register both languages in SVIM.
 6. [x] Run data/parity tests and both builds; verify both languages/sites on desktop/mobile.
-7. [ ] Commit/push, open/attach linked PRs and record outcome. Do not merge.
+7. [x] Commit/push, open/attach linked PRs and record outcome. Do not merge.
 
 ## Verification
 
@@ -43,3 +43,9 @@ Financial anchors, complete fiscal-flow sums, balance identity, unit filtering, 
 - Primary evidence: FY2025 10-K accession 0000002488-26-000018, 10-K/A 0000002488-26-000021, Q2 10-Q 0000002488-26-000123, issuer Q2 release 1295, OpenAI warrant 8-K 0001193125-25-230895 and Meta warrant 8-K 0000002488-26-000045. Direct URLs are in operatingMetrics/sourceAudit/filings modules.
 
 Local verification is not production deployment. PRs remain unmerged.
+
+## Delivery
+
+- Hobite: https://github.com/hobiter/website/pull/78
+- SVIM: https://github.com/svim-labs/project-albatross/pull/79
+- Both companion PRs cross-linked, attached to this chat, open and unmerged. Branches: `codex/amd-research-hub`. All requested implementation and local verification completed.

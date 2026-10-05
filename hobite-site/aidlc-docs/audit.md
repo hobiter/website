@@ -1,5 +1,9 @@
 # AI-DLC Audit Log
 
+## 2026-10-04 AMD Research Completion
+
+Completed English and Chinese reports and research-library registration in Hobite and SVIM. Verified 15 annuals, 62 quarters, 595 filings, financial/model invariants, source provenance, GAAP/non-GAAP segment bridge, divestiture cash-flow presentation, finite amortization runoff, terminal reinvestment and conditional warrant dilution. All 14 mirror modules match. Both final production builds passed with existing bundle-size warnings. Four site/language combinations checked at desktop/mobile; mobile intrinsic-width overflow fixed and wide tables contained. Language/library links, section anchors and filing expansion verified; no captured console errors. Hobite PR #78 and SVIM PR #79 created, cross-linked and attached, open and unmerged. No production deployment claimed. Full evidence, assumptions and limitations: aidlc-docs/amd-research-hub.md.
+
 ## 2026-10-04 AMD Research Request
 
 **User Input**: "follow this standard procedure to do the similar Financial Analysis work for AMD, Generate the same PR for both hobite website, and svim.io."
