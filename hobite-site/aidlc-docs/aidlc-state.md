@@ -4,7 +4,7 @@
 
 - **Project Type**: Brownfield
 - **Start Date**: 2026-06-28T00:00:00-07:00
-- **Current Stage**: COMPLETE - AI Value Chain Research (PRs open, not merged)
+- **Current Stage**: COMPLETE - AI Mid-Cap And Small-Cap Research (local implementation)
 
 ## Workspace State
 
@@ -50,7 +50,7 @@
 - [x] NFR Design - Bracket Domain And Data
 - [ ] Infrastructure Design - SKIP
 - [x] Code Generation - COMPLETE
-- [x] Build and Test - COMPLETE (SKHY tests, both production builds, English/Chinese routes, desktop and 390px browser review)
+- [x] Build and Test - COMPLETE (AI size eligibility/model/mirror tests, both production builds, English/Chinese routes, desktop and 390px browser review)
 
 ### OPERATIONS PHASE
 
@@ -59,6 +59,6 @@
 ## Current Status
 
 - **Lifecycle Phase**: CONSTRUCTION
-- **Current Stage**: SKHY bilingual report complete; cross-linked PRs open
-- **Next Step**: Review and merge PRs when ready; no automatic merge
-- **Status**: Completed the standard SKHY research workflow on `codex/skhy-research-hub` in both repositories. Hobite PR: https://github.com/hobiter/website/pull/80. SVIM PR: https://github.com/svim-labs/project-albatross/pull/81. Both are open and cross-linked; neither was merged. SK hynix is a Korean foreign private issuer: primary operating results use consolidated K-IFRS in KRW, SEC CIK 0002120882, Nasdaq ADS trading began July 2026 at 10 ADSs per common share, and its U.S. market history is much shorter than its Korean ordinary-share history. SKHY-specific data, model, module parity, production builds and bilingual browser routes passed. The repository-wide SVIM parity verifier continues to report unrelated legacy mismatches and omissions; it reports no SKHY route/module issue.
+- **Current Stage**: Two separate AI size articles and Chinese counterparts complete in both repositories
+- **Next Step**: Review local previews; publication requires the normal commit/PR/deployment workflow
+- **Status**: Twenty selected U.S.-listed companies classified at the October 2, 2026 snapshot. Separate mid-cap and small-cap articles include primary quarterly evidence, thesis failure conditions and transparent five-/ten-year scenarios. Four routes and library registrations are implemented in each site. Eligibility/model/mirror tests, focused lint, both production builds and desktop/mobile checks pass. Full SVIM parity retains unrelated legacy failures. No new PR, merge or deployment performed. Details: `aidlc-docs/ai-size-research.md`.

@@ -6,6 +6,10 @@ export const metadata: Metadata = {
 };
 
 const REPORTS = [
+  { title: "Top 10 Mid-Cap AI Stocks", description: "Commercial evidence, ranked profiles and five-/ten-year scenarios for $2-10B AI candidates.", href: "/research/ai-mid-cap-investment-outlook" },
+  { title: "AI 中盘股：十大研究候选", description: "20 亿至不足 100 亿美元 AI 候选的商业证据、排序与五年/十年情景。", href: "/research/ai-mid-cap-investment-outlook/zh" },
+  { title: "Top 10 Small-Cap AI Stocks", description: "Financing, dilution, commercial milestones and five-/ten-year scenarios for $300M-2B candidates.", href: "/research/ai-small-cap-investment-outlook" },
+  { title: "AI 小盘股：十大研究候选", description: "3 亿至不足 20 亿美元候选的融资、稀释、商业里程碑与五年/十年情景。", href: "/research/ai-small-cap-investment-outlook/zh" },
   {
     title: "The AI Value Chain: 10- and 20-Year Investment Outlook",
     description: "Full-chain economics, ten-stock ranking, 15-company financial appendix and transparent long-term forecasts.",

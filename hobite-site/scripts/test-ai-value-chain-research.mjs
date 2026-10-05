@@ -14,7 +14,7 @@ async function load(name) {
 }
 const get = async name => import(await load(name));
 const { COMPANIES } = await get("investmentData");
-const { valuation, project, irr, rankedCompanies, dataCentre } = await get("forecastModel");
+const { valuation, project, irr, rankedCompanies, undervaluedCompanies, dataCentre } = await get("forecastModel");
 const { REPORT, SECTORS } = await get("reportContent");
 const { SOURCES } = await get("sources");
 const { FINANCIAL_HISTORY } = await get("financialHistory");
@@ -34,7 +34,7 @@ for (const c of COMPANIES) {
     assert.ok(Object.values(r).every(Number.isFinite));
   }
   close(rows[10].margin, rows[9].margin);
-  for (const h of [10,20]) {
+  for (const h of [5,10,20]) {
     const bear = valuation(c,"bear",h), base = valuation(c,"base",h), bull=valuation(c,"bull",h);
     assert.ok(bear.value < base.value && base.value < bull.value, `${c.ticker} scenario order`);
     assert.ok(valuation(c,"base",h,c.price*1.2).irr < base.irr, `${c.ticker} price sensitivity`);
@@ -47,6 +47,16 @@ for (const c of COMPANIES) {
   }
 }
 const ranking=rankedCompanies();
+const screen=undervaluedCompanies();
+assert.equal(screen.length, COMPANIES.length);
+for (const [i,r] of screen.entries()) {
+  assert.ok(i===0 || screen[i-1].upside >= r.upside);
+  close(r.conservativeValue, Math.min(r.five.entryPrice,r.ten.entryPrice));
+  close(r.marginOfSafety,1-r.company.price/r.conservativeValue);
+  assert.equal(r.qualifies,r.five.entryPrice>r.company.price && r.ten.entryPrice>r.company.price);
+  assert.equal(r.five.rows.length,5);
+}
+console.table(screen.map(r=>({ticker:r.company.ticker,qualifies:r.qualifies,base5:(r.five.irr*100).toFixed(1),base10:(r.ten.irr*100).toFixed(1),bear5:(r.bearFive.irr*100).toFixed(1),bear10:(r.bearTen.irr*100).toFixed(1),value:r.conservativeValue.toFixed(2),gap:(r.upside*100).toFixed(1)})));
 assert.ok(ranking.every((r,i)=>i===0||ranking[i-1].score>=r.score));
 close(dataCentre().power, 73.584);
 close(dataCentre().renewal, 950);

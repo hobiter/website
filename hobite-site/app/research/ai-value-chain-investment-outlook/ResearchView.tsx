@@ -2,7 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 import { COMPANIES, MARKET_DATE, RESEARCH_DATE } from "./investmentData";
-import { CASES, CASE_INPUTS, dataCentre, rankedCompanies, valuation, type Scenario } from "./forecastModel";
+import { CASES, CASE_INPUTS, dataCentre, rankedCompanies, undervaluedCompanies, valuation, type Scenario } from "./forecastModel";
 import { FINANCIAL_HISTORY } from "./financialHistory";
 import { REPORT, SECTORS } from "./reportContent";
 import { SOURCES } from "./sources";
@@ -35,13 +35,14 @@ export default function ResearchView({ lang }: { lang: "en" | "zh" }) {
   const t = (en: string, cn: string) => zh ? cn : en;
   const [ticker, setTicker] = useState("MSFT");
   const [scenario, setScenario] = useState<Scenario>("base");
-  const [horizon, setHorizon] = useState<10 | 20>(20);
+  const [horizon, setHorizon] = useState<5 | 10 | 20>(20);
   const [price, setPrice] = useState("517.53");
   const [historyTicker, setHistoryTicker] = useState("MSFT");
   const company = COMPANIES.find((item) => item.ticker === ticker)!;
   const validPrice = Number(price) > 0 && Number.isFinite(Number(price));
   const result = valuation(company, scenario, horizon, validPrice ? Number(price) : company.price);
   const ranked = rankedCompanies();
+  const undervalued = undervaluedCompanies();
   const history = FINANCIAL_HISTORY.find((item) => item.ticker === historyTicker)!;
   const source = (id: string) => SOURCES.find((item) => item.id === id)!;
   const sl = (id: string) => <a key={id} href={source(id).url} target="_blank" rel="noreferrer" className="underline underline-offset-4">{source(id).title}</a>;
@@ -63,6 +64,8 @@ export default function ResearchView({ lang }: { lang: "en" | "zh" }) {
       [t("Value-chain groups", "价值链分组"), "8"], [t("Companies in financial appendix", "财务附录公司"), "15"], [t("Ranked long-duration shortlist", "长期排序候选"), "10"], [t("Model return hurdle", "模型回报门槛"), "12%"],
     ].map(([label, value]) => <div key={label}><dt className="text-xs text-zinc-500">{label}</dt><dd className="mt-2 text-2xl font-semibold">{value}</dd></div>)}</dl>
     <nav aria-label={t("Article contents", "文章目录")} className="flex flex-wrap gap-x-5 gap-y-3 border-b border-zinc-200 py-5 text-sm underline">{[["report", t("Full report", "完整报告")], ["sectors",t("Sector economics", "行业经济性")], ["ranking-table",t("Top 10", "十股排序")], ["forecasts",t("Forecast model", "预测模型")], ["financials",t("Financial history", "财务历史")], ["sources",t("Sources and audit", "来源核验")]].map(([id,label]) => <a key={id} href={`#${id}`}>{label}</a>)}</nav>
+
+    <a href="#undervalued" className="mt-4 inline-block text-sm font-semibold underline">{t("5-10 year undervaluation shortlist", "五至十年低估候选名单")}</a>
 
     <section id="report" className="py-8">
       <h2 className={sectionTitle}>{t("Research report", "研究报告")}</h2>
@@ -91,12 +94,21 @@ export default function ResearchView({ lang }: { lang: "en" | "zh" }) {
       <div className="grid gap-x-8 sm:grid-cols-2">{ranked.map(({company:c},i) => <article id={`candidate-${c.ticker}`} key={c.ticker} className="border-t border-zinc-200 py-6"><h3 className="text-lg font-semibold">{i+1}. {c.name} ({c.ticker})</h3><p className="mt-1 text-xs text-emerald-800">{zh ? c.layerZh : c.layer}</p><p className="mt-3 text-sm leading-7">{zh ? c.thesisZh : c.thesis}</p><p className="mt-3 text-sm leading-7 text-zinc-600"><strong>{t("Invalidation:", "失效条件：")}</strong> {zh ? c.failureZh : c.failure}</p><p className="mt-3 text-xs">{sl(c.source)}</p></article>)}</div>
     </section>
 
+    <section id="undervalued" className="border-t border-zinc-300 py-8">
+      <h2 className={sectionTitle}>{t("Undervalued candidates: 5-10 years", "低估候选：未来五至十年")}</h2>
+      <p className="mb-4 text-sm leading-7 text-zinc-600">{t("Added October 5, 2026 using the frozen October 2 prices and the original research assumptions. This is a valuation screen of the ten AI-chain candidates, not a whole-market search. Rank is descending upside to the lower of the base 5-year and 10-year present values, discounted at 12%. Only a positive gap on both horizons qualifies as model-undervalued. The remaining rows are a watchlist, not ten buy recommendations.", "2026 年 10 月 5 日新增，沿用 10 月 2 日冻结价格与原研究假设。本筛选仅覆盖十家 AI 产业链候选，并非全市场。排序依据：基准五年与十年现金流按 12% 折现所得价格中的较低值，相对市价的空间。只有两个期限都高于市价才符合模型低估，其余为观察名单，不是十个买入建议。")}</p>
+      <Table label={t("Five and ten year undervaluation screen", "五年与十年低估筛选")} headers={["#",t("Stock", "股票"),t("Oct 2 price", "10 月 2 日价格"),t("Status", "状态"),t("Base 5Y IRR", "基准五年 IRR"),t("Base 10Y IRR", "基准十年 IRR"),t("Bear 5Y / 10Y IRR", "悲观五年 / 十年 IRR"),t("Bull 10Y IRR", "乐观十年 IRR"),t("12% value 5Y / 10Y", "12% 估值 五年 / 十年"),t("Conservative value gap", "保守估值空间"),t("Margin of safety", "安全边际"),t("20% safety entry", "20% 安全边际买价")]} rows={undervalued.map((r,i)=>[i+1,<a key={r.company.ticker} href={`#candidate-${r.company.ticker}`} className="font-semibold underline">{r.company.ticker}</a>,`$${fmt(r.company.price,2)}`,r.qualifies?t("Model-undervalued", "模型低估"):t("Watchlist only", "仅观察"),pct(r.five.irr),pct(r.ten.irr),`${pct(r.bearFive.irr)} / ${pct(r.bearTen.irr)}`,pct(r.bullTen.irr),`$${fmt(r.five.entryPrice,2)} / $${fmt(r.ten.entryPrice,2)}`,pct(r.upside),pct(r.marginOfSafety),`$${fmt(r.conservativeValue*.8,2)}`])} />
+      <p className="mt-4 text-sm leading-7 text-zinc-600">{t("A value gap is not a price target or expected gain. Margin of safety = 1 - market price / conservative value; a negative number means a premium. The 20% safety entry is 80% of that value. IRRs assume full hypothetical distribution of owner cash plus exit value, not actual dividends or guaranteed share-price returns. Exit multiples remain the original 20-25x assumptions, even at year five; multiple compression, dilution and execution risk can erase apparent discounts. No scenario probabilities are assigned. Check financing deficits, terminal dependence and company-specific invalidation conditions before treating any result as actionable.", "估值空间不是目标价或预期涨幅。安全边际 = 1 - 市价 / 保守估值，负数表示溢价；20% 安全边际买价为该估值的 80%。IRR 假设股东现金全部分配并加退出价值，不是实际股息或保证的股价回报。第五年仍沿用原模型 20 至 25 倍退出倍数；估值压缩、稀释与执行风险可能消除折价。没有赋予情景概率。行动前应检查融资缺口、终值依赖及各公司的失效条件。")}</p>
+      <a href="#forecasts" className="mt-4 inline-block text-sm underline">{t("Financial forecasts", "财务预测")}</a>
+      <p className="mt-4 text-sm font-semibold">{t("At this snapshot, only Broadcom and NVIDIA qualify, with approximately 4.3% and 1.3% value gaps. Neither offers a 20% margin of safety. These small discounts are within plausible model error, so the screen does not establish a compelling deep-value opportunity.", "该快照下，仅博通与英伟达符合条件，估值空间约 4.3% 与 1.3%，均未达到 20% 安全边际。这些小幅折价处于合理模型误差范围内，因此本筛选不能证明存在有吸引力的深度低估机会。")}</p>
+    </section>
+
     <section id="forecasts" className="border-t border-zinc-300 py-8">
       <h2 className={sectionTitle}>{t("Annual financial forecasts and valuation", "年度财务预测与估值")}</h2>
       <div className="grid gap-4 border-y border-zinc-200 py-5 sm:grid-cols-2 lg:grid-cols-4">
         <label className="text-sm">{t("Company", "公司")}<select className={field} value={ticker} onChange={(e) => { setTicker(e.target.value); setPrice(String(COMPANIES.find(c=>c.ticker===e.target.value)!.price)); }}>{COMPANIES.map(c=><option key={c.ticker} value={c.ticker}>{c.ticker} - {c.name}</option>)}</select></label>
         <label className="text-sm">{t("Scenario", "情景")}<select className={field} value={scenario} onChange={e=>setScenario(e.target.value as Scenario)}>{CASES.map(s=><option key={s} value={s}>{labels[s]}</option>)}</select></label>
-        <label className="text-sm">{t("Horizon", "期限")}<select className={field} value={horizon} onChange={e=>setHorizon(Number(e.target.value) as 10|20)}><option value={10}>{t("10 years", "十年")}</option><option value={20}>{t("20 years", "二十年")}</option></select></label>
+        <label className="text-sm">{t("Horizon", "期限")}<select className={field} value={horizon} onChange={e=>setHorizon(Number(e.target.value) as 5|10|20)}><option value={5}>{t("5 years", "五年")}</option><option value={10}>{t("10 years", "十年")}</option><option value={20}>{t("20 years", "二十年")}</option></select></label>
         <label className="text-sm">{t("Entry price USD", "买入价 美元")}<input type="number" min="0.01" step="0.01" className={field} value={price} aria-invalid={!validPrice} onChange={e=>setPrice(e.target.value)} /></label>
       </div>
       {!validPrice && <p role="alert" className="mt-3 text-sm text-rose-700">{t("Enter a positive price. Until then, outputs use the publication price.", "请输入正数价格；目前按出版日价格计算。")}</p>}

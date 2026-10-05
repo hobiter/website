@@ -48,7 +48,7 @@ export function irr(initial: number, cash: number[]): number | null {
   return (low + high) / 2;
 }
 
-export function valuation(company: Company, scenario: Scenario, horizon: 10 | 20, price = company.price, hurdle = .12) {
+export function valuation(company: Company, scenario: Scenario, horizon: 5 | 10 | 20, price = company.price, hurdle = .12) {
   const rows = project(company, scenario, horizon + 1);
   const input = CASE_INPUTS[scenario];
   const terminal = Math.max(0, rows[horizon].ownerCash) * company.terminalMultiple * input.multipleScale * input.terminalRetention;
@@ -70,6 +70,20 @@ export function rankedCompanies() {
     const score = 50 * ((ten.irr ?? -.5) + (twenty.irr ?? -.5)) + 20 * (bear.irr ?? -.5) + 1.5 * company.durability - company.risk;
     return { company, ten, twenty, bear, score };
   }).sort((a, b) => b.score - a.score);
+}
+
+export function undervaluedCompanies() {
+  return COMPANIES.map((company) => {
+    const five = valuation(company, "base", 5);
+    const ten = valuation(company, "base", 10);
+    const bearFive = valuation(company, "bear", 5);
+    const bearTen = valuation(company, "bear", 10);
+    const bullTen = valuation(company, "bull", 10);
+    const conservativeValue = Math.min(five.entryPrice, ten.entryPrice);
+    const upside = conservativeValue / company.price - 1;
+    const marginOfSafety = 1 - company.price / conservativeValue;
+    return { company, five, ten, bearFive, bearTen, bullTen, conservativeValue, upside, marginOfSafety, qualifies: upside > 0 };
+  }).sort((a, b) => b.upside - a.upside || a.company.ticker.localeCompare(b.company.ticker));
 }
 
 export function dataCentre(utilization = .65, revenuePerBilledKwYear = 25000) {
