@@ -1,5 +1,11 @@
 # AI-DLC Audit Log
 
+## 2026-10-04 SKHY Research Request
+
+**User Input**: "follow this standard procedure to do the similar Financial Analysis work for SKHY, Generate the same PR for both hobite website, and svim.io."
+
+**AI Response**: Follow the established company-research workflow and AI-DLC through bilingual implementation and linked unmerged PRs. SKHY is SK hynix Inc.'s Nasdaq ADS; each ADS represents 0.1 Korean ordinary share. Confirm official K-IFRS/KRW history and the short US trading history before designing a dated currency-aware valuation. Existing automatic-completion authorization applies. Clean work branches `codex/skhy-research-hub` were created from each repository's fetched `origin/main`. Requirements and work plan are in `aidlc-docs/skhy-research-hub.md`. Existing disabled security, resiliency and property-testing extensions remain disabled; no infrastructure changes planned.
+
 ## 2026-10-04 LLY Research Completion
 
 Completed English and Chinese reports and library registration in Hobite and SVIM. Verified 15 annuals, 62 quarters, 374 SEC filings, latest release anchors, original-filing IPR&D regression, financial/model invariants, ten-year cash renewal and terminal reinvestment, and exact 14-module adapted mirror parity. Final production builds pass; existing SVIM large-chunk warning remains. Both languages/sites checked at desktop/mobile; tables contained, twelve chart groups nonblank, library/translation/eight anchor links and filing/provenance expansion verified with no captured console errors. Hobite PR #79 and SVIM PR #80 cross-linked and attached, open and unmerged. Historical accounting comparability and dated balance assumptions remain explicit. Local implementation complete; no live deployment claimed. Evidence: aidlc-docs/lly-research-hub.md.
