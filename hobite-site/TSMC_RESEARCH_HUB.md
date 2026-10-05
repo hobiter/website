@@ -45,3 +45,8 @@ SVIM reproduction: run npm run build in project-albatross. mirror-tsmc-research.
 Both production builds passed; Hobite prerenders both routes. SVIM retains its existing main-bundle >500 KB warning. Twelve charts and eight major sections verified across both languages and desktop/mobile. Mobile width 390: document width 375, wide tables internally scroll, forecast anchors clear sticky navigation. Some issuer PDFs reject automated downloads; accessible SEC exhibits and archived issuer views were used, and no unverified transcript-derived latest capital-budget figure is asserted as company guidance.
 
 No new runtime dependency, API, database or authentication change. Both PRs remain unmerged for review.
+
+## Pull Requests
+
+- [Hobite #76](https://github.com/hobiter/website/pull/76)
+- [SVIM #77](https://github.com/svim-labs/project-albatross/pull/77)

@@ -16,7 +16,15 @@ Company-specific scope: node/platform mix, wafer shipments, advanced packaging, 
 4. [x] Build bilingual app/research/tsmc-complete-fundamental-analysis/ report and register Hobite library.
 5. [x] Mirror to project-albatross/src/content/hobiteResearch/research/tsmc-complete-fundamental-analysis/ and register SVIM routes/library.
 6. [x] Test financial arithmetic, model invariants and mirror parity; build both applications and verify desktop/mobile views.
-7. [ ] Commit scoped changes, publish and attach both PRs, document verification.
+7. [x] Commit scoped changes, publish and attach both PRs, document verification.
+
+## Completion
+
+Hobite: https://github.com/hobiter/website/pull/76
+
+SVIM: https://github.com/svim-labs/project-albatross/pull/77
+
+Both PRs are linked and attached to this chat, open and unmerged. Financial/model tests, exact adapted parity across 14 files, both production builds and both-language desktop/mobile checks passed. Coverage and source-access limitations are documented in TSMC_RESEARCH_HUB.md and on the report pages.
 
 ## Workflow Scope
 
