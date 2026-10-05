@@ -1,0 +1,60 @@
+import { SKHY_BALANCE, SKHY_CAPITAL, SKHY_SOURCE_URLS as s } from "./companyData";
+
+export const SKHY_AUDIT = [
+  {
+    area: "Annual headline history / 年度主要数据",
+    coverage: "FY2010-FY2025",
+    status: "partial",
+    source: s.archive,
+    en: "Sixteen issuer-release annual rows in KRW. Older values are rounded; no blanket audited-XBRL comparability is claimed.",
+    zh: "16 个公司公告年度数据，单位韩元。早期数值已四舍五入，不声称整体具有审计 XBRL 可比性。",
+  },
+  {
+    area: "Quarterly headline history / 季度主要数据",
+    coverage: "2011Q1-2026Q2",
+    status: "partial",
+    source: s.archive,
+    en: "62 quarterly rows. 2022Q3 is derived from same-perimeter totals and labeled; 2022Q4 is taken from the issuer release. Other annual-vs-quarter parser fallbacks are replaced with release values or labeled same-perimeter derivations. Quarterly earnings-release rows are preliminary where the company so states.",
+    zh: "共 62 个季度数据。2022Q3 根据同一口径总额推算并标注；2022Q4 采用公司公告数据。其他受年报/季度解析影响的数据已更正为公告值，或标注为同一口径推算值。公司声明为初步数据的季度公告按初步数据处理。",
+  },
+  {
+    area: "Reviewed interim statements / 经审阅中期报表",
+    coverage: SKHY_BALANCE.date,
+    status: "complete",
+    source: s.interim,
+    en: "SEC Form 6-K contains K-IFRS consolidated interim statements with an independent auditor review report. Filing amounts are KRW millions; report converts explicitly.",
+    zh: "SEC Form 6-K 包含带独立审计师审阅报告的 K-IFRS 合并中期报表。申报单位为百万韩元，报告明确换算。",
+  },
+  {
+    area: "Share class and offering bridge / 股份类别与发行桥接",
+    coverage: "2026-07 offering; October 2 price",
+    status: "partial",
+    source: SKHY_CAPITAL.prospectus,
+    en: "ADS ratio and post-offering shares are prospectus facts. Estimated net proceeds are carried pro forma from the June balance date; no July-October use-of-proceeds cash update is available in the model.",
+    zh: "ADS 比例及发行后股数来自招股书。预计净募集资金从 6 月余额日备考计入；模型没有 7-10 月资金使用后的现金更新。",
+  },
+  {
+    area: "Nasdaq price and FX / 纳斯达克价格与汇率",
+    coverage: "2026-10-02",
+    status: "partial",
+    source: s.price,
+    en: "Actual SKHY close $195.13 and USD/KRW 1,342.64 are dated observations. Nasdaq history starts in July 2026; no long-run actual U.S. multiple history exists.",
+    zh: "SKHY 实际收盘价 195.13 美元及 USD/KRW 1,342.64 均为有日期观测。纳斯达克交易始于 2026 年 7 月，不存在长期实际美股估值倍数历史。",
+  },
+  {
+    area: "Product and market data / 产品与市场数据",
+    coverage: "Prospectus and Q2 2026 release",
+    status: "partial",
+    source: s.q2Results,
+    en: "Product milestones and company-cited IDC market share are labeled as issuer disclosure or external estimates, not audited standalone HBM financial facts.",
+    zh: "产品进展及公司引用的 IDC 市场份额标注为公司披露或外部估算，并非经审计的 HBM 独立财务数据。",
+  },
+  {
+    area: "SEC filing inventory / SEC 申报清单",
+    coverage: "Recent submissions endpoint",
+    status: "complete",
+    source: s.secSubmissions,
+    en: "Includes the recent electronic Form 20-F, 6-K, F-1, F-6 and 424B filing inventory returned by SEC submissions. This is an index, not a full-text accounting parser.",
+    zh: "包含 SEC submissions 返回的近期电子 Form 20-F、6-K、F-1、F-6 和 424B 申报清单。这是申报索引，不是完整文本会计解析器。",
+  },
+];

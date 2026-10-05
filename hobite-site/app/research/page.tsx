@@ -7,6 +7,16 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "SK 海力士（SKHY）完整基本面研究中心",
+    description: "K-IFRS 财务历史、HBM 与存储周期、纳斯达克 ADS 机制、来源核验及十年估值情景。",
+    href: "/research/sk-hynix-complete-fundamental-analysis/zh",
+  },
+  {
+    title: "SK hynix (SKHY) Complete Fundamental Research Hub",
+    description: "K-IFRS financial history, HBM and memory-cycle economics, Nasdaq ADS mechanics, sources and ten-year valuation scenarios.",
+    href: "/research/sk-hynix-complete-fundamental-analysis",
+  },
+  {
     title: "礼来（LLY）完整基本面研究中心",
     description: "SEC 财务、替尔泊肽集中度、制药经济、研发与产能投入及十年估值。",
     href: "/research/eli-lilly-complete-fundamental-analysis/zh",

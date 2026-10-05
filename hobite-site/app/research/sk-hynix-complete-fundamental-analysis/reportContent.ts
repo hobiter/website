@@ -1,0 +1,88 @@
+import { SKHY_SOURCE_URLS as s } from "./companyData";
+
+export const SKHY_REPORT = [
+  {
+    titleEn: "1. Investment summary and date discipline",
+    titleZh: "1. 投资摘要与日期口径",
+    en: "SK hynix is a memory-cycle manufacturer whose leading-edge DRAM and high-bandwidth memory (HBM) franchise has become central to AI infrastructure. The operating record is exceptional, but the share price also discounts unusually strong earnings. For this report, the latest completed U.S. trading session is October 2, 2026: SKHY closed at $195.13. The latest reviewed statements are for June 30, 2026, so the balance-sheet bridge predates the July IPO and must add net proceeds as a dated pro-forma assumption. HBM leadership is evidence of product execution, not proof that present pricing, margins, or market share are permanent.",
+    zh: "SK 海力士是一家存储周期型制造商，其先进 DRAM 与高带宽存储器（HBM）业务已成为 AI 基础设施的重要组成部分。经营表现出色，但股价也反映了异常强劲的盈利预期。本报告采用最近一个完整的美国交易日：2026 年 10 月 2 日，SKHY 收于 195.13 美元。最新经审阅财务报表截至 2026 年 6 月 30 日，早于 7 月 IPO，因此资产负债表桥接中将 IPO 净募集资金作为有日期标注的备考假设。HBM 领先体现产品执行力，但不能证明当前价格、利润率或份额可以永久维持。",
+    source: s.q2Results,
+  },
+  {
+    titleEn: "2. Issuer, security and ADS mechanics",
+    titleZh: "2. 发行人、证券与 ADS 机制",
+    en: "SK hynix Inc. is a Republic of Korea foreign private issuer (SEC CIK 0002120882). SKHY began Nasdaq trading on July 10, 2026. One ADS represents one-tenth of one Korean common share, so 10 ADSs represent one common share. The offering issued 17.79 million new common shares through 177.9 million ADSs at $149 each. The prospectus reports 728.866 million outstanding common shares after the issue and estimates $26.2 billion of net proceeds. Before the offering, 712.702 million shares were issued, of which 1.627 million were treasury shares, leaving 711.076 million outstanding. Per-ADS value is therefore the Korean-common-share value divided by ten and converted at KRW per U.S. dollar; confusing ADS/common ratios creates a tenfold valuation error.",
+    zh: "SK hynix Inc. 是在韩国注册的外国私人发行人（SEC CIK 0002120882）。SKHY 于 2026 年 7 月 10 日开始在纳斯达克交易。每份 ADS 代表 0.1 股韩国普通股，即 10 份 ADS 对应 1 股普通股。本次发行以 177.9 百万份 ADS 发行了 17.79 百万股新普通股，发行价为每 ADS 149 美元。招股书披露发行后流通普通股为 728.866 百万股，预计净募集资金 262 亿美元。发行前已发行股份为 712.702 百万股，其中库存股 1.627 百万股，扣除后流通股为 711.076 百万股。每 ADS 估值应将普通股价值除以 10，再按每美元韩元数转换；混淆 ADS 与普通股比例会造成十倍估值错误。",
+    source: s.prospectus,
+  },
+  {
+    titleEn: "3. Business model and memory-cycle economics",
+    titleZh: "3. 商业模式与存储周期经济性",
+    en: "SK hynix designs and manufactures DRAM (including HBM), NAND flash and related storage products. Revenue and gross profit depend on bit shipments, product mix, selling prices, yields, process transitions and utilization. The fixed-cost fab base amplifies both upcycles and downturns: wafer capacity cannot be resized as quickly as customer demand, while equipment, cleanroom and packaging investment must be committed years ahead. HBM adds stacking, thermal, yield, qualification and advanced-packaging constraints; it can earn a richer mix but is not a separate disclosed segment with a public standalone margin. NAND and conventional DRAM remain exposed to industry supply cycles even while AI demand grows.",
+    zh: "SK 海力士设计并制造 DRAM（包括 HBM）、NAND 闪存及相关存储产品。收入与毛利取决于位元出货、产品结构、售价、良率、制程迭代和产能利用率。晶圆厂固定成本会放大景气上行与下行：产能无法像客户需求那样迅速调整，设备、无尘室及封装投入又必须提前数年承诺。HBM 增加堆叠、散热、良率、认证和先进封装等限制，可能带来更高价值组合，但公司未披露可单独计算的 HBM 分部利润率。即使 AI 需求增长，NAND 和常规 DRAM 仍受行业供需周期影响。",
+    source: s.prospectus,
+  },
+  {
+    titleEn: "4. Sixteen-year operating history",
+    titleZh: "4. 十六年经营历史",
+    en: "The annual series spans 2010 through 2025 and preserves the reported KRW basis. It includes the 2011-12 downturn, the 2017-18 memory boom, the 2019 reset, the 2021-22 expansion, the 2023 loss cycle and the 2024-25 recovery. Those episodes are more informative than extrapolating a CAGR from a trough or peak. FY2025 revenue was KRW 97.147 trillion, operating profit KRW 47.206 trillion and net income KRW 42.948 trillion. Historical releases use differing precision and older releases have less detail; values are rounded to issuer precision and should not be interpreted as a single homogeneous audited XBRL series.",
+    zh: "年度序列覆盖 2010 至 2025 年，保留公司披露的韩元口径，其中包括 2011-12 年下行、2017-18 年存储繁荣、2019 年调整、2021-22 年扩张、2023 年亏损周期以及 2024-25 年复苏。与从谷底或峰值外推复合增速相比，这些周期更有参考价值。2025 财年收入为 97.147 万亿韩元，营业利润为 47.206 万亿韩元，净利润为 42.948 万亿韩元。历史公告精度不一，早期披露细节较少；数据按公司公布精度四舍五入，并非完全同质的审计 XBRL 序列。",
+    source: s.fy25Results,
+  },
+  {
+    titleEn: "5. Latest results and earnings quality",
+    titleZh: "5. 最新业绩与盈利质量",
+    en: "Q2 2026 revenue was KRW 79.319 trillion and operating profit KRW 60.543 trillion, a 76% operating margin; H1 revenue was KRW 131.895 trillion. The company's July release labels the headline figures preliminary; the August 18 Form 6-K contains reviewed interim statements and corroborates the quarter. Net income of KRW 93.923 trillion materially exceeded operating profit because non-operating finance and investment items were unusually large. The report presents operating profit as the more cycle-relevant anchor and does not annualize this quarter's net income or use its 118% net margin as a sustainable earnings rate. The reviewed H1 cash-flow statement reports KRW 91.743 trillion operating cash flow and KRW 18.329 trillion of PP&E acquisitions; six-month cash generation also reflects working capital, tax and cyclical timing.",
+    zh: "2026 年第二季度收入为 79.319 万亿韩元，营业利润为 60.543 万亿韩元，营业利润率约 76%；上半年收入为 131.895 万亿韩元。公司 7 月公告将主要数据标为初步结果；8 月 18 日 Form 6-K 所载经审阅中期报表对该季度作出确认。净利润 93.923 万亿韩元显著高于营业利润，原因是非经营性金融及投资项目异常庞大。本报告以营业利润作为更具周期参考意义的锚点，不年化该季度净利润，也不将 118% 净利率视为可持续盈利水平。经审阅的上半年现金流量表披露经营现金流 91.743 万亿韩元、购置固定资产 18.329 万亿韩元；半年现金创造亦受营运资本、税款和周期时点影响。",
+    source: s.interim,
+  },
+  {
+    titleEn: "6. HBM, DRAM and NAND mix",
+    titleZh: "6. HBM、DRAM 与 NAND 结构",
+    en: "The prospectus reports DRAM at 77.1% of FY2025 sales and NAND at 21.3%; Q1 2026 DRAM mix was 77.3% and NAND 22.0%. SK hynix cites IDC's estimate of 56.4% HBM revenue share in Q1 2026. These are issuer-reported or issuer-cited mix facts, not independently audited segment earnings. On July 29, the company said HBM4 mass shipments began in Q2, with a second-half ramp planned, and that it had long-term agreements with around ten customers. Such agreements may improve visibility, but disclosed terms do not establish take-or-pay economics, fixed margins, or a guarantee against substitution. Product qualification, packaging capacity, yields and customer concentration remain decisive.",
+    zh: "招股书披露 DRAM 占 2025 财年销售额的 77.1%，NAND 占 21.3%；2026 年第一季度 DRAM 占比为 77.3%，NAND 为 22.0%。SK 海力士引用 IDC 对 2026 年第一季度 HBM 收入份额 56.4% 的估算。这些是公司披露或引用的结构数据，并非独立审计的分部盈利。公司 7 月 29 日称 HBM4 于第二季度开始量产出货，并计划下半年爬坡；同时与约十家客户签订长期协议。协议可能提升可见度，但已披露条款并未证明存在照付不议安排、固定利润率或免于替代风险的保证。产品认证、封装产能、良率及客户集中度仍是关键。",
+    source: s.q2Results,
+  },
+  {
+    titleEn: "7. Capital intensity and investment funding",
+    titleZh: "7. 资本强度与投资资金",
+    en: "The reviewed first-half statement shows PP&E acquisitions of KRW 18.329 trillion, intangible acquisitions of KRW 0.665 trillion and operating cash flow of KRW 91.743 trillion. The same filing reports significant financial-asset investment flows, so operating cash flow less PP&E is not a complete owner-earnings measure and must not be confused with free cash flow after all investment. SK hynix has described phased capacity projects including M15X, the Yongin cluster and advanced packaging, with spending paced against demand and investment efficiency. Our scenario capex remains elevated as a share of sales to reflect cleanroom, equipment and process-transition needs; the peak H1 cash conversion is not treated as a normal run rate.",
+    zh: "经审阅的上半年报表显示，购置固定资产 18.329 万亿韩元、购置无形资产 0.665 万亿韩元、经营现金流 91.743 万亿韩元。同一申报还披露大量金融资产投资，因此经营现金流减固定资产购置并不等同完整股东现金流，也不能误称为扣除全部投资后的自由现金流。SK 海力士表示将分阶段推进 M15X、龙仁园区及先进封装项目，并结合需求与投资效率安排支出。情景预测仍假设资本支出占收入比例较高，以反映无尘室、设备及制程迭代需求；上半年高现金转化不作为常态。",
+    source: s.interim,
+  },
+  {
+    titleEn: "8. Balance sheet, IPO and capital allocation",
+    titleZh: "8. 资产负债表、IPO 与资本配置",
+    en: "At June 30, reviewed consolidated disclosures show KRW 26.836 trillion cash and KRW 22.398 trillion short-term financial instruments; reported borrowings were KRW 18.587 trillion. These are dated pre-IPO figures. The July offering's estimated net proceeds were $26.2 billion; the model translates that amount at the October 2 KRW/USD reference rate and carries it as pro-forma net cash, an upper-bound liquidity bridge because subsequent spending is not yet incorporated. Actual proceeds are intended for general corporate uses including capex. The model uses 728.866 million post-offering common shares and ten ADSs per common share. It excludes stock-option dilution and does not assume special dividends or buybacks beyond disclosed policy.",
+    zh: "截至 6 月 30 日，经审阅的合并披露显示现金 26.836 万亿韩元、短期金融工具 22.398 万亿韩元、借款 18.587 万亿韩元。这些是 IPO 前的有日期余额。7 月发行预计净募集 262 亿美元；模型按 10 月 2 日韩元/美元参考汇率折算，并将其暂列为备考净现金。由于尚未计入随后资金支出，该桥接代表流动性上限。实际募集资金计划用于包括资本支出在内的一般公司用途。模型使用发行后 728.866 百万股普通股，并按每普通股 10 份 ADS 换算；未计入股票期权稀释，也未假设披露政策以外的特别分红或回购。",
+    source: s.prospectus,
+  },
+  {
+    titleEn: "9. Competitive position and risks",
+    titleZh: "9. 竞争位置与风险",
+    en: "HBM integration, customer co-development, yield and timely supply can differentiate SK hynix, while the DRAM and NAND markets remain concentrated, capital intensive and historically prone to oversupply. Samsung Electronics and Micron compete across memory; customer-designed accelerators, packaging constraints, technology transitions and export controls can alter share or economics. Large customers may rebalance suppliers, qualify alternatives or negotiate price concessions. Fab ramp delays, yield problems, power and cooling limits, materials availability, foreign-exchange moves, Korea market structure, geopolitical tensions and execution across multiple megaprojects can impair returns. A leadership label is not a substitute for evidence on free cash flow through a full cycle.",
+    zh: "HBM 集成、客户协同开发、良率和准时供货能够形成差异化，但 DRAM 与 NAND 市场仍具有集中度高、资本密集且历史上易出现供过于求等特征。三星电子和美光均在存储领域竞争；客户自研加速器、封装瓶颈、技术迭代及出口管制都可能改变份额与经济性。大型客户可能调整供应商组合、认证替代产品或压低价格。晶圆厂爬坡延误、良率问题、电力与散热限制、材料供应、汇率、韩国市场结构、地缘政治以及多个大型项目的执行都可能削弱回报。行业领先的称号不能替代完整周期自由现金流证据。",
+    source: s.prospectus,
+  },
+  {
+    titleEn: "10. Ten-year KRW FCFF scenarios",
+    titleZh: "10. 十年韩元 FCFF 情景",
+    en: "The bear, base and bull cases are analyst-built sensitivities, not issuer guidance or probability-weighted targets. Starting revenue is the first-half 2026 annualized run rate (KRW 263.8 trillion), not a company forecast. The cases normalize operating margins over the memory cycle, retain high fab reinvestment, apply 18%-22% tax and use KRW nominal WACCs of 9.5%-12.0%, with terminal growth of 1.5%-2.5%. FCFF equals after-tax operating profit plus assumed depreciation, less capex and incremental working capital. Terminal value depends on sustained reinvestment; a simplified working-capital and depreciation schedule cannot forecast specific fab projects, customer contracts, subsidies, leases or technology yields. Output is a wide uncertainty range, not intrinsic precision.",
+    zh: "悲观、基准和乐观情景均为分析师建立的敏感性情景，并非公司指引，也不是概率加权目标价。收入起点采用 2026 年上半年简单年化的 263.8 万亿韩元，而非公司预测。情景假设存储周期中的营业利润率逐步正常化，维持较高晶圆厂再投资，税率 18%-22%，韩元名义 WACC 9.5%-12.0%，永续增长率 1.5%-2.5%。FCFF = 税后营业利润 + 假设折旧 − 资本支出 − 增量营运资本。终值假设持续再投资；简化的营运资本与折旧安排无法逐项预测晶圆厂项目、客户合同、补贴、租赁或技术良率。结果体现宽幅不确定性，而非精确内在价值。",
+    source: s.interim,
+  },
+  {
+    titleEn: "11. Valuation and evidence to monitor",
+    titleZh: "11. 估值与后续验证指标",
+    en: "At $195.13, the price implies roughly $1.42 trillion of equity value when applied to all post-offering common shares at ten ADSs per share; this is a common-equivalent market capitalization, not the value of only the 177.9 million issued ADS float. A brief SKHY trading history cannot support a meaningful long-run U.S. valuation multiple series. Watch realized HBM4/HBM4E mix, DRAM/NAND pricing and bit shipments, customer qualification and agreement disclosures, quarterly inventory, CFO after working capital, PP&E acquisitions, capacity utilization, depreciation, debt and post-IPO cash deployment. Evidence of falling memory prices, excess bit supply or deteriorating cash conversion would weaken the cycle thesis even if AI infrastructure spending remains high.",
+    zh: "按每普通股 10 份 ADS，将 195.13 美元价格应用于全部发行后普通股，隐含股权价值约 1.42 万亿美元；这是普通股等价市值，并非仅 177.9 百万份已发行 ADS 的市值。SKHY 的美股交易历史很短，无法建立有意义的长期美股估值倍数序列。应跟踪 HBM4/HBM4E 实际结构、DRAM/NAND 价格与位元出货、客户认证及协议披露、季度库存、营运资本调整后的经营现金流、固定资产购置、产能利用率、折旧、债务以及 IPO 资金使用。即使 AI 基础设施支出仍高，若存储价格下滑、供给过剩或现金转化恶化，也会削弱周期论点。",
+    source: s.prospectus,
+  },
+  {
+    titleEn: "12. Limitations and conclusion",
+    titleZh: "12. 局限与结论",
+    en: "This is educational research, not personal investment advice. The report uses issuer releases for long-run headline history, a reviewed June 2026 filing for full interim statement facts, SEC filings for security and issuance terms, and dated market/FX observations. Older releases are rounded and may not share the same source precision; 2022Q3 and selected Q4 values are transparently derived from same-perimeter annual and quarterly totals when a direct quarterly figure is unavailable. No full daily Korean-equity valuation history, independent HBM margin estimate, customer-level contract economics, or post-June audited balance sheet is asserted. The central question is whether durable, through-cycle cash earnings after fab reinvestment can support the market's AI-memory expectations.",
+    zh: "本报告仅供教育研究，不构成个性化投资建议。长期主要财务历史来自公司公告，完整中期报表数据来自经审阅的 2026 年 6 月申报，证券及发行条款来自 SEC 文件，市场价格与汇率均有日期标注。早期公告已四舍五入，精度可能不完全一致；在缺少直接季度数据时，2022Q3 及部分 Q4 数据根据同一口径的年度与季度总额透明推算。本报告未声称拥有完整韩国普通股每日估值历史、独立 HBM 利润率估算、客户合同经济性或 6 月之后经审计的资产负债表。核心问题是：扣除晶圆厂再投资后，可持续的跨周期现金盈利能否支撑市场对 AI 存储的预期。",
+    source: s.archive,
+  },
+];
