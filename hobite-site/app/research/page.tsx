@@ -7,6 +7,16 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "The AI Value Chain: 10- and 20-Year Investment Outlook",
+    description: "Full-chain economics, ten-stock ranking, 15-company financial appendix and transparent long-term forecasts.",
+    href: "/research/ai-value-chain-investment-outlook",
+  },
+  {
+    title: "AI 全产业价值链：十年与二十年投资展望",
+    description: "全产业链经济性、十股排序、十五家公司财务与透明长期预测。",
+    href: "/research/ai-value-chain-investment-outlook/zh",
+  },
+  {
     title: "SK 海力士（SKHY）完整基本面研究中心",
     description: "K-IFRS 财务历史、HBM 与存储周期、纳斯达克 ADS 机制、来源核验及十年估值情景。",
     href: "/research/sk-hynix-complete-fundamental-analysis/zh",
