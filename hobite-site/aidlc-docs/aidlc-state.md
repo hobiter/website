@@ -4,7 +4,7 @@
 
 - **Project Type**: Brownfield
 - **Start Date**: 2026-06-28T00:00:00-07:00
-- **Current Stage**: CONSTRUCTION - TSM Research Hub Complete
+- **Current Stage**: CONSTRUCTION - MU Research Hub Verification
 
 ## Workspace State
 
@@ -59,6 +59,6 @@
 ## Current Status
 
 - **Lifecycle Phase**: CONSTRUCTION
-- **Current Stage**: TSM Research Hub Complete
+- **Current Stage**: MU Research Hub Verification
 - **Next Step**: Pull-request review and deployment
-- **Status**: English and Chinese TSM research hubs implemented, verified and submitted in Hobite PR #76 and SVIM PR #77. Financial/model tests, 14-file mirror parity, both production builds and desktop/mobile checks passed. Both PRs open for review, not merged. Earlier research history is preserved in the audit log.
+- **Status**: English and Chinese MU research hubs implemented in Hobite and SVIM. Financial/model invariants, 14-file mirror parity, initial production builds and desktop/mobile checks passed. Final production builds and linked PR creation are in progress. Latest FY2026/Q4 release remains explicitly unaudited. Earlier research history is preserved in the audit log.

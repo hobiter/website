@@ -7,6 +7,16 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "美光（MU）完整基本面研究中心",
+    description: "SEC 财年财务、存储与 HBM 经济、客户资金、资本支出及十年跨周期估值。",
+    href: "/research/micron-complete-fundamental-analysis/zh",
+  },
+  {
+    title: "Micron (MU) Complete Fundamental Research Hub",
+    description: "Fiscal financial history, memory and HBM economics, customer funding, gross capex and ten-year cycle-aware valuation.",
+    href: "/research/micron-complete-fundamental-analysis",
+  },
+  {
     title: "台积电（TSM）完整基本面研究中心",
     description: "IFRS 财务、先进制程、代工经济、资本投入、客户集中度及十年货币一致的 ADS 估值。",
     href: "/research/tsmc-complete-fundamental-analysis/zh",
