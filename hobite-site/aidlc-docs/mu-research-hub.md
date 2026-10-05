@@ -22,7 +22,7 @@ FCF is operating cash minus gross cash PP&E. Company adjusted FCF also adds equi
 4. [x] Write bilingual 13-section memo, charts, tables, audit and publication QA; register Hobite routes.
 5. [x] Mirror and register both languages in SVIM.
 6. [x] Run financial/parity tests and production builds; verify desktop/mobile and navigation.
-7. [ ] Commit/push, create and attach linked PRs; record outcome and caveats.
+7. [x] Commit/push, create and attach linked PRs; record outcome and caveats.
 
 ## Verification Commands
 
@@ -58,3 +58,7 @@ Final production builds passed after publication QA updates: Hobite generated 55
 Hobite: /research/micron-complete-fundamental-analysis and /research/micron-complete-fundamental-analysis/zh. SVIM canonical research routes: /research/micron-complete-fundamental-analysis and /research/zh-micron-complete-fundamental-analysis, with existing /blog aliases. Both library registries and rich-page lazy loaders are updated.
 
 SEC generation deliberately refuses to silently replace the curated release once a FY2026 10-K is available or the snapshot cutoff is incompatible. Reverify the annual filing, release snapshot, source audit and assumptions before advancing the cutoff. After data generation, format generated modules, mirror into SVIM and rerun financial/parity checks and both builds. Never merge either PR automatically.
+
+## Completion
+
+Both codex/mu-research-hub branches pushed. Linked, attached PRs: [Hobite #77](https://github.com/hobiter/website/pull/77) and [SVIM #78](https://github.com/svim-labs/project-albatross/pull/78). Both open and unmerged; production availability depends on review, merge and deployment. Local previews: http://localhost:3000/research/micron-complete-fundamental-analysis and http://localhost:5173/research/micron-complete-fundamental-analysis. Chinese routes verified separately. Implementation and local verification complete with documented unaudited/latest-data, historical coverage and bundle-size caveats.
