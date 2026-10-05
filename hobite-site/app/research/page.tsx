@@ -7,6 +7,16 @@ export const metadata: Metadata = {
 
 const REPORTS = [
   {
+    title: "AMD 完整基本面研究中心",
+    description: "SEC 财年财务、EPYC 与 Instinct 经济、供应承诺、客户权证及十年企业估值。",
+    href: "/research/amd-complete-fundamental-analysis/zh",
+  },
+  {
+    title: "AMD Complete Fundamental Research Hub",
+    description: "Fiscal financial history, EPYC and Instinct economics, supply commitments, customer warrants and ten-year enterprise valuation.",
+    href: "/research/amd-complete-fundamental-analysis",
+  },
+  {
     title: "美光（MU）完整基本面研究中心",
     description: "SEC 财年财务、存储与 HBM 经济、客户资金、资本支出及十年跨周期估值。",
     href: "/research/micron-complete-fundamental-analysis/zh",
