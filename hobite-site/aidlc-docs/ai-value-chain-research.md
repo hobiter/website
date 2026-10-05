@@ -26,7 +26,7 @@ Reuse Next.js and SVIM rich research registries. No new dependencies, credential
 4. [x] Write long-form bilingual research, source notes, dashboards and ranked stock analysis.
 5. [x] Register and mirror pages in both sites; verify source/route/model parity.
 6. [x] Complete production builds and desktop/mobile browser review.
-7. [ ] Commit, push and open cross-linked PRs; record completion without merging.
+7. [x] Commit, push and open cross-linked PRs; record completion without merging.
 
 ## Research And Verification Record
 
@@ -38,3 +38,12 @@ Reuse Next.js and SVIM rich research registries. No new dependencies, credential
 - Browser review: Hobite English desktop, English forecast controls and mobile containers; Hobite Chinese mobile; SVIM English desktop and controls; SVIM Chinese mobile and TSM capitalization outputs. No document-level horizontal overflow at 390px. Tables scroll within their own focusable regions.
 - Contrast repair is scoped to the new article. SVIM header contrast is scoped with `data-company=ai-chain`.
 - Full SVIM `verify:research` still reports existing unrelated missing/divergent articles. No new article divergence remains after route adaptation.
+
+## Delivery
+
+- Hobite PR: https://github.com/hobiter/website/pull/81
+- SVIM mirror PR: https://github.com/svim-labs/project-albatross/pull/82
+- Both PRs are cross-linked, open and unmerged. Production publication depends on review/merge and the existing deployment process.
+- Hobite routes: `/research/ai-value-chain-investment-outlook` and `/research/ai-value-chain-investment-outlook/zh`.
+- SVIM routes: `/research/ai-value-chain-investment-outlook` and `/research/zh-ai-value-chain-investment-outlook`.
+- Existing Hobite local server on port 3000 is reused without stopping it. SVIM preview is available on port 4173.
