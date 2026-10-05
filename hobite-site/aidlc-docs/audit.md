@@ -1,5 +1,15 @@
 # AI-DLC Audit Log
 
+## 2026-10-04 MU Research Completion
+
+English and Chinese reports implemented and registered in both research libraries. Verified 16 fiscal annuals, 64 quarters, 527 filing entries, release anchors, provenance, fiscal cash-flow reconciliation, original balance contexts, lease-inclusive debt, gross/adjusted FCF, customer-deposit financing, terminal reinvestment and 14 mirrored files. Both final production builds passed. Desktop/mobile checks passed in both languages/sites with no console errors; bundle-size warnings documented. Linked Hobite PR #77 and SVIM PR #78 created and attached, open and unmerged. Local implementation complete; production deployment not claimed. Latest FY2026/Q4 release explicitly unaudited; historical coverage limitations and conservative valuation assumptions remain visible. Completion evidence: aidlc-docs/mu-research-hub.md.
+
+## 2026-10-04 MU Research Request
+
+**User Input**: "follow this standard procedure to do the similar Financial Analysis work for MU, Generate the same PR for both hobite website, and svim.io."
+
+**AI Response**: Follow the existing company research workflow through bilingual implementation, verification and linked unmerged PRs using standing automatic-completion authorization. Existing TSM PRs are merged; both clean repositories branched codex/mu-research-hub from origin/main. Reuse brownfield architecture, execute source inventory, functional financial design, code generation and build/test. Prior extension opt-outs retained and skipped. No repeated phase gates or infrastructure change. Plan: aidlc-docs/mu-research-hub.md.
+
 ## 2026-10-04 TSM Research Completion
 
 English and Chinese reports implemented and registered on both sites. Verified 11 annual IFRS years, ten local-TIFRS quarters, latest operating disclosures, dated price, FCFF/ADS/FX conventions and 14 mirrored files. Financial/model tests and both production builds passed. Desktop and 390px mobile views passed in both languages on both sites. Source-access and coverage limitations remain explicit. Scoped branches pushed; Hobite PR #76 and SVIM PR #77 created, cross-linked and attached, open and unmerged. No production deployment or automatic merge claimed.

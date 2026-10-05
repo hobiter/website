@@ -1,0 +1,95 @@
+{
+  "cutoff": "2026-10-04",
+  "source": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000018/a2026q4ex991-pressrelease.htm",
+  "filed": "2026-09-30",
+  "end": "2026-09-03",
+  "status": "Unaudited GAAP earnings release; FY2026 10-K not filed by cutoff",
+  "units": "USD millions except EPS and percentage margins",
+  "annual": {
+    "revenue": 133188,
+    "costOfSales": 25684,
+    "operatingIncome": 99340,
+    "netIncome": 84969,
+    "dilutedEps": 74.33,
+    "dilutedShares": 1143,
+    "operatingCashFlow": 89675,
+    "capex": 30712,
+    "depreciation": 9503,
+    "stockComp": 1333,
+    "cash": 38364,
+    "securities": 5070,
+    "longTermSecurities": 30019,
+    "assets": 195888,
+    "liabilities": 57510,
+    "equity": 138378,
+    "totalEquity": 138378,
+    "debtCurrent": 491,
+    "debtNoncurrent": 4688,
+    "inventory": 10372,
+    "receivables": 36197,
+    "ppe": 63310,
+    "capexSaleProceeds": 29,
+    "governmentIncentives": 3316,
+    "customerDeposits": 12747,
+    "noncurrentContractLiabilities": 12895
+  },
+  "quarter": {
+    "revenue": 54229,
+    "costOfSales": 7182,
+    "operatingIncome": 43751,
+    "netIncome": 37701,
+    "dilutedEps": 32.87,
+    "dilutedShares": 1147,
+    "operatingCashFlow": 43973,
+    "capex": 11110,
+    "capexSaleProceeds": 9,
+    "governmentIncentives": 327
+  },
+  "segments": [
+    {
+      "name": "Cloud Memory",
+      "zh": "云存储",
+      "q4Revenue": 16283,
+      "q3Revenue": 13769,
+      "priorQ4Revenue": 4543,
+      "grossMargin": 83,
+      "operatingMargin": 76
+    },
+    {
+      "name": "Core Data Center",
+      "zh": "核心数据中心",
+      "q4Revenue": 18002,
+      "q3Revenue": 11524,
+      "priorQ4Revenue": 1577,
+      "grossMargin": 90,
+      "operatingMargin": 85
+    },
+    {
+      "name": "Mobile and Client",
+      "zh": "移动与客户端",
+      "q4Revenue": 13114,
+      "q3Revenue": 11521,
+      "priorQ4Revenue": 3760,
+      "grossMargin": 90,
+      "operatingMargin": 88
+    },
+    {
+      "name": "Automotive and Embedded",
+      "zh": "汽车与嵌入式",
+      "q4Revenue": 6824,
+      "q3Revenue": 4634,
+      "priorQ4Revenue": 1434,
+      "grossMargin": 84,
+      "operatingMargin": 79
+    }
+  ],
+  "guidance": {
+    "period": "FY2027 Q1",
+    "revenueLow": 60000,
+    "revenueHigh": 63000,
+    "gaapGrossMargin": 85.95,
+    "gaapOperatingExpenses": 2310,
+    "gaapEpsLow": 36.84,
+    "gaapEpsHigh": 38.84
+  }
+}
