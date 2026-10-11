@@ -18,7 +18,9 @@ Valuation uses modeled owner free cash flow, discounted directly to equity; oper
 - [x] Implement bilingual report, dashboard, model, audit and QA.
 - [x] Register and mirror both languages into SVIM.
 - [x] Run model/data/mirror tests, builds and browser checks.
-- [ ] Commit scoped changes, create and cross-link both PRs; do not merge.
+- [x] Commit scoped changes, create and cross-link both PRs; do not merge.
+
+Matching open PRs: [Hobite #83](https://github.com/hobiter/website/pull/83) and [SVIM #84](https://github.com/svim-labs/project-albatross/pull/84). Both are attached to the chat. Neither was merged; no production deployment claimed.
 
 ## Verification
 

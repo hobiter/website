@@ -4,7 +4,7 @@
 
 - **Project Type**: Brownfield
 - **Start Date**: 2026-06-28T00:00:00-07:00
-- **Current Stage**: COMPLETE - AI Mid-Cap And Small-Cap Research (local implementation)
+- **Current Stage**: COMPLETE - LULU Bilingual Research (matching PRs open)
 
 ## Workspace State
 
@@ -50,7 +50,7 @@
 - [x] NFR Design - Bracket Domain And Data
 - [ ] Infrastructure Design - SKIP
 - [x] Code Generation - COMPLETE
-- [x] Build and Test - COMPLETE (AI size eligibility/model/mirror tests, both production builds, English/Chinese routes, desktop and 390px browser review)
+- [x] Build and Test - COMPLETE (LULU data/model/mirror tests, both production builds, English/Chinese routes, desktop and 390px browser review)
 
 ### OPERATIONS PHASE
 
@@ -59,6 +59,6 @@
 ## Current Status
 
 - **Lifecycle Phase**: CONSTRUCTION
-- **Current Stage**: Two separate AI size articles and Chinese counterparts complete in both repositories
-- **Next Step**: Review local previews; publication requires the normal commit/PR/deployment workflow
-- **Status**: Twenty selected U.S.-listed companies classified at the October 2, 2026 snapshot. Separate mid-cap and small-cap articles include primary quarterly evidence, thesis failure conditions and transparent five-/ten-year scenarios. Four routes and library registrations are implemented in each site. Eligibility/model/mirror tests, focused lint, both production builds and desktop/mobile checks pass. Full SVIM parity retains unrelated legacy failures. No new PR, merge or deployment performed. Details: `aidlc-docs/ai-size-research.md`.
+- **Current Stage**: LULU English/Chinese research hub complete in both repositories
+- **Next Step**: Review matching PRs; no automatic merge
+- **Status**: Eleven annual periods and twenty-six quarters from SEC facts, retail economics, current normalization, thirteen report chapters, six charts, historic valuation and five-/ten-year owner-cash scenarios complete. Data/model/mirror tests, focused lint, both production builds and desktop/mobile checks pass. Full SVIM parity retains unrelated legacy failures. Hobite PR #83 and SVIM PR #84 are open, cross-linked and attached to this chat. Neither merged; no production deployment claimed. Details: `aidlc-docs/lulu-research.md`.

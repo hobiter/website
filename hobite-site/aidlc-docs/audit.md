@@ -10,7 +10,9 @@
 
 **Implementation**: Eleven annual SEC periods and twenty-six quarters, field-level source provenance, historical market-price joins, retail snapshots, inventory/lease economics, tariff-refund reconciliation, thirteen bilingual report sections, six charts, interactive direct-equity DCF/IRR and source/QA tables. Registered and mirrored English/Chinese pages into SVIM.
 
-**Verification**: SEC and IR representative endpoints return 200. Dedicated data/model/mirror tests and focused lint pass. Both production builds pass after correcting a TypeScript literal inference issue. Both sites' desktop/mobile English/Chinese render, controls and library links verified. Full SVIM parity still fails for older unrelated articles, with no LULU differences, unresolved imports or missing registrations. Matching PR creation in progress; no merge or production deployment performed.
+**Verification**: SEC and IR representative endpoints return 200. Dedicated data/model/mirror tests and focused lint pass. Both production builds pass after correcting a TypeScript literal inference issue. Both sites' desktop/mobile English/Chinese render, controls and library links verified. Full SVIM parity still fails for older unrelated articles, with no LULU differences, unresolved imports or missing registrations.
+
+**Delivery**: Created and cross-linked https://github.com/hobiter/website/pull/83 and https://github.com/svim-labs/project-albatross/pull/84; both open and attached to the chat. GitHub connector could create the Hobite PR but returned 404 for SVIM; used existing local GitHub credential helper for the authorized SVIM PR request without printing credentials. No merge or production deployment performed.
 
 
 ## 2026-10-05 - AI Size Research
