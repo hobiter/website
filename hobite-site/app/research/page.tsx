@@ -6,6 +6,8 @@ export const metadata: Metadata = {
 };
 
 const REPORTS = [
+  {title:"lululemon (LULU) Complete Fundamental Research Hub",description:"SEC history, retail productivity, inventory and lease economics, current normalization and valuation scenarios.",href:"/research/lululemon-complete-fundamental-analysis"},
+  {title:"lululemon（LULU）完整基本面研究",description:"SEC 财务、零售效率、库存租赁经济、当期调节与股东现金估值。",href:"/research/lululemon-complete-fundamental-analysis/zh"},
   { title: "Top 10 Mid-Cap AI Stocks", description: "Commercial evidence, ranked profiles and five-/ten-year scenarios for $2-10B AI candidates.", href: "/research/ai-mid-cap-investment-outlook" },
   { title: "AI 中盘股：十大研究候选", description: "20 亿至不足 100 亿美元 AI 候选的商业证据、排序与五年/十年情景。", href: "/research/ai-mid-cap-investment-outlook/zh" },
   { title: "Top 10 Small-Cap AI Stocks", description: "Financing, dilution, commercial milestones and five-/ten-year scenarios for $300M-2B candidates.", href: "/research/ai-small-cap-investment-outlook" },
