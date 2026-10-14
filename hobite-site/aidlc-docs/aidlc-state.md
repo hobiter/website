@@ -4,7 +4,7 @@
 
 - **Project Type**: Brownfield
 - **Start Date**: 2026-06-28T00:00:00-07:00
-- **Current Stage**: COMPLETE - LULU Bilingual Research (matching PRs open)
+- **Current Stage**: CRWV implementation and automated QA complete; visual review pending
 
 ## Workspace State
 
@@ -50,7 +50,7 @@
 - [x] NFR Design - Bracket Domain And Data
 - [ ] Infrastructure Design - SKIP
 - [x] Code Generation - COMPLETE
-- [x] Build and Test - COMPLETE (LULU data/model/mirror tests, both production builds, English/Chinese routes, desktop and 390px browser review)
+- [x] Build and Test - Automated CRWV data/model/mirror, bilingual SSR, HTTP routes and both builds passed; live visual/mobile review unavailable
 
 ### OPERATIONS PHASE
 
@@ -59,6 +59,6 @@
 ## Current Status
 
 - **Lifecycle Phase**: CONSTRUCTION
-- **Current Stage**: LULU English/Chinese research hub complete in both repositories
-- **Next Step**: Review matching PRs; no automatic merge
-- **Status**: Eleven annual periods and twenty-six quarters from SEC facts, retail economics, current normalization, thirteen report chapters, six charts, historic valuation and five-/ten-year owner-cash scenarios complete. Data/model/mirror tests, focused lint, both production builds and desktop/mobile checks pass. Full SVIM parity retains unrelated legacy failures. Hobite PR #83 and SVIM PR #84 are open, cross-linked and attached to this chat. Neither merged; no production deployment claimed. Details: `aidlc-docs/lulu-research.md`.
+- **Current Stage**: CRWV English/Chinese implementation complete; matching draft PRs open
+- **Next Step**: Desktop/mobile visual review and review of research limitations before publication
+- **Status**: Four annual periods, six quarters, SEC provenance/IPO extraction, fifteen chapters, six charts, infrastructure/capex/customer/debt economics, final convertible terms and June-anchored enterprise scenarios implemented. Automated tests, focused lint, both builds and route delivery pass. Browser initialization fails due to missing runtime assets; no visual/mobile/live-control verification claimed. Current capital/October liquidity reconciliation remains partial. Full SVIM parity retains unrelated legacy issues. Hobite draft PR #84 and SVIM draft PR #86 are open, cross-linked and attached. Neither merged; no production deployment claimed. Details: `aidlc-docs/crwv-research.md`.
