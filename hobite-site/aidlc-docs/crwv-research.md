@@ -19,7 +19,9 @@ Model: explicit unlevered operating profit, tax, depreciation, economic capex an
 - [x] Register and mirror English/Chinese pages in SVIM.
 - [x] Verify data/model/parity, both builds and server-rendered/HTTP route delivery.
 - [ ] Desktop/mobile visual review: browser tool unavailable after initialization and reset; manual review still required.
-- [ ] Commit, push, create matching cross-linked PRs and attach them; do not merge.
+- [x] Commit, push, create matching cross-linked PRs and attach them; do not merge.
+
+Matching draft PRs: [Hobite #84](https://github.com/hobiter/website/pull/84), [SVIM #86](https://github.com/svim-labs/project-albatross/pull/86). Both attached to the chat and unmerged. Visual review remains open; no production deployment claimed.
 
 ## Verification
 

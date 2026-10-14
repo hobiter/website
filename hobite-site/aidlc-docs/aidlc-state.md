@@ -59,6 +59,6 @@
 ## Current Status
 
 - **Lifecycle Phase**: CONSTRUCTION
-- **Current Stage**: CRWV English/Chinese research hubs complete locally in both repositories
-- **Next Step**: Create matching draft PRs; require visual review before publication
-- **Status**: Four annual periods, six quarters, SEC provenance/IPO extraction, fifteen chapters, six charts, infrastructure/capex/customer/debt economics, final convertible terms and June-anchored enterprise scenarios implemented. Automated tests, focused lint, both builds and route delivery pass. Browser initialization fails due to missing runtime assets; no visual/mobile/live-control verification claimed. Current capital/October liquidity reconciliation remains partial. Full SVIM parity retains unrelated legacy issues. Details: `aidlc-docs/crwv-research.md`.
+- **Current Stage**: CRWV English/Chinese implementation complete; matching draft PRs open
+- **Next Step**: Desktop/mobile visual review and review of research limitations before publication
+- **Status**: Four annual periods, six quarters, SEC provenance/IPO extraction, fifteen chapters, six charts, infrastructure/capex/customer/debt economics, final convertible terms and June-anchored enterprise scenarios implemented. Automated tests, focused lint, both builds and route delivery pass. Browser initialization fails due to missing runtime assets; no visual/mobile/live-control verification claimed. Current capital/October liquidity reconciliation remains partial. Full SVIM parity retains unrelated legacy issues. Hobite draft PR #84 and SVIM draft PR #86 are open, cross-linked and attached. Neither merged; no production deployment claimed. Details: `aidlc-docs/crwv-research.md`.
