@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "research:crwv:data": "node scripts/update-crwv-sec-data.mjs",
+    "research:crwv:mirror": "node scripts/mirror-crwv-research.mjs",
+    "research:crwv:test": "node scripts/test-crwv-research.mjs",
+    "research:crwv:routes": "node scripts/test-crwv-routes.mjs",
     "research:lulu:data": "node scripts/update-lulu-sec-data.mjs",
     "research:lulu:mirror": "node scripts/mirror-lulu-research.mjs",
     "research:lulu:test": "node --experimental-strip-types scripts/test-lulu-research.mjs",

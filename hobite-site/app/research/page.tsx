@@ -6,6 +6,8 @@ export const metadata: Metadata = {
 };
 
 const REPORTS = [
+  {title:"CoreWeave (CRWV) Complete Fundamental Research Hub",description:"SEC history, AI infrastructure, GPU reinvestment, customer concentration, debt and enterprise-to-equity scenarios.",href:"/research/coreweave-complete-fundamental-analysis"},
+  {title:"CoreWeave（CRWV）完整基本面研究",description:"SEC 财务、GPU 再投入、客户集中、融资、基础设施经济与企业至股权情景。",href:"/research/coreweave-complete-fundamental-analysis/zh"},
   {title:"lululemon (LULU) Complete Fundamental Research Hub",description:"SEC history, retail productivity, inventory and lease economics, current normalization and valuation scenarios.",href:"/research/lululemon-complete-fundamental-analysis"},
   {title:"lululemon（LULU）完整基本面研究",description:"SEC 财务、零售效率、库存租赁经济、当期调节与股东现金估值。",href:"/research/lululemon-complete-fundamental-analysis/zh"},
   { title: "Top 10 Mid-Cap AI Stocks", description: "Commercial evidence, ranked profiles and five-/ten-year scenarios for $2-10B AI candidates.", href: "/research/ai-mid-cap-investment-outlook" },
