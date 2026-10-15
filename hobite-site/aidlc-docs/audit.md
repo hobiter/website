@@ -719,6 +719,16 @@ continue
 
 **Status**: Workspace detection, requirements analysis and workflow planning complete; implementation started.
 
+## RKLB Research Request
+
+**Timestamp**: 2026-10-15T17:00:00Z
+
+**User Input**: "follow this standard procedure to do the similar Financial Analysis work for RKLB, Generate the same PR for both hobite website, and svim.io."
+
+**AI Response**: "I’ll use the established research workflow for Rocket Lab, build the English and Chinese pages, and mirror them to SVIM with a matching pull request in each repository. I’ll first check the existing templates and verify the latest available filings and price data."
+
+**Context**: Clean repositories branched from main as codex/rklb-research-hub. Automatic-completion authorization reused. Disabled extensions skipped. Requirements, reader stories and plan recorded in rklb-research.md. Existing architecture reused; latest Neutron and financing updates identified.
+
 ## 2026-10-04 - AMZN Company Research
 
 **Raw user request**: "follow this standard procedure to do the similar Financial Analysis work for AMZN, Generate the same PR for both hobite website, and svim.io."

@@ -6,6 +6,8 @@ export const metadata: Metadata = {
 };
 
 const REPORTS = [
+  {title:"Rocket Lab (RKLB) Complete Fundamental Research Hub",description:"SEC history, Electron/HASTE economics, space systems, the latest Neutron schedule, Iridium financing and standalone valuation scenarios.",href:"/research/rocket-lab-complete-fundamental-analysis"},
+  {title:"Rocket Lab（RKLB）完整基本面研究",description:"SEC 财务、Electron/HASTE 经济、空间系统、最新 Neutron 时间表、Iridium 融资与独立估值情景。",href:"/research/rocket-lab-complete-fundamental-analysis/zh"},
   {title:"CoreWeave (CRWV) Complete Fundamental Research Hub",description:"SEC history, AI infrastructure, GPU reinvestment, customer concentration, debt and enterprise-to-equity scenarios.",href:"/research/coreweave-complete-fundamental-analysis"},
   {title:"CoreWeave（CRWV）完整基本面研究",description:"SEC 财务、GPU 再投入、客户集中、融资、基础设施经济与企业至股权情景。",href:"/research/coreweave-complete-fundamental-analysis/zh"},
   {title:"lululemon (LULU) Complete Fundamental Research Hub",description:"SEC history, retail productivity, inventory and lease economics, current normalization and valuation scenarios.",href:"/research/lululemon-complete-fundamental-analysis"},
