@@ -4,7 +4,7 @@
 
 - **Project Type**: Brownfield
 - **Start Date**: 2026-06-28T00:00:00-07:00
-- **Current Stage**: CRWV implementation and automated QA complete; visual review pending
+- **Current Stage**: RKLB implementation and QA complete; matching draft PRs delivered
 
 ## Workspace State
 
@@ -50,7 +50,7 @@
 - [x] NFR Design - Bracket Domain And Data
 - [ ] Infrastructure Design - SKIP
 - [x] Code Generation - COMPLETE
-- [x] Build and Test - Automated CRWV data/model/mirror, bilingual SSR, HTTP routes and both builds passed; live visual/mobile review unavailable
+- [x] Build and Test - RKLB data/model/mirror, bilingual SSR, four HTTP routes, focused lint, both builds and desktop/mobile browser checks passed
 
 ### OPERATIONS PHASE
 
@@ -59,6 +59,6 @@
 ## Current Status
 
 - **Lifecycle Phase**: CONSTRUCTION
-- **Current Stage**: CRWV English/Chinese implementation complete; matching draft PRs open
-- **Next Step**: Desktop/mobile visual review and review of research limitations before publication
-- **Status**: Four annual periods, six quarters, SEC provenance/IPO extraction, fifteen chapters, six charts, infrastructure/capex/customer/debt economics, final convertible terms and June-anchored enterprise scenarios implemented. Automated tests, focused lint, both builds and route delivery pass. Browser initialization fails due to missing runtime assets; no visual/mobile/live-control verification claimed. Current capital/October liquidity reconciliation remains partial. Full SVIM parity retains unrelated legacy issues. Hobite draft PR #84 and SVIM draft PR #86 are open, cross-linked and attached. Neither merged; no production deployment claimed. Details: `aidlc-docs/crwv-research.md`.
+- **Current Stage**: RKLB English/Chinese implementation and automated/browser QA complete
+- **Next Step**: Review Hobite draft PR #85 and SVIM draft PR #87; current capital and merger-adjusted valuation require separate research before a current fair-value claim
+- **Status**: Six annual periods, ten quarters, SEC provenance, fifteen chapters, six charts, Electron/HASTE and space systems economics, October 14 Neutron timing, September financing, shareholder approval, standalone five-/ten-year DCF and Iridium collar illustration implemented. Dedicated tests, focused lint, both builds, four routes and desktop/mobile browser checks pass. Fixed report dark-background contrast and intrinsic-width overflow. Current capital/merger valuation explicitly partial; full SVIM parity retains unrelated legacy differences. No production deployment claimed. Details: `aidlc-docs/rklb-research.md`.

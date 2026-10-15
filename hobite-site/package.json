@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "research:rklb:data": "node scripts/update-rklb-sec-data.mjs",
+    "research:rklb:mirror": "node scripts/mirror-rklb-research.mjs",
+    "research:rklb:test": "node scripts/test-rklb-research.mjs",
+    "research:rklb:routes": "node scripts/test-rklb-routes.mjs",
     "research:crwv:data": "node scripts/update-crwv-sec-data.mjs",
     "research:crwv:mirror": "node scripts/mirror-crwv-research.mjs",
     "research:crwv:test": "node scripts/test-crwv-research.mjs",
