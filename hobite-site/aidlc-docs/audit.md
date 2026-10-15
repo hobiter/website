@@ -721,13 +721,23 @@ continue
 
 ## RKLB Research Request
 
-**Timestamp**: 2026-10-15T17:00:00Z
+**Timestamp**: 2026-10-15T20:31:00Z
 
 **User Input**: "follow this standard procedure to do the similar Financial Analysis work for RKLB, Generate the same PR for both hobite website, and svim.io."
 
 **AI Response**: "I’ll use the established research workflow for Rocket Lab, build the English and Chinese pages, and mirror them to SVIM with a matching pull request in each repository. I’ll first check the existing templates and verify the latest available filings and price data."
 
 **Context**: Clean repositories branched from main as codex/rklb-research-hub. Automatic-completion authorization reused. Disabled extensions skipped. Requirements, reader stories and plan recorded in rklb-research.md. Existing architecture reused; latest Neutron and financing updates identified.
+
+## RKLB Verification And Delivery
+
+**Timestamp**: 2026-10-15T20:53:00Z
+
+**AI Response / Actions**: Implemented fifteen bilingual chapters, six annual periods, ten quarters, six charts, SEC field provenance, operating metrics, explicit standalone scenarios and an Iridium collar calculator. Mirrored adapted routes into SVIM and registered both research libraries. Browser review identified and fixed dark-background contrast and intrinsic-width overflow; desktop/mobile checks, table keyboard scroll, scenario/horizon controls, invalid-input handling, language switches and merger calculator verified. Data/model/render/mirror tests, focused lint, both production builds and four HTTP route checks pass.
+
+**Delivery**: Matching draft PRs https://github.com/hobiter/website/pull/85 and https://github.com/svim-labs/project-albatross/pull/87 created, cross-linked and attached. SVIM connector returned 404; existing authorized Git credential helper and GitHub REST API completed that PR without exposing credentials. No merge/deployment.
+
+**Limits**: June standalone bridge is not October merger-adjusted fair value. Current capital normalization/Iridium combined model explicitly partial. Direct issuer Neutron request 403, SEC counterpart verified. Full SVIM parity retains unrelated legacy issues, with no RKLB mismatch, missing metadata or unresolved imports. Existing Vite bundle warnings retained. Details in rklb-research.md and construction/build-and-test/rklb-summary.md.
 
 ## 2026-10-04 - AMZN Company Research
 

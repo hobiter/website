@@ -17,7 +17,7 @@ Reader stories: inspect sourced history; understand Electron/HASTE, space system
 - [x] Implement charts, accessible tables, assumption controls, source audit and QA.
 - [x] Mirror routes and register both libraries.
 - [x] Run data/model/mirror/render tests, source checks, diagnostics, both builds and attempt desktop/mobile visual checks.
-- [ ] Create, cross-link and attach matching PRs; document limitations.
+- [x] Create, cross-link and attach matching PRs; document limitations.
 
 ## Design
 
@@ -29,7 +29,12 @@ Workflow: sources -> reconciliation -> economics/report/model -> bilingual page 
 
 ## Status
 
-Implementation and automated/browser QA complete, 2026-10-15; PR creation next. No production publication claimed.
+Implementation and automated/browser QA complete, 2026-10-15. Matching draft PRs created, cross-linked and attached:
+
+- Hobite: https://github.com/hobiter/website/pull/85
+- SVIM: https://github.com/svim-labs/project-albatross/pull/87
+
+Neither merged; no production publication claimed. Draft status requests financial-research review, including explicit current-capital and merger-valuation limitations.
 
 ## Verification Results
 
