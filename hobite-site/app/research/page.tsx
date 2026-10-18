@@ -6,6 +6,8 @@ export const metadata: Metadata = {
 };
 
 const REPORTS = [
+  {title:"Broadcom's AI Semiconductor Moat: How Marvell Changes the Equation",description:"Custom XPUs, networking, Google supplier scope, Marvell's optical/NVLink strategy and post-2028 competitive scenarios.",href:"/research/broadcom-marvell-ai-semiconductor-moat"},
+  {title:"博通 AI 半导体护城河：Marvell 如何改变竞争格局",description:"定制 XPU、网络、Google 供应范围、Marvell 光互联与 NVLink 战略及 2028 年后竞争情景。",href:"/research/broadcom-marvell-ai-semiconductor-moat/zh"},
   {title:"AI Investment Scorecard: Capital Efficiency Before Growth",description:"October 16 snapshot: 38-company ranking, four ETFs, hypothetical allocation and Rocket Lab operating scenarios, with explicit source limitations.",href:"/research/ai-weekly-scorecard-2026-10-16"},
   {title:"AI 投资评分：先看资本效率，再看增长",description:"10 月 16 日快照：38 家公司排名、四只 ETF、假设配置与 Rocket Lab 经营情景，明确区分来源局限。",href:"/research/ai-weekly-scorecard-2026-10-16/zh"},
   {title:"Rocket Lab (RKLB) Complete Fundamental Research Hub",description:"SEC history, Electron/HASTE economics, space systems, the latest Neutron schedule, Iridium financing and standalone valuation scenarios.",href:"/research/rocket-lab-complete-fundamental-analysis"},

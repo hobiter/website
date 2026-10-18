@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "research:avgo-mrvl:mirror": "node scripts/mirror-avgo-mrvl-moat.mjs",
+    "research:avgo-mrvl:test": "node scripts/test-avgo-mrvl-moat.mjs",
     "research:ai-scorecard:mirror": "node scripts/mirror-ai-scorecard.mjs",
     "research:ai-scorecard:test": "node scripts/test-ai-scorecard.mjs",
     "research:rklb:data": "node scripts/update-rklb-sec-data.mjs",
