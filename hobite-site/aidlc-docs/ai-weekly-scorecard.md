@@ -26,7 +26,7 @@ Existing bilingual research infrastructure is reused. Standing automatic-complet
 - [x] Register both languages in Hobite and mirror into SVIM with discovery metadata.
 - [x] Add data, arithmetic, privacy, SSR and mirror parity checks.
 - [x] Run tests, focused lint, both builds and desktop route verification; dedicated mobile viewport testing recorded as not run.
-- [ ] Commit, push, create and attach matching PRs.
+- [x] Commit, push, create and attach matching PRs.
 
 ## Verification
 
@@ -41,3 +41,12 @@ transfer the content in [https://chatgpt.com/share/6ad464fd-cf14-83e8-bb8c-debae
 ```
 
 Decision: reuse the existing static research pattern and standing authorization to finish implementations. No new architecture, secrets, database, authentication or feature-specific opt-in extensions are required. Source retrieval, public adaptation, bilingual rendering, mirror parity and privacy checks are in scope. Independent revaluation of 38 companies is not represented as completed.
+
+## Delivery
+
+- Hobite draft PR: https://github.com/hobiter/website/pull/86
+- SVIM draft PR: https://github.com/svim-labs/project-albatross/pull/88
+- Both attached to the chat. SVIM connector lacked repository access; creation succeeded using the repository's existing authorized Git credentials, without exposing credentials.
+- Local previews: Hobite port 3000; SVIM port 4173. Both English and Chinese routes render.
+- Desktop DOM checks: each article has 12 sections and 16 tables; content width equals the 1265px viewport on both sites.
+- PRs remain drafts for editorial review of the source's financial assumptions. No merge or production deployment performed.

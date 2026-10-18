@@ -4,7 +4,7 @@
 
 - **Project Type**: Brownfield
 - **Start Date**: 2026-06-28T00:00:00-07:00
-- **Current Stage**: AI scorecard article transfer implemented and verified; matching PR delivery in progress
+- **Current Stage**: AI scorecard article transfer verified; matching draft PRs delivered
 
 ## Workspace State
 
@@ -60,5 +60,5 @@
 
 - **Lifecycle Phase**: CONSTRUCTION
 - **Current Stage**: AI scorecard EN/ZH article and mirror QA complete
-- **Next Step**: Open matching PRs for the dated research adaptation.
+- **Next Step**: Review Hobite draft PR #86 and SVIM draft PR #88, including the dated source assumptions before publication.
 - **Status**: Shared conversation adapted into a 38-company / four-ETF article with source score chart, valuation snapshot, hypothetical allocation, ETF overlap framework and detailed RKLB history and ten-year scenarios. Personal account details omitted. Data/SSR/privacy/mirror tests, focused lint and both production builds pass; four HTTP routes and both languages verified in desktop browsers. Dedicated mobile viewport testing not run. Source assumptions remain explicitly unaudited; no fresh 38-company valuation or automatic weekly service claimed. Details: `aidlc-docs/ai-weekly-scorecard.md` and `aidlc-docs/construction/build-and-test/ai-scorecard-verification.md`. Earlier RKLB work remains unchanged.
