@@ -32,8 +32,16 @@ EN/ZH routes: `broadcom-marvell-ai-semiconductor-moat`, Hobite `/zh` translation
 - [x] Create English/Chinese article, source register, comparison tables and scenario chart.
 - [x] Register and mirror both languages; add source/math/SSR/parity tests.
 - [x] Run tests, focused lint, builds and browser route/link checks.
-- [ ] Commit, push, open and attach matching PRs.
+- [x] Commit, push, open and attach matching PRs.
 
 ## Verification status
 
 Data/math/SSR/source/mirror tests, both focused lint checks, both production builds and four HTTP routes pass. Browser checks confirmed EN/ZH rendering and language links on both sites, adapted SVIM Chinese Broadcom links, six tables and 15 sections, and no page-level overflow at 1265px. Hobite dark-theme and SVIM light-theme screenshots inspected. Dedicated mobile viewport screenshots were not executed. This is an editorial research transfer with targeted primary-source checks, not a complete valuation or patent/IP audit.
+
+## Delivery
+
+- Hobite draft PR: https://github.com/hobiter/website/pull/87
+- SVIM draft PR: https://github.com/svim-labs/project-albatross/pull/89
+- Both attached to this chat. SVIM created through the repository's existing authorized Git credential because the GitHub connector does not have access to that repository; no credential values disclosed.
+- Local English/Chinese previews remain available at ports 3000 and 4173.
+- No merge, production deployment, price-target refresh or automatic monitoring claimed. Drafts await editorial review of the qualified source assumptions.

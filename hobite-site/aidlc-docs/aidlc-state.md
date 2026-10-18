@@ -4,7 +4,7 @@
 
 - **Project Type**: Brownfield
 - **Start Date**: 2026-06-28T00:00:00-07:00
-- **Current Stage**: AVGO / MRVL moat article implemented; final QA and PR delivery in progress
+- **Current Stage**: AVGO / MRVL moat article verified; matching draft PRs delivered
 
 ## Workspace State
 
@@ -60,5 +60,5 @@
 
 - **Lifecycle Phase**: CONSTRUCTION
 - **Current Stage**: AVGO / MRVL English/Chinese article and mirror implemented
-- **Next Step**: Create and attach matching PRs for editorial review.
+- **Next Step**: Review Hobite draft PR #87 and SVIM draft PR #89, including the source's qualified forecasts and subjective capability scores.
 - **Status**: Final shared-conversation answer adapted into 15 sections, seven product layers, 12 capability comparisons, nine threat scenarios, five competition-adjusted revenue rows and six monitoring indicators. Google warrant chronology and discretionary-purchase interpretation clarified with primary filings. Source forecasts and scores remain explicitly subjective or unverified; no new price target. Data/math/SSR/source/mirror tests, focused lint, both builds, four HTTP routes and desktop bilingual browser checks pass. Dedicated mobile screenshots not run. Details: `aidlc-docs/avgo-mrvl-moat.md`. Earlier scorecard and company hubs remain unchanged.
