@@ -6,6 +6,8 @@ export const metadata: Metadata = {
 };
 
 const REPORTS = [
+  {title:"AI Investment Scorecard: Capital Efficiency Before Growth",description:"October 16 snapshot: 38-company ranking, four ETFs, hypothetical allocation and Rocket Lab operating scenarios, with explicit source limitations.",href:"/research/ai-weekly-scorecard-2026-10-16"},
+  {title:"AI 投资评分：先看资本效率，再看增长",description:"10 月 16 日快照：38 家公司排名、四只 ETF、假设配置与 Rocket Lab 经营情景，明确区分来源局限。",href:"/research/ai-weekly-scorecard-2026-10-16/zh"},
   {title:"Rocket Lab (RKLB) Complete Fundamental Research Hub",description:"SEC history, Electron/HASTE economics, space systems, the latest Neutron schedule, Iridium financing and standalone valuation scenarios.",href:"/research/rocket-lab-complete-fundamental-analysis"},
   {title:"Rocket Lab（RKLB）完整基本面研究",description:"SEC 财务、Electron/HASTE 经济、空间系统、最新 Neutron 时间表、Iridium 融资与独立估值情景。",href:"/research/rocket-lab-complete-fundamental-analysis/zh"},
   {title:"CoreWeave (CRWV) Complete Fundamental Research Hub",description:"SEC history, AI infrastructure, GPU reinvestment, customer concentration, debt and enterprise-to-equity scenarios.",href:"/research/coreweave-complete-fundamental-analysis"},
