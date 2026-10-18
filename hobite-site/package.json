@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "research:ai-scorecard:mirror": "node scripts/mirror-ai-scorecard.mjs",
+    "research:ai-scorecard:test": "node scripts/test-ai-scorecard.mjs",
     "research:rklb:data": "node scripts/update-rklb-sec-data.mjs",
     "research:rklb:mirror": "node scripts/mirror-rklb-research.mjs",
     "research:rklb:test": "node scripts/test-rklb-research.mjs",

@@ -4,7 +4,7 @@
 
 - **Project Type**: Brownfield
 - **Start Date**: 2026-06-28T00:00:00-07:00
-- **Current Stage**: RKLB implementation and QA complete; matching draft PRs delivered
+- **Current Stage**: AI scorecard article transfer verified; matching draft PRs delivered
 
 ## Workspace State
 
@@ -59,6 +59,6 @@
 ## Current Status
 
 - **Lifecycle Phase**: CONSTRUCTION
-- **Current Stage**: RKLB English/Chinese implementation and automated/browser QA complete
-- **Next Step**: Review Hobite draft PR #85 and SVIM draft PR #87; current capital and merger-adjusted valuation require separate research before a current fair-value claim
-- **Status**: Six annual periods, ten quarters, SEC provenance, fifteen chapters, six charts, Electron/HASTE and space systems economics, October 14 Neutron timing, September financing, shareholder approval, standalone five-/ten-year DCF and Iridium collar illustration implemented. Dedicated tests, focused lint, both builds, four routes and desktop/mobile browser checks pass. Fixed report dark-background contrast and intrinsic-width overflow. Current capital/merger valuation explicitly partial; full SVIM parity retains unrelated legacy differences. No production deployment claimed. Details: `aidlc-docs/rklb-research.md`.
+- **Current Stage**: AI scorecard EN/ZH article and mirror QA complete
+- **Next Step**: Review Hobite draft PR #86 and SVIM draft PR #88, including the dated source assumptions before publication.
+- **Status**: Shared conversation adapted into a 38-company / four-ETF article with source score chart, valuation snapshot, hypothetical allocation, ETF overlap framework and detailed RKLB history and ten-year scenarios. Personal account details omitted. Data/SSR/privacy/mirror tests, focused lint and both production builds pass; four HTTP routes and both languages verified in desktop browsers. Dedicated mobile viewport testing not run. Source assumptions remain explicitly unaudited; no fresh 38-company valuation or automatic weekly service claimed. Details: `aidlc-docs/ai-weekly-scorecard.md` and `aidlc-docs/construction/build-and-test/ai-scorecard-verification.md`. Earlier RKLB work remains unchanged.
