@@ -10,7 +10,7 @@
 
 **Verification**: Snapshot, XML, arithmetic, amendments, units, ranking exclusions, manifest and EN/ZH SSR pass; all 42 cached originals re-extracted. Focused lint and production build pass. Five local HTTP endpoints return 200. Desktop disclosures/library/navigation/CSV and 390-pixel mobile internal table scrolling verified. QA caught and fixed flex-layout table overflow and inconsistent aggregate proxy pricing. See `construction/build-and-test/q3-2026-13f-verification.md`.
 
-**Delivery**: Preparing one Hobite PR; local preview running, production unchanged.
+**Delivery**: Created and attached Hobite draft PR https://github.com/hobiter/website/pull/88; unmerged. Local preview running, production unchanged. SVIM untouched.
 
 ---
 

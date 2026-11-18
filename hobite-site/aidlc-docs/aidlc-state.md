@@ -4,7 +4,7 @@
 
 - **Project Type**: Brownfield
 - **Start Date**: 2026-06-28T00:00:00-07:00
-- **Current Stage**: Q3 2026 13F 20-manager report verified; Hobite-only PR delivery
+- **Current Stage**: Q3 2026 13F 20-manager report verified; Hobite-only draft PR delivered
 
 ## Workspace State
 
@@ -60,5 +60,5 @@
 
 - **Lifecycle Phase**: CONSTRUCTION
 - **Current Stage**: Q3 2026 13F English/Chinese report implemented and verified
-- **Next Step**: Review the Hobite-only PR on codex/q3-2026-13f-manager-report, especially the disclosed normalization assumptions and corporate-action limits.
+- **Next Step**: Review Hobite-only draft PR #88, especially the disclosed normalization assumptions and corporate-action limits. No production deployment or automatic merge.
 - **Status**: 20 managers, 42 reports/amendments and 28,707 share-position comparisons, cohort and per-manager top tens, percentages/weights/values, SEC source manifest and complete CSV. Tests, focused lint, production build, five routes, mobile internal table scrolling, manager disclosure and browser CSV download pass. No SVIM changes or production deployment. Details: `aidlc-docs/q3-2026-13f.md`. Earlier work remains unchanged.
