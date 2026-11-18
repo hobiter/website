@@ -6,6 +6,8 @@ export const metadata: Metadata = {
 };
 
 const REPORTS = [
+  {title:"20 Investment Managers: Q3 2026 13F Changes",description:"SEC-sourced top-ten new positions, increases, reductions and exits; per-manager holdings, percentages and downloadable data.",href:"/research/q3-2026-13f-investment-managers"},
+  {title:"20 家知名投资管理人：2026 Q3 13F 变动",description:"SEC 来源的十大新出现持仓、增持、减持与退出；逐家持仓、比例及可下载数据。",href:"/research/q3-2026-13f-investment-managers/zh"},
   {title:"Broadcom's AI Semiconductor Moat: How Marvell Changes the Equation",description:"Custom XPUs, networking, Google supplier scope, Marvell's optical/NVLink strategy and post-2028 competitive scenarios.",href:"/research/broadcom-marvell-ai-semiconductor-moat"},
   {title:"博通 AI 半导体护城河：Marvell 如何改变竞争格局",description:"定制 XPU、网络、Google 供应范围、Marvell 光互联与 NVLink 战略及 2028 年后竞争情景。",href:"/research/broadcom-marvell-ai-semiconductor-moat/zh"},
   {title:"AI Investment Scorecard: Capital Efficiency Before Growth",description:"October 16 snapshot: 38-company ranking, four ETFs, hypothetical allocation and Rocket Lab operating scenarios, with explicit source limitations.",href:"/research/ai-weekly-scorecard-2026-10-16"},

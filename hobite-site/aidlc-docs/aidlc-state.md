@@ -4,7 +4,7 @@
 
 - **Project Type**: Brownfield
 - **Start Date**: 2026-06-28T00:00:00-07:00
-- **Current Stage**: AVGO / MRVL moat article verified; matching draft PRs delivered
+- **Current Stage**: Q3 2026 13F 20-manager report verified; Hobite-only PR delivery
 
 ## Workspace State
 
@@ -50,7 +50,7 @@
 - [x] NFR Design - Bracket Domain And Data
 - [ ] Infrastructure Design - SKIP
 - [x] Code Generation - COMPLETE
-- [x] Build and Test - AVGO/MRVL data/math/source/mirror, bilingual SSR, four HTTP routes, focused lint, both builds and desktop browser checks passed; dedicated mobile screenshots not run
+- [x] Build and Test - Q3 2026 13F arithmetic/XML/amendments/source/ranking tests, bilingual SSR, focused lint, Hobite build, five HTTP routes, desktop/mobile browser and CSV download checks passed
 
 ### OPERATIONS PHASE
 
@@ -59,6 +59,6 @@
 ## Current Status
 
 - **Lifecycle Phase**: CONSTRUCTION
-- **Current Stage**: AVGO / MRVL English/Chinese article and mirror implemented
-- **Next Step**: Review Hobite draft PR #87 and SVIM draft PR #89, including the source's qualified forecasts and subjective capability scores.
-- **Status**: Final shared-conversation answer adapted into 15 sections, seven product layers, 12 capability comparisons, nine threat scenarios, five competition-adjusted revenue rows and six monitoring indicators. Google warrant chronology and discretionary-purchase interpretation clarified with primary filings. Source forecasts and scores remain explicitly subjective or unverified; no new price target. Data/math/SSR/source/mirror tests, focused lint, both builds, four HTTP routes and desktop bilingual browser checks pass. Dedicated mobile screenshots not run. Details: `aidlc-docs/avgo-mrvl-moat.md`. Earlier scorecard and company hubs remain unchanged.
+- **Current Stage**: Q3 2026 13F English/Chinese report implemented and verified
+- **Next Step**: Review the Hobite-only PR on codex/q3-2026-13f-manager-report, especially the disclosed normalization assumptions and corporate-action limits.
+- **Status**: 20 managers, 42 reports/amendments and 28,707 share-position comparisons, cohort and per-manager top tens, percentages/weights/values, SEC source manifest and complete CSV. Tests, focused lint, production build, five routes, mobile internal table scrolling, manager disclosure and browser CSV download pass. No SVIM changes or production deployment. Details: `aidlc-docs/q3-2026-13f.md`. Earlier work remains unchanged.
