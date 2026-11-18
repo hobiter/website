@@ -12,6 +12,7 @@
 
 # testing
 /coverage
+/.cache/q3-2026-13f/
 
 # next.js
 /.next/

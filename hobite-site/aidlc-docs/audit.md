@@ -1,5 +1,19 @@
 # AI-DLC Audit Log
 
+## 2026-11-17 - Q3 2026 13F 20-manager research
+
+**User Input**: "follow this standard procedure to do the similar Financial Analysis work for most famous 20 wealth managed funds 2026 Q3 13f, Generate the same PR for just hobite website. What are the top 10 bought, increased, reduced, Pct, total value, etc."
+
+**Decision**: Adapt the existing SEC-backed research workflow to manager disclosures, with bilingual publication and a single Hobite PR. Curated active-manager universe, not largest-AUM funds. Standing autonomous completion authorization applies. Existing Security/Resiliency/Property-Based extensions remain disabled and skipped; no infrastructure changes. No SVIM edits or automatic merge.
+
+**Implementation**: 20 current filing entities, Q2/Q3 extraction and amendments, row/value reconciliation, explicit 1000x Duquesne/Baupost legacy-scale assumptions supported by cross-filer prices, XOM/TEVA identifier matching, acquisition quarantines and conservative split flags. Cohort gross/net top tens, each manager's changes/holdings/weights, complete CSV and source hashes. 13F limitations and analytical versus as-filed values remain visible.
+
+**Verification**: Snapshot, XML, arithmetic, amendments, units, ranking exclusions, manifest and EN/ZH SSR pass; all 42 cached originals re-extracted. Focused lint and production build pass. Five local HTTP endpoints return 200. Desktop disclosures/library/navigation/CSV and 390-pixel mobile internal table scrolling verified. QA caught and fixed flex-layout table overflow and inconsistent aggregate proxy pricing. See `construction/build-and-test/q3-2026-13f-verification.md`.
+
+**Delivery**: Created and attached Hobite draft PR https://github.com/hobiter/website/pull/88; unmerged. Local preview running, production unchanged. SVIM untouched.
+
+---
+
 ## 2026-10-13 - CRWV Research
 
 **Timestamp**: 2026-10-13T00:00:00-07:00 (client date; exact request time unavailable)
