@@ -2,7 +2,7 @@ type Copy = [string, string];
 type Row = [period: string, revenue: number, eps: number, operatingCash?: number, investment?: number];
 type Scenario = [growth: number, netMargin: number, annualShareChange: number, multiple: number];
 type Report = {
-  name: string; ticker: string; slug: string; currency: "EUR" | "USD"; price: number; octoberClose: number; quote: string;
+  name: string; ticker: "ASML" | "AMAT" | "LRCX" | "ARM"; slug: string; currency: "EUR" | "USD"; price: number; octoberClose: number; quote: string;
   basis: Copy; annual: Row[]; quarterly: Row[]; annualSource: string; latestSource: string; supplemental?: string;
   release: string; gross: number; guidance: Copy; shares: number; modelRevenue: number; modelStart: number;
   scenarios: [Scenario, Scenario, Scenario]; thesis: Copy; metrics: [Copy, string][]; sections: [Copy, Copy][];

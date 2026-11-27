@@ -1,0 +1,1293 @@
+{
+  "ASML": [
+    {
+      "year": 2016,
+      "end": "2016-12-31",
+      "revenue": 6875100000,
+      "fcf": 1349600000,
+      "eps": 3.64,
+      "currency": "EUR",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/937966/000093796619000007/0000937966-19-000007-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/937966/000093796619000007/0000937966-19-000007-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/937966/000093796619000007/0000937966-19-000007-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/937966/000093796619000007/0000937966-19-000007-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2017,
+      "end": "2017-12-31",
+      "revenue": 8962700000,
+      "fcf": 1479400000,
+      "eps": 4.79,
+      "currency": "EUR",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/937966/000093796620000011/0000937966-20-000011-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/937966/000093796620000011/0000937966-20-000011-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/937966/000093796620000011/0000937966-20-000011-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/937966/000093796620000011/0000937966-20-000011-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2018,
+      "end": "2018-12-31",
+      "revenue": 10944000000,
+      "fcf": 2498700000,
+      "eps": 6.08,
+      "currency": "EUR",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/937966/000093796621000007/0000937966-21-000007-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/937966/000093796621000007/0000937966-21-000007-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/937966/000093796621000007/0000937966-21-000007-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/937966/000093796621000007/0000937966-21-000007-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2019,
+      "end": "2019-12-31",
+      "revenue": 11820000000,
+      "fcf": 2509800000,
+      "eps": 6.15,
+      "currency": "EUR",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/937966/000093796622000013/0000937966-22-000013-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/937966/000093796622000013/0000937966-22-000013-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/937966/000093796622000013/0000937966-22-000013-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/937966/000093796622000013/0000937966-22-000013-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2020,
+      "end": "2020-12-31",
+      "revenue": 13978500000,
+      "fcf": 3665600000,
+      "eps": 8.48,
+      "currency": "EUR",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/937966/000093796623000014/0000937966-23-000014-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/937966/000093796623000014/0000937966-23-000014-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/937966/000093796623000014/0000937966-23-000014-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/937966/000093796623000014/0000937966-23-000014-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2021,
+      "end": "2021-12-31",
+      "revenue": 18611000000,
+      "fcf": 9945100000,
+      "eps": 14.34,
+      "currency": "EUR",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/937966/000093796624000008/0000937966-24-000008-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/937966/000093796624000008/0000937966-24-000008-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/937966/000093796624000008/0000937966-24-000008-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/937966/000093796624000008/0000937966-24-000008-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2022,
+      "end": "2022-12-31",
+      "revenue": 21173400000,
+      "fcf": 7205000000,
+      "eps": 14.13,
+      "currency": "EUR",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/937966/000093796625000009/0000937966-25-000009-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/937966/000093796625000009/0000937966-25-000009-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/937966/000093796625000009/0000937966-25-000009-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/937966/000093796625000009/0000937966-25-000009-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2023,
+      "end": "2023-12-31",
+      "revenue": 27558500000,
+      "fcf": 3287800000,
+      "eps": 19.89,
+      "currency": "EUR",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2024,
+      "end": "2024-12-31",
+      "revenue": 28262900000,
+      "fcf": 9099000000,
+      "eps": 19.24,
+      "currency": "EUR",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2025,
+      "end": "2025-12-31",
+      "revenue": 32667300000,
+      "fcf": 11084900000,
+      "eps": 24.71,
+      "currency": "EUR",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    }
+  ],
+  "AMAT": [
+    {
+      "year": 2017,
+      "end": "2017-10-29",
+      "revenue": 14698000000,
+      "fcf": 3444000000,
+      "eps": 3.25,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/6951/000000695119000046/0000006951-19-000046-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/6951/000000695119000046/0000006951-19-000046-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/6951/000000695119000046/0000006951-19-000046-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/6951/000000695119000046/0000006951-19-000046-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2018,
+      "end": "2018-10-28",
+      "revenue": 16705000000,
+      "fcf": 3165000000,
+      "eps": 2.96,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/6951/000000695120000048/0000006951-20-000048-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/6951/000000695120000048/0000006951-20-000048-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/6951/000000695120000048/0000006951-20-000048-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/6951/000000695120000048/0000006951-20-000048-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2019,
+      "end": "2019-10-27",
+      "revenue": 14608000000,
+      "fcf": 2806000000,
+      "eps": 2.86,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/6951/000000695121000043/0000006951-21-000043-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/6951/000000695121000043/0000006951-21-000043-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/6951/000000695121000043/0000006951-21-000043-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/6951/000000695121000043/0000006951-21-000043-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2020,
+      "end": "2020-10-25",
+      "revenue": 17202000000,
+      "fcf": 3382000000,
+      "eps": 3.92,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/6951/000000695122000043/0000006951-22-000043-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/6951/000000695122000043/0000006951-22-000043-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/6951/000000695122000043/0000006951-22-000043-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/6951/000000695122000043/0000006951-22-000043-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2021,
+      "end": "2021-10-31",
+      "revenue": 23063000000,
+      "fcf": 4774000000,
+      "eps": 6.4,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/6951/000000695123000041/0000006951-23-000041-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/6951/000000695123000041/0000006951-23-000041-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/6951/000000695123000041/0000006951-23-000041-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/6951/000000695123000041/0000006951-23-000041-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2022,
+      "end": "2022-10-30",
+      "revenue": 25785000000,
+      "fcf": 4612000000,
+      "eps": 7.44,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/6951/000000695124000044/0000006951-24-000044-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/6951/000000695124000044/0000006951-24-000044-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/6951/000000695124000044/0000006951-24-000044-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/6951/000000695124000044/0000006951-24-000044-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2023,
+      "end": "2023-10-29",
+      "revenue": 26517000000,
+      "fcf": 7594000000,
+      "eps": 8.11,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/6951/000162828025056742/0001628280-25-056742-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/6951/000162828025056742/0001628280-25-056742-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/6951/000162828025056742/0001628280-25-056742-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/6951/000162828025056742/0001628280-25-056742-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2024,
+      "end": "2024-10-27",
+      "revenue": 27176000000,
+      "fcf": 7487000000,
+      "eps": 8.61,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/6951/000162828025056742/0001628280-25-056742-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/6951/000162828025056742/0001628280-25-056742-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/6951/000162828025056742/0001628280-25-056742-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/6951/000162828025056742/0001628280-25-056742-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2025,
+      "end": "2025-10-26",
+      "revenue": 28368000000,
+      "fcf": 5698000000,
+      "eps": 8.66,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/6951/000162828025056742/0001628280-25-056742-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/6951/000162828025056742/0001628280-25-056742-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/6951/000162828025056742/0001628280-25-056742-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/6951/000162828025056742/0001628280-25-056742-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2026,
+      "end": "2026-10-25",
+      "revenue": 34446000000,
+      "fcf": 6196000000,
+      "eps": 12.62,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-fourth-quarter-and-fiscal-year-2026",
+        "cash": "https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-fourth-quarter-and-fiscal-year-2026",
+        "capex": "https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-fourth-quarter-and-fiscal-year-2026",
+        "eps": "https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-fourth-quarter-and-fiscal-year-2026"
+      },
+      "capexTag": "Capital expenditures",
+      "epsSplitFactor": 1
+    }
+  ],
+  "LRCX": [
+    {
+      "year": 2017,
+      "end": "2017-06-25",
+      "revenue": 8013620000,
+      "fcf": 1871863000,
+      "eps": 0.924,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/707549/000070754919000124/0000707549-19-000124-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/707549/000070754919000124/0000707549-19-000124-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/707549/000070754919000124/0000707549-19-000124-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/707549/000070754919000124/0000707549-19-000124-index.htm"
+      },
+      "capexTag": "PaymentsToAcquireProductiveAssets",
+      "epsSplitFactor": 10
+    },
+    {
+      "year": 2018,
+      "end": "2018-06-24",
+      "revenue": 11076998000,
+      "fcf": 2382278000,
+      "eps": 1.317,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/707549/000070754920000138/0000707549-20-000138-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/707549/000070754920000138/0000707549-20-000138-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/707549/000070754920000138/0000707549-20-000138-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/707549/000070754920000138/0000707549-20-000138-index.htm"
+      },
+      "capexTag": "PaymentsToAcquireProductiveAssets",
+      "epsSplitFactor": 10
+    },
+    {
+      "year": 2019,
+      "end": "2019-06-30",
+      "revenue": 9653559000,
+      "fcf": 2872522000,
+      "eps": 1.3699999999999999,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/707549/000070754921000136/0000707549-21-000136-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/707549/000070754921000136/0000707549-21-000136-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/707549/000070754921000136/0000707549-21-000136-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/707549/000070754921000136/0000707549-21-000136-index.htm"
+      },
+      "capexTag": "PaymentsToAcquireProductiveAssets",
+      "epsSplitFactor": 10
+    },
+    {
+      "year": 2020,
+      "end": "2020-06-28",
+      "revenue": 10044736000,
+      "fcf": 1923212000,
+      "eps": 1.51,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/707549/000070754922000107/0000707549-22-000107-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/707549/000070754922000107/0000707549-22-000107-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/707549/000070754922000107/0000707549-22-000107-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/707549/000070754922000107/0000707549-22-000107-index.htm"
+      },
+      "capexTag": "PaymentsToAcquireProductiveAssets",
+      "epsSplitFactor": 10
+    },
+    {
+      "year": 2021,
+      "end": "2021-06-27",
+      "revenue": 14626150000,
+      "fcf": 3239067000,
+      "eps": 2.69,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/707549/000070754923000102/0000707549-23-000102-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/707549/000070754923000102/0000707549-23-000102-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/707549/000070754923000102/0000707549-23-000102-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/707549/000070754923000102/0000707549-23-000102-index.htm"
+      },
+      "capexTag": "PaymentsToAcquireProductiveAssets",
+      "epsSplitFactor": 10
+    },
+    {
+      "year": 2022,
+      "end": "2022-06-26",
+      "revenue": 17227039000,
+      "fcf": 2553640000,
+      "eps": 3.275,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/707549/000070754924000106/0000707549-24-000106-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/707549/000070754924000106/0000707549-24-000106-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/707549/000070754924000106/0000707549-24-000106-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/707549/000070754924000106/0000707549-24-000106-index.htm"
+      },
+      "capexTag": "PaymentsToAcquireProductiveAssets",
+      "epsSplitFactor": 10
+    },
+    {
+      "year": 2023,
+      "end": "2023-06-25",
+      "revenue": 17428516000,
+      "fcf": 4677370000,
+      "eps": 3.32,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/707549/000070754925000075/0000707549-25-000075-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/707549/000070754925000075/0000707549-25-000075-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/707549/000070754925000075/0000707549-25-000075-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/707549/000070754925000075/0000707549-25-000075-index.htm"
+      },
+      "capexTag": "PaymentsToAcquireProductiveAssets",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2024,
+      "end": "2024-06-30",
+      "revenue": 14905386000,
+      "fcf": 4255599000,
+      "eps": 2.9,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000037/0000707549-26-000037-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000037/0000707549-26-000037-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000037/0000707549-26-000037-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000037/0000707549-26-000037-index.htm"
+      },
+      "capexTag": "PaymentsToAcquireProductiveAssets",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2025,
+      "end": "2025-06-29",
+      "revenue": 18435591000,
+      "fcf": 5414078000,
+      "eps": 4.15,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000037/0000707549-26-000037-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000037/0000707549-26-000037-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000037/0000707549-26-000037-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000037/0000707549-26-000037-index.htm"
+      },
+      "capexTag": "PaymentsToAcquireProductiveAssets",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2026,
+      "end": "2026-06-28",
+      "revenue": 23232690000,
+      "fcf": 4891252000,
+      "eps": 5.76,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000037/0000707549-26-000037-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000037/0000707549-26-000037-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000037/0000707549-26-000037-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000037/0000707549-26-000037-index.htm"
+      },
+      "capexTag": "PaymentsToAcquireProductiveAssets",
+      "epsSplitFactor": 1
+    }
+  ],
+  "ARM": [
+    {
+      "year": 2022,
+      "end": "2022-03-31",
+      "revenue": 2703000000,
+      "fcf": 424000000,
+      "eps": 0.54,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1973239/000197323924000012/0001973239-24-000012-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1973239/000197323924000012/0001973239-24-000012-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1973239/000197323924000012/0001973239-24-000012-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1973239/000197323924000012/0001973239-24-000012-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2023,
+      "end": "2023-03-31",
+      "revenue": 2679000000,
+      "fcf": 675000000,
+      "eps": 0.51,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1973239/000197323925000016/0001973239-25-000016-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1973239/000197323925000016/0001973239-25-000016-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1973239/000197323925000016/0001973239-25-000016-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1973239/000197323925000016/0001973239-25-000016-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2024,
+      "end": "2024-03-31",
+      "revenue": 3233000000,
+      "fcf": 998000000,
+      "eps": 0.29,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/0001973239-26-000097-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/0001973239-26-000097-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/0001973239-26-000097-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/0001973239-26-000097-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2025,
+      "end": "2025-03-31",
+      "revenue": 4007000000,
+      "fcf": 178000000,
+      "eps": 0.75,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/0001973239-26-000097-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/0001973239-26-000097-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/0001973239-26-000097-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/0001973239-26-000097-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2026,
+      "end": "2026-03-31",
+      "revenue": 4920000000,
+      "fcf": 979000000,
+      "eps": 0.85,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/0001973239-26-000097-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/0001973239-26-000097-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/0001973239-26-000097-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/0001973239-26-000097-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    }
+  ],
+  "TSM": [
+    {
+      "year": 2016,
+      "end": "2016-12-31",
+      "revenue": 947938300000,
+      "fcf": 211789300000,
+      "eps": 12.79,
+      "currency": "TWD",
+      "basis": "ifrs-full",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1046179/000119312519108390/d665387d20f.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1046179/000119312519108390/d665387d20f.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1046179/000119312519108390/d665387d20f.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1046179/000119312519108390/d665387d20f.htm"
+      },
+      "capexTag": "Purchases of property, plant and equipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2017,
+      "end": "2017-12-31",
+      "revenue": 977447200000,
+      "fcf": 254730000000,
+      "eps": 13.3,
+      "currency": "TWD",
+      "basis": "ifrs-full",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1046179/000119312520107579/d831201d20f.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1046179/000119312520107579/d831201d20f.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1046179/000119312520107579/d831201d20f.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1046179/000119312520107579/d831201d20f.htm"
+      },
+      "capexTag": "Purchases of property, plant and equipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2018,
+      "end": "2018-12-31",
+      "revenue": 1031473600000,
+      "fcf": 258372400000,
+      "eps": 14,
+      "currency": "TWD",
+      "basis": "ifrs-full",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1046179/000119312521118512/d94821d20f.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1046179/000119312521118512/d94821d20f.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1046179/000119312521118512/d94821d20f.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1046179/000119312521118512/d94821d20f.htm"
+      },
+      "capexTag": "Purchases of property, plant and equipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2019,
+      "end": "2019-12-31",
+      "revenue": 1069985400000,
+      "fcf": 154716500000,
+      "eps": 13.65,
+      "currency": "TWD",
+      "basis": "ifrs-full",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1046179/000119312522104891/d204786d20f.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1046179/000119312522104891/d204786d20f.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1046179/000119312522104891/d204786d20f.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1046179/000119312522104891/d204786d20f.htm"
+      },
+      "capexTag": "Purchases of property, plant and equipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2020,
+      "end": "2020-12-31",
+      "revenue": 1339254800000,
+      "fcf": 315427500000,
+      "eps": 19.7,
+      "currency": "TWD",
+      "basis": "ifrs-full",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1046179/000119312523107214/d428519d20f.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1046179/000119312523107214/d428519d20f.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1046179/000119312523107214/d428519d20f.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1046179/000119312523107214/d428519d20f.htm"
+      },
+      "capexTag": "Purchases of property, plant and equipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2021,
+      "end": "2021-12-31",
+      "revenue": 1587415000000,
+      "fcf": 272965000000,
+      "eps": 22.84,
+      "currency": "TWD",
+      "basis": "ifrs-full",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1046179/000119312524099840/d592628d20f.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1046179/000119312524099840/d592628d20f.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1046179/000119312524099840/d592628d20f.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1046179/000119312524099840/d592628d20f.htm"
+      },
+      "capexTag": "Purchases of property, plant and equipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2022,
+      "end": "2022-12-31",
+      "revenue": 2263891300000,
+      "fcf": 527927100000,
+      "eps": 38.29,
+      "currency": "TWD",
+      "basis": "ifrs-full",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1046179/000119312525083423/d896993d20f.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1046179/000119312525083423/d896993d20f.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1046179/000119312525083423/d896993d20f.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1046179/000119312525083423/d896993d20f.htm"
+      },
+      "capexTag": "Purchases of property, plant and equipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2023,
+      "end": "2023-12-31",
+      "revenue": 2161735800000,
+      "fcf": 292150500000,
+      "eps": 32.85,
+      "currency": "TWD",
+      "basis": "ifrs-full",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231_htm.xml",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231_htm.xml",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231_htm.xml",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231_htm.xml"
+      },
+      "capexTag": "Purchases of property, plant and equipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2024,
+      "end": "2024-12-31",
+      "revenue": 2894307700000,
+      "fcf": 870170600000,
+      "eps": 44.67,
+      "currency": "TWD",
+      "basis": "ifrs-full",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231_htm.xml",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231_htm.xml",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231_htm.xml",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231_htm.xml"
+      },
+      "capexTag": "Purchases of property, plant and equipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2025,
+      "end": "2025-12-31",
+      "revenue": 3809054300000,
+      "fcf": 1002565100000,
+      "eps": 65.47,
+      "currency": "TWD",
+      "basis": "ifrs-full",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231_htm.xml",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231_htm.xml",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231_htm.xml",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231_htm.xml"
+      },
+      "capexTag": "Purchases of property, plant and equipment",
+      "epsSplitFactor": 1
+    }
+  ],
+  "NVDA": [
+    {
+      "year": 2017,
+      "end": "2017-01-29",
+      "revenue": 6910000000,
+      "fcf": 1496000000,
+      "eps": 0.06425,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1045810/000104581019000023/0001045810-19-000023-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1045810/000104581019000023/0001045810-19-000023-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1045810/000104581019000023/nvda-2019x10k.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1045810/000104581019000023/0001045810-19-000023-index.htm"
+      },
+      "capexTag": "Purchases of property, equipment and intangible assets",
+      "epsSplitFactor": 40
+    },
+    {
+      "year": 2018,
+      "end": "2018-01-28",
+      "revenue": 9714000000,
+      "fcf": 2909000000,
+      "eps": 0.12050000000000001,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1045810/000104581020000010/0001045810-20-000010-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1045810/000104581020000010/0001045810-20-000010-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1045810/000104581019000023/nvda-2019x10k.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1045810/000104581020000010/0001045810-20-000010-index.htm"
+      },
+      "capexTag": "Purchases of property, equipment and intangible assets",
+      "epsSplitFactor": 40
+    },
+    {
+      "year": 2019,
+      "end": "2019-01-27",
+      "revenue": 11716000000,
+      "fcf": 3143000000,
+      "eps": 0.16575,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1045810/000104581021000010/0001045810-21-000010-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1045810/000104581021000010/0001045810-21-000010-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1045810/000104581019000023/nvda-2019x10k.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1045810/000104581021000010/0001045810-21-000010-index.htm"
+      },
+      "capexTag": "Purchases of property, equipment and intangible assets",
+      "epsSplitFactor": 40
+    },
+    {
+      "year": 2020,
+      "end": "2020-01-26",
+      "revenue": 10918000000,
+      "fcf": 4272000000,
+      "eps": 0.11299999999999999,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1045810/000104581022000036/0001045810-22-000036-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1045810/000104581022000036/0001045810-22-000036-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1045810/000104581021000010/nvda-20210131.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1045810/000104581022000036/0001045810-22-000036-index.htm"
+      },
+      "capexTag": "Purchases of property, equipment and intangible assets",
+      "epsSplitFactor": 10
+    },
+    {
+      "year": 2021,
+      "end": "2021-01-31",
+      "revenue": 16675000000,
+      "fcf": 4694000000,
+      "eps": 0.173,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000017/0001045810-23-000017-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000017/0001045810-23-000017-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1045810/000104581021000010/nvda-20210131.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000017/0001045810-23-000017-index.htm"
+      },
+      "capexTag": "Purchases of property, equipment and intangible assets",
+      "epsSplitFactor": 10
+    },
+    {
+      "year": 2022,
+      "end": "2022-01-30",
+      "revenue": 26914000000,
+      "fcf": 8132000000,
+      "eps": 0.385,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/0001045810-24-000029-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/0001045810-24-000029-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/0001045810-24-000029-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/0001045810-24-000029-index.htm"
+      },
+      "capexTag": "PaymentsToAcquireProductiveAssets",
+      "epsSplitFactor": 10
+    },
+    {
+      "year": 2023,
+      "end": "2023-01-29",
+      "revenue": 26974000000,
+      "fcf": 3808000000,
+      "eps": 0.17,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/0001045810-25-000023-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/0001045810-25-000023-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/0001045810-25-000023-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/0001045810-25-000023-index.htm"
+      },
+      "capexTag": "PaymentsToAcquireProductiveAssets",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2024,
+      "end": "2024-01-28",
+      "revenue": 60922000000,
+      "fcf": 27021000000,
+      "eps": 1.19,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/0001045810-26-000021-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/0001045810-26-000021-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/0001045810-26-000021-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/0001045810-26-000021-index.htm"
+      },
+      "capexTag": "PaymentsToAcquireProductiveAssets",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2025,
+      "end": "2025-01-26",
+      "revenue": 130497000000,
+      "fcf": 60853000000,
+      "eps": 2.94,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/0001045810-26-000021-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/0001045810-26-000021-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/0001045810-26-000021-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/0001045810-26-000021-index.htm"
+      },
+      "capexTag": "PaymentsToAcquireProductiveAssets",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2026,
+      "end": "2026-01-25",
+      "revenue": 215938000000,
+      "fcf": 96676000000,
+      "eps": 4.9,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/0001045810-26-000021-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/0001045810-26-000021-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/0001045810-26-000021-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/0001045810-26-000021-index.htm"
+      },
+      "capexTag": "PaymentsToAcquireProductiveAssets",
+      "epsSplitFactor": 1
+    }
+  ],
+  "AVGO": [
+    {
+      "year": 2016,
+      "end": "2016-10-30",
+      "revenue": 13240000000,
+      "fcf": 2688000000,
+      "eps": -0.48600000000000004,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1730168/000173016818000084/0001730168-18-000084-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1730168/000173016818000084/0001730168-18-000084-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1730168/000173016818000084/0001730168-18-000084-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1730168/000173016818000084/0001730168-18-000084-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 10
+    },
+    {
+      "year": 2017,
+      "end": "2017-10-29",
+      "revenue": 17636000000,
+      "fcf": 5482000000,
+      "eps": 0.40199999999999997,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1730168/000173016819000144/0001730168-19-000144-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1730168/000173016819000144/0001730168-19-000144-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1730168/000173016819000144/0001730168-19-000144-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1730168/000173016819000144/0001730168-19-000144-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 10
+    },
+    {
+      "year": 2018,
+      "end": "2018-11-04",
+      "revenue": 20848000000,
+      "fcf": 8245000000,
+      "eps": 2.8440000000000003,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1730168/000173016820000226/0001730168-20-000226-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1730168/000173016820000226/0001730168-20-000226-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1730168/000173016820000226/0001730168-20-000226-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1730168/000173016820000226/0001730168-20-000226-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 10
+    },
+    {
+      "year": 2019,
+      "end": "2019-11-03",
+      "revenue": 22597000000,
+      "fcf": 9265000000,
+      "eps": 0.643,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1730168/000173016821000153/0001730168-21-000153-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1730168/000173016821000153/0001730168-21-000153-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1730168/000173016821000153/0001730168-21-000153-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1730168/000173016821000153/0001730168-21-000153-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 10
+    },
+    {
+      "year": 2020,
+      "end": "2020-11-01",
+      "revenue": 23888000000,
+      "fcf": 11598000000,
+      "eps": 0.633,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1730168/000173016822000118/0001730168-22-000118-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1730168/000173016822000118/0001730168-22-000118-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1730168/000173016822000118/0001730168-22-000118-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1730168/000173016822000118/0001730168-22-000118-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 10
+    },
+    {
+      "year": 2021,
+      "end": "2021-10-31",
+      "revenue": 27450000000,
+      "fcf": 13321000000,
+      "eps": 1.5,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1730168/000173016823000096/0001730168-23-000096-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1730168/000173016823000096/0001730168-23-000096-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1730168/000173016823000096/0001730168-23-000096-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1730168/000173016823000096/0001730168-23-000096-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 10
+    },
+    {
+      "year": 2022,
+      "end": "2022-10-30",
+      "revenue": 33203000000,
+      "fcf": 16312000000,
+      "eps": 2.65,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1730168/000173016824000139/0001730168-24-000139-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1730168/000173016824000139/0001730168-24-000139-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1730168/000173016824000139/0001730168-24-000139-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1730168/000173016824000139/0001730168-24-000139-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2023,
+      "end": "2023-10-29",
+      "revenue": 35819000000,
+      "fcf": 17633000000,
+      "eps": 3.3,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/0001730168-25-000121-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/0001730168-25-000121-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/0001730168-25-000121-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/0001730168-25-000121-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2024,
+      "end": "2024-11-03",
+      "revenue": 51574000000,
+      "fcf": 19414000000,
+      "eps": 1.23,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/0001730168-25-000121-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/0001730168-25-000121-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/0001730168-25-000121-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/0001730168-25-000121-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2025,
+      "end": "2025-11-02",
+      "revenue": 63887000000,
+      "fcf": 26914000000,
+      "eps": 4.77,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/0001730168-25-000121-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/0001730168-25-000121-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/0001730168-25-000121-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/0001730168-25-000121-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    }
+  ],
+  "AMD": [
+    {
+      "year": 2016,
+      "end": "2016-12-31",
+      "revenue": 4319000000,
+      "fcf": 4000000,
+      "eps": -0.6,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/2488/000000248819000011/0000002488-19-000011-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/2488/000000248819000011/0000002488-19-000011-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/2488/000000248819000011/0000002488-19-000011-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/2488/000000248819000011/0000002488-19-000011-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2017,
+      "end": "2017-12-30",
+      "revenue": 5253000000,
+      "fcf": -101000000,
+      "eps": -0.03,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/2488/000000248820000008/0000002488-20-000008-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/2488/000000248820000008/0000002488-20-000008-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/2488/000000248820000008/0000002488-20-000008-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/2488/000000248820000008/0000002488-20-000008-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2018,
+      "end": "2018-12-29",
+      "revenue": 6475000000,
+      "fcf": -129000000,
+      "eps": 0.32,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/2488/000162828021001185/0001628280-21-001185-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/2488/000162828021001185/0001628280-21-001185-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/2488/000162828021001185/0001628280-21-001185-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/2488/000162828021001185/0001628280-21-001185-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2019,
+      "end": "2019-12-28",
+      "revenue": 6731000000,
+      "fcf": 276000000,
+      "eps": 0.3,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/2488/000000248822000016/0000002488-22-000016-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/2488/000000248822000016/0000002488-22-000016-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/2488/000000248822000016/0000002488-22-000016-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/2488/000000248822000016/0000002488-22-000016-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2020,
+      "end": "2020-12-26",
+      "revenue": 9763000000,
+      "fcf": 777000000,
+      "eps": 2.06,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/2488/000000248823000047/0000002488-23-000047-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/2488/000000248823000047/0000002488-23-000047-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/2488/000000248823000047/0000002488-23-000047-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/2488/000000248823000047/0000002488-23-000047-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2021,
+      "end": "2021-12-25",
+      "revenue": 16434000000,
+      "fcf": 3220000000,
+      "eps": 2.57,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/2488/000000248824000012/0000002488-24-000012-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/2488/000000248824000012/0000002488-24-000012-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/2488/000000248824000012/0000002488-24-000012-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/2488/000000248824000012/0000002488-24-000012-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2022,
+      "end": "2022-12-31",
+      "revenue": 23601000000,
+      "fcf": 3115000000,
+      "eps": 0.84,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/2488/000000248825000012/0000002488-25-000012-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/2488/000000248825000012/0000002488-25-000012-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/2488/000000248825000012/0000002488-25-000012-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/2488/000000248825000012/0000002488-25-000012-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2023,
+      "end": "2023-12-30",
+      "revenue": 22680000000,
+      "fcf": 1121000000,
+      "eps": 0.53,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/0000002488-26-000018-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/0000002488-26-000018-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/0000002488-26-000018-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/0000002488-26-000018-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2024,
+      "end": "2024-12-28",
+      "revenue": 25785000000,
+      "fcf": 2405000000,
+      "eps": 1,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/0000002488-26-000018-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/0000002488-26-000018-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/0000002488-26-000018-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/0000002488-26-000018-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    },
+    {
+      "year": 2025,
+      "end": "2025-12-27",
+      "revenue": 34639000000,
+      "fcf": 6735000000,
+      "eps": 2.65,
+      "currency": "USD",
+      "basis": "us-gaap",
+      "evidence": {
+        "revenue": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/0000002488-26-000018-index.htm",
+        "cash": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/0000002488-26-000018-index.htm",
+        "capex": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/0000002488-26-000018-index.htm",
+        "eps": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/0000002488-26-000018-index.htm"
+      },
+      "capexTag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "epsSplitFactor": 1
+    }
+  ]
+}
