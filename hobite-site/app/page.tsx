@@ -1,82 +1,22 @@
-const POSTS = [
-  {
-    title: "Netflix (NFLX) Complete Fundamental Research Hub",
-    href: "/research/netflix-complete-fundamental-analysis",
-    description: "SEC-backed financial history, subscriber analysis, content economics, valuation, forecast, and DCF project hub.",
-  },
-  {
-    title: "Reddit (RDDT) Deep Fundamental Analysis",
-    href: "/research/rddt-deep-fundamental-analysis",
-    description: "AI search, community economics, EBITDA expansion, and long-term valuation framework.",
-  },
-  {
-    title: "Reddit（RDDT）深度基本面分析",
-    href: "/zh/research/rddt-deep-fundamental-analysis",
-    description: "AI搜索、社区经济学、Revenue增长与未来十年展望。",
-  },
-  {
-    title: "AI Era Long-Term Investing Framework",
-    href: "/research/ai-era-investing-framework",
-    description: "Workflow, data, infrastructure, distribution, and long-term AI investing framework.",
-  },
-  {
-    title: "AI时代长期投资框架",
-    href: "/zh/research/ai-era-investing-framework",
-    description: "AI时代 workflow、数据、基础设施与长期资产配置框架。",
-  },
-  {
-    title: "Salesforce (CRM) 15-Year Fundamental Analysis",
-    href: "/research/crm-15-year-fundamental-analysis",
-    description: "Agentforce AI thesis, Data Cloud, profitability transformation, and 10-year outlook.",
-  },
-  {
-    title: "Oracle (ORCL) 15-Year Fundamental Analysis",
-    href: "/research/oracle-15-year-fundamental-analysis",
-    description: "OCI growth, AI infrastructure thesis, balance sheet analysis, and 10-year outlook.",
-  },
-  {
-    title: "ServiceNow (NOW) 15-Year Fundamental Analysis",
-    href: "/research/now-15-year-fundamental-analysis",
-    description: "AI workflow operating system thesis and enterprise moat analysis.",
-  },
-  {
-    title: "Salesforce (CRM) 15-Year Fundamental Analysis",
-    href: "/research/crm-15-year-fundamental-analysis",
-    description: "Agentforce AI thesis, Data Cloud, profitability transformation, and 10-year outlook.",
-  },
-  {
-    title: "Pinterest (PINS) 7-Year Fundamental Analysis",
-    href: "/research/pins-7-year-fundamental-analysis",
-    description: "Quarterly revenue, EBITDA, AI thesis, and 5-year outlook.",
-  },
-  {
-    title: "Google (Alphabet) 10-Year Annual Report Study",
-    href: "/research/google-10-year-report",
-    description: "Long-form review of Google annual financial reports over FY2016-FY2025.",
-  },
-  {
-    title: "MSFT 10-Year Review",
-    href: "/research/msft-10-year-review",
-    description: "Revenue, EBITA, and operating cash flow growth visualization.",
-  },
-];
+import { featuredResearch, moreResearch, type ResearchTopic } from "./research/catalog";
 
-function ResearchCard({
-  title,
-  href,
-  description,
-}: {
-  title: string;
-  href: string;
-  description: string;
-}) {
+function ResearchItem({ topic, featured = false }: { topic: ResearchTopic; featured?: boolean }) {
+  const report = topic.en ?? topic.zh;
+  if (!report) return null;
   return (
-    <article className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-      <h3 className="text-xl font-medium">{title}</h3>
-      <p className="mt-3 text-zinc-600">{description}</p>
-      <a href={href} className="mt-4 inline-block text-sm font-medium text-zinc-700 underline">
-        Open report
-      </a>
+    <article className={featured ? "flex min-w-0 flex-col justify-between gap-4 rounded-lg border border-zinc-200 bg-white p-5" : "grid min-w-0 gap-2 border-t border-zinc-200 py-4 sm:grid-cols-[1fr_auto] sm:items-center"}>
+      <div className="min-w-0" lang={topic.en ? "en" : "zh-CN"}>
+        <h3 className={featured ? "text-lg font-semibold" : "font-medium"}>
+          {topic.en && topic.zh ? report.title : <a href={report.href} className="underline underline-offset-4">{report.title}</a>}
+        </h3>
+        {featured && <p className="mt-2 text-sm leading-relaxed text-zinc-600">{report.description}</p>}
+      </div>
+      {topic.en && topic.zh && (
+        <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm font-medium text-zinc-700">
+          <a href={topic.en.href} aria-label={`English: ${topic.en.title}`} className="underline underline-offset-4">English</a>
+          <a href={topic.zh.href} aria-label={`中文：${topic.zh.title}`} lang="zh-CN" className="underline underline-offset-4">中文</a>
+        </div>
+      )}
     </article>
   );
 }
@@ -86,38 +26,31 @@ export default function Home() {
     <main className="min-h-screen bg-gradient-to-b from-white to-zinc-50 px-6 py-12 text-zinc-900">
       <div className="mx-auto max-w-7xl space-y-10">
         <section className="rounded-[2rem] border border-zinc-200 bg-white p-10 shadow-sm">
-          <p className="text-sm uppercase tracking-[0.3em] text-zinc-500">
-            Hobite Capital
-          </p>
-
-          <h1 className="mt-5 text-5xl font-semibold leading-tight md:text-7xl">
-            Investing intelligence for the next decade.
-          </h1>
-
+          <p className="text-sm uppercase tracking-[0.3em] text-zinc-500">Hobite Capital</p>
+          <h1 className="mt-5 text-5xl font-semibold leading-tight md:text-7xl">Investing intelligence for the next decade.</h1>
           <p className="mt-6 max-w-4xl text-xl text-zinc-600">
             Deep fundamental research focused on AI infrastructure, enterprise software, cloud platforms, internet platforms, and long-duration compounders.
           </p>
         </section>
-
-        <section>
-          <div className="flex items-end justify-between gap-4">
+        <section aria-labelledby="latest-research">
+          <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <h2 className="text-3xl font-semibold">Latest Research</h2>
+              <h2 id="latest-research" className="text-3xl font-semibold">Latest Research</h2>
               <p className="mt-2 text-zinc-600">Institutional-style long-form AI and fundamental analysis reports.</p>
             </div>
-            <a href="/research" className="text-sm font-medium text-zinc-600 underline">
-              Open research library
-            </a>
+            <a href="/research" className="text-sm font-medium text-zinc-600 underline">Open research library</a>
           </div>
-
-          <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {POSTS.map((post) => (
-              <ResearchCard
-                key={post.title}
-                title={post.title}
-                href={post.href}
-                description={post.description}
-              />
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {featuredResearch.map((topic) => (
+              <ResearchItem key={topic.en?.href ?? topic.zh?.href} topic={topic} featured />
+            ))}
+          </div>
+        </section>
+        <section aria-labelledby="more-research">
+          <h2 id="more-research" className="text-xl font-semibold">More Research</h2>
+          <div className="mt-3 grid gap-x-10 lg:grid-cols-2">
+            {moreResearch.map((topic) => (
+              <ResearchItem key={topic.en?.href ?? topic.zh?.href} topic={topic} />
             ))}
           </div>
         </section>
