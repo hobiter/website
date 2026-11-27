@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ResearchUpdate } from "../../_chip-refresh/ResearchUpdate";
 import { NvidiaResearchView } from "../NvidiaResearchView";
 
 export const metadata: Metadata = {
@@ -7,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function NvidiaResearchChinesePage() {
-  return <NvidiaResearchView language="zh" />;
+  return <ResearchUpdate ticker="NVDA" zh><NvidiaResearchView language="zh" /></ResearchUpdate>;
 }

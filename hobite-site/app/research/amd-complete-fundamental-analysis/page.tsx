@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ResearchUpdate } from "../_chip-refresh/ResearchUpdate";
 import AmdResearchView from "./AmdResearchView";
 export const metadata: Metadata = {
   title: "AMD Complete Fundamental Analysis",
@@ -6,5 +7,5 @@ export const metadata: Metadata = {
     "AMD fiscal financials, segment economics, customer warrants, supply commitments and ten-year FCFF valuation scenarios.",
 };
 export default function Page() {
-  return <AmdResearchView lang="en" />;
+  return <ResearchUpdate ticker="AMD"><AmdResearchView lang="en" /></ResearchUpdate>;
 }

@@ -59,12 +59,12 @@ const REPORTS = [
   },
   {
     title: "AMD 完整基本面研究中心",
-    description: "SEC 财年财务、EPYC 与 Instinct 经济、供应承诺、客户权证及十年企业估值。",
+    description: "2026 财年 Q3、EPYC 与 Instinct、租约与现金转化，以及五年和十年估值。",
     href: "/research/amd-complete-fundamental-analysis/zh",
   },
   {
     title: "AMD Complete Fundamental Research Hub",
-    description: "Fiscal financial history, EPYC and Instinct economics, supply commitments, customer warrants and ten-year enterprise valuation.",
+    description: "FY2026 Q3 results, EPYC and Instinct economics, lease commitments, cash conversion and five- and ten-year valuation.",
     href: "/research/amd-complete-fundamental-analysis",
   },
   {
@@ -79,12 +79,12 @@ const REPORTS = [
   },
   {
     title: "台积电（TSM）完整基本面研究中心",
-    description: "IFRS 财务、先进制程、代工经济、资本投入、客户集中度及十年货币一致的 ADS 估值。",
+    description: "2026 年 Q3、N2 放量、资本投入，以及考虑汇率的五年和十年 ADS 估值。",
     href: "/research/tsmc-complete-fundamental-analysis/zh",
   },
   {
     title: "TSMC (TSM) Complete Fundamental Research Hub",
-    description: "IFRS financial history, advanced nodes, foundry economics, capital investment, customer concentration and currency-aware ten-year ADS valuation.",
+    description: "Q3 2026 TIFRS results, N2 ramp, capital investment and currency-aware five- and ten-year ADS valuation.",
     href: "/research/tsmc-complete-fundamental-analysis",
   },
   {
@@ -129,12 +129,12 @@ const REPORTS = [
   },
   {
     title: "英伟达（NVDA）完整基本面研究中心",
-    description: "中文研究页：SEC 财务、AI 平台经济、供应承诺、资本配置、估值历史及十年 DCF。",
+    description: "2027 财年 Q3、Rubin 平台、现金转化，以及五年和十年估值。",
     href: "/research/nvidia-complete-fundamental-analysis/zh",
   },
   {
     title: "NVIDIA (NVDA) Complete Fundamental Research Hub",
-    description: "SEC-backed financial history, AI platform and supply economics, capital allocation, valuation history and ten-year DCF scenarios.",
+    description: "FY2027 Q3 results, Rubin rollout, cash conversion, and updated five- and ten-year valuation.",
     href: "/research/nvidia-complete-fundamental-analysis",
   },
   {
@@ -149,12 +149,12 @@ const REPORTS = [
   },
   {
     title: "博通（AVGO）完整基本面研究中心",
-    description: "中文研究页：SEC 财务、AI 半导体与 VMware 经济性、资本配置、估值历史、十年预测、DCF、来源审计与 QA。",
+    description: "2026 财年 Q3、定制 AI 芯片、VMware 收入质量，以及五年和十年估值。",
     href: "/research/broadcom-complete-fundamental-analysis/zh",
   },
   {
     title: "Broadcom (AVGO) Complete Fundamental Research Hub",
-    description: "SEC-backed financial history, AI semiconductor and VMware economics, capital allocation, valuation history and ten-year DCF scenarios.",
+    description: "FY2026 Q3 results, custom AI accelerators, VMware revenue quality, and updated five- and ten-year valuation.",
     href: "/research/broadcom-complete-fundamental-analysis",
   },
   {
