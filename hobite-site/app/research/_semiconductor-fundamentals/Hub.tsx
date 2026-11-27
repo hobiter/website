@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { asOf, project, reports } from "./data";
+import { FinancialTrends } from "../_chip-trends/FinancialTrends";
 
 type Lang = "en" | "zh";
 export type Route = { params: Promise<{ semiconductorHub: string }> };
@@ -43,7 +44,7 @@ export async function Hub({ route, lang }: { route: Route; lang: Lang }) {
       <tbody>{rows.map(([p, rev, e, cash, capex]) => <tr className="border-b border-zinc-200 dark:border-zinc-700" key={p}><th scope="row" className="p-3 text-left">{p}</th>{[rev,e,...(hasCash ? [cash,capex,cash !== undefined && capex !== undefined ? cash-capex : undefined] : [])].map((v,k)=><td key={k} className={cell}>{v === undefined ? "—" : num(v)}</td>)}</tr>)}</tbody>
     </table></div>;
   }
-  return <main className="mx-auto max-w-6xl space-y-9 px-4 py-10 sm:px-8" lang={lang}>
+  return <main className="mx-auto w-full min-w-0 max-w-6xl space-y-9 px-4 py-10 sm:px-8" lang={lang}>
     <header className="space-y-4">
       <nav aria-label={t("Research and language","研究与语言")} className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
         <a className={link} href="/research">{t("Research library","研究目录")}</a>
@@ -64,15 +65,15 @@ export async function Hub({ route, lang }: { route: Route; lang: Lang }) {
       <p><strong>{t("Management outlook:","管理层指引：")}</strong> {r.guidance[i]} <a className={link} href={r.latestSource}>{r.release}</a></p>
     </section>
     {r.sections.map(([label,body])=><section key={label[0]}><h2 className={heading}>{label[i]}</h2><p className="max-w-4xl leading-relaxed">{body[i]}</p></section>)}
+    <FinancialTrends ticker={r.ticker} zh={Boolean(i)}
+      input={{fiscalYear:r.modelStart,salesBillions:r.modelRevenue,sharesBillions:r.shares,scenarios:r.scenarios}}
+      source={r.ticker==="ASML"||r.ticker==="AMAT"?r.latestSource:r.annualSource}
+      anchor={r.ticker==="ASML"?["Quarterly release: FY2026 guidance midpoint","季度财报：2026 财年指引中点"]:["Latest completed fiscal-year results","最近完整财年报告"]} />
     <section className="space-y-4">
-      <h2 className={heading}>{t("Reported financial history","已披露财务历史")}</h2>
+      <h2 className={heading}>{t("Selected quarterly results and price context","精选季度业绩与股价背景")}</h2>
       <p className="text-sm">{r.currency} {t("billions except EPS. Selected quarters, not a continuous series. A dash means no figure is transcribed here.","十亿，EPS 除外。季度表为选定报告期，并非连续序列。破折号表示本文未录入。")}</p>
-      <figure aria-label={t("Annual revenue by fiscal year","历年营收")} className="space-y-2">
-        {r.annual.map(([p,v])=><div key={p} className="grid grid-cols-[4.5rem_1fr_5rem] items-center gap-2 text-sm"><span>{p}</span><div className="h-3 bg-zinc-100 dark:bg-zinc-800" aria-hidden><div className="h-full bg-teal-600" style={{width:(v/Math.max(...r.annual.map(row=>row[1]))*100)+"%"}} /></div><span className="text-right tabular-nums">{num(v)}B</span></div>)}
-      </figure>
-      {history(r.annual,t("Annual results","年度数据"))}
       {history(r.quarterly,t("Quarterly results","季度数据"))}
-      {r.annual.some(x=>x[4] !== undefined) && <p className="text-sm">{t("¹ Cash investment is reported capex for AMAT, purchases of property and equipment for ARM, and property/equipment plus intangibles for ASML and Lam. The subtraction is a cash-flow proxy, not a fully comparable FCF measure.","¹ AMAT 用资本开支，ARM 用购置物业及设备，ASML 和 Lam 用设备等资本支出及无形资产。差额为现金流近似值，不能跨公司当作同口径自由现金流。")}</p>}
+      {r.quarterly.some(x=>x[4] !== undefined) && <p className="text-sm">{t("¹ Cash investment is reported capex. The subtraction is a cash-flow proxy.","¹ 投资支出采用已披露资本开支；差额是现金流近似值。")}</p>}
       <p className="text-sm">{t("October 30 to November 25 close: ","10 月 30 日至 11 月 25 日收盘：")}{price(r.octoberClose)} → {price(r.price)} ({pct(r.price / r.octoberClose - 1)}). {t("Using the same latest completed fiscal-year EPS at both dates, the reference multiple moved from ","两个日期均用同一最近已完成财年的 EPS 作分母，参考倍数从 ")}{(r.octoberClose/historicalEps).toFixed(1)}× → {(r.price/historicalEps).toFixed(1)}×. {t("This isolates the price move; it is not a point-in-time P/E series or a peak drawdown.","此比较只展示股价变化，不是逐日市盈率序列或峰值回撤。")}</p>
     </section>
     <section className="space-y-4">

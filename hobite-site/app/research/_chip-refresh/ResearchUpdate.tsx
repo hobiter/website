@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { chips, priceDate, project, requiredGrowth, revenueAnchor, type Ticker } from "./data";
+import { FinancialTrends } from "../_chip-trends/FinancialTrends";
 
 const usd = (x: number) => "$" + x.toFixed(2);
 const pct = (x: number) => (x * 100).toFixed(1) + "%";
@@ -47,6 +48,11 @@ export function ResearchUpdate({
       <section className="max-w-4xl space-y-2">
         <h2 className="text-xl font-semibold">{t("What drives the next estimate","下一次业绩预判的关键")}</h2><p>{r.drivers[lang]}</p>
         <h3 className="pt-2 font-semibold">{t("What could break the case","可能使假设失效的因素")}</h3><p>{r.risk[lang]}</p>
+      </section>
+      <section className="space-y-4">
+        <FinancialTrends ticker={ticker} zh={zh} source={r.sources[0][1]}
+          anchor={["Quarterly report: nine-month actuals plus Q4 guidance midpoint","季度财报：前九个月实际值加第四季指引中点"]}
+          input={{fiscalYear:r.fiscal,salesBillions:revenueAnchor(r),sharesBillions:r.shares,scenarios:r.cases}} />
       </section>
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">{t("Five- and ten-year valuation scenarios","五年与十年估值情景")}</h2>
