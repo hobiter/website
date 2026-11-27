@@ -145,7 +145,7 @@ function SiteHeader() {
           <a
             aria-label="YouTube"
             className="inline-flex h-9 items-center gap-2 rounded-md border border-zinc-300 bg-white px-3 text-sm font-semibold text-zinc-800 transition hover:border-zinc-500"
-            href="https://www.youtube.com/@hobite6341"
+            href="https://www.youtube.com/@hobiter"
             rel="noreferrer"
             target="_blank"
           >
