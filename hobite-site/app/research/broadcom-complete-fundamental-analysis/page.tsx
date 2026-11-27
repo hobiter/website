@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ResearchUpdate } from "../_chip-refresh/ResearchUpdate";
 import { BROADCOM_ANNUAL_FINANCIALS, BROADCOM_ANNUAL_FINANCIALS_SOURCE_NOTE } from "./annualFinancials";
 import { BROADCOM_CAPITAL_ECONOMICS, BROADCOM_CAPITAL_ECONOMICS_NOTE, BROADCOM_LATEST_CAPITAL_ECONOMICS } from "./capitalEconomics";
 import { BROADCOM_ANNUAL_FILINGS, BROADCOM_LATEST_ANNUAL_FILING, BROADCOM_LATEST_QUARTERLY_FILING, BROADCOM_QUARTERLY_FILINGS } from "./filings";
@@ -37,6 +38,10 @@ function TableFrame({ children }: { children: React.ReactNode }) {
 }
 
 export default function BroadcomResearchPage() {
+  return <ResearchUpdate ticker="AVGO"><PreviousBroadcomReport /></ResearchUpdate>;
+}
+
+function PreviousBroadcomReport() {
   const dcfCases = Object.values(BROADCOM_DCF_CASES);
   const annualMax = Math.max(...BROADCOM_ANNUAL_FINANCIALS.map((row) => row.revenue ?? 0));
   const aiShare = BROADCOM_Q3_2026.aiSemiconductorRevenue / BROADCOM_Q3_2026.semiconductorRevenue * 100;
