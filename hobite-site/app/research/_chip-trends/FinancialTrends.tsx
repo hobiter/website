@@ -1,4 +1,5 @@
 import { buildForecast, cagr, chipHistory, historicalFcfMargin, metrics, type ChipTicker, type ForecastInput, type Metric } from "./model";
+import { QuarterlyHistory } from "./QuarterlyHistory";
 
 type Copy = readonly [string,string];
 const fmt = (v: number, digits = 2) => v.toLocaleString("en-US",{minimumFractionDigits:digits,maximumFractionDigits:digits});
@@ -69,15 +70,17 @@ export function FinancialTrends({ ticker, zh, input, anchor, source }: {
     <details className={outer}>
       <summary className="cursor-pointer p-3 font-medium">{t("Annual values, year-over-year changes, and filing links","年度数值、同比与申报文件")}</summary>
       <div className="overflow-x-auto">
-        <table className="w-full text-sm"><thead><tr className={line}>{[t("Fiscal year","财年"),...metrics.flatMap(m=>[`${names[m][lang]} (${unit(m)})`,t("YoY","同比")]),t("Sources","来源")].map((v,i)=><th key={i} scope="col" className={cell}>{v}</th>)}</tr></thead>
+        <table className="w-full text-sm"><thead><tr className={line}>{[t("Fiscal year","财年"),...metrics.flatMap(m=>[`${names[m][lang]} (${unit(m)})`,t("YoY","同比")]),t("Operating cash flow","经营现金流"),t("Capital investment","资本投资"),t("Sources","来源")].map((v,i)=><th key={i} scope="col" className={cell}>{v}</th>)}</tr></thead>
           <tbody>{rows.map((r,i)=><tr key={r.year} className={line}><th scope="row" className={cell}>{r.year}</th>
             {metrics.map(m=>[value(m,r[m]),percent(i&&r.year-rows[i-1].year===1?cagr(rows[i-1][m],r[m],1):null)]).flat().map((v,j)=><td key={j} className={cell}>{v}</td>)}
+            <td className={cell}>{value("fcf",r.cash)}</td><td className={cell}>{value("fcf",r.capex)}</td>
             <td className={cell}>{Object.entries(r.evidence).filter(([,u])=>u).map(([key,url])=><a key={key} className="ml-2 underline" href={url!}>{({revenue:t("Sales","营收"),cash:t("CFO","经营现金"),capex:t("Capex","资本开支"),eps:"EPS"})[key]}</a>)}</td>
           </tr>)}</tbody>
         </table>
       </div>
     </details>
     <p className="text-sm">{t("Historical FCF is operating cash flow less the disclosed capital investment line (including intangibles where combined). It is not adjusted FCF or FCFF. EPS is split-adjusted where applicable. Growth is unavailable when either endpoint is missing or nonpositive.","历史自由现金流为经营现金流减披露的资本投资支出（若合并列报则包含无形资产），并非调整后 FCF 或 FCFF。EPS 在适用时按拆股调整。任一端点缺失或非正数时不计算增长率。")}</p>
+    <QuarterlyHistory ticker={ticker} currency={last.currency} zh={zh} />
     <h3 className="pt-3 text-xl font-semibold">{t("Filing-based 5- and 10-year forecast","基于财报的五年与十年预测")}</h3>
     <p className="text-sm"><a className="underline" href={source}>{anchor[lang]}</a> · FY{input.fiscalYear} · {last.currency} {fmt(input.salesBillions)}B. {t("FCF margin starts at the latest annual observation and moves over five years to a base target of aggregate FCF divided by aggregate sales","自由现金流率从最近年报值出发，五年内逐步趋向基准目标（历史自由现金流总额／营收总额）")} (FY{fc.first}–{fc.last}: {percent(fc.margin)}). {t("Bear and bull targets shift by −6 and +6 percentage points. Net margins and share changes remain scenario assumptions.","悲观及乐观目标分别减、加 6 个百分点。净利率与股数变化仍为情景假设。")}</p>
     <div className="flex flex-wrap gap-x-5 gap-y-1 text-sm font-medium">{labels.map((l,i)=><span key={l[0]}><span aria-hidden style={{color:colors[i]}}>{["– –","━━","···"][i]} </span>{l[lang]}</span>)}</div>
