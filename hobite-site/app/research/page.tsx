@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { reports as semiconductorReports } from "./_semiconductor-fundamentals/data";
 
 export const metadata: Metadata = {
   title: "Research",
@@ -6,6 +7,10 @@ export const metadata: Metadata = {
 };
 
 const REPORTS = [
+  ...semiconductorReports.flatMap((r) => [
+    {title: `${r.name} (${r.ticker}) Fundamental Analysis`, description:r.thesis[0], href:"/research/"+r.slug},
+    {title: `${r.name}（${r.ticker}）基本面研究`, description:r.thesis[1], href:"/research/"+r.slug+"/zh"},
+  ]),
   {title:"20 Investment Managers: Q3 2026 13F Changes",description:"SEC-sourced top-ten new positions, increases, reductions and exits; per-manager holdings, percentages and downloadable data.",href:"/research/q3-2026-13f-investment-managers"},
   {title:"20 家知名投资管理人：2026 Q3 13F 变动",description:"SEC 来源的十大新出现持仓、增持、减持与退出；逐家持仓、比例及可下载数据。",href:"/research/q3-2026-13f-investment-managers/zh"},
   {title:"Broadcom's AI Semiconductor Moat: How Marvell Changes the Equation",description:"Custom XPUs, networking, Google supplier scope, Marvell's optical/NVLink strategy and post-2028 competitive scenarios.",href:"/research/broadcom-marvell-ai-semiconductor-moat"},
