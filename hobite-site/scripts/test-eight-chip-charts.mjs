@@ -24,6 +24,10 @@ try {
       assert.equal(await charts.locator("svg:visible").count(),6);
       await charts.locator("summary").first().click();
       assert.equal(await charts.locator("details[open]").count(),1);
+      const quarterly = charts.locator("section[aria-labelledby='quarterly-history']");
+      await quarterly.locator("summary").click();
+      assert.ok(await quarterly.locator("tbody tr").count() >= (slug==="arm" ? 19 : 20));
+      assert.ok(await quarterly.locator("tbody a").first().isVisible());
       const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
       if(overflow>1) console.log(await page.evaluate(()=>[...document.querySelectorAll("main, section, figure, table")].filter(el=>el.getBoundingClientRect().right>innerWidth+1).map(el=>[el.tagName,el.className,el.getBoundingClientRect().right]).slice(0,12)));
       assert.ok(overflow<=1,`${width} ${slug}: page overflow by ${overflow}px`);
