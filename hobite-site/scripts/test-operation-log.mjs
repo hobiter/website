@@ -9,6 +9,8 @@ const raw = await readFile(new URL("../content/operation-log.txt",import.meta.ur
 const entries = parseArchive(raw);
 const replies = entries.filter(x=>x.kind==="reply");
 assert.deepEqual(replies.map(x=>x.floor),Array.from({length:312},(_,i)=>i+2));
+const times = Array.from(raw.matchAll(/((?:大约|接近|超过)\s+\d+\s*年)\s+(\d+)\s*楼/g),m=>[Number(m[2]),m[1]]);
+assert.deepEqual(replies.map(x=>[x.floor,x.archivedTime]),times);
 assert.equal(new Set(entries.map(x=>x.id)).size,entries.length);
 assert.ok(entries[0].lines.includes("Sold out GILD @72"));
 assert.ok(replies.find(x=>x.floor===91).lines.includes("握紧这三个和JD"));
@@ -52,10 +54,12 @@ if(process.argv.includes("--browser")){
       await page.getByRole("combobox",{name:"排序"}).selectOption("reverse");
       await page.locator("#reply-313").waitFor();
       assert.equal(await cards.first().getAttribute("id"),"reply-313");
+      assert.equal(await cards.first().locator("[data-archived-time]").textContent(),"接近 7 年");
       await page.getByRole("button",{name:"只看楼主"}).click();
       assert.equal(await cards.first().locator("header").getByText("hobite",{exact:true}).count(),1);
       await page.goto(url+"#reply-229");
       await page.locator("#reply-229").waitFor();
+      assert.equal(await page.locator("#reply-229 [data-archived-time]").textContent(),"接近 7 年");
       assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
       assert.deepEqual(errors,[]);
       if(process.env.OPERATION_LOG_SCREENSHOTS){

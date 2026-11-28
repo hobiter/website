@@ -60,6 +60,7 @@ function EntryCard({ entry }: { entry: ArchiveEntry }) {
           </span>
           <span className="max-w-full break-all font-semibold text-zinc-900 dark:text-zinc-100">{entry.author}</span>
           {owner && <span className="rounded bg-orange-50 px-1.5 py-0.5 font-semibold text-orange-800 dark:bg-orange-950 dark:text-orange-200">楼主</span>}
+          {entry.archivedTime && <span data-archived-time={entry.archivedTime} title="原存档显示的相对发帖时间">{entry.archivedTime}</span>}
           {entry.floor !== undefined
             ? <a href={href} className={`rounded-sm hover:underline ${focus}`}>{entry.floor} 楼</a>
             : <span>主帖</span>}
@@ -90,7 +91,7 @@ export function OperationThread({ entries }: { entries: ArchiveEntry[] }) {
     const result = entries.filter(entry => {
       if (view === "author" && entry.author.toLowerCase() !== "hobite") return false;
       if (view === "replies" && entry.kind !== "reply") return false;
-      return !q || `${entry.author} ${entry.date ?? ""} ${entry.heading ?? ""} ${entry.floor === undefined ? "" : `${entry.floor} 楼`} ${entry.lines.join(" ")}`.toLowerCase().includes(q);
+      return !q || `${entry.author} ${entry.date ?? ""} ${entry.archivedTime ?? ""} ${entry.heading ?? ""} ${entry.floor === undefined ? "" : `${entry.floor} 楼`} ${entry.lines.join(" ")}`.toLowerCase().includes(q);
     });
     return reverse ? result.reverse() : result;
   }, [entries, query, reverse, view]);
@@ -178,7 +179,7 @@ export function OperationThread({ entries }: { entries: ArchiveEntry[] }) {
         </section>
         <aside className="order-first self-start rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900 lg:sticky lg:top-24 lg:order-none">
           <h2 className="font-semibold">关于这个存档</h2>
-          <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">保留主帖和回帖的原始顺序。楼层、日期与作者来自存档；历史交易不代表当前持仓。</p>
+          <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">保留主帖和回帖的原始顺序。回帖时间按原存档的相对时间显示。历史交易不代表当前持仓。</p>
           <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm font-medium lg:flex-col">
             <a href={archiveUrl} target="_blank" rel="noreferrer" className={`rounded-sm text-orange-800 underline underline-offset-4 dark:text-orange-300 ${focus}`}>查看原帖存档</a>
             <a href="/operation-log/source" download="operation-log.txt" className={`rounded-sm text-orange-800 underline underline-offset-4 dark:text-orange-300 ${focus}`}>下载完整原文</a>

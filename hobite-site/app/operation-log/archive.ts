@@ -5,6 +5,7 @@ export type ArchiveEntry = {
   heading?: string;
   floor?: number;
   date?: string;
+  archivedTime?: string;
   page?: number;
   lines: string[];
 };
@@ -12,8 +13,8 @@ export type ArchiveEntry = {
 export const archiveUrl = "https://kantie.org/topics/mitbbs/37286123";
 const printHeader = /^\d{1,2}\/\d{1,2}\/\d{2,4},\s+\d{1,2}:\d{2}\s*[AP]M\s+\[hobite\]我的操作记录\s*-\s*[^\n]*?看帖神器\s*/i;
 const printFooter = /https:\/\/kantie\.org\/topics\/mitbbs\/37286123\s+(\d+)\/\d+\s*$/i;
-const authorHeader = /^(\S+)\s+(?:(?:接近|大约|超过)\s+)?\d+\s*年\s*(\d+)\s*楼(?:\s+|$)/u;
-const joinedReply = /\s+(hobite)\s+(?:接近|大约|超过)\s+\d+\s*年\s*(\d+)\s*楼$/u;
+const authorHeader = /^(\S+)\s+((?:(?:接近|大约|超过)\s+)?\d+\s*年)\s*(\d+)\s*楼(?:\s+|$)/u;
+const joinedReply = /\s+(hobite)\s+((?:接近|大约|超过)\s+\d+\s*年)\s*(\d+)\s*楼$/u;
 const headingDate = /^(?:(\d{4})[-/])?((?:0?[1-9]|1[0-2])[-/](?:0?[1-9]|[12]\d|3[01]))(?:\s*[-–—~至]+\s*(?:\d{4}[-/])?\d{1,2}[-/]\d{1,2})?(?:\s*更新)?$/u;
 
 export function parseArchive(raw: string): ArchiveEntry[] {
@@ -39,11 +40,11 @@ export function parseArchive(raw: string): ArchiveEntry[] {
 
     const inline = inReplies && isQuoted(text) ? text.match(joinedReply) : null;
     const reply = text.match(authorHeader)
-      ?? (inline && Number(inline[2]) === (current?.floor ?? 0) + 1 ? inline : null);
+      ?? (inline && Number(inline[3]) === (current?.floor ?? 0) + 1 ? inline : null);
     if (reply) {
       if (reply.index) current?.lines.push(text.slice(0, reply.index).trim());
       inReplies = true;
-      start(index + 1, { author: reply[1], kind: "reply", floor: Number(reply[2]) });
+      start(index + 1, { author: reply[1], kind: "reply", archivedTime: reply[2], floor: Number(reply[3]) });
       text = text.slice((reply.index ?? 0) + reply[0].length).trim();
     }
 
